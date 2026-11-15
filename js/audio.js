@@ -68,17 +68,28 @@ const NOTE_IDX={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
 function freqOf(n){ const m=n.match(/^([A-G])(#|b)?(\d)$/); if(!m) return 0;
   let s=NOTE_IDX[m[1]]+(m[2]==="#"?1:m[2]==="b"?-1:0); const midi=(+m[3]+1)*12+s; return 440*Math.pow(2,(midi-69)/12); }
 function parseSeq(str){ return str.replace(/\|/g," ").trim().split(/\s+/); }
-let curTrack=null, seq=null, stepI=0, nextT=0, musTimer=null, musicEl=null;
+let curTrack=null, seq=null, stepI=0, nextT=0, musTimer=null;
+/* Un solo reproductor para la música en archivo. Se «despierta» con el primer toque
+   (los celulares no dejan sonar audio sin que el jugador toque la pantalla antes). */
+const musicEl=new Audio(); musicEl.loop=true; musicEl.volume=.5;
+let musicFile=null;
+musicEl.addEventListener("error",()=>{ if(musicFile){ musicFile=null; if(curTrack) synth(curTrack); } });  // si falla el archivo, suena la melodía propia
+function unlockMusic(){
+  const n=800, b=new Uint8Array(44+n), v=new DataView(b.buffer), w=(o,s)=>[...s].forEach((c,i)=>b[o+i]=c.charCodeAt(0));
+  w(0,"RIFF"); v.setUint32(4,36+n,true); w(8,"WAVEfmt "); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true);
+  v.setUint32(24,8000,true); v.setUint32(28,8000,true); v.setUint16(32,1,true); v.setUint16(34,8,true); w(36,"data"); v.setUint32(40,n,true); b.fill(128,44);
+  if(musicFile) return;
+  musicEl.src=URL.createObjectURL(new Blob([b],{type:"audio/wav"})); musicEl.play().then(()=>{ if(!musicFile) musicEl.pause(); }).catch(()=>{});
+}
 function music(name){
   if(curTrack===name) return;
   if(musTimer){ clearInterval(musTimer); musTimer=null; }
-  if(musicEl){ musicEl.pause(); musicEl=null; }
+  musicEl.pause(); musicFile=null;
   curTrack=name; if(!name||!AC) return;
-  const file=MUSICA_LOCAL && MUSIC_FILES[name];      // música en archivo (ver js/assets.js)
+  const file=(typeof LOCALMUS!=="undefined" && LOCALMUS[name]) || (MUSICA_LOCAL && MUSIC_FILES[name]);   // música elegida por el jugador, o en archivo
   if(file){
-    const el=new Audio(file); el.loop=true; el.volume=.5; el.muted=muted; musicEl=el;
-    el.addEventListener("error",()=>{ if(musicEl===el){ musicEl=null; synth(name); } });   // si falta el archivo, suena la melodía propia
-    el.play().catch(()=>{});
+    musicFile=file; musicEl.src=file; musicEl.muted=muted; musicEl.currentTime=0;
+    musicEl.play().catch(()=>{});
     return;
   }
   synth(name);

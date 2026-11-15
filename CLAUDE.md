@@ -6,7 +6,7 @@ sin jerga, y prueba siempre el juego completo antes de dar algo por terminado.
 ## Qué es
 Juego de juicios en HTML/JS sin dependencias ni build. Se abre `index.html` y funciona.
 Los scripts son clásicos (no módulos) y comparten ámbito global; **el orden de carga importa**:
-`casos/caso1.js` → `js/audio.js` → `js/sprites.js` → `js/assets.js` → `js/engine.js`.
+`casos/caso1.js` → `js/audio.js` → `js/sprites.js` → `js/assets.js` → `js/engine.js` → `js/musica.js`.
 
 ## Pantalla
 Formato Nintendo DS: dos pantallas 4:3. La escena se dibuja a **256×192** y se amplía con píxeles
@@ -47,7 +47,8 @@ Proceso (scripts en `herramientas/`, escritos para un entorno puntual: adaptar r
 Los PNG de `assets/` ya están procesados: se dibujan tal cual.
 
 ## Música
-Por defecto es sintetizada (`TRACKS` en `js/audio.js`). Opcional: archivos en `musica-local/` (ignorada por git,
+Por defecto es sintetizada (`TRACKS` en `js/audio.js`). El jugador puede elegir canciones de su dispositivo
+en «🎵 Mi música» (portada; `js/musica.js`, guardadas solo en su navegador con IndexedDB). También opcional: archivos en `musica-local/` (ignorada por git,
 nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/assets.js`. Si falta un archivo, suena la melodía propia.
 
 ## Guardado

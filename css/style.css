@@ -136,3 +136,17 @@ button.opt{width:100%;font-size:4.3cqw;text-align:left;padding:2.2cqw 3cqw;line-
 #evbox.on{opacity:1;transform:none}
 #evbox.R{right:4cqw} #evbox.L{left:4cqw}
 #title .hint{opacity:.6;font-size:13px}
+
+/* Mi música */
+#musBtn{font-size:16px;padding:8px 18px;background:#405078}
+#musPanel{position:absolute;inset:0;display:none;flex-direction:column;gap:10px;padding:16px;background:#101c3c;overflow:auto;text-align:left;z-index:2}
+#musPanel h2{color:var(--gold);font-size:24px}
+#musPanel p{font-size:14px;line-height:1.35;max-width:none}
+.mrow{display:flex;align-items:center;gap:8px;background:#1c2c58;border:3px solid #101830;padding:8px}
+.mtx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.mtx b{font-size:15px}
+.mtx small{font-size:12px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#musPanel .mbtn{font-family:'Pixelify Sans',monospace;font-weight:700;font-size:14px;color:#fff;background:#3058c8;border:3px solid #101830;padding:6px 10px;cursor:pointer;flex:none}
+#musPanel .mbtn input{display:none}
+#musPanel .mbtn.del{background:#804050}
+#musClose{align-self:center;margin-top:6px}

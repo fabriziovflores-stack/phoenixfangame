@@ -530,6 +530,6 @@ document.addEventListener("keydown",e=>{
 });
 $("saveBtn").onclick=()=>{ if($("title").style.display==="none") saveGame(true); };
 if(loadSave()) $("contBtn").style.display="";
-$("contBtn").onclick=()=>{ initAudio(); if(AC&&AC.state==="suspended") AC.resume(); $("title").style.display="none"; continueGame(); };
-$("startBtn").onclick=()=>{ initAudio(); if(AC&&AC.state==="suspended") AC.resume(); $("title").style.display="none"; resetGame(); run(); };
+$("contBtn").onclick=()=>{ initAudio(); unlockMusic(); if(AC&&AC.state==="suspended") AC.resume(); $("title").style.display="none"; continueGame(); };
+$("startBtn").onclick=()=>{ initAudio(); unlockMusic(); if(AC&&AC.state==="suspended") AC.resume(); $("title").style.display="none"; resetGame(); run(); };
 resetGame();
