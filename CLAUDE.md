@@ -50,6 +50,6 @@ No hay tests en el repo. Antes de entregar: recorrer el caso completo (ruta gana
 una respuesta equivocada y la derrota) con un navegador automatizado y confirmar que no hay errores de consola.
 
 ## Siguientes pasos sugeridos
-1. Integrar la hoja de Zoila y los fondos que faltan.
+1. Integrar los fondos que faltan (fiscalía, detrás de la jueza).
 2. Separar motor y caso para admitir varios casos (menú de selección).
 3. Fase de investigación (lugares, examinar, hablar) para el Caso 2.

@@ -15,7 +15,7 @@ Abre `index.html` en un navegador. No necesita instalación ni conexión.
 | `casos/caso1.js` | **El guion**: personajes, pruebas, testimonios y diálogos del Caso 1 |
 | `js/engine.js` | El motor: diálogos, contrainterrogatorios, expediente, guardado |
 | `js/audio.js` | Música y efectos (sintetizados por código) |
-| `js/sprites.js` | Dibujo provisorio por código (hoy solo lo usa Zoila) y globos de «¡Objeción!» |
+| `js/sprites.js` | Dibujo provisorio por código (respaldo si falta un sprite) y globos de «¡Objeción!» |
 | `js/assets.js` | Rutas de las imágenes (sprites, fondos y muebles) |
 | `assets/` | Sprites (256×192), fondos, muebles e íconos de pruebas ya procesados |
 | `arte-original/` | Las hojas tal como salieron del generador de imágenes |
@@ -24,7 +24,6 @@ Abre `index.html` en un navegador. No necesita instalación ni conexión.
 | `CLAUDE.md` | Instrucciones para trabajar el proyecto con Claude Code |
 
 ## Pendientes conocidos
-- Hoja de sprites de **Zoila** (usa un dibujo provisorio).
 - Fondos propios para **fiscalía** y **detrás de la jueza**.
 - Música compuesta de verdad.
 - El protagonista se parece demasiado a Phoenix Wright: cambiar antes de publicar.

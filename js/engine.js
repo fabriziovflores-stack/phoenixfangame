@@ -415,6 +415,7 @@ const AMAP={
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},
   cote:{normal:["base","talk"],smile:["happy","happyTalk"],eat:["happy","happyTalk"],excited:["excited","excitedTalk"],think:["think","thinkTalk"],serious:["serious","seriousTalk"],sweat:["sweat","sweatTalk"],worried:["sweat","sweatTalk"],shock:["shock","shockTalk"],pout:["pout","poutTalk"]},
   tomas:{normal:["base","talk"],sweat:["sweat","sweatTalk"],cry:["cry","cryTalk"],beg:["beg","begTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],angry:["indignant","indignantTalk"],smile:["happy","happyTalk"]},
+  zoila:{normal:["base","talk"],smug:["smug","smugTalk"],smile:["happy","happyTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],serious:["serious","seriousTalk"],angry:["indignant","indignantTalk"]},
 };
 function artFor(who,mood,pose,m,b){ const A=ART[who]; if(!A) return null; const M=AMAP[who];
   if(pose==="cafe"&&(mood==="shock"||mood==="sweat")) pose="";
