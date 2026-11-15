@@ -14,3 +14,16 @@ tomas:{base:"assets/personajes/tomas/base.png",talk:"assets/personajes/tomas/tal
 zoila:{base:"assets/personajes/zoila/base.png",talk:"assets/personajes/zoila/talk.png",smug:"assets/personajes/zoila/smug.png",smugTalk:"assets/personajes/zoila/smugTalk.png",happy:"assets/personajes/zoila/happy.png",happyTalk:"assets/personajes/zoila/happyTalk.png",sweat:"assets/personajes/zoila/sweat.png",sweatTalk:"assets/personajes/zoila/sweatTalk.png",shock:"assets/personajes/zoila/shock.png",shockTalk:"assets/personajes/zoila/shockTalk.png",think:"assets/personajes/zoila/think.png",thinkTalk:"assets/personajes/zoila/thinkTalk.png",serious:"assets/personajes/zoila/serious.png",seriousTalk:"assets/personajes/zoila/seriousTalk.png",indignant:"assets/personajes/zoila/indignant.png",indignantTalk:"assets/personajes/zoila/indignantTalk.png",face:"assets/personajes/zoila/face.png"}};
 const BGIMG={lobby:"assets/fondos/lobby.png",defensa:"assets/fondos/defensa.png",fiscalia:"assets/fondos/fiscalia.png",estrado:"assets/fondos/estrado.png"};
 const DESKIMG={defensa:"assets/muebles/defensa.png",fiscalia:"assets/muebles/fiscalia.png",estrado:"assets/muebles/estrado.png",juez:"assets/muebles/juez.png"};
+
+/* ---------- Música en archivos (opcional, solo en tu computador) ----------
+   Si pones archivos de música en la carpeta «musica-local» (junto a index.html) y cambias
+   MUSICA_LOCAL a true, el juego los usa en vez de las melodías propias.
+   Esa carpeta NO se sube a GitHub. Los temas sin archivo siguen con la melodía propia. */
+const MUSICA_LOCAL = false;
+const MUSIC_FILES = {
+  corte:          "musica-local/juicio.mp3",          // el juicio en general
+  interrogatorio: "musica-local/interrogatorio.mp3",  // testimonios y contrainterrogatorios
+  persecucion:    "musica-local/logica.mp3",          // cuando el caso se da vuelta
+  // espera:   "musica-local/espera.mp3",              // sala de espera
+  // victoria: "musica-local/victoria.mp3",            // después del veredicto
+};

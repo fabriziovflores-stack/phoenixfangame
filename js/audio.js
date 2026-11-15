@@ -68,11 +68,22 @@ const NOTE_IDX={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
 function freqOf(n){ const m=n.match(/^([A-G])(#|b)?(\d)$/); if(!m) return 0;
   let s=NOTE_IDX[m[1]]+(m[2]==="#"?1:m[2]==="b"?-1:0); const midi=(+m[3]+1)*12+s; return 440*Math.pow(2,(midi-69)/12); }
 function parseSeq(str){ return str.replace(/\|/g," ").trim().split(/\s+/); }
-let curTrack=null, seq=null, stepI=0, nextT=0, musTimer=null;
+let curTrack=null, seq=null, stepI=0, nextT=0, musTimer=null, musicEl=null;
 function music(name){
   if(curTrack===name) return;
   if(musTimer){ clearInterval(musTimer); musTimer=null; }
+  if(musicEl){ musicEl.pause(); musicEl=null; }
   curTrack=name; if(!name||!AC) return;
+  const file=MUSICA_LOCAL && MUSIC_FILES[name];      // música en archivo (ver js/assets.js)
+  if(file){
+    const el=new Audio(file); el.loop=true; el.volume=.5; el.muted=muted; musicEl=el;
+    el.addEventListener("error",()=>{ if(musicEl===el){ musicEl=null; synth(name); } });   // si falta el archivo, suena la melodía propia
+    el.play().catch(()=>{});
+    return;
+  }
+  synth(name);
+}
+function synth(name){
   const t=TRACKS[name]; seq={bpm:t.bpm, lead:parseSeq(t.lead), bass:parseSeq(t.bass), drums:t.drums.replace(/\s/g,"").split("")};
   stepI=0; nextT=AC.currentTime+.08; musTimer=setInterval(schedule,25);
 }

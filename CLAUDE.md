@@ -46,6 +46,10 @@ Proceso (scripts en `herramientas/`, escritos para un entorno puntual: adaptar r
 3. Igualar el tamaño y la posición de la cabeza entre emociones. 4. Reducir a 256×192 con color de 15 bits.
 Los PNG de `assets/` ya están procesados: se dibujan tal cual.
 
+## Música
+Por defecto es sintetizada (`TRACKS` en `js/audio.js`). Opcional: archivos en `musica-local/` (ignorada por git,
+nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/assets.js`. Si falta un archivo, suena la melodía propia.
+
 ## Guardado
 `localStorage`, clave `actacero_caso1_v1`. Guarda el paso del guion, pruebas, lecturas y penalizaciones.
 
