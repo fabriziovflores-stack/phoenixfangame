@@ -53,9 +53,11 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
 | `rocky` | Rodrigo «Rocky» Saavedra | Primer tirador | Mecánico. Atropelló a Coté y huyó. Testigo hostil; al final le pide perdón a Coté. |
 | `aurelio` | Aurelio Mirón | Vecino de enfrente | 70 años, binoculares. Lo ve todo, entiende la mitad. Testigo cómico. |
 | `barbara` | Bárbara Plusvalía | Representante hotelera | Pista falsa. Elegante, fría, pelo largo suelto. |
-| `eduardo` | Eduardo Estuardo | Investigador | Acompaña la investigación. Ahora anda con huincha de medir («esta vez medí todo»). |
+| `eduardo` | Eduardo Estuardo | Investigador policial a cargo del caso | Trabaja para la fiscalía, no para Justo. Custodia la escena, entrega lo que la ley obliga (la carpeta de investigación) y a veces se le escapa un dato de más. Testigo de la fiscalía en el juicio 1. Anda con huincha de medir («esta vez medí todo»). |
 | `fiscal` | Máximo Penna | Fiscal | Competente: él descubre que Tadeo es el hijo. |
 | `cote` | Coté | En el hospital | Escenas emocionales, **sin pistas**. |
+
+**Justo investiga solo.** Sin Coté no hay pistas de nadie: solo sus propios pensamientos. Algún momento lo remarca: «(Coté sabría qué preguntar.)»
 
 ## Pruebas
 
@@ -71,7 +73,7 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
 | Pastillas para el mareo | Día 1, pieza de Tadeo | Suaves: no explican un sueño tan profundo. |
 | Foto de la madre de Tadeo | Día 1, mochila (Tadeo no quiere hablar de ella) | Pista del secreto. |
 | Examen de pólvora | Día 3 | Tadeo: negativo. |
-| Examen de sangre de Tadeo | Día 3, Eduardo | **Clonazepam**, no la pastilla del mareo. |
+| Examen de sangre de Tadeo | Día 3, carpeta de investigación (Eduardo) | **Clonazepam**, no la pastilla del mareo. |
 | Receta de clonazepam | Día 3, baño de la casona | A nombre de Malva. |
 | Inscripción del arma | Día 3, comisaría / cajón vacío | La pistola era de Leonel. |
 | Carta de la madre | Día 3, Tadeo rompe su silencio | Tadeo es el hijo. |
@@ -84,11 +86,14 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
 
 ### Parte 1 — Investigación (Día 1)
 1. Cinemática.
-2. Oficina de Justo. Eduardo llega: «Coté está en el hospital». Corte.
-3. Hospital. Coté con la pierna enyesada, haciendo chistes para no llorar. «Anda. Ese cabro no tiene a nadie.» (sin pistas)
+2. Oficina de Justo, de madrugada. Llamada del hospital: Coté fue atropellada. Corte.
+3. Hospital. Coté con la pierna enyesada, haciendo chistes para no llorar. Por la tele se enteran del acusado.
+   «Anda. Ese cabro no tiene a nadie.» (sin pistas)
 4. Locutorio: Tadeo. No recuerda nada. Cuando Justo menciona la foto de su madre, se cierra: **Silencio** (mecánica
    nueva: no se puede romper aún).
 5. Lugares: Casona (entrada, pasillo, pieza de Tadeo), casa de Aurelio, comisaría. Se conoce a Malva y a Bárbara.
+   En la casona está Eduardo custodiando la escena: al principio no deja pasar a Justo; la defensa tiene derecho a ver
+   la carpeta de investigación, y él la entrega a regañadientes (autopsia, video municipal, foto de la camioneta).
 
 ### Parte 2 — Juicio (Día 2)
 - **Bloque A**: Eduardo declara (cómo encontraron la pistola). Luego Aurelio: «vi al de la mochila en la ventana».
@@ -101,7 +106,8 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
 ### Parte 3 — Investigación 2 (Día 3), con el gran giro
 1. Locutorio: romper el **Silencio** de Tadeo presentando la foto y el informe de que Leonel llamó al notario.
    Escena emocional: vino a conocer a su padre y lo mataron la primera noche.
-2. Comisaría: examen de pólvora negativo; **sangre con clonazepam**. Penna: «Se drogó solo. O se lavó».
+2. Comisaría: Eduardo entrega los nuevos informes de la carpeta: pólvora negativa y **sangre con clonazepam**.
+   Penna: «Se drogó solo. O se lavó las manos». Eduardo, incómodo: a él tampoco le cuadra.
 3. Rocky detenido. Al presentarle la foto del soporte vacío confiesa la cámara: la escondió en el taller.
 4. Taller: tarjeta de memoria. **GRAN GIRO**: segundo destello en el pasillo, silueta de pelo largo con delantal.
 5. Bárbara: coartada (boleta del taxi + cámara municipal 23:15). Cuenta que Malva le debe un adelanto.
