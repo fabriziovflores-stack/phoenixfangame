@@ -16,6 +16,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
 ## Formato del guion (`casos/caso1.js`)
 - `CHARS`: personajes (nombre visible, voz, posición: defensa/fiscalia/estrado/juez).
   Las claves internas son históricas: `ines` = Justo (protagonista), `testigo` = Llavín, `gerardo` = perfil de Llavín.
+  `eduardo` = Eduardo Estuardo, investigador (aparece al final del Caso 1).
 - `EVIDENCE` (expediente inicial) y `EVX` (pruebas que entran durante el caso). `read` = lectura inicial.
 - `CROSS`: contrainterrogatorios. Cada declaración: `text`, `press` (líneas al presionar),
   `contra` (id o lista de ids de la prueba correcta) + `contraLines`, `adds` (agrega una declaración oculta),
@@ -26,10 +27,10 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   Motivo equivocado u objetar una pregunta limpia = penalización (`DIRECT_LINES`).
 - `SCRIPT`: lista de pasos. Una línea es `{who, mood, pose, anim, text}`. Comandos: `music`, `location`,
   `gavel`, `cross`, `direct`, `choice` (elegir respuesta, sin penalización), `present` (presentar prueba o perfil),
-  `breakdown`, `verdict`, `end`.
+  `breakdown`, `verdict`, `end`. `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite.
 - En una línea: `evidence:"id"` hace entrar la prueba al expediente (el juego se detiene, baja el panel y
   espera al jugador); `read:["id","nueva lectura"]` reinterpreta una prueba; `damage:true` penaliza;
-  `music:null` corta la música. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento.
+  `music:null` corta la música; `confetti:true` lanza confeti sobre la escena. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento.
 - Emociones disponibles por personaje: ver `AMAP` en `js/engine.js`. Si usas una que no existe, cae a `normal`.
 
 ## Reglas de escritura (del dueño; ver `docs/brief-de-guion.md`)
@@ -45,6 +46,7 @@ Proceso (scripts en `herramientas/`, escritos para un entorno puntual: adaptar r
 1. Quitar el croma. 2. Cuadro «hablando» = cuadro de boca cerrada + solo la boca del otro (así el cuerpo no tiembla).
 3. Igualar el tamaño y la posición de la cabeza entre emociones. 4. Reducir a 256×192 con color de 15 bits.
 Los PNG de `assets/` ya están procesados: se dibujan tal cual.
+Versión de frente: si existe `frente_<cuadro>` en `ART[personaje]`, se usa en la sala de espera (`lobby`). Hoy: Penna.
 
 ## Música
 Por defecto es sintetizada (`TRACKS` en `js/audio.js`). El jugador puede elegir canciones de su dispositivo
@@ -55,6 +57,7 @@ nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/ass
 `localStorage`, clave `actacero_caso1_v1`. Guarda el paso del guion, pruebas, lecturas y penalizaciones.
 
 ## Cómo probar
+`prueba-final.html` = el juego con un botón que salta al veredicto y la escena final (no toca la partida guardada).
 No hay tests en el repo. Antes de entregar: recorrer el caso completo (ruta ganadora, una prueba equivocada,
 una respuesta equivocada y la derrota) con un navegador automatizado y confirmar que no hay errores de consola.
 

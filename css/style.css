@@ -68,6 +68,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;image-rendering:pix
 #verdict span{font-size:17cqw;font-weight:700;line-height:1;color:#fff;text-shadow:.8cqw .8cqw 0 #000,-.5cqw 0 0 #000,.5cqw 0 0 #000,0 -.5cqw 0 #000,0 .5cqw 0 #000;animation:drop .3s steps(4) both}
 #verdict.bad span{color:#f84848}
 @keyframes drop{0%{transform:translateY(-120%) scale(1.6);opacity:0}100%{transform:none;opacity:1}}
+#confe{position:absolute;inset:0;pointer-events:none;z-index:4;overflow:hidden}
 .conf{position:absolute;top:-6%;width:2cqw;height:3cqw;animation:conf 2.6s steps(26) forwards}
 @keyframes conf{to{transform:translateY(90cqw) rotate(720deg)}}
 #gavel{align-items:center;justify-content:center;background:#280c0c}

@@ -101,6 +101,7 @@ function say(l, done){
     if(l.anim) anim(l.anim);
     tickEv(l);
     if(l.damage) takeDamage();
+    if(l.confetti) confetti();
     if(l.read){ G.notes[l.read[0]]=l.read[1]; SFX.ding(); showEvBox(l.read[0],3); }
     $("name").textContent = ch ? ch.name : "";
     const think = l.text.startsWith("("); canTalk = !!l.who && !think;
@@ -121,6 +122,14 @@ function showBubble(kind, then){
   busy=true; const b=$("bubble"); b.innerHTML=bubbleSVG(kind); b.style.display="flex";
   kind==="momento"?SFX.hold():SFX.objection(); shake(); flash();
   setTimeout(()=>{ b.style.display="none"; busy=false; then(); }, 900);
+}
+function confetti(){                // confeti volando sobre la escena
+  let c=$("confe"); if(!c){ c=document.createElement("div"); c.id="confe"; $("stage").appendChild(c); }
+  c.innerHTML="";
+  for(let i=0;i<90;i++){ const d=document.createElement("div"); d.className="conf";
+    d.style.left=Math.random()*100+"%"; d.style.background=["#f2c14e","#6dff8e","#ff6b5a","#6cc6ff","#fff"][i%5];
+    d.style.animationDelay=(Math.random()*1.6)+"s"; c.appendChild(d); }
+  clearTimeout(confetti.t); confetti.t=setTimeout(()=>{ c.innerHTML=""; },5000);
 }
 function takeDamage(){
   G.health=Math.max(0,G.health-1); SFX.damage(); flash(true); shake(); drawHealth(true);
@@ -183,7 +192,7 @@ const CMD = {
   },
   choice(st,done){
     checkpoint=pc-1;
-    const ask=()=>say({who:st.who,mood:st.mood,text:st.text}, ()=>{
+    const ask=()=>say({who:st.who,mood:st.mood,pos:st.pos,text:st.text}, ()=>{
       mode="choice"; $("next").classList.remove("on");
       X={choice:st, pick:i=>{ const o=st.options[i]; if(o.ok) play(st.ok||[],done); else play(o.w||[],ask); }};
       renderControls();
@@ -192,7 +201,7 @@ const CMD = {
   },
   present(st,done){
     checkpoint=pc-1;
-    say({who:st.who,mood:st.mood,text:st.text}, ()=>{
+    say({who:st.who,mood:st.mood,pos:st.pos,text:st.text}, ()=>{
       mode="present"; renderControls();
       $("next").classList.remove("on");
       X={prompt:st, done};
@@ -220,7 +229,7 @@ const CMD = {
     setTimeout(()=>{ cap.style.display="none"; flash(); setScene("negro",null); sp.classList.remove("fall"); },2500);
     setTimeout(()=>{ busy=false; done(); },3100);
   },
-  verdict(st,done){ verdict(st.text, st.good, ()=>{ mode="dialog"; waiting=done; $("next").classList.add("on"); }); },
+  verdict(st,done){ verdict(st.text, st.good, ()=>{ mode="dialog"; waiting=()=>{ verdict.clear(); done(); }; $("next").classList.add("on"); }); },
   end(){ clearSave(); mode="end"; renderControls(); },
 };
 
@@ -321,6 +330,7 @@ function presentItem(id){
   if(mode==="present"){
     const p=X.prompt;
     if([].concat(p.answer).includes(id)){ const d=X.done; play(p.ok, d); }
+    else if(p.soft) play(p.wrong||[], ()=>{ pc=checkpoint; run(); });     // sin castigo (fuera del juicio)
     else play([{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"¡Mire esto, Su Señoría!"},
                {who:"jueza",mood:"serious",text:"...¿Y eso qué tiene que ver, abogado?"},
                {who:"fiscal",mood:"smug",pose:"cafe",text:"Hmph. Novato. *sorbo*"},
@@ -467,12 +477,15 @@ const AMAP={
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},
   cote:{normal:["base","talk"],smile:["happy","happyTalk"],eat:["happy","happyTalk"],excited:["excited","excitedTalk"],think:["think","thinkTalk"],serious:["serious","seriousTalk"],sweat:["sweat","sweatTalk"],worried:["sweat","sweatTalk"],shock:["shock","shockTalk"],pout:["pout","poutTalk"]},
   tomas:{normal:["base","talk"],sweat:["sweat","sweatTalk"],cry:["cry","cryTalk"],beg:["beg","begTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],angry:["indignant","indignantTalk"],smile:["happy","happyTalk"]},
+  eduardo:{normal:["base","talk"],smile:["smile","smileTalk"],think:["scratch","scratchTalk"],sweat:["sweat","sweatTalk"],write:["note","noteTalk"],shock:["shock","shockTalk"],serious:["fist","fistTalk"],angry:["fist","fistTalk"],down:["down","downTalk"]},
   zoila:{normal:["base","talk"],smug:["smug","smugTalk"],smile:["happy","happyTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],serious:["serious","seriousTalk"],angry:["indignant","indignantTalk"]},
 };
 function artFor(who,mood,pose,m,b){ const A=ART[who]; if(!A) return null; const M=AMAP[who];
   if(pose==="cafe"&&(mood==="shock"||mood==="sweat")) pose="";
   let e=(pose&&M["pose:"+pose])||M[mood]||M.normal; if(typeof e==="string") e=[e];
-  return m?(e[1]||e[0]):((b&&e[2])||e[0]); }
+  let a=m?(e[1]||e[0]):((b&&e[2])||e[0]);
+  if(G.pos==="lobby" && A["frente_"+a]) a="frente_"+a;     // fuera de la sala, versión de frente (si existe)
+  return a; }
 const SPR={}; let cur=null, talk=0, blink=0, canTalk=false;
 const off=document.createElement("canvas"); off.width=1024; off.height=768;
 function fkey(who,mood,pose,m,b){ const a=artFor(who,mood,pose,m,b); return a ? who+"|art|"+a : [who,mood,pose,G.nocap,m,b].join("|"); }
