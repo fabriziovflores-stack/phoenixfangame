@@ -355,6 +355,7 @@ function presentItem(id){
   }
   const s=X.list[X.idx];
   if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; play(s.contraLines, done); }
+  else if(s.early && [].concat(s.early.ids).includes(id)) play(s.early.lines, showStatement);   // correcta, pero antes de tiempo: sin castigo
   else play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });
 }
 function gameOver(){
