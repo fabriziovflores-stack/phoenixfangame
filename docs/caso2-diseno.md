@@ -1,108 +1,136 @@
-# Caso 2 — «Dos disparos en Cerro Concepción» (diseño, borrador para aprobar)
+# Caso 2 — «Dos disparos en Cerro Concepción» (diseño v2, para aprobar)
 
-Estado: propuesta. Nombres, verdad y pruebas se pueden cambiar antes de escribir diálogos.
+Estado: propuesta del dueño + mejoras. Nombres y detalles se pueden cambiar antes de escribir diálogos.
 
-## La verdad (lo que de verdad pasó)
+## La verdad
 
-**Víctima:** Leonel Ferrada, 61. Dueño de la Casona Ferrada, hospedaje familiar en Cerro Concepción.
-Además presta plata a interés. Guarda una pistola 9 mm inscrita a su nombre en un cajón de su escritorio.
+**Leonel Ferrada** (61), dueño de la Casona Ferrada, hospedaje en Cerro Concepción. Presta plata a interés.
+Tiene una pistola 9 mm **inscrita a su nombre**, en el cajón con llave de su escritorio.
 
-**Asesina:** Malva Ferrada, 34, su hija. Administra el hospedaje. Una cadena hotelera ofrece comprar la casona;
-Leonel se niega y además la quiere desheredar por sacarle plata de la caja. Malva planea «un accidente», pero esa
-noche se le presenta algo mejor.
+**Tadeo Fuegos** (23), mochilero de Puerto Williams. Su madre murió hace un año. En una carta le dejó un nombre:
+«Busca a Leonel Ferrada. Es tu padre». Tadeo reservó una pieza en la casona **sin decir quién era**: quería conocerlo
+antes. Leonel lo reconoció por la foto de la madre que Tadeo llevaba en la mochila. Esa tarde (14 de marzo, 17:00)
+Leonel llamó al notario: **mañana a primera hora cambia el testamento e incluye a su hijo**.
 
-**Cronología (noche del 14 de marzo):**
-- 22:30 — Tadeo Fuegos, mochilero recién llegado de Puerto Williams, se toma una pastilla para el mareo (tres días
-  de ferry y bus) y se duerme en la pieza del fondo. Duerme profundo.
-- 23:38 — Rodrigo «Rocky» Saavedra, mecánico que le debe plata a Leonel, llega en su camioneta roja. Discuten en la
-  puerta. Rocky saca un revólver para asustarlo.
-- 23:41 — Rocky dispara. **La bala le roza la mejilla a Leonel** y queda incrustada en el marco de la puerta.
-- 23:41 (mismo segundo) — Malva, escondida en el pasillo oscuro con la pistola de su padre, **le dispara por la
-  espalda** (bala en la nuca). Rocky cree que fue su disparo y huye.
-- 23:42 — Rocky baja a toda velocidad. Las cámaras municipales lo registran. En la esquina de Templeman **atropella
-  a Coté**, que volvía a su casa (pierna fracturada, nada grave: queda en el hospital y no puede acompañar a Justo).
-- 23:44 — Malva limpia la pistola, la esconde en la mochila de Tadeo (que no despierta) y llama a Carabineros:
-  «¡Dos disparos! ¡El de la camioneta y alguien adentro!».
-- Carabineros encuentra la pistola en la mochila. Tadeo despierta esposado.
+**Malva Ferrada** (34), hija y administradora. Escuchó esa llamada. Le debe a una cadena hotelera un adelanto que
+cobró a escondidas por la venta de la casona (que su padre nunca aprobó). Si el testamento cambia, lo pierde todo.
+Esa misma noche arma el plan:
+1. A las 21:30 le sirve a Tadeo **el té de bienvenida con clonazepam** (sus pastillas, con receta a su nombre).
+   Tadeo ya se había tomado una pastilla suave para el mareo; cree que el sueño es por eso.
+2. Saca la pistola del cajón del escritorio de su padre.
+3. Plan original: dispararle cuando estuviera solo y fingir un robo. El asesino tenía que ser **el hijo**: según el
+   Código Civil (art. 968), quien mata al causante es **indigno de heredar**. Con Tadeo condenado, Malva hereda todo.
 
-**Por qué se culpa a Tadeo:** la bala fatal es 9 mm y salió de la pistola de su mochila; el revólver de Rocky es
-calibre .38 y su bala está en el marco de la puerta. Rocky queda acusado solo de amenazas y atropello.
+**Lo que ella no previó:** a las 23:38 llega **Rocky Saavedra**, mecánico que le debe plata a Leonel. Discuten en la
+puerta. Rocky saca un revólver para asustarlo y a las 23:41 dispara: **la bala le roza la mejilla** y se clava en el
+marco. Malva, en el pasillo oscuro, aprovecha el ruido y **dispara dos segundos después, por la espalda** (nuca).
+Rocky oye el segundo disparo, cree que el viejo le disparó a él, y huye. Al bajar, a las 23:42, **atropella a Coté** en
+la esquina de Templeman (pierna fracturada: hospital, fuera del caso). La cámara de su tablero lo graba todo.
 
-**Giros:**
-1. Hubo dos tiradores: el disparo que mató vino **desde adentro, por la espalda**.
-2. La pistola era **de la víctima**, no de Tadeo (inscripción a nombre de Leonel).
-3. (Gran giro, investigación 2) La camioneta de Rocky tenía **cámara en el tablero**. Rocky la escondió porque lo
-   muestra disparando. La grabación muestra un segundo destello dentro del pasillo y una silueta de **pelo largo**:
-   no Tadeo (rapado, gorro de lana).
-4. Motivo de Malva: oferta de la cadena hotelera + carta del notario sobre el testamento.
+23:44: Malva limpia la pistola, la mete en la mochila de Tadeo (que no despierta) y llama a Carabineros llorando.
+Al disparar se hizo un **corte entre el pulgar y el índice** (el golpe de la corredera de la pistola, típico de quien
+no sabe disparar). Dice que se cortó con el cuchillo del pan.
 
-Ninguna confesión reemplaza la prueba: el caso final se cierra con la grabación, la inscripción del arma, los
-residuos de pólvora y el motivo.
+**Bárbara Plusvalía** (40), representante de la cadena hotelera, se hospedaba esa noche en la casona para presionar
+la venta. Pelo largo, motivo visible, discutió con Leonel en la cena. **Pista falsa**: salió en taxi a las 23:15 a un
+bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo prueban).
 
-## Personajes nuevos
+### Giros (en orden)
+1. Hubo **dos tiradores**: la bala que mató vino de adentro, por la espalda (autopsia + bala .38 en el marco).
+2. Testigo Aurelio: el segundo tirador tenía **pelo largo**; Tadeo está rapado. Sospecha sobre Bárbara.
+3. Fin del juicio 1, golpe de Penna: **Tadeo es hijo de la víctima** y lo ocultó. Ahora tiene motivo: la herencia.
+4. Investigación 2: Tadeo rompe su silencio (la carta de su madre). La cámara del tablero de Rocky: segundo destello en
+   el pasillo, silueta de pelo largo **con delantal**. Bárbara tiene coartada.
+5. Juicio final: la pistola era del padre; el sedante en la sangre de Tadeo; la herida de la mano; y la clave legal:
+   **quien mata al causante no hereda**. A Malva no le bastaba matar al padre: necesitaba que el culpable fuera Tadeo.
 
-| Clave | Nombre | Rol | Hoja de arte |
+## Personajes
+
+| Clave | Nombre | Rol | Notas |
 |---|---|---|---|
-| `tadeo` | Tadeo Fuegos | Acusado. Mochilero de Puerto Williams, 23. Ingenuo, honesto, habla poco y raro de tanto viaje solo. | 8 pares |
-| `rocky` | Rodrigo «Rocky» Saavedra | Mecánico, 40. Disparó y huyó. Bruto pero no asesino. Testigo hostil. | 8 pares |
-| `malva` | Malva Ferrada | Hija de la víctima, 34. Amable y servicial... demasiado. Asesina. | 8 pares + quiebre |
-| `aurelio` | Aurelio Mirón | Vecino de enfrente, 70. Mira todo por la ventana con binoculares. Testigo. | 8 pares |
-| `eduardo` | Eduardo Estuardo | Investigador. Acompaña a Justo en la investigación (Coté no está). | ya existe |
-| `fiscal` | Máximo Penna | Fiscal. | ya existe |
-| `cote` | Coté | En el hospital. Solo escena emocional, **no da pistas**. | ya existe |
+| `tadeo` | Tadeo Fuegos | Acusado | Rapado, gorro de lana, mochila enorme. Habla poco, honesto, guarda un secreto por miedo. |
+| `malva` | Malva Ferrada | Hija, asesina | Amable, siempre con delantal y té. Curita en la mano. Pelo largo tomado. |
+| `rocky` | Rodrigo «Rocky» Saavedra | Primer tirador | Mecánico. Atropelló a Coté y huyó. Testigo hostil; al final le pide perdón a Coté. |
+| `aurelio` | Aurelio Mirón | Vecino de enfrente | 70 años, binoculares. Lo ve todo, entiende la mitad. Testigo cómico. |
+| `barbara` | Bárbara Plusvalía | Representante hotelera | Pista falsa. Elegante, fría, pelo largo suelto. |
+| `eduardo` | Eduardo Estuardo | Investigador | Acompaña la investigación. Ahora anda con huincha de medir («esta vez medí todo»). |
+| `fiscal` | Máximo Penna | Fiscal | Competente: él descubre que Tadeo es el hijo. |
+| `cote` | Coté | En el hospital | Escenas emocionales, **sin pistas**. |
 
-## Pruebas (dónde aparecen)
+## Pruebas
 
-| Prueba | Dónde | Para qué sirve |
+| Prueba | Cuándo | Qué demuestra |
 |---|---|---|
-| Informe de autopsia | Expediente inicial | Dos heridas: roce en mejilla (de frente) y bala en la nuca (por la espalda). |
+| Autopsia | Día 1, comisaría | Roce en la mejilla (de frente) + bala en la nuca (por detrás). |
 | Pistola 9 mm | Expediente inicial | Encontrada en la mochila de Tadeo. |
-| Bala .38 del marco | Casona, examinar la puerta | El disparo de Rocky fue de frente y no mató. |
-| Video de cámara municipal | Comisaría (Estuardo) | Camioneta a las 23:42; prueba que Rocky huyó y no entró. |
-| Foto de la camioneta | Comisaría | Se ve un **soporte vacío en el parabrisas** (pista del gran giro). |
-| Pastillas para el mareo | Pieza de Tadeo | Explican por qué no despertó. |
-| Plano de la casona | Casona | El pasillo oscuro queda detrás de la puerta; la pieza de Tadeo, al fondo. |
-| Prueba de residuos de pólvora | Investigación 2 | Tadeo: negativo. |
-| Inscripción del arma | Investigación 2 (registro / cajón vacío del escritorio) | La pistola era de Leonel. |
-| Tarjeta de memoria | Investigación 2, taller de Rocky | La grabación del tablero: segundo destello y silueta de pelo largo. |
-| Oferta de la cadena hotelera + carta del notario | Investigación 2, oficina del hospedaje | Motivo de Malva. |
+| Bala .38 del marco | Día 1, casona (examinar la puerta) | El disparo de Rocky fue de frente y no mató. |
+| Plano de la casona | Día 1, casona | Pasillo oscuro detrás de la puerta; la pieza de Tadeo no da a la calle. |
+| Video cámara municipal | Día 1, comisaría | 23:42 camioneta; **también 23:15 taxi saliendo** (coartada de Bárbara, se nota después). |
+| Foto de la camioneta | Día 1, comisaría | **Soporte vacío en el parabrisas** (pista del gran giro). |
+| Taza de té | Día 1, pieza de Tadeo | Taza con restos. Malva: «el té de bienvenida». |
+| Pastillas para el mareo | Día 1, pieza de Tadeo | Suaves: no explican un sueño tan profundo. |
+| Foto de la madre de Tadeo | Día 1, mochila (Tadeo no quiere hablar de ella) | Pista del secreto. |
+| Examen de pólvora | Día 3 | Tadeo: negativo. |
+| Examen de sangre de Tadeo | Día 3, Eduardo | **Clonazepam**, no la pastilla del mareo. |
+| Receta de clonazepam | Día 3, baño de la casona | A nombre de Malva. |
+| Inscripción del arma | Día 3, comisaría / cajón vacío | La pistola era de Leonel. |
+| Carta de la madre | Día 3, Tadeo rompe su silencio | Tadeo es el hijo. |
+| Agenda del notario | Día 3, notaría | Cita a las 9:00 del día 15 para cambiar el testamento. |
+| Tarjeta de memoria | Día 3, taller de Rocky | Segundo destello en el pasillo, silueta con delantal. |
+| Boleta del taxi | Día 3, Bárbara | Coartada de Bárbara. |
+| Contrato de adelanto | Día 3, oficina del hospedaje | Malva cobró plata de la cadena hotelera a escondidas. |
 
-## Estructura
+## Estructura (4 partes)
 
-**Parte 1 — Investigación (Día 1)**
+### Parte 1 — Investigación (Día 1)
 1. Cinemática.
-2. Oficina de Justo: Estuardo llega con la noticia de Coté. Justo va al hospital (escena emocional, sin pistas).
-3. Locutorio de la comisaría: primera conversación con Tadeo (él no recuerda nada: dormía). Justo acepta el caso.
-4. Investigación: Casona Ferrada (escena del crimen, pieza de Tadeo), vecino Aurelio, comisaría.
-   Se conoce a Malva (amable, ofrece té). Termina cuando se reúnen las pruebas clave.
+2. Oficina de Justo. Eduardo llega: «Coté está en el hospital». Corte.
+3. Hospital. Coté con la pierna enyesada, haciendo chistes para no llorar. «Anda. Ese cabro no tiene a nadie.» (sin pistas)
+4. Locutorio: Tadeo. No recuerda nada. Cuando Justo menciona la foto de su madre, se cierra: **Silencio** (mecánica
+   nueva: no se puede romper aún).
+5. Lugares: Casona (entrada, pasillo, pieza de Tadeo), casa de Aurelio, comisaría. Se conoce a Malva y a Bárbara.
 
-**Parte 2 — Juicio (Día 2), dos grandes bloques**
-1. Testigo Aurelio: «vi al joven de la mochila en la ventana con algo en la mano» → no pudo verlo (con binoculares
-   hacia la puerta, la pieza del fondo no da a la calle; plano de la casona).
-2. Testigo Malva: «vi a Tadeo correr a su pieza» → contradicciones con las pastillas y con la puerta de la pieza.
-   Justo demuestra que Tadeo no pudo ser, pero **no puede decir quién disparó**.
-3. La jueza **no queda contenta**: «Me ha dicho quién no fue. Nadie me ha dicho quién fue». Suspende la audiencia.
+### Parte 2 — Juicio (Día 2)
+- **Bloque A**: Eduardo declara (cómo encontraron la pistola). Luego Aurelio: «vi al de la mochila en la ventana».
+  Contradicción: la pieza del fondo no da a la calle. Al presionar, Aurelio suelta que vio una **melena** en el pasillo.
+  Tadeo está rapado. Sospecha sobre Bárbara (pelo largo, motivo).
+- **Bloque B**: Malva declara: «vi a Tadeo correr a su pieza». Contradicciones con el plano y con las pastillas.
+  Cuando el caso se inclina a favor, Penna saca su as: **el acusado es hijo de la víctima y lo ocultó**. Motivo: la herencia.
+- La jueza **no queda contenta**: «Me han dado tres sospechosos y ninguna prueba. Se suspende la audiencia».
 
-**Parte 3 — Investigación 2 (Días 3 y 4)**
-1. Residuos de pólvora: Tadeo negativo. Penna: «Se lavó las manos».
-2. Rocky detenido: al presentarle la foto del soporte vacío, confiesa que hay cámara en el tablero; la escondió en el taller.
-3. Taller de Rocky: tarjeta de memoria. **Gran giro**: segundo destello y silueta de pelo largo.
-4. Casona: cajón vacío del escritorio + inscripción del arma; oficina: oferta hotelera y carta del notario.
+### Parte 3 — Investigación 2 (Día 3), con el gran giro
+1. Locutorio: romper el **Silencio** de Tadeo presentando la foto y el informe de que Leonel llamó al notario.
+   Escena emocional: vino a conocer a su padre y lo mataron la primera noche.
+2. Comisaría: examen de pólvora negativo; **sangre con clonazepam**. Penna: «Se drogó solo. O se lavó».
+3. Rocky detenido. Al presentarle la foto del soporte vacío confiesa la cámara: la escondió en el taller.
+4. Taller: tarjeta de memoria. **GRAN GIRO**: segundo destello en el pasillo, silueta de pelo largo con delantal.
+5. Bárbara: coartada (boleta del taxi + cámara municipal 23:15). Cuenta que Malva le debe un adelanto.
+6. Casona: cajón vacío del escritorio, receta de clonazepam, contrato del adelanto. Notaría: cita del día 15.
 
-**Parte 4 — Juicio final (Día 5)**
-1. Rocky declara (testigo hostil): su disparo fue de frente, la grabación lo prueba.
-2. Malva declara. Contradicciones con la grabación, la inscripción del arma y el motivo. Quiebre.
-3. Veredicto. Escena final en el hospital con Coté.
+### Parte 4 — Juicio final (Día 4)
+1. Rocky (testigo hostil): «el viejo me disparó de vuelta». La grabación: el segundo destello sale **del pasillo**,
+   a espaldas de Leonel. Rocky queda como lo que es: culpable de amenazas y del atropello, no del homicidio.
+2. Malva: «mi papá odiaba las armas» × inscripción; «me corté con el cuchillo del pan» × herida de corredera;
+   «Tadeo se durmió con su pastilla» × clonazepam + receta; silueta con delantal.
+3. Clímax legal: ¿por qué culpar a Tadeo y no a Rocky? Indignidad para suceder: si Tadeo era condenado, no heredaba.
+   Malva se quiebra. Penna retira los cargos.
+4. Final: hospital. Coté, Tadeo y Rocky pidiéndole perdón a Coté. Tadeo decide quedarse en Valparaíso.
 
-## Mecánicas nuevas que hay que programar
-1. **Separar motor y casos** + menú para elegir caso; guardado por caso.
-2. **Modo investigación**: moverse entre lugares, **examinar** (tocar zonas del fondo), **hablar** (temas que se
-   desbloquean), **presentar** pruebas o perfiles a un personaje.
-3. **Locutorio**: un lugar de investigación con el acusado detrás del vidrio.
+## Pistas justas sobre Malva (todas antes del juicio final)
+- Día 1: curita en la mano («me corté cortando el pan»).
+- Día 1: ofrece té a todos; Tadeo recuerda «el té de bienvenida» y que durmió «como nunca».
+- Día 1: Malva dice que su padre «odiaba las armas».
+- Día 1: siempre usa delantal.
+- Juicio 1: Aurelio vio una melena en el pasillo.
+
+## Mecánicas nuevas
+1. Separar motor y casos + menú de casos; guardado por caso.
+2. Investigación: lugares, examinar zonas del fondo, hablar (temas que se desbloquean), presentar a personajes.
+3. **Silencio**: un personaje se cierra; se rompe presentando las pruebas correctas en orden (con penalización al fallar).
 4. Tarjetas de «Día N — Investigación / Juicio».
 
 ## Arte necesario
-- Cinemática: 8 imágenes (prompts en el chat de diseño).
-- Fondos (4:3): oficina de Justo, hospital, locutorio, Casona Ferrada (entrada/living), pieza de Tadeo,
-  oficina del hospedaje, casa de Aurelio, comisaría, taller de Rocky.
-- Hojas de personaje: Tadeo, Rocky, Malva (con quiebre), Aurelio.
+- Cinemática: 7 imágenes.
+- Fondos: oficina de Justo, hospital, locutorio, casona (entrada y pasillo), pieza de Tadeo, oficina del hospedaje,
+  casa de Aurelio, comisaría, taller de Rocky, notaría.
+- Hojas: Tadeo, Malva (con quiebre), Rocky, Aurelio, Bárbara. Coté en el hospital (opcional: hoja con yeso).
