@@ -19,7 +19,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `eduardo` = Eduardo Estuardo, investigador (aparece al final del Caso 1).
 - `EVIDENCE` (expediente inicial) y `EVX` (pruebas que entran durante el caso). `read` = lectura inicial.
 - `CROSS`: contrainterrogatorios. Cada declaración: `text`, `press` (líneas al presionar),
-  `contra` (id o lista de ids de la prueba correcta) + `contraLines`, `adds` (agrega una declaración oculta),
+  `contra` (id o lista de ids de la prueba correcta) + `contraLines`, `adds` (agrega una declaración oculta, marcada `hidden:true`; hoy: Llavín «partí para la sala» → «ventana desde la calle»),
   `ends:true` (presionar esa declaración cierra el contrainterrogatorio), `mood`.
 - `DIRECT`: interrogatorios directos (la fiscalía pregunta, el jugador puede objetar). Cada pregunta: `text`,
   `a` (respuesta), `bad` (id del motivo en `OBJ_REASONS` si es tramposa), `ok` (objeción acertada), `miss`
