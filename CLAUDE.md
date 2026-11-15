@@ -46,7 +46,8 @@ Proceso (scripts en `herramientas/`, escritos para un entorno puntual: adaptar r
 1. Quitar el croma. 2. Cuadro «hablando» = cuadro de boca cerrada + solo la boca del otro (así el cuerpo no tiembla).
 3. Igualar el tamaño y la posición de la cabeza entre emociones. 4. Reducir a 256×192 con color de 15 bits.
 Los PNG de `assets/` ya están procesados: se dibujan tal cual.
-Versión de frente: si existe `frente_<cuadro>` en `ART[personaje]`, se usa en la sala de espera (`lobby`). Hoy: Penna.
+Versión de frente: si existe `frente_<cuadro>` en `ART[personaje]`, se usa en vez del cuadro normal. Hoy: Penna
+(la hoja de perfil sigue en `assets/personajes/fiscal/` como respaldo).
 
 ## Música
 Por defecto es sintetizada (`TRACKS` en `js/audio.js`). El jugador puede elegir canciones de su dispositivo

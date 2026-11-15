@@ -484,7 +484,7 @@ function artFor(who,mood,pose,m,b){ const A=ART[who]; if(!A) return null; const 
   if(pose==="cafe"&&(mood==="shock"||mood==="sweat")) pose="";
   let e=(pose&&M["pose:"+pose])||M[mood]||M.normal; if(typeof e==="string") e=[e];
   let a=m?(e[1]||e[0]):((b&&e[2])||e[0]);
-  if(G.pos==="lobby" && A["frente_"+a]) a="frente_"+a;     // fuera de la sala, versión de frente (si existe)
+  if(A["frente_"+a]) a="frente_"+a;     // si el personaje tiene versión de frente, se usa esa
   return a; }
 const SPR={}; let cur=null, talk=0, blink=0, canTalk=false;
 const off=document.createElement("canvas"); off.width=1024; off.height=768;
