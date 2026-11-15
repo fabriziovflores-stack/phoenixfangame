@@ -15,6 +15,7 @@ function setScene(pos, who, mood, pose){
   const st=$("stage");
   if(pos && pos!==G.pos){
     st.className="pos-"+pos; G.pos=pos; drawBG(pos);
+    $("health").style.visibility = pos==="negro" ? "hidden" : "";
     st.classList.remove("pan"); void st.offsetWidth; st.classList.add("pan");
   }
   const sp=$("sprite");
@@ -158,6 +159,7 @@ function run(){
   const st=SCRIPT[pc++]; if(!st) return;
   if(st.cmd) CMD[st.cmd](st, run); else say(st, run);
 }
+SCRIPT.forEach(s=>{ if(s.cmd==="cine") new Image().src=s.img; });   // precarga de la cinemática
 const CMD = {
   music(st,done){ music(st.track); done(); },
   location(st,done){
@@ -216,6 +218,16 @@ const CMD = {
       music(def.music||"interrogatorio");
       play(def.tutorial||[], showQuestion);
     });
+  },
+  cine(st,done){                       // cinemática: imagen a pantalla completa + texto
+    const im=new Image();
+    im.onload=()=>{
+      G.pos="cine"; $("stage").className="pos-cine"; drawSprite(null); $("health").style.visibility="hidden";
+      $("bg").getContext("2d").drawImage(im,0,0,256,192); $("desk").getContext("2d").clearRect(0,0,256,192);
+      if(st.flash) flash(); if(st.shake) shake(); if(st.sfx&&SFX[st.sfx]) SFX[st.sfx]();
+      say({who:null,text:st.text||""}, done);
+    };
+    im.onerror=()=>done(); im.src=st.img;
   },
   breakdown(st,done){
     music(null); busy=true; mode="loc"; renderControls();

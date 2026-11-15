@@ -335,6 +335,14 @@ const DIRECT_LINES = {
 /* ---------- Guion principal ---------- */
 const L="lobby";
 const SCRIPT = [
+  // ===== CINEMÁTICA: la noche del robo (no muestra al culpable) =====
+  {cmd:"cine", img:"assets/cine/1.png", text:"3 de noviembre. Cerro Alegre, Valparaíso. 23:09."},
+  {cmd:"cine", img:"assets/cine/2.png", sfx:"thud", text:"23:10. Se corta la luz en todo el cerro."},
+  {cmd:"cine", img:"assets/cine/3.png", text:"(...)"},
+  {cmd:"cine", img:"assets/cine/4.png", text:"Alguien sabía exactamente lo que buscaba."},
+  {cmd:"cine", img:"assets/cine/5.png", sfx:"hit", flash:true, shake:true, text:"23:30."},
+  {cmd:"cine", img:"assets/cine/6.png", text:"Esa noche, alguien vio algo."},
+  {who:null, pos:"negro", text:"A la mañana siguiente, «La Sirena del Puerto» había desaparecido. Y ya había un sospechoso."},
   // ===== APERTURA: Justo solo =====
   {cmd:"music", track:"espera"},
   {cmd:"location", text:"6 de noviembre · 9:12\nJuzgado de Garantía de Valparaíso\nSala de espera", pos:L},
