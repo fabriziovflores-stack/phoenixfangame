@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACTA CERO — Caso 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="ds">
+  <div class="screen" id="topS">
+    <div id="stage" class="pos-negro">
+      <canvas id="bg" width="256" height="192"></canvas>
+      <div id="sprite"><canvas id="spr" width="256" height="192"></canvas></div>
+      <canvas id="desk" width="256" height="192"></canvas>
+      <div id="cap"></div>
+      <div id="flash"></div>
+      <div class="ov" id="bubble"></div>
+      <div class="ov" id="tcard"></div>
+      <div class="ov" id="loc"><div></div></div>
+      <div class="ov" id="verdict"></div>
+      <div class="ov" id="gavel"></div>
+    </div>
+    <div id="health"></div>
+    <div id="evpanel"><div class="pic"></div><div class="tx"><div class="nm"></div><div class="ds"></div></div></div>
+    <div id="evbox" class="R"></div>
+    <div id="box"><div id="name"></div><div id="text"></div><div id="next">▼</div></div>
+  </div>
+  <div class="screen" id="botS">
+    <div id="bar"><div style="display:flex;gap:1.5cqw"><button id="muteBtn">🔊</button><button id="saveBtn">💾 Guardar</button></div><button id="recBtn">📁 Expediente</button></div>
+    <div id="toast"></div>
+    <div id="controls"></div>
+    <div id="modal"><div id="mbox"></div></div>
+  </div>
+  <div id="title">
+    <h1><small>CASO 1 · LA SIRENA DEL PUERTO</small>ACTA CERO</h1>
+    <p>Valparaíso. Un defensor en su primer juicio. Y un cuadro de casi dos metros que habría salido por una ventana de sesenta centímetros.</p>
+    <button class="gold" id="contBtn" style="display:none">▶ Continuar partida</button>
+    <button class="gold" id="startBtn">▶ Nueva partida</button>
+    <div class="hint">Activa el sonido · toca la pantalla de abajo para avanzar</div>
+  </div>
+</div>
+<script src="casos/caso1.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/engine.js"></script>
+</body>
+</html>
