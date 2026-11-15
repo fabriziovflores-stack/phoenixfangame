@@ -72,7 +72,7 @@ const CROSS = {
     who:"zoila", title:"Lo que vi desde mi balcón", music:"interrogatorio",
     tutorial:[
       {who:"cote",mood:"serious",text:"(Justo, ahora te toca a ti. Puedes ir declaración por declaración.)"},
-      {who:"cote",text:"(Con [r]¡UN MOMENTO![/r] le pides que explique mejor. A veces se les escapa algo.)"},
+      {who:"cote",text:"(Si algo no te cuadra, [r]presiona[/r]: le pides que explique mejor. A veces se les escapa algo.)"},
       {who:"cote",mood:"think",text:"(Y si algo de lo que dice no calza con el expediente, [r]preséntale la prueba[/r].)"},
     ],
     loopHint:[{who:"cote",mood:"think",text:"(Justo, ¿qué tanto se veía en esa calle a esa hora? Revisa lo que te pasé.)"}],
@@ -270,10 +270,28 @@ const DIRECT = {
   p1: {
     title:"La fiscalía interroga a Llavín", music:"interrogatorio",
     tutorial:[
-      {who:"cote",mood:"think",text:"(Justo, ahora pregunta Penna. Sus preguntas también se pueden objetar.)"},
-      {who:"cote",mood:"serious",text:"(No puede soplarle la respuesta a su testigo, ni dar por hecho algo que nadie ha probado.)"},
-      {who:"ines",mood:"think",text:"(Si una pregunta hace trampa: ¡objeción! Y tengo que decir por qué.)"}],
+      {who:"fiscal",mood:"smug",pose:"cafe",text:"Con su venia, Su Señoría. Interrogaré a mi testigo."},
+      {who:"ines",mood:"sweat",text:"(Él pregunta, el testigo contesta... ¿y yo qué hago? ¿Miro?)"},
+      {who:"ines",mood:"sweat",text:"(No sé qué cuestionarle. Ni siquiera sé si puedo.)"},
+      {who:"tomas",mood:"sweat",text:"(Don Justo... está transpirando.)"},
+      {who:"cote",mood:"serious",text:"(Justo. Respira. ¿Te acuerdas de Procesal?)"},
+      {who:"ines",mood:"down",text:"(¿El ramo que me eché la primera vez?)"},
+      {who:"cote",mood:"pout",text:"(Ese mismo. Cuando el fiscal interroga a su propio testigo, no puede hacer trampa.)"},
+      {who:"cote",mood:"think",text:"(No puede [r]soplarle la respuesta[/r]. Ni preguntar [r]dando por hecho algo que nadie ha probado[/r].)"},
+      {who:"cote",mood:"serious",text:"(Si lo hace, [r]protestas[/r]. Y le dices a la jueza por qué. Sin motivo, pierdes credibilidad.)"},
+      {who:"ines",mood:"think",text:"(Y si la pregunta es limpia, la dejo pasar. Ok. Ok.)"},
+      {who:"cote",mood:"smile",text:"(La primera te la soplo yo. Después sigues solo.)"}],
     questions:[
+      {who:"fiscal", mood:"smug", text:"Señor Llavín, usted es un guardia honrado, que jamás ha mentido, ¿verdad?", bad:"sugiere",
+       coach:[{who:"cote",mood:"think",text:"(¿Escuchaste? Le puso la respuesta en la boca. Él solo tiene que decir «sí».)"},
+              {who:"cote",mood:"excited",text:"(Eso es soplarle la respuesta. ¡Protesta!)"}],
+       a:[{who:"testigo",mood:"smile",text:"¡Nunca en la vida, señor fiscal!"}],
+       miss:[{who:"cote",mood:"pout",text:"(¡Justo! Te la dejé servida. Le sopló la respuesta: ¡protesta!)"},
+             {who:"ines",mood:"sweat",text:"(Perdón. Otra vez, con calma.)"}],
+       ok:[{who:"jueza",mood:"serious",text:"Ha lugar. Fiscal, pregunte sin sugerir la respuesta."},
+           {who:"fiscal",pose:"cafe",text:"Era una formalidad, Su Señoría. *sorbo* Retiro la pregunta."},
+           {who:"cote",mood:"excited",text:"(¡Eso! Así se hace. Desde aquí, sigues tú.)"},
+           {who:"ines",mood:"smug",text:"(Ok. Puedo hacer esto.)"}]},
       {who:"fiscal", text:"Señor Llavín, ¿dónde estaba usted a las once y media de esa noche?",
        a:[{who:"testigo",text:"En la caseta de la entrada, comiendo algo."}]},
       {who:"fiscal", pose:"point", text:"Y desde ahí escuchó al acusado romper la ventana, ¿no es así?", bad:"sugiere",
@@ -298,7 +316,7 @@ const DIRECT = {
     ],
     end:[
       {who:"fiscal",mood:"smug",text:"No más preguntas, Su Señoría. Que el testigo cuente el resto con sus palabras."},
-      {who:"cote",mood:"excited",text:"(¡Bien, Justo! Le paraste dos preguntas a Penna.)"}],
+      {who:"cote",mood:"excited",text:"(¡Bien, Justo! No le dejaste pasar ni una trampa a Penna.)"}],
   },
 };
 /* Respuestas generales del interrogatorio directo (se usan en cualquier interrogatorio) */

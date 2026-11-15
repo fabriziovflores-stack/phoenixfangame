@@ -54,8 +54,8 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;image-rendering:pix
 
 /* overlays */
 .ov{position:absolute;inset:0;display:none;pointer-events:none;z-index:8}
-#bubble{align-items:center;justify-content:center}
-#bubble svg{width:92%;animation:bub .9s steps(12) forwards}
+#bubble{align-items:flex-start;justify-content:center;padding-top:4%}
+#bubble svg,#bubble img{width:82%;max-height:62%;object-fit:contain;animation:bub .9s steps(12) forwards}
 @keyframes bub{0%{transform:scale(.2) rotate(-12deg);opacity:0}12%{transform:scale(1.12) rotate(-4deg);opacity:1}22%{transform:scale(1) rotate(-4deg)}85%{opacity:1}100%{opacity:0}}
 #tcard{align-items:center;justify-content:center;flex-direction:column;background:rgba(0,0,0,.35)}
 #tcard .band{width:100%;text-align:center;background:#081428;border-top:.8cqw solid #f87838;border-bottom:.8cqw solid #f87838;padding:2.5cqw 0;animation:band 1.8s steps(24) forwards}

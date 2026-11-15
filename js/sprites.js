@@ -137,9 +137,11 @@ function sprite(id,mood,pose,m,b){
 const CAP_SVG=`<svg viewBox="40 30 120 70"><path d="M54 84 Q56 38 100 38 Q144 38 146 84Z" fill="#2a3550"/><rect x="46" y="80" width="108" height="11" rx="5" fill="#141c2c"/><circle cx="100" cy="58" r="9" fill="#d8bf55"/></svg>`;
 
 /* burbuja de exclamación */
-const BUBBLES={objecion:{t:"¡OBJECIÓN!",c:"#e8262e"},momento:{t:"¡UN MOMENTO!",c:"#2f6bd6"},mire:{t:"¡MIRE ESTO!",c:"#e8262e"}};
+/* img = globo dibujado (assets/burbujas); si no hay imagen, se dibuja el texto */
+const BUBBLES={objecion:{t:"¡OBJECIÓN!",c:"#e8262e",img:"assets/burbujas/objecion.png"},momento:{t:"¡ALGO NO CUADRA!",c:"#2f6bd6",img:"assets/burbujas/algo-no-cuadra.png"},mire:{t:"¡MIRE ESTO!",c:"#e8262e"}};
+Object.values(BUBBLES).forEach(b=>{ if(b.img) new Image().src=b.img; });   // precarga
 function bubbleSVG(kind){
-  const b=BUBBLES[kind]; let pts=[]; const N=22;
+  const b=BUBBLES[kind]; if(b.img) return `<img src="${b.img}" alt="${b.t}">`; let pts=[]; const N=22;
   for(let i=0;i<N*2;i++){ const ang=i/(N*2)*Math.PI*2, out=i%2===0, j=(i*37%11)/11;
     const rx=out?300+j*40:240, ry=out?135+j*25:105; pts.push((320+Math.cos(ang)*rx).toFixed(1)+","+(170+Math.sin(ang)*ry).toFixed(1)); }
   return `<svg viewBox="0 0 640 340"><polygon points="${pts.join(" ")}" fill="#fff" stroke="#000" stroke-width="8" stroke-linejoin="round"/>

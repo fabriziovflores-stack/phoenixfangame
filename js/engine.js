@@ -264,7 +264,11 @@ function showQuestion(){
   setScene(CHARS[W].pos, W, q.mood||"normal", q.pose);
   $("name").textContent=CHARS[W].name;
   renderControls();
-  canTalk=true; typeText(q.text,"",CHARS[W].voice);
+  canTalk=true;
+  typeText(q.text,"",CHARS[W].voice, ()=>{          // coach = consejo que aparece una sola vez (tutorial)
+    X.coached=X.coached||{};
+    if(q.coach && !X.coached[X.qi]){ X.coached[X.qi]=1; busy=true; setTimeout(()=>{ busy=false; play(q.coach, showQuestion); }, 400); }
+  });
 }
 function nextQuestion(){ X.qi++; showQuestion(); }
 function letPass(){
@@ -373,13 +377,13 @@ function renderControls(){
   if(mode==="dialog"){
     add("▶","adv",()=>$("box").onclick());
   } else if(mode==="cross"){
-    const a=row("rowA"); add("¡Un<br>momento!","hold",press,a); add("¡Presentar!","obj",()=>openRecord("pruebas"),a);
+    const a=row("rowA"); add("Presionar","hold",press,a); add("¡Presentar!","obj",()=>openRecord("pruebas"),a);
     const b=row("rowB"); add("◀","nav",()=>move(-1),b);
     const dots=document.createElement("div"); dots.id="dots";
     X.list.forEach((_,i)=>{ const d=document.createElement("div"); d.className="dot"+(i===X.idx?" cur":""); dots.appendChild(d); }); b.appendChild(dots);
     add("▶","nav",()=>move(1),b);
   } else if(mode==="direct"){
-    const a=row("rowA"); add("Dejar<br>pasar ▶","hold",letPass,a); add("¡Objeción!","obj",objectQuestion,a);
+    const a=row("rowA"); add("Dejar<br>pasar ▶","hold",letPass,a); add("¡Protestar!","obj",objectQuestion,a);
   } else if(mode==="reason"){
     OBJ_REASONS.forEach((o,i)=>add(o.t,"opt",()=>X.pick&&X.pick(i)));
   } else if(mode==="choice"){
