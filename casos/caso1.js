@@ -190,14 +190,7 @@ const CROSS = {
         {who:"fiscal",mood:"disdain",text:"La testigo ya declaró dos veces."},
         {who:"jueza",mood:"think",text:"Y las dos veces cambió algo. Concedido. Sea breve, abogado."},
        ]},
-      {id:"d", mood:"smug", text:"Lo alumbré con la linterna. Era el cabro del mural, envolviendo el cuadro en una lona.",
-       // Si el jugador ya ve lo de la linterna, no se le castiga: se deja para el segundo testimonio.
-       early:{ids:["bitacora"], lines:[
-        {who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"¿Con qué linterna? Su bitácora dice: «23:05, linterna sin pilas»."},
-        {who:"testigo",mood:"sweat",text:"¿Pilas? Eh... yo... ¿puedo terminar de contar lo de la ventana?"},
-        {who:"fiscal",mood:"smug",pose:"cafe",text:"La defensa salta de un tema a otro, Su Señoría. Estábamos en cómo entró el ladrón."},
-        {who:"jueza",mood:"think",text:"Lo anoto, abogado. Volveremos a la linterna. Por ahora, concéntrese en la ventana."},
-        {who:"ines",mood:"think",text:"(Bien visto, pero no es el momento. Primero, la ventana.)"}]},
+      {id:"d", mood:"smug", text:"Ahí estaba el cabro del mural, envolviendo el cuadro en una lona.",
        press:[{who:"ines",mood:"think",text:"¿Le vio la cara?"},
               {who:"testigo",text:"La cara y la chaqueta. Si lo veo todos los días en ese andamio."},
               {who:"tomas",mood:"down",text:"(Todos los días le digo «buenas tardes, don Custodio».)"}]},

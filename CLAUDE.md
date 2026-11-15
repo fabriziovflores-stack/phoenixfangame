@@ -21,7 +21,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
 - `CROSS`: contrainterrogatorios. Cada declaración: `text`, `press` (líneas al presionar),
   `contra` (id o lista de ids de la prueba correcta) + `contraLines`, `adds` (agrega una declaración oculta, marcada `hidden:true`; hoy: Llavín «partí para la sala» → «ventana desde la calle»),
   `ends:true` (presionar esa declaración cierra el contrainterrogatorio), `mood`.
-  `early:{ids,lines}`: prueba correcta pero antes de tiempo; se muestran esas líneas sin castigo (hoy: bitácora en la linterna de Llavín).
+  `early:{ids,lines}`: prueba correcta pero antes de tiempo; se muestran esas líneas sin castigo (hoy no se usa).
   `loopHint`: pista de Coté al completar la primera vuelta; una línea con `ifHidden:"id"` solo sale si esa declaración sigue oculta.
 - `DIRECT`: interrogatorios directos (la fiscalía pregunta, el jugador puede objetar). Cada pregunta: `text`,
   `a` (respuesta), `bad` (id del motivo en `OBJ_REASONS` si es tramposa), `ok` (objeción acertada), `miss`
