@@ -141,7 +141,7 @@ const CROSS = {
   },
   g1: {
     title:"Lo que vi esa noche", music:"interrogatorio",
-    loopHint:[{who:"cote",mood:"think",text:"(Justo, no dijo qué encontró al llegar a la sala. ¡Presiónalo!)"},
+    loopHint:[{who:"cote",mood:"think",ifHidden:"c",text:"(Justo, no dijo qué encontró al llegar a la sala. ¡Presiónalo!)"},
               {who:"cote",mood:"think",text:"(Y si alguien rompe una ventana desde la calle, ¿para dónde caen los vidrios?)"}],
     statements:[
       {id:"a", text:"Hice la ronda de las once y dejé la sala principal con llave. Esa llave la manejo solo yo.",

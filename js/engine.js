@@ -319,7 +319,9 @@ function move(d){
   if(busy) return;
   if(d>0 && X.idx===X.list.length-1){
     X.idx=0;
-    if(!X.hinted && X.def.loopHint){ X.hinted=true; play(X.def.loopHint, showStatement); return; }
+    if(!X.hinted && X.def.loopHint){ X.hinted=true;
+      const h=X.def.loopHint.filter(l=>!(l.ifHidden && X.list.find(x=>x.id===l.ifHidden)));   // ifHidden: solo si esa declaración sigue oculta
+      if(h.length){ play(h, showStatement); return; } }
   } else X.idx=(X.idx+d+X.list.length)%X.list.length;
   showStatement();
 }
