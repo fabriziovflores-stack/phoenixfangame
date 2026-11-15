@@ -4,7 +4,7 @@
    ===================================================================== */
 const MUS_SLOTS=[["corte","Juicio"],["interrogatorio","Testimonios e interrogatorios"],["persecucion","Cuando el caso se da vuelta"],["espera","Sala de espera"],["victoria","Victoria"]];
 const LOCALMUS={}, LOCALMUS_NAME={};
-let musDB=null;
+let musDB=null, musMsg="";
 function musStore(mode){ try{ return musDB ? musDB.transaction("pistas",mode).objectStore("pistas") : null; }catch(e){ return null; } }
 function musSet(k,v){
   if(LOCALMUS[k]) URL.revokeObjectURL(LOCALMUS[k]);
@@ -13,7 +13,8 @@ function musSet(k,v){
 function musRestart(k){ if(curTrack===k){ curTrack=null; music(k); } }
 function musSave(k,file){
   musSet(k,{blob:file,name:file.name});
-  const st=musStore("readwrite"); try{ st&&st.put({blob:file,name:file.name},k); }catch(e){}
+  let ok=false; const st=musStore("readwrite"); try{ if(st){ st.put({blob:file,name:file.name},k); ok=true; } }catch(e){}
+  musMsg = ok ? "✓ «"+file.name+"» quedó guardada." : "✓ «"+file.name+"» suena en esta partida, pero este navegador no deja guardarla para la próxima.";
   musRestart(k); renderMus();
 }
 function musDel(k){
@@ -26,8 +27,8 @@ function renderMus(){
   p.innerHTML=`<h2>🎵 Mi música</h2>
     <p>Elige canciones de tu teléfono para cada momento del juicio. Quedan guardadas <b>solo en este navegador</b>: no se suben a ningún lado.</p>`+
     MUS_SLOTS.map(([k,t])=>`<div class="mrow"><div class="mtx"><b>${t}</b><small>${LOCALMUS_NAME[k]?"♪ "+esc(LOCALMUS_NAME[k]):"Melodía del juego"}</small></div>
-      <label class="mbtn">Elegir<input type="file" accept="audio/*" data-k="${k}"></label>${LOCALMUS_NAME[k]?`<button class="mbtn del" data-del="${k}">Quitar</button>`:""}</div>`).join("")+
-    `<button class="gold" id="musClose">Listo</button>`;
+      <label class="mbtn">Elegir<input type="file" accept=".mp3,.m4a,.aac,.wav,.ogg,audio/mpeg,audio/mp4,audio/x-m4a,audio/aac,audio/wav" data-k="${k}"></label>${LOCALMUS_NAME[k]?`<button class="mbtn del" data-del="${k}">Quitar</button>`:""}</div>`).join("")+
+    (musMsg?`<div class="mok">${esc(musMsg)}</div>`:"")+`<button class="gold" id="musClose">Listo</button>`;
   p.querySelectorAll("input[type=file]").forEach(i=>i.onchange=()=>{ if(i.files&&i.files[0]) musSave(i.dataset.k,i.files[0]); });
   p.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>musDel(b.dataset.del));
   $("musClose").onclick=()=>{ p.style.display="none"; };

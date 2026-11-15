@@ -146,7 +146,8 @@ button.opt{width:100%;font-size:4.3cqw;text-align:left;padding:2.2cqw 3cqw;line-
 .mtx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .mtx b{font-size:15px}
 .mtx small{font-size:12px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#musPanel .mbtn{font-family:'Pixelify Sans',monospace;font-weight:700;font-size:14px;color:#fff;background:#3058c8;border:3px solid #101830;padding:6px 10px;cursor:pointer;flex:none}
-#musPanel .mbtn input{display:none}
+#musPanel .mbtn{position:relative;overflow:hidden;font-family:'Pixelify Sans',monospace;font-weight:700;font-size:14px;color:#fff;background:#3058c8;border:3px solid #101830;padding:6px 10px;cursor:pointer;flex:none}
+#musPanel .mbtn input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:40px}   /* en iPhone el selector debe recibir el toque directo */
+#musPanel .mok{color:var(--green);font-size:13px;font-weight:700}
 #musPanel .mbtn.del{background:#804050}
 #musClose{align-self:center;margin-top:6px}
