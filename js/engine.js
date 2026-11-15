@@ -199,6 +199,15 @@ const CMD = {
       openRecord(st.tab, st.prompt);
     });
   },
+  direct(st,done){
+    checkpoint=pc-1;
+    const def=DIRECT[st.ref];
+    X={dir:def, qi:0, done};
+    titleCard("— Interrogatorio —", def.title, ()=>{
+      music(def.music||"interrogatorio");
+      play(def.tutorial||[], showQuestion);
+    });
+  },
   breakdown(st,done){
     music(null); busy=true; mode="loc"; renderControls();
     setScene("estrado","testigo","break");
@@ -245,6 +254,41 @@ function showStatement(){
   $("name").textContent=CHARS[W].name;
   renderControls();
   canTalk=true; typeText(s.text,"cross",CHARS[W].voice);
+}
+/* interrogatorio directo: la fiscalía pregunta, la defensa puede objetar */
+function showQuestion(){
+  const q=X.dir.questions[X.qi];
+  if(!q){ const done=X.done; const end=X.dir.end||[]; X=null; play(end, done); return; }
+  mode="direct";
+  const W=q.who||"fiscal";
+  setScene(CHARS[W].pos, W, q.mood||"normal", q.pose);
+  $("name").textContent=CHARS[W].name;
+  renderControls();
+  canTalk=true; typeText(q.text,"",CHARS[W].voice);
+}
+function nextQuestion(){ X.qi++; showQuestion(); }
+function letPass(){
+  if(busy) return;
+  if(typing){ typeText.finish(); return; }
+  const q=X.dir.questions[X.qi];
+  if(q.bad) play((q.a||[]).concat(q.miss||[]), showQuestion);     // pregunta tramposa: pista y se repite
+  else play(q.a||[], nextQuestion);
+}
+function objectQuestion(){
+  if(busy) return;
+  if(typing) typeText.finish();
+  const q=X.dir.questions[X.qi];
+  play([{who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"¡Objeción, Su Señoría!"},
+        {who:"jueza",mood:"think",text:"¿Con qué fundamento, abogado?"}], ()=>{
+    mode="reason"; $("next").classList.remove("on");
+    X.pick=i=>{
+      const r=OBJ_REASONS[i].id; X.pick=null;
+      if(q.bad && r===q.bad) play(q.ok||[], nextQuestion);
+      else if(q.bad) play(DIRECT_LINES.wrongReason, ()=>{ if(G.health<=0) return gameOver(); showQuestion(); });
+      else play(DIRECT_LINES.noReason.concat(q.noObj||[]), ()=>{ if(G.health<=0) return gameOver(); play(q.a||[], nextQuestion); });
+    };
+    renderControls();
+  });
 }
 function move(d){
   if(busy) return;
@@ -334,6 +378,10 @@ function renderControls(){
     const dots=document.createElement("div"); dots.id="dots";
     X.list.forEach((_,i)=>{ const d=document.createElement("div"); d.className="dot"+(i===X.idx?" cur":""); dots.appendChild(d); }); b.appendChild(dots);
     add("▶","nav",()=>move(1),b);
+  } else if(mode==="direct"){
+    const a=row("rowA"); add("Dejar<br>pasar ▶","hold",letPass,a); add("¡Objeción!","obj",objectQuestion,a);
+  } else if(mode==="reason"){
+    OBJ_REASONS.forEach((o,i)=>add(o.t,"opt",()=>X.pick&&X.pick(i)));
   } else if(mode==="choice"){
     X.choice.options.forEach((o,i)=>add(o.t,"opt",()=>X.pick(i)));
   } else if(mode==="present"){
@@ -468,7 +516,7 @@ Object.keys(AMAP).forEach(who=>Object.keys(AMAP[who]).forEach(k=>{
 setInterval(()=>{ if(!cur||blink) return; blink=1; renderSprite(); setTimeout(()=>{ blink=0; renderSprite(); },140); },3400);
 
 /* entradas */
-$("box").onclick=()=>{ if(mode==="dialog"){ verdict.clear&&$("verdict").style.display==="flex"&&!busy&&verdict.clear(); advance(); } else if(mode==="cross"&&typing) typeText.finish(); };
+$("box").onclick=()=>{ if(mode==="dialog"){ verdict.clear&&$("verdict").style.display==="flex"&&!busy&&verdict.clear(); advance(); } else if((mode==="cross"||mode==="direct")&&typing) typeText.finish(); };
 $("recBtn").onclick=()=>{ if(mode==="cross") openRecord("pruebas"); else if(mode==="present") openRecord(X.prompt.tab,X.prompt.prompt); else openRecord(); };
 $("muteBtn").onclick=()=>{ muted=!muted; if(master) master.gain.value=muted?0:.8; $("muteBtn").textContent=muted?"🔇":"🔊"; };
 document.addEventListener("keydown",e=>{

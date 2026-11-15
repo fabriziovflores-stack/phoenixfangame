@@ -254,6 +254,64 @@ const CROSS = {
   },
 };
 
+/* ---------- Interrogatorio directo: la fiscalía pregunta, la defensa objeta ----------
+   Motivos para objetar (el jugador elige uno). Puedes cambiar los textos de "t".     */
+const OBJ_REASONS = [
+  {id:"sugiere", t:"Le sopla la respuesta al testigo"},
+  {id:"supone",  t:"Da por hecho algo que no está probado"},
+  {id:"ajena",   t:"No tiene que ver con el caso"},
+];
+/* Cada pregunta: who/mood/pose/text = la pregunta.  a = respuesta del testigo.
+   bad = id del motivo si la pregunta es tramposa (si no, se deja pasar).
+   ok = qué pasa al objetar bien (reformular y responder).
+   miss = pista si el jugador deja pasar una pregunta tramposa (la pregunta se repite, sin castigo).
+   noObj = comentario extra si el jugador objeta una pregunta correcta.                 */
+const DIRECT = {
+  p1: {
+    title:"La fiscalía interroga a Llavín", music:"interrogatorio",
+    tutorial:[
+      {who:"cote",mood:"think",text:"(Justo, ahora pregunta Penna. Sus preguntas también se pueden objetar.)"},
+      {who:"cote",mood:"serious",text:"(No puede soplarle la respuesta a su testigo, ni dar por hecho algo que nadie ha probado.)"},
+      {who:"ines",mood:"think",text:"(Si una pregunta hace trampa: ¡objeción! Y tengo que decir por qué.)"}],
+    questions:[
+      {who:"fiscal", text:"Señor Llavín, ¿dónde estaba usted a las once y media de esa noche?",
+       a:[{who:"testigo",text:"En la caseta de la entrada, comiendo algo."}]},
+      {who:"fiscal", pose:"point", text:"Y desde ahí escuchó al acusado romper la ventana, ¿no es así?", bad:"sugiere",
+       a:[{who:"testigo",mood:"smile",text:"¡Eso mismo! Clarito."}],
+       miss:[{who:"cote",mood:"pout",text:"(¡Justo! Le dictó la respuesta. Él solo tenía que decir «sí».)"},
+             {who:"ines",mood:"sweat",text:"(Tiene razón. A la próxima, objeto.)"}],
+       ok:[{who:"jueza",mood:"serious",text:"Ha lugar. Fiscal, deje que su testigo responda solo."},
+           {who:"fiscal",mood:"smug",text:"Hmph. Así que el novato leyó el código. Reformulo."},
+           {who:"fiscal",text:"¿Qué escuchó usted, señor Llavín?"},
+           {who:"testigo",text:"Un vidrio. Fuerte. Y partí para la sala."}]},
+      {who:"fiscal", text:"¿Había luz en la sala?",
+       a:[{who:"testigo",text:"Ni una. Con el corte, estaba oscuro como boca de lobo."}],
+       noObj:[{who:"ines",mood:"down",text:"(Preguntar «sí o no» no es soplar la respuesta. Esa pregunta era limpia.)"}]},
+      {who:"fiscal", mood:"smug", text:"¿Cuánto tardó el acusado en sacar el cuadro por la ventana?", bad:"supone",
+       a:[{who:"testigo",mood:"sweat",text:"Eh... rápido, oiga. Muy rápido."}],
+       miss:[{who:"cote",mood:"worried",text:"(Espera. ¿Quién probó que fue Tomás? ¿Y que salió por la ventana?)"},
+             {who:"ines",mood:"think",text:"(Nadie. Penna lo metió en la pregunta como si fuera un hecho.)"}],
+       ok:[{who:"jueza",mood:"serious",text:"Ha lugar. Nadie ha probado todavía quién sacó el cuadro, ni por dónde."},
+           {who:"fiscal",pose:"cafe",text:"Retiro la pregunta. *sorbo* Señor Llavín, ¿qué vio en la sala?"},
+           {who:"testigo",mood:"angry",text:"¡Al cabro del mural! Con el cuadro."},
+           {who:"tomas",mood:"angry",text:"(¡Mentira!)"}]},
+    ],
+    end:[
+      {who:"fiscal",mood:"smug",text:"No más preguntas, Su Señoría. Que el testigo cuente el resto con sus palabras."},
+      {who:"cote",mood:"excited",text:"(¡Bien, Justo! Le paraste dos preguntas a Penna.)"}],
+  },
+};
+/* Respuestas generales del interrogatorio directo (se usan en cualquier interrogatorio) */
+const DIRECT_LINES = {
+  wrongReason:[
+    {who:"jueza",mood:"confused",text:"¿Ese es su fundamento, abogado? No es lo que tiene de malo la pregunta."},
+    {who:"jueza",mood:"disappoint",damage:true,text:"No ha lugar."},
+    {who:"ines",mood:"sweat",text:"(La pregunta sí tenía algo raro. Pero no era eso.)"}],
+  noReason:[
+    {who:"jueza",mood:"disappoint",damage:true,text:"No ha lugar. La pregunta es correcta."},
+    {who:"fiscal",mood:"smug",pose:"cafe",text:"Si va a objetar todo, avíseme y pido otro café."}],
+};
+
 /* ---------- Guion principal ---------- */
 const L="lobby";
 const SCRIPT = [
@@ -378,6 +436,7 @@ const SCRIPT = [
   {who:"testigo",text:"Al cabro del mural, sí. Le presto la llave de agua para las brochas."},
   {who:"tomas",mood:"down",text:"(Don Custodio...)"},
   {who:"fiscal",pose:"point",text:"Este testigo no miró desde un balcón, Su Señoría. Estuvo dentro de la sala."},
+  {cmd:"direct", ref:"p1"},
   {who:"jueza",text:"Cuente lo que vio."},
   {cmd:"cross", ref:"g1"},
   // ===== Zoila vuelve: el giro central =====

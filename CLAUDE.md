@@ -20,8 +20,12 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
 - `CROSS`: contrainterrogatorios. Cada declaración: `text`, `press` (líneas al presionar),
   `contra` (id o lista de ids de la prueba correcta) + `contraLines`, `adds` (agrega una declaración oculta),
   `ends:true` (presionar esa declaración cierra el contrainterrogatorio), `mood`.
+- `DIRECT`: interrogatorios directos (la fiscalía pregunta, el jugador puede objetar). Cada pregunta: `text`,
+  `a` (respuesta), `bad` (id del motivo en `OBJ_REASONS` si es tramposa), `ok` (objeción acertada), `miss`
+  (pista si la deja pasar; la pregunta se repite sin castigo), `noObj` (comentario si objeta una pregunta limpia).
+  Motivo equivocado u objetar una pregunta limpia = penalización (`DIRECT_LINES`).
 - `SCRIPT`: lista de pasos. Una línea es `{who, mood, pose, anim, text}`. Comandos: `music`, `location`,
-  `gavel`, `cross`, `choice` (elegir respuesta, sin penalización), `present` (presentar prueba o perfil),
+  `gavel`, `cross`, `direct`, `choice` (elegir respuesta, sin penalización), `present` (presentar prueba o perfil),
   `breakdown`, `verdict`, `end`.
 - En una línea: `evidence:"id"` hace entrar la prueba al expediente (el juego se detiene, baja el panel y
   espera al jugador); `read:["id","nueva lectura"]` reinterpreta una prueba; `damage:true` penaliza;
