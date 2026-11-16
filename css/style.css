@@ -152,3 +152,9 @@ button.opt{width:100%;font-size:4.3cqw;text-align:left;padding:2.2cqw 3cqw;line-
 #musPanel .mok{color:var(--green);font-size:13px;font-weight:700}
 #musPanel .mbtn.del{background:#804050}
 #musClose{align-self:center;margin-top:6px}
+
+/* portada: elegir caso */
+#casoSel{display:flex;gap:10px;justify-content:center}
+#casoSel button{font-size:15px;padding:6px 14px;background:#405078;border-width:3px}
+#casoSel button.on{background:var(--gold);color:#201800}
+button.back{background:#283458!important}

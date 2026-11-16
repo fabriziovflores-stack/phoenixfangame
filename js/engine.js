@@ -5,7 +5,7 @@ const $=id=>document.getElementById(id);
 const MAXH=5;
 let G={}, pc=0, checkpoint=0, mode="idle", waiting=null, typing=false, tTimer=null, X=null, busy=false;
 
-function resetGame(){ hideEv(); EVIDENCE.splice(EV0); G={notes:{}, health:MAXH, nocap:false, pos:"negro"}; pc=0; checkpoint=0; drawHealth(); }
+function resetGame(){ hideEv(); EVIDENCE.splice(EV0); G={notes:{}, health:MAXH, nocap:false, pos:"negro", flags:{}, met:{}, inv:null}; pc=0; checkpoint=0; drawHealth(); }
 function drawHealth(hit){
   $("health").innerHTML=Array.from({length:MAXH},(_,i)=>`<i class="${i<G.health?"":"off"} ${hit&&i===G.health?"hit":""}">!</i>`).join("");
 }
@@ -104,6 +104,8 @@ function say(l, done){
     if(l.damage) takeDamage();
     if(l.confetti) confetti();
     if(l.read){ G.notes[l.read[0]]=l.read[1]; SFX.ding(); showEvBox(l.read[0],3); }
+    if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
+    if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
     $("name").textContent = ch ? ch.name : "";
     const think = l.text.startsWith("("); canTalk = !!l.who && !think;
     const style = l.cross ? "cross" : think ? "think" : !l.who ? "narr" : "";
@@ -133,15 +135,15 @@ function confetti(){                // confeti volando sobre la escena
   clearTimeout(confetti.t); confetti.t=setTimeout(()=>{ c.innerHTML=""; },5000);
 }
 function takeDamage(){
-  G.health=Math.max(0,G.health-1); SFX.damage(); flash(true); shake(); drawHealth(true);
+  G.health=Math.max(0,G.health-1); if(G.health<=0 && G.inv) G.health=1;   // en la investigación no se pierde el caso SFX.damage(); flash(true); shake(); drawHealth(true);
 }
 
 /* ejecutor del guion */
 /* ---------- Guardado (queda en este navegador) ---------- */
-const SAVEKEY="actacero_caso1_v1"; let savePc=0, toastT=null;
+let SAVEKEY="actacero_caso1_v1"; let savePc=0, toastT=null;
 function toast(t){ const e=$("toast"); e.textContent=t; e.style.display="block"; clearTimeout(toastT); toastT=setTimeout(()=>e.style.display="none",1600); }
 function saveGame(manual){
-  try{ localStorage.setItem(SAVEKEY, JSON.stringify({pc:savePc,health:G.health,notes:G.notes,nocap:G.nocap,ev:EVIDENCE.slice(EV0).map(e=>e.id),music:curTrack}));
+  try{ localStorage.setItem(SAVEKEY, JSON.stringify({pc:savePc,health:G.health,notes:G.notes,nocap:G.nocap,ev:EVIDENCE.slice(EV0).map(e=>e.id),music:curTrack,flags:G.flags,met:G.met,inv:G.inv}));
        if(manual) toast("Partida guardada"); return true; }
   catch(e){ if(manual) toast("No se pudo guardar aquí"); return false; }
 }
@@ -149,7 +151,7 @@ function loadSave(){ try{ const v=JSON.parse(localStorage.getItem(SAVEKEY)||"nul
 function clearSave(){ try{ localStorage.removeItem(SAVEKEY); }catch(e){} }
 function continueGame(){
   const sv=loadSave(); resetGame(); if(!sv){ run(); return; }
-  G.health=Math.max(1,sv.health||MAXH); G.notes=sv.notes||{}; G.nocap=!!sv.nocap;
+  G.health=Math.max(1,sv.health||MAXH); G.notes=sv.notes||{}; G.nocap=!!sv.nocap; G.flags=sv.flags||{}; G.met=sv.met||{}; G.inv=sv.inv||null;
   (sv.ev||[]).forEach(id=>{ if(EVX[id]) EVIDENCE.push(EVX[id]); });
   drawHealth(); pc=sv.pc; checkpoint=sv.pc; music(sv.music||null); run();
 }
@@ -159,7 +161,6 @@ function run(){
   const st=SCRIPT[pc++]; if(!st) return;
   if(st.cmd) CMD[st.cmd](st, run); else say(st, run);
 }
-SCRIPT.forEach(s=>{ if(s.cmd==="cine") new Image().src=s.img; });   // precarga de la cinemática
 const CMD = {
   music(st,done){ music(st.track); done(); },
   location(st,done){
@@ -219,23 +220,25 @@ const CMD = {
       play(def.tutorial||[], showQuestion);
     });
   },
-  cine(st,done){                       // cinemática: imagen a pantalla completa + texto
-    const im=new Image();
-    im.onload=()=>{
+  cine(st,done){                       // cinemática: imagen a pantalla completa + texto (sin imagen: pantalla negra)
+    const show=im=>{
       G.pos="cine"; $("stage").className="pos-cine"; drawSprite(null); $("health").style.visibility="hidden";
-      $("bg").getContext("2d").drawImage(im,0,0,256,192); $("desk").getContext("2d").clearRect(0,0,256,192);
+      const c=$("bg").getContext("2d"); if(im) c.drawImage(im,0,0,256,192); else R(c,0,0,256,192,"#000");
+      $("desk").getContext("2d").clearRect(0,0,256,192);
       if(st.flash) flash(); if(st.shake) shake(); if(st.sfx&&SFX[st.sfx]) SFX[st.sfx]();
       say({who:null,text:st.text||""}, done);
     };
-    im.onerror=()=>done(); im.src=st.img;
+    if(!st.img) return show(null);
+    const im=new Image(); im.onload=()=>show(im); im.onerror=()=>show(null); im.src=st.img;
   },
+  card(st,done){ titleCard(st.t1||"", st.t2||"", done); },     // tarjeta «Día N — Investigación»
   breakdown(st,done){
     music(null); busy=true; mode="loc"; renderControls();
-    setScene("estrado","testigo","break");
+    const W=st.who||"testigo"; setScene("estrado",W,"break");
     $("name").textContent=""; $("text").textContent="";
     const sp=$("sprite"); sp.classList.add("tremble"); SFX.breakdown();
-    const cap=$("cap"); cap.innerHTML=CAP_SVG; cap.style.display="block"; cap.style.animation="none"; void cap.offsetWidth; cap.style.animation="";
-    G.nocap=true;
+    const cap=$("cap");
+    if(W==="testigo"){ cap.innerHTML=CAP_SVG; cap.style.display="block"; cap.style.animation="none"; void cap.offsetWidth; cap.style.animation=""; G.nocap=true; }
     let n=0; const iv=setInterval(()=>{ shake(); flash(n%2); if(++n>5) clearInterval(iv); },200);
     setTimeout(()=>{ sp.classList.remove("tremble"); sp.classList.add("fall"); SFX.thud(); },1300);
     setTimeout(()=>{ cap.style.display="none"; flash(); setScene("negro",null); sp.classList.remove("fall"); },2500);
@@ -341,6 +344,7 @@ function press(){
 }
 function presentItem(id){
   closeRecord(); showEvBox(id,5);
+  if(typeof invPresent==="function" && invPresent(id)) return;     // investigación (js/investigacion.js)
   if(mode==="present"){
     const p=X.prompt;
     if([].concat(p.answer).includes(id)){ const d=X.done; play(p.ok, d); }
@@ -373,14 +377,14 @@ let recTab="pruebas";
 function openRecord(tab, prompt){
   if(busy) return;
   recTab=tab||recTab;
-  const canPresent = mode==="cross"||mode==="present";
-  const items = recTab==="pruebas" ? EVIDENCE : PROFILES;
+  const canPresent = ["cross","present","invpresent","silpresent"].includes(mode);
+  const items = recTab==="pruebas" ? EVIDENCE : PROFILES.filter(p=>!p.hidden||G.met[p.id]);
   let sel=null;
   $("mbox").innerHTML=`<div id="mhead"><h2>Expediente</h2><div class="tabs"><button data-t="pruebas" class="${recTab==="pruebas"?"on":""}">Pruebas</button><button data-t="perfiles" class="${recTab==="perfiles"?"on":""}">Perfiles</button></div></div>
     ${prompt?`<div id="mprompt">${prompt}</div>`:""}
     <div class="grid">${items.map((it,i)=>`<div class="card" data-i="${i}"><div class="ic">${EVIMG[it.id]?`<img src="${EVIMG[it.id]}" style="height:100%;image-rendering:pixelated">`:(it.icon||miniFace(it.who))}</div><div class="nm">${it.name}</div></div>`).join("")}</div>
     <div id="mdesc">Toca un elemento para examinarlo.</div>
-    <div class="row">${mode==="present"?"":`<button id="mclose">Volver</button>`}${canPresent?`<button class="obj" id="mact" style="opacity:.5">¡Presentar!</button>`:""}</div>`;
+    <div class="row">${mode==="present"?"":mode==="silpresent"?`<button id="mquit">Retirarse</button>`:`<button id="mclose">Volver</button>`}${canPresent?`<button class="obj" id="mact" style="opacity:.5">¡Presentar!</button>`:""}</div>`;
   $("modal").style.display="flex";
   $("mbox").querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{ recTab=b.dataset.t; openRecord(recTab,prompt); });
   $("mbox").querySelectorAll(".card").forEach(card=>card.onclick=()=>{
@@ -388,7 +392,8 @@ function openRecord(tab, prompt){
     card.classList.add("sel"); sel=items[+card.dataset.i]; $("mdesc").innerHTML=(EVIMG[sel.id]?`<img src="${EVIMG[sel.id]}" style="float:left;width:19cqw;margin:0 2cqw .5cqw 0;image-rendering:pixelated">`:"")+esc(sel.desc)+((G.notes[sel.id]||sel.read)?"\n<span style=\"color:var(--blue)\">▸ Lectura actual: "+esc(G.notes[sel.id]||sel.read)+"</span>":"");
     const a=$("mact"); if(a) a.style.opacity=1;
   });
-  const c=$("mclose"); if(c) c.onclick=closeRecord;
+  const c=$("mclose"); if(c) c.onclick=()=>{ closeRecord(); if(mode==="invpresent") invMenu(); };
+  const q=$("mquit"); if(q) q.onclick=()=>{ closeRecord(); play([{who:"ines",mood:"sweat",text:"(Mejor vuelvo cuando tenga cómo hacerlo hablar.)"}], invMenu); };
   const a=$("mact"); if(a) a.onclick=()=>{ if(sel) presentItem(sel.id); };
 }
 function miniFace(who){ if(ART[who]) return `<img src="${ART[who].face}" style="height:9cqw;image-rendering:pixelated">`; return sprite(who,"normal",null,0,0).replace('viewBox="0 0 256 192"','viewBox="96 2 64 72" shape-rendering="crispEdges"'); }
@@ -415,6 +420,7 @@ function renderControls(){
     X.choice.options.forEach((o,i)=>add(o.t,"opt",()=>X.pick(i)));
   } else if(mode==="present"){
     add("📁 Abrir expediente<br>para presentar","obj wide",()=>openRecord(X.prompt.tab, X.prompt.prompt));
+  } else if(typeof invControls==="function" && invControls(mode,add,row)){
   } else if(mode==="gameover"){
     add("↺ Reintentar desde el último testimonio","gold",()=>{ verdict.clear&&verdict.clear(); G.health=MAXH; G.nocap=false; drawHealth(); pc=checkpoint; run(); });
   } else if(mode==="end"){
@@ -476,7 +482,13 @@ function drawBG(pos){
     R(c,150,20,22,7,"#f0f0f8");
     R(c,208,98,22,24,"#a05028"); R(c,206,96,26,4,"#c06838");
     disc(c,219,70,13,"#38a048"); disc(c,208,82,9,"#2c8038"); disc(c,230,84,9,"#2c8038"); disc(c,219,84,8,"#48b858");
-  } else R(c,0,0,256,192,"#000");
+  } else {
+    R(c,0,0,256,192, pos==="negro"||pos==="cine" ? "#000" : "#1c2438");
+    if(BGLABELS && BGLABELS[pos]){                   // lugar sin fondo todavía: cartel provisorio
+      c.fillStyle="#5a6c94"; c.textAlign="center"; c.font="bold 11px monospace"; c.fillText(BGLABELS[pos],128,52);
+      c.font="7px monospace"; c.fillText("(fondo provisorio)",128,64); c.textAlign="left";
+    }
+  }
   const bi=scnImg("bg",pos), di=scnImg("desk",pos);
   if(bi&&bi.complete&&bi.naturalWidth) c.drawImage(bi,0,0);
   if(di&&di.complete&&di.naturalWidth){ d.clearRect(0,0,256,192); d.drawImage(di,0,0); }
@@ -557,7 +569,18 @@ document.addEventListener("keydown",e=>{
   if(mode==="cross"){ if(e.key==="ArrowLeft") move(-1); if(e.key==="ArrowRight") move(1); }
 });
 $("saveBtn").onclick=()=>{ if($("title").style.display==="none") saveGame(true); };
-if(loadSave()) $("contBtn").style.display="";
 $("contBtn").onclick=()=>{ initAudio(); unlockMusic(); if(AC&&AC.state==="suspended") AC.resume(); $("title").style.display="none"; continueGame(); };
 $("startBtn").onclick=()=>{ initAudio(); unlockMusic(); if(AC&&AC.state==="suspended") AC.resume(); $("title").style.display="none"; resetGame(); run(); };
-resetGame();
+/* portada: elegir caso */
+function selectCase(id){
+  const c=useCase(id); SAVEKEY="actacero_"+CASO_ID+"_v1";
+  $("casoSub").textContent="CASO "+(c.numero||"")+" · "+(c.titulo||"").toUpperCase(); $("casoIntro").textContent=c.intro||"";
+  $("contBtn").style.display=loadSave()?"":"none";
+  document.querySelectorAll("#casoSel button").forEach(b=>b.classList.toggle("on",b.dataset.c===CASO_ID));
+  SCRIPT.forEach(s=>{ if(s.cmd==="cine"&&s.img) new Image().src=s.img; });   // precarga de la cinemática
+  try{ localStorage.setItem("actacero_caso",CASO_ID); }catch(e){}
+  resetGame();
+}
+$("casoSel").innerHTML=Object.entries(CASOS).map(([id,c])=>`<button data-c="${id}">Caso ${c.numero}</button>`).join("");
+document.querySelectorAll("#casoSel button").forEach(b=>b.onclick=()=>selectCase(b.dataset.c));
+{ let last="caso1"; try{ last=localStorage.getItem("actacero_caso")||"caso1"; }catch(e){} selectCase(last); }

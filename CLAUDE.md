@@ -6,14 +6,20 @@ sin jerga, y prueba siempre el juego completo antes de dar algo por terminado.
 ## Qué es
 Juego de juicios en HTML/JS sin dependencias ni build. Se abre `index.html` y funciona.
 Los scripts son clásicos (no módulos) y comparten ámbito global; **el orden de carga importa**:
-`casos/caso1.js` → `js/audio.js` → `js/sprites.js` → `js/assets.js` → `js/engine.js` → `js/musica.js`.
+`js/casos.js` → `casos/caso1.js` → `casos/caso2.js` → `js/audio.js` → `js/sprites.js` → `js/assets.js` → `js/engine.js`
+→ `js/investigacion.js` → `js/musica.js`.
+
+**Varios casos:** cada `casos/casoN.js` se registra como `CASOS.casoN = (()=>{ ...; return {titulo, numero, intro, CHARS, ...}; })()`.
+`useCase()` (js/casos.js) copia sus datos a las variables globales que usa el motor. La portada tiene botones
+para elegir caso; cada caso guarda su partida aparte (`actacero_casoN_v1`). Personajes sin hoja de arte usan el
+dibujo provisorio por código (`look` en CHARS). Lugares sin fondo muestran un cartel (`BGLABELS` del caso).
 
 ## Pantalla
 Formato Nintendo DS: dos pantallas 4:3. La escena se dibuja a **256×192** y se amplía con píxeles
 marcados. Cambio de cámara = **corte directo** (sin fundidos: el dueño los rechazó explícitamente).
 Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (`#desk`) → caja de texto.
 
-## Formato del guion (`casos/caso1.js`)
+## Formato del guion (`casos/caso1.js`, `casos/caso2.js`)
 - `CHARS`: personajes (nombre visible, voz, posición: defensa/fiscalia/estrado/juez).
   Las claves internas son históricas: `ines` = Justo (protagonista), `testigo` = Llavín, `gerardo` = perfil de Llavín.
   `eduardo` = Eduardo Estuardo, investigador (aparece al final del Caso 1).
@@ -34,6 +40,12 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
 - En una línea: `evidence:"id"` hace entrar la prueba al expediente (el juego se detiene, baja el panel y
   espera al jugador); `read:["id","nueva lectura"]` reinterpreta una prueba; `damage:true` penaliza;
   `music:null` corta la música; `confetti:true` lanza confeti sobre la escena. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento.
+- `INV` (investigación; formato completo al inicio de `js/investigacion.js`): `{cmd:"invest", ref:"dia1"}` abre la
+  investigación: lugares con Examinar / Hablar / Presentar / Moverse; termina cuando se cumple `done` (pruebas/marcas).
+  `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. **Silencio**: un tema con `silence` se rompe
+  presentando pruebas en orden (`steps`); fallar quita vida (en la investigación nunca baja de 1).
+  En líneas: `flag:"x"` marca algo, `meet:"id"` agrega un perfil marcado `hidden:true`.
+  `{cmd:"card", t1:"— Día 1 —", t2:"Investigación"}` muestra la tarjeta de día. `breakdown` acepta `who`.
 - Emociones disponibles por personaje: ver `AMAP` en `js/engine.js`. Si usas una que no existe, cae a `normal`.
 
 ## Reglas de escritura (del dueño; ver `docs/brief-de-guion.md`)
@@ -61,11 +73,11 @@ nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/ass
 `localStorage`, clave `actacero_caso1_v1`. Guarda el paso del guion, pruebas, lecturas y penalizaciones.
 
 ## Cómo probar
-`prueba-final.html` = el juego con un botón que salta al veredicto y la escena final (no toca la partida guardada).
+`prueba-final.html` = el juego con un botón que salta al veredicto y la escena final del Caso 1 (no toca la partida guardada).
 No hay tests en el repo. Antes de entregar: recorrer el caso completo (ruta ganadora, una prueba equivocada,
 una respuesta equivocada y la derrota) con un navegador automatizado y confirmar que no hay errores de consola.
 
 ## Siguientes pasos sugeridos
-1. Integrar los fondos que faltan (fiscalía, detrás de la jueza).
-2. Separar motor y caso para admitir varios casos (menú de selección).
-3. Fase de investigación (lugares, examinar, hablar) para el Caso 2.
+1. Caso 2: es un **esqueleto jugable con textos de borrador** (diseño en `docs/caso2-diseno.md`). Falta: que el
+   dueño escriba los diálogos, cinemática (7 imágenes), fondos de los lugares y hojas de Tadeo, Malva, Rocky, Aurelio, Bárbara.
+2. Fondo de detrás de la jueza (Caso 1).

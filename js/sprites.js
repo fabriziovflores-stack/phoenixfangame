@@ -16,8 +16,9 @@ function shade(hex,f){ const n=parseInt(hex.slice(1),16); let r=n>>16,g=n>>8&255
 /* Personaje de busto, dibujado sobre una grilla de 256x192 (la pantalla de la DS).
    m = boca abierta (0/1), b = parpadeo (0/1) */
 function sprite(id,mood,pose,m,b){
-  const c=CHARS[id]; if(!c) return ""; const L=LOOK[id];
-  mood=mood||"normal"; if(mood==="angry") mood="serious"; pose=pose||""; if(mood==="think"&&!pose) pose="chin";
+  const c=CHARS[id]; if(!c) return ""; const L=LOOK[id]||c.look||{eye:"#3a3a3a",outfit:"suit"};
+  mood=mood||"normal"; if(mood==="angry") mood="serious";
+  if(!["normal","serious","sweat","shock","smug","think","smile","cry","break"].includes(mood)) mood = mood==="down"?"sweat":"normal"; pose=pose||""; if(mood==="think"&&!pose) pose="chin";
   const sk=c.skin, skd=shade(sk,.8), hr=c.hair, hd=shade(hr,.68), hl=shade(hr,1.4), su=L.suit||c.suit, sd=shade(su,.7), sl=shade(su,1.3), ac=c.accent;
   const NS='stroke="none"', W="#f4f4f8", MO="#7a2030";
   const nocap = id==="testigo" && (G.nocap || mood==="break");

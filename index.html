@@ -34,8 +34,9 @@
     <div id="modal"><div id="mbox"></div></div>
   </div>
   <div id="title">
-    <h1><small>CASO 1 · LA SIRENA DEL PUERTO</small>ACTA CERO</h1>
-    <p>Valparaíso. Un defensor en su primer juicio. Y un cuadro de casi dos metros que habría salido por una ventana de sesenta centímetros.</p>
+    <h1><small id="casoSub">CASO 1 · LA SIRENA DEL PUERTO</small>ACTA CERO</h1>
+    <div id="casoSel"></div>
+    <p id="casoIntro">Valparaíso. Un defensor en su primer juicio. Y un cuadro de casi dos metros que habría salido por una ventana de sesenta centímetros.</p>
     <button class="gold" id="contBtn" style="display:none">▶ Continuar partida</button>
     <button class="gold" id="startBtn">▶ Nueva partida</button>
     <button id="musBtn">🎵 Mi música</button>
@@ -43,11 +44,14 @@
     <div class="hint">Activa el sonido · toca la pantalla de abajo para avanzar</div>
   </div>
 </div>
+<script src="js/casos.js"></script>
 <script src="casos/caso1.js"></script>
+<script src="casos/caso2.js"></script>
 <script src="js/audio.js"></script>
 <script src="js/sprites.js"></script>
 <script src="js/assets.js"></script>
 <script src="js/engine.js"></script>
+<script src="js/investigacion.js"></script>
 <script src="js/musica.js"></script>
 </body>
 </html>

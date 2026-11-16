@@ -6,6 +6,7 @@
    Un texto que empieza con "(" es un pensamiento (se ve azul).
    ===================================================================== */
 
+CASOS.caso1 = (()=>{
 const CHARS = {
   ines:   {name:"Justo",          skin:"#f0c39d", hair:"#3b2416", suit:"#1f3a6b", accent:"#e6c34a", style:"long",  voice:820, pos:"defensa"},
   cote:   {name:"Coté",          skin:"#e9b48a", hair:"#8a3b1e", suit:"#c44f7a", accent:"#ffd1e0", style:"pony",  voice:1040,pos:"defensa"},
@@ -648,3 +649,7 @@ const SCRIPT = [
   {cmd:"end"},
 ];
 
+return {titulo:"La Sirena del Puerto", numero:1,
+  intro:"Valparaíso. Un defensor en su primer juicio. Y un cuadro de casi dos metros que habría salido por una ventana de sesenta centímetros.",
+  CHARS, EVIDENCE, EV0, EVIMG, EVX, PROFILES, WRONG, CROSS, OBJ_REASONS, DIRECT, DIRECT_LINES, SCRIPT};
+})();
