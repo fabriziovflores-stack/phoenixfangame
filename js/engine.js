@@ -12,9 +12,10 @@ function drawHealth(hit){
 }
 
 /* escena */
-function setScene(pos, who, mood, pose){
+const vistos=new Set();   // quiénes ya aparecieron en el lugar actual (el fundido es solo la primera vez)
+function setScene(pos, who, mood, pose, yaVisto){
   const st=$("stage");
-  drawSprite.corte = !!(pos && pos!==G.pos);              // cambio de cámara: el personaje aparece de golpe
+  drawSprite.corte = !!(pos && pos!==G.pos) || !!yaVisto;              // cambio de cámara: el personaje aparece de golpe
   if(pos && pos!==G.pos){
     st.className="pos-"+pos; G.pos=pos; drawBG(pos);
     $("health").style.visibility = pos==="negro" ? "hidden" : "";
@@ -128,8 +129,11 @@ function say(l, done){
     const pos=l.pos || (enInv ? invBg() : (ch?ch.pos:G.pos));
     const prevWho=cur&&cur.who, prevPos=G.pos;
     const yo = (enInv && l.who==="ines" && !l.pos) || l.phone;   // a Justo no se le ve en la investigación; por teléfono, tampoco a quien llama
-    setScene(pos, yo ? undefined : (l.who?l.who:(l.pos?null:undefined)), l.mood, l.pose);
-    const entra = l.who && !yo && l.who!==prevWho && pos===prevPos;   // aparece alguien en el mismo lugar (no es cambio de cámara)
+    if(pos!==prevPos) vistos.clear();                          // lugar o cámara nueva: nadie ha aparecido todavía
+    const yaVisto = l.who && vistos.has(l.who);
+    setScene(pos, yo ? undefined : (l.who?l.who:(l.pos?null:undefined)), l.mood, l.pose, yaVisto);
+    if(l.who && !yo) vistos.add(l.who);
+    const entra = l.who && !yo && l.who!==prevWho && pos===prevPos && !yaVisto;   // aparece alguien por primera vez en este lugar
     if(l.music!==undefined) music(l.music);
     if(l.anim) anim(l.anim);
     tickEv(l);
@@ -218,7 +222,7 @@ function run(){
 }
 const CMD = {
   music(st,done){ music(st.track); done(); },
-  location(st,done){ setScene(st.pos||G.pos, null); locCard(st.text, done); },
+  location(st,done){ vistos.clear(); setScene(st.pos||G.pos, null); locCard(st.text, done); },
   gavel(st,done){
     const o=$("gavel"); o.style.display="flex"; busy=true;
     o.innerHTML=`<svg viewBox="0 0 400 260"><rect x="110" y="200" width="180" height="40" rx="8" fill="#6b4224"/><rect x="130" y="190" width="140" height="16" rx="6" fill="#8a5a30"/>
