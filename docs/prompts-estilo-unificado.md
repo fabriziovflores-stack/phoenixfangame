@@ -28,11 +28,11 @@ CHARACTER: Judge Prudencia Fallo, a 68-year-old Chilean woman. Silver-gray hair 
 Row 1: frames 1-2 neutral, calm; frames 3-4 serious, stern. Row 2: frames 5-6 shocked, eyes wide behind the glasses; frames 7-8 thinking, hand on chin. Row 3: frames 9-10 warm smile; frames 11-12 confused, head tilted. Row 4: frames 13-14 disappointed, sighing, eyes half closed; frames 15-16 raising a wooden gavel in her right hand, whole gavel inside the frame.
 ```
 
-## Coté (mira a la DERECHA)
+## Coté (de frente, apenas girada)
 *base, happy · excited, think · serious, sweat · shock, pout*
 ```
 Character sprite sheet for a Japanese-style courtroom visual novel. STYLE (identical for every character of this game): anime with realistic adult proportions (not chibi, normal head size), angular well-defined faces, clean thick dark outlines, flat cel shading with exactly one darker shadow tone, slightly muted rich colors, no gradients, no textures. LAYOUT: a 4x4 grid of 16 equal frames on a solid pure chroma green background (#00FF00), no shadows on the background, no text, no borders, no grid lines. Every frame shows the character from the waist up, head at exactly the same size and height in every frame (head about one third of the frame height, small margin above the hair), arms and hands always fully inside the frame. Frames come in pairs, left to right: first frame mouth CLOSED, second frame IDENTICAL (same pose, eyes, hands and hair) but mouth OPEN. Only the mouth changes inside each pair.
-CHARACTER: Coté, a 23-year-old Chilean paralegal. Long curly copper-red hair in a high ponytail with a big pink bow, bright brown eyes, lively expression. Pink knitted cardigan over a white top. Three-quarter view, turned to the RIGHT in every frame.
+CHARACTER: Coté, a 23-year-old Chilean paralegal. Long curly copper-red hair in a high ponytail with a big pink bow, bright brown eyes, lively expression. Pink knitted cardigan over a white top. Facing the viewer, turned very slightly to the left.
 Row 1: frames 1-2 neutral, cheerful; frames 3-4 big happy smile, eyes closed. Row 2: frames 5-6 excited, both fists up; frames 7-8 thinking, finger on chin. Row 3: frames 9-10 serious, determined; frames 11-12 nervous, sweat drop. Row 4: frames 13-14 shocked, hands near her face; frames 15-16 pouting, puffed cheeks, arms crossed.
 ```
 
@@ -44,11 +44,11 @@ CHARACTER: Custodio Llavín, a 60-year-old Chilean night security guard. Heavyse
 Row 1: frames 1-2 neutral, stiff; frames 3-4 smug, self-satisfied. Row 2: frames 5-6 proud, chest out, thumb up; frames 7-8 nervous, sweat drops. Row 3: frames 9-10 shocked, eyes wide; frames 11-12 angry, shouting. Row 4: frames 13-14 breakdown, hands on his head, wild eyes, cap still on; frames 15-16 crying, tears.
 ```
 
-## Tomás (mira a la DERECHA)
+## Tomás (de frente, apenas girado)
 *base, sweat · cry, beg · shock, down · indignant, happy*
 ```
 Character sprite sheet for a Japanese-style courtroom visual novel. STYLE (identical for every character of this game): anime with realistic adult proportions (not chibi, normal head size), angular well-defined faces, clean thick dark outlines, flat cel shading with exactly one darker shadow tone, slightly muted rich colors, no gradients, no textures. LAYOUT: a 4x4 grid of 16 equal frames on a solid pure chroma green background (#00FF00), no shadows on the background, no text, no borders, no grid lines. Every frame shows the character from the waist up, head at exactly the same size and height in every frame (head about one third of the frame height, small margin above the hair), arms and hands always fully inside the frame. Frames come in pairs, left to right: first frame mouth CLOSED, second frame IDENTICAL (same pose, eyes, hands and hair) but mouth OPEN. Only the mouth changes inside each pair.
-CHARACTER: Tomás, a 19-year-old Chilean muralist. Tan skin, messy black curly hair, worried eyes. Yellow hoodie splattered with paint over a black t-shirt. Three-quarter view, turned to the RIGHT in every frame.
+CHARACTER: Tomás, a 19-year-old Chilean muralist. Tan skin, messy black curly hair, worried eyes. Yellow hoodie splattered with paint over a black t-shirt. Facing the viewer, turned very slightly to the left.
 Row 1: frames 1-2 neutral, worried; frames 3-4 nervous, sweat drop. Row 2: frames 5-6 crying; frames 7-8 begging, hands together. Row 3: frames 9-10 shocked; frames 11-12 sad, looking down. Row 4: frames 13-14 indignant, frowning; frames 15-16 happy, relieved smile.
 ```
 
@@ -68,11 +68,11 @@ CHARACTER: Eduardo Estuardo, a 50-year-old Chilean police investigator. Burly, m
 Row 1: frames 1-2 neutral; frames 3-4 friendly smile. Row 2: frames 5-6 scratching the back of his head, embarrassed; frames 7-8 nervous, sweat drop. Row 3: frames 9-10 writing in a small notebook with a pencil; frames 11-12 shocked. Row 4: frames 13-14 serious, fist raised, determined; frames 15-16 sad, looking down.
 ```
 
-## Tadeo Fuegos (mira a la DERECHA)
+## Tadeo Fuegos (de frente, apenas girado)
 *base, sweat · shock, down · cry, angry · smile, think*
 ```
 Character sprite sheet for a Japanese-style courtroom visual novel. STYLE (identical for every character of this game): anime with realistic adult proportions (not chibi, normal head size), angular well-defined faces, clean thick dark outlines, flat cel shading with exactly one darker shadow tone, slightly muted rich colors, no gradients, no textures. LAYOUT: a 4x4 grid of 16 equal frames on a solid pure chroma green background (#00FF00), no shadows on the background, no text, no borders, no grid lines. Every frame shows the character from the waist up, head at exactly the same size and height in every frame (head about one third of the frame height, small margin above the hair), arms and hands always fully inside the frame. Frames come in pairs, left to right: first frame mouth CLOSED, second frame IDENTICAL (same pose, eyes, hands and hair) but mouth OPEN. Only the mouth changes inside each pair.
-CHARACTER: Tadeo, a 23-year-old Chilean backpacker from Puerto Williams. Lean, wind-burned rosy cheeks, buzz-cut dark hair under a gray knitted wool beanie, thin stubble, honest tired eyes. Patched green waterproof jacket open over a black hoodie, backpack straps on his shoulders. Three-quarter view, turned to the RIGHT in every frame.
+CHARACTER: Tadeo, a 23-year-old Chilean backpacker from Puerto Williams. Lean, wind-burned rosy cheeks, buzz-cut dark hair under a gray knitted wool beanie, thin stubble, honest tired eyes. Patched green waterproof jacket open over a black hoodie, backpack straps on his shoulders. Facing the viewer, turned very slightly to the left.
 Row 1: frames 1-2 neutral, quiet, hands in jacket pockets; frames 3-4 nervous, sweat drop, rubbing his neck. Row 2: frames 5-6 shocked, hands up; frames 7-8 sad, looking down, beanie pulled low. Row 3: frames 9-10 crying, clutching an old photo; frames 11-12 angry, fists clenched. Row 4: frames 13-14 small hopeful smile; frames 15-16 thinking, hand on chin.
 ```
 
