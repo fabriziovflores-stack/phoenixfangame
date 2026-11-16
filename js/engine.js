@@ -573,7 +573,7 @@ function drawBG(pos){
 
 /* Qué celda de la hoja usa cada emoción: [callado, hablando, parpadeo] */
 const AMAP={
-  ines:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],angry:["angry","angryTalk"],down:["sweat","sweatTalk"],"pose:point":["point","pointTalk"]},   // down: provisorio hasta tener la pose cabizbaja mirando a la derecha
+  ines:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],angry:["angry","angryTalk"],down:["down","downTalk"],"pose:point":["point","pointTalk"],"pose:papel":["papel","papelTalk"],"pose:papelThink":["le16","le16"]},
   fiscal:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],shock:["shock","shockTalk"],sweat:["sweat","sweatTalk"],angry:["angry","angryTalk"],disdain:["cross","crossTalk"],"pose:point":["point","pointTalk"],"pose:cafe":["cafe","cafeTalk"]},
   testigo:{normal:["base","talk"],smile:["proud","proudTalk"],smug:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],break:["break","breakTalk"],cry:["cry","cryTalk"]},
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},
@@ -619,18 +619,40 @@ function getFrame(who,mood,pose,m,b,cb){
   img.src=(art?ART[who][art]:null)||("data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg));
 }
 function renderSprite(){
-  if(!cur) return;
+  if(!cur || seqOn) return;
   getFrame(cur.who,cur.mood,cur.pose,talk,blink,(data,key)=>{
     if(cur && key===fkey(cur.who,cur.mood,cur.pose,talk,blink)) { const c=$("spr").getContext("2d");
       if(data instanceof ImageData) c.putImageData(data,0,0); else { c.clearRect(0,0,256,192); c.drawImage(data,0,0); } }
   });
 }
+/* Animaciones de entrada/salida de una pose (cuadros sueltos de ART que se pasan antes de quedar en la pose).
+   Justo: levanta el brazo al apuntar y lo baja al terminar; se pone los lentes y toma el papel. */
+const TRANS={ ines:{
+  point:{in:["ap2","ap3","ap4","ap5","ap6","ap7","ap8"], out:["ap12","ap13","ap14","ap15","ap16"], ms:45},
+  papel:{in:["le2","le3","le4","le5","le6","le7","le8","le9","le10","le11","le12"], out:["le12","le11","le10","le9","le3","le2"], ms:75},
+  papelThink:{in:["le2","le3","le4","le5","le6","le7","le8","le9","le10","le11","le12"], out:["le12","le11","le10","le9","le3","le2"], ms:75} }};
+const RAW={}; function rawImg(who,k){ const key=who+"/"+k; if(!RAW[key]){ RAW[key]=new Image(); RAW[key].src=ART[who][k]; } return RAW[key]; }
+Object.keys(TRANS).forEach(w=>Object.values(TRANS[w]).forEach(t=>t.in.concat(t.out).forEach(k=>rawImg(w,k))));
+let seqTimer=null, seqOn=false;
+function playSeq(who,frames,ms){
+  clearInterval(seqTimer); seqOn=true; let i=0; const c=$("spr").getContext("2d");
+  const draw=()=>{ if(i>=frames.length){ clearInterval(seqTimer); seqOn=false; renderSprite(); return; }
+    const im=rawImg(who,frames[i++]); if(im.complete){ c.clearRect(0,0,256,192); c.drawImage(im,0,0); } };
+  draw(); seqTimer=setInterval(draw,ms);
+}
 function drawSprite(who,mood,pose){
   const c=$("spr").getContext("2d");
-  if(!who){ cur=null; c.clearRect(0,0,256,192); return; }
+  if(!who){ cur=null; clearInterval(seqTimer); seqOn=false; c.clearRect(0,0,256,192); return; }
+  const T=TRANS[who]||{}, antes=cur&&cur.who===who?cur.pose:null, ahora=pose||"";
+  let seq=null;
+  if(ahora!==antes){
+    if(T[ahora] && !(T[antes] && T[antes].in===T[ahora].in)) seq=[T[ahora].in,T[ahora].ms];          // entra a la pose: animación de entrada
+    else if(antes && T[antes] && !T[ahora]) seq=[T[antes].out,T[antes].ms];                           // sale de la pose: animación de salida
+  }
   if(!cur||cur.who!==who){ c.clearRect(0,0,256,192);          // entra un personaje nuevo: fundido (salvo corte de cámara)
     const cv=$("spr"); cv.classList.remove("fadein"); void cv.offsetWidth; if(!drawSprite.corte) cv.classList.add("fadein"); }
-  cur={who,mood:mood||"normal",pose:pose||""}; talk=0; blink=0; renderSprite();
+  cur={who,mood:mood||"normal",pose:pose||""}; talk=0; blink=0;
+  if(seq && !drawSprite.sinAnim) playSeq(who,seq[0],seq[1]); else { clearInterval(seqTimer); seqOn=false; renderSprite(); }
   getFrame(who,cur.mood,cur.pose,1,0); getFrame(who,cur.mood,cur.pose,0,1);
 }
 function setTalk(v){ v=v?1:0; if(!cur||talk===v) return; talk=v; renderSprite(); }

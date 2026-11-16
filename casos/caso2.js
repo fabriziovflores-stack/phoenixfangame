@@ -485,7 +485,7 @@ const CROSS = {
        press:[{who:"ines",text:"¿Los dos?"},{who:"eduardo",mood:"sweat",text:"Eh... eso entendí."}],
        contraLines:[
         {who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"La autopsia dice otra cosa: la bala que lo mató entró por la nuca."},
-        {who:"ines",mood:"serious",text:"Uno de frente, desde la puerta. [r]El otro, por la espalda[/r]: desde adentro de la casa."},
+        {who:"ines",pose:"papel",text:"Uno de frente, desde la puerta.[p] [r]El otro, por la espalda[/r]: desde adentro de la casa."},
         {who:"fiscal",mood:"smug",pose:"cafe",text:"Exacto, colega. Desde adentro. Donde dormía su cliente."},
         {who:"ines",mood:"sweat",text:"(...Me la devolvió.)"}]},
       {id:"d", text:"La pistola estaba en la mochila del acusado. Disparada y limpia.",
@@ -775,7 +775,7 @@ const SCRIPT = [
    text:"¿Y por qué necesitaba la herencia con tanta urgencia?",
    prompt:"Presenta la prueba de por qué Malva no podía esperar.",
    ok:[{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"Porque ya había vendido la casona. Cobró 40 millones de adelanto."},
-       {who:"ines",mood:"serious",text:"Si su padre cambiaba el testamento al día siguiente, perdía todo. Y debía todo."},
+       {who:"ines",pose:"papel",text:"Si su padre cambiaba el testamento al día siguiente, perdía todo.[p] Y debía todo."},
        {who:"malva",mood:"c7",text:"¡Él me iba a dejar sin nada por un cabro que conoció ayer!"}]},
   {cmd:"breakdown", who:"malva", seq:["c3","c4","c5","c6","c7","c8"]},
   {who:"fiscal",mood:"serious",text:"La fiscalía retira los cargos contra el señor Fuegos. Y formalizará a Malva Ferrada."},

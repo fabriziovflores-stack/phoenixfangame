@@ -84,8 +84,10 @@ Proceso (scripts en `herramientas/`, escritos para un entorno puntual: adaptar r
 1. Quitar el croma. 2. Cuadro «hablando» = cuadro de boca cerrada + solo la boca del otro (así el cuerpo no tiembla).
 3. Igualar el tamaño y la posición de la cabeza entre emociones. 4. Reducir a 256×192 con color de 15 bits.
 Los PNG de `assets/` ya están procesados: se dibujan tal cual.
-Justo usa la hoja con chaleco (`arte-original/justo-chaleco.png`); **siempre mira a la derecha**. Su pose `down` (cabizbajo) venía de frente y se
-descartó: hoy `down` usa `sweat` hasta tener esa pose mirando a la derecha.
+Justo: poses de `arte-original/justo-perfil-b.png` (perfil, **siempre mira a la derecha**), más dos hojas de animación:
+`justo-apunta.png` (cuadros `ap1`…`ap16`: levanta el brazo, apunta y lo baja) y `justo-lentes.png` (`le1`…`le16`: se pone
+los lentes y toma un papel). `TRANS` en engine.js pasa esos cuadros al entrar o salir de `pose:"point"` y `pose:"papel"`
+(`papelThink` = pensando con el papel). Las tres hojas se alinean juntas con `herramientas/justo.py`.
 Versión de frente: si existe `frente_<cuadro>` en `ART[personaje]`, se usa en vez del cuadro normal. Hoy: Penna
 (la hoja de perfil sigue en `assets/personajes/fiscal/` como respaldo).
 
