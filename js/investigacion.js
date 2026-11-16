@@ -38,8 +38,18 @@ function invEnter(id){
   }
   invMenu();
 }
+/* Lo ya conversado o examinado cuenta siempre (también si se hizo en una versión anterior del juego):
+   se vuelven a aplicar las marcas (flag) de esas líneas. Evita quedar pillado con partidas guardadas. */
+function invSyncFlags(){
+  const mark=ls=>(ls||[]).forEach(l=>{ if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1); });
+  Object.entries(X.inv.places).forEach(([pid,p])=>{
+    (p.talk||[]).forEach(t=>{ if(G.inv.seen["tk:"+t.id] && (!t.silence||G.flags["sil:"+t.id])) mark(t.lines); });
+    (p.examine||[]).forEach(e=>{ if(G.inv.seen["ex:"+pid+":"+e.id]) mark(e.lines); });
+  });
+}
 function invMenu(){
   if(!X||!X.inv) return;
+  invSyncFlags();
   if(reqOk(X.inv.done)){                                   // ¿ya se reunió lo necesario?
     const done=X.done, end=X.inv.end||[]; X=null; G.inv=null; play(end, done); return;
   }
