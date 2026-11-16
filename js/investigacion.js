@@ -42,7 +42,7 @@ function invEnter2(id, first){
   const p=invPlace();
   const here=invPeople();
   const back = !first && (p.people||[]).find(x=>reqOk(x.req) && x.back && G.inv.seen["hi:"+id+":"+x.who]);
-  vistos.clear(); if(back) vistos.add(back.who);            // al volver, la persona ya está ahí: sin fundido
+  if(back) vistos.add(back.who);                            // al volver, la persona ya está ahí: sin fundido
   if((first && p.enter) || back){ setScene(invBg(), null); return play(first ? p.enter : back.back, invMenu); }   // aparece y luego habla
   setScene(invBg(), here[0]||null);
   invMenu();

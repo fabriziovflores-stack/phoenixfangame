@@ -6,13 +6,13 @@ const MAXH=5;
 const ENTRADA_MS=1500;    // fundido (ms) cuando aparece un personaje sin cambio de cámara; recién después habla
 let G={}, pc=0, checkpoint=0, mode="idle", waiting=null, typing=false, tTimer=null, X=null, busy=false;
 
-function resetGame(){ hideEv(); EVIDENCE.splice(EV0); G={notes:{}, health:MAXH, nocap:false, pos:"negro", flags:{}, met:{}, inv:null}; pc=0; checkpoint=0; drawHealth(); }
+function resetGame(){ hideEv(); EVIDENCE.splice(EV0); G={notes:{}, health:MAXH, nocap:false, pos:"negro", flags:{}, met:{}, inv:null}; pc=0; checkpoint=0; vistos.clear(); drawHealth(); }
 function drawHealth(hit){
   $("health").innerHTML=Array.from({length:MAXH},(_,i)=>`<i class="${i<G.health?"":"off"} ${hit&&i===G.health?"hit":""}">!</i>`).join("");
 }
 
 /* escena */
-const vistos=new Set();   // quiénes ya aparecieron en el lugar actual (el fundido es solo la primera vez)
+const vistos=new Set();   // quiénes ya aparecieron en este día o juicio: el fundido es solo la primera vez (se borra con cada tarjeta «Día N»)
 function setScene(pos, who, mood, pose, yaVisto){
   const st=$("stage");
   drawSprite.corte = !!(pos && pos!==G.pos) || !!yaVisto;              // cambio de cámara: el personaje aparece de golpe
@@ -129,7 +129,6 @@ function say(l, done){
     const pos=l.pos || (enInv ? invBg() : (ch?ch.pos:G.pos));
     const prevWho=cur&&cur.who, prevPos=G.pos;
     const yo = (enInv && l.who==="ines" && !l.pos) || l.phone;   // a Justo no se le ve en la investigación; por teléfono, tampoco a quien llama
-    if(pos!==prevPos) vistos.clear();                          // lugar o cámara nueva: nadie ha aparecido todavía
     const yaVisto = l.who && vistos.has(l.who);
     setScene(pos, yo ? undefined : (l.who?l.who:(l.pos?null:undefined)), l.mood, l.pose, yaVisto);
     if(l.who && !yo) vistos.add(l.who);
@@ -222,7 +221,7 @@ function run(){
 }
 const CMD = {
   music(st,done){ music(st.track); done(); },
-  location(st,done){ vistos.clear(); setScene(st.pos||G.pos, null); locCard(st.text, done); },
+  location(st,done){ setScene(st.pos||G.pos, null); locCard(st.text, done); },
   gavel(st,done){
     const o=$("gavel"); o.style.display="flex"; busy=true;
     o.innerHTML=`<svg viewBox="0 0 400 260"><rect x="110" y="200" width="180" height="40" rx="8" fill="#6b4224"/><rect x="130" y="190" width="140" height="16" rx="6" fill="#8a5a30"/>
@@ -286,7 +285,7 @@ const CMD = {
     if(!st.img) return show(null);
     const im=new Image(); im.onload=()=>show(im); im.onerror=()=>show(null); im.src=st.img;
   },
-  card(st,done){ titleCard(st.t1||"", st.t2||"", done); },     // tarjeta «Día N — Investigación»
+  card(st,done){ vistos.clear(); titleCard(st.t1||"", st.t2||"", done); },     // tarjeta «Día N — Investigación»
   breakdown(st,done){
     music(null); busy=true; mode="loc"; renderControls();
     const W=st.who||"testigo"; setScene("estrado",W,"break");
