@@ -38,22 +38,39 @@ function shake(){ const g=$("stage"); g.classList.remove("shakeS"); void g.offse
 function flash(red){ const f=$("flash"); f.className=""; void f.offsetWidth; f.className="on"+(red?" red":""); }
 
 /* texto con efecto máquina de escribir */
+/* Códigos dentro de una línea (como en la DS, la escena cambia mientras se escribe):
+   [r]…[/r] rojo · [p] pausa · [m=emoción] cambia la cara · [a=slam|hit|tremble] animación · [s] temblor · [f] destello */
+const CODE_RE=/\[(\/?r|p|s|f|m=[\w:]+|a=\w+)\]/g;
+function plainText(t){ return t.replace(CODE_RE,""); }
 function parseText(t){
   const out=[]; let cls=""; let i=0;
   while(i<t.length){
     if(t.startsWith("[r]",i)){ cls="r"; i+=3; continue; }
     if(t.startsWith("[/r]",i)){ cls=""; i+=4; continue; }
+    const m=/^\[(p|s|f|m=[\w:]+|a=\w+)\]/.exec(t.slice(i,i+24));
+    if(m){ out.push({ctl:m[1]}); i+=m[0].length; continue; }
     out.push({ch:t[i],cls}); i++;
   }
   return out;
 }
 function typeText(t, style, voice, done){
   const el=$("text"); el.className=style||""; el.innerHTML="";
-  const chars=parseText(t); el.style.fontSize=""; el.textContent=t.replace(/\[\/?r\]/g,""); if(el.scrollHeight>el.clientHeight+2) el.style.fontSize="3.6cqw"; el.innerHTML=""; let i=0, span=null, spanCls=null; typing=true; $("next").classList.remove("on");
+  const all=parseText(t), chars=all.filter(c=>!c.ctl); el.style.fontSize=""; el.textContent=plainText(t); if(el.scrollHeight>el.clientHeight+2) el.style.fontSize="3.6cqw"; el.innerHTML=""; let i=0, span=null, spanCls=null; typing=true; $("next").classList.remove("on");
   clearTimeout(tTimer);
-  const finish=()=>{ clearTimeout(tTimer); setTalk(0); el.innerHTML=chars.map(c=>c.cls?`<span class="r">${esc(c.ch)}</span>`:esc(c.ch)).join(""); typing=false; renderSprite(); done&&done(); };
+  const ctlAt={}; let k=0; all.forEach(c=>{ if(c.ctl) (ctlAt[k]=ctlAt[k]||[]).push(c.ctl); else k++; });
+  const runCtl=(c,quiet)=>{
+    if(c==="s"){ if(!quiet) shake(); }
+    else if(c==="f"){ if(!quiet) flash(); }
+    else if(c.startsWith("m=") && cur){ cur.mood=c.slice(2); renderSprite(); }
+    else if(c.startsWith("a=") && !quiet) anim(c.slice(2));
+  };
+  const finish=()=>{ clearTimeout(tTimer); setTalk(0);
+    Object.keys(ctlAt).forEach(n=>{ if(+n>=i) ctlAt[n].forEach(c=>{ if(c.startsWith("m=")) runCtl(c,true); }); }); i=chars.length+1; el.innerHTML=chars.map(c=>c.cls?`<span class="r">${esc(c.ch)}</span>`:esc(c.ch)).join(""); typing=false; renderSprite(); done&&done(); };
   typeText.finish=finish;
   const step=()=>{
+    let pausa=0;
+    if(ctlAt[i] && !ctlAt[i].done){ ctlAt[i].done=1; ctlAt[i].forEach(x=>{ if(x==="p") pausa+=450; else runCtl(x); }); }
+    if(pausa){ setTalk(0); tTimer=setTimeout(step,pausa); return; }
     if(i>=chars.length){ finish(); return; }
     const c=chars[i];
     if(!span||spanCls!==c.cls){ span=document.createElement("span"); if(c.cls) span.className=c.cls; spanCls=c.cls; el.appendChild(span); }
@@ -61,7 +78,9 @@ function typeText(t, style, voice, done){
     if(c.ch!==" " && i%2===0) voice==="type"?SFX.type():SFX.blip(voice);
     if(canTalk && i%3===0) setTalk((i/3)%2===0);
     i++;
-    const d = ".!?".includes(c.ch) && chars[i] && chars[i].ch===" " ? 260 : c.ch===","? 140 : 32;
+    const nx=chars[i]&&chars[i].ch;
+    const d = c.ch==="." && nx==="." ? 120                       // puntos suspensivos: se escriben lento
+            : ".!?…".includes(c.ch) && nx===" " ? 300 : c.ch===","? 140 : 32;
     tTimer=setTimeout(step,d);
   };
   step();
@@ -98,6 +117,13 @@ function say(l, done){
   }
   const go=()=>{
     const ch=l.who?CHARS[l.who]:null;
+    const enInv0 = G.inv && X && X.inv;
+    const pos0=l.pos || (enInv0 ? invBg() : (ch?ch.pos:G.pos));
+    if(!go.panned && PAN_MS && PAN_POS[pos0]!==undefined && PAN_POS[G.pos]!==undefined && pos0!==G.pos
+       && (l.pan || l.bubble || l.anim==="slam" || l.anim==="hit") && l.pan!==false){
+      go.panned=1; busy=true; return swipe(PAN_POS[pos0]>PAN_POS[G.pos], ()=>{ busy=false; go(); });
+    }
+    $("tag").textContent = X&&X.tag ? X.tag : "";
     const enInv = G.inv && X && X.inv;                   // en la investigación todos hablan en el lugar donde está Justo
     const pos=l.pos || (enInv ? invBg() : (ch?ch.pos:G.pos));
     const prevWho=cur&&cur.who, prevPos=G.pos;
@@ -114,7 +140,7 @@ function say(l, done){
     if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
     if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
     $("name").textContent = ch ? (l.phone?"📞 ":"")+ch.name : "";
-    const think = l.text.startsWith("("); canTalk = !!l.who && !think && !yo;
+    const think = plainText(l.text).startsWith("("); canTalk = !!l.who && !think && !yo;
     const style = l.cross ? "cross" : think ? "think" : !l.who ? "narr" : "";
     mode="dialog"; renderControls();
     waiting=done;
@@ -124,6 +150,16 @@ function say(l, done){
   };
   if(l.bubble) showBubble(l.bubble, go); else go();
 }
+/* Barrido rápido de cámara (como en la DS cuando alguien interrumpe). PAN_MS=0 lo apaga: todo vuelve a ser corte directo. */
+const PAN_MS=260, PAN_POS={defensa:0, estrado:1, fiscalia:2};
+function swipe(derecha, done){
+  const st=$("stage"), cls=derecha?"swR":"swL";
+  st.classList.remove("swR","swL","swInR","swInL"); void st.offsetWidth; st.classList.add(cls); SFX.whoosh&&SFX.whoosh();
+  setTimeout(()=>{ st.classList.remove(cls); done(); st.classList.add(derecha?"swInR":"swInL");
+    setTimeout(()=>st.classList.remove("swInR","swInL"), PAN_MS/2); }, PAN_MS/2);
+}
+/* La escena se oscurece (fin de un testimonio, silencio dramático) */
+function dim(done){ const d=$("dim"); d.classList.add("on"); setTimeout(()=>{ d.classList.remove("on"); done(); }, 700); }
 function play(lines, done){ let i=0; const nx=()=>{ if(i>=lines.length){ done&&done(); return; } say(lines[i++], nx); }; nx(); }
 function advance(){
   if(busy) return;
@@ -194,16 +230,17 @@ const CMD = {
   cross(st,done){
     checkpoint=pc-1;
     const def=CROSS[st.ref];
-    X={def, list:def.statements.filter(s=>!s.hidden), idx:0, hinted:false, done};
+    X={def, list:def.statements.filter(s=>!s.hidden), idx:0, hinted:false, done, tag:"Testimonio"};
     music("corte");
     SFX.testimony();
     titleCard("— Testimonio —", def.title, ()=>{
-      play(X.list.map(s=>({who:def.who||"testigo",mood:s.mood,text:s.text})), ()=>{
+      play(X.list.map(s=>({who:def.who||"testigo",mood:s.mood,text:s.text})), ()=>dim(()=>{
+        X.tag="Contrainterrogatorio";
         titleCard("— Contrainterrogatorio —", def.title, ()=>{
           music(def.music||"interrogatorio");
           play(def.tutorial||[], showStatement);
         });
-      });
+      }));
     });
   },
   choice(st,done){
@@ -227,7 +264,7 @@ const CMD = {
   direct(st,done){
     checkpoint=pc-1;
     const def=DIRECT[st.ref];
-    X={dir:def, qi:0, done};
+    X={dir:def, qi:0, done, tag:"Interrogatorio"};
     titleCard("— Interrogatorio —", def.title, ()=>{
       music(def.music||"interrogatorio");
       play(def.tutorial||[], showQuestion);
@@ -470,9 +507,20 @@ function emblem(c,x,y){ disc(c,x,y,17,"#f8d048"); disc(c,x,y,14,"#b88818");
 const SCN={};
 function scnImg(kind,pos){ const src=(kind==="bg"?BGIMG:DESKIMG)[pos]; if(!src) return null; const k=kind+pos;
   if(!SCN[k]){ const im=new Image(); SCN[k]=im; im.onload=()=>{ if(G.pos===pos) drawBG(pos); }; im.src=src; } return SCN[k]; }
+/* Fondo de rayos azules: primer plano dramático (pos:"rayos" en una línea). Se mueve mientras está en pantalla. */
+function rayos(c,t){
+  const g=c.createRadialGradient(128,96,8,128,96,170); g.addColorStop(0,"#f8f8ff"); g.addColorStop(.25,"#88c8f8"); g.addColorStop(1,"#183878");
+  c.fillStyle=g; c.fillRect(0,0,256,192);
+  c.fillStyle="rgba(255,255,255,.55)";
+  for(let k=0;k<36;k++){ const a=(k/36)*Math.PI*2+t*.05+((k*7)%5)*.02, w=.018+(k%3)*.01;
+    c.beginPath(); c.moveTo(128+Math.cos(a)*30,96+Math.sin(a)*30);
+    c.lineTo(128+Math.cos(a-w)*220,96+Math.sin(a-w)*220); c.lineTo(128+Math.cos(a+w)*220,96+Math.sin(a+w)*220); c.fill(); }
+}
+setInterval(()=>{ if(G.pos==="rayos"){ rayos.t=(rayos.t||0)+1; rayos($("bg").getContext("2d"),rayos.t); } },90);
 function drawBG(pos){
   const c=$("bg").getContext("2d"), d=$("desk").getContext("2d");
   c.clearRect(0,0,256,192); d.clearRect(0,0,256,192);
+  if(pos==="rayos"){ rayos(c,0); return; }
   if(pos==="defensa"||pos==="fiscalia"){
     const df=pos==="defensa";
     wood(c, df?"#a86838":"#986048", df?"#784820":"#684030", df?"#d09058":"#c08868");

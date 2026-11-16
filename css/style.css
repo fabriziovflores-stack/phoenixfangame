@@ -178,3 +178,21 @@ button.back{background:#283458!important}
 #verPrueba img{width:100%;height:100%;object-fit:contain;image-rendering:pixelated}
 #verPrueba div{position:absolute;top:1.5cqw;right:2cqw;font-size:3.4cqw;color:#fff;background:rgba(0,0,0,.6);padding:.5cqw 1.5cqw}
 #mver{display:block;margin:0 0 1.5cqw;font-size:3.8cqw;padding:1cqw 2.5cqw;background:#405078}
+
+/* barrido de cámara (momentos tensos) */
+#stage.swR{animation:swR .13s ease-in forwards}
+#stage.swL{animation:swL .13s ease-in forwards}
+#stage.swInR{animation:swInR .13s ease-out}
+#stage.swInL{animation:swInL .13s ease-out}
+@keyframes swR{to{transform:translateX(-40%);filter:blur(1.4cqw)}}
+@keyframes swL{to{transform:translateX(40%);filter:blur(1.4cqw)}}
+@keyframes swInR{from{transform:translateX(40%);filter:blur(1.4cqw)}to{transform:none;filter:none}}
+@keyframes swInL{from{transform:translateX(-40%);filter:blur(1.4cqw)}to{transform:none;filter:none}}
+/* oscurecer la escena */
+#dim{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:5;transition:opacity .35s}
+#dim.on{opacity:.7}
+/* etiqueta de esquina: Testimonio / Contrainterrogatorio / Interrogatorio */
+#tag{position:absolute;top:1.5cqw;left:1.5cqw;z-index:6;font-size:3.6cqw;font-weight:700;color:#58f070;
+  text-shadow:.3cqw .3cqw 0 #063,-.2cqw -.2cqw 0 #063;letter-spacing:.2cqw;pointer-events:none}
+#tag:empty{display:none}
+.pos-rayos #sprite{left:50%}
