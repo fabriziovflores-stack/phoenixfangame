@@ -72,6 +72,7 @@ function invControls(m,add,row){
   if(m==="invmenu"){
     const a=row("rowA"); add("🔍<br>Examinar","hold",invExamine,a); add("💬<br>Hablar","hold",invTalk,a);
     const b=row("rowA"); add("📁<br>Presentar","obj",invPresentStart,b); add("🚶<br>Moverse","hold",invMove,b);
+    add("💭 Pensar: ¿qué me falta?","opt back",invPensar);
     return true;
   }
   if(m==="invexam"){
@@ -89,6 +90,14 @@ function invControls(m,add,row){
 }
 function invThought(t){ play([{who:"ines",mood:"think",text:t}], invMenu); }
 
+/* Pensar: Justo dice en voz alta qué le falta (pistas del caso en INV.diaN.hints: {idPruebaOMarca: "texto"}) */
+function invPensar(){
+  const d=X.inv.done||{}, h=X.inv.hints||{};
+  const falta=[...[].concat(d.ev||[]).filter(id=>!EVIDENCE.some(e=>e.id===id)), ...[].concat(d.flags||[]).filter(f=>!G.flags[f])];
+  const txt=[...new Set(falta.map(k=>h[k]).filter(Boolean))].slice(0,2);
+  if(!txt.length) txt.push("(Creo que ya tengo lo que necesito. Pero algo se me escapa... revisemos bien.)");
+  play(txt.map(t=>({who:"ines",mood:"think",text:t})), invMenu);
+}
 /* Examinar: como en la DS, se toca el lugar en la pantalla de abajo (area:[x,y,ancho,alto] en 256×192).
    Si el lugar no tiene fondo dibujado o sus objetos no tienen area, se usa una lista. */
 const NADA=["(No hay nada especial ahí.)","(Nada que me llame la atención.)","(Mmm... no. Nada.)"];

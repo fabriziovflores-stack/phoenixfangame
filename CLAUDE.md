@@ -53,6 +53,8 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   sus líneas se leen sobre el lugar o sobre la persona presente.
   **Los lugares se abren de a uno**: cada lugar tiene `req` atado a una conversación o hallazgo (el dueño no quiere todo
   abierto desde el inicio), Justo dice adónde ir, y al abrirse sale el aviso «🚶 Nuevo lugar».
+  **💭 Pensar** (botón de la investigación): Justo dice qué le falta, usando `hints` del día ({idPruebaOMarca: texto}).
+  Los archivos de index.html llevan `?v=<versión>` para que el celular no use copias viejas.
   Cada persona de un lugar reacciona a Justo: `hello` (la primera vez que la ve, también si aparece más tarde)
   y `back` (al volver al lugar). En la investigación, quien habla queda en el fondo del lugar actual, no en su puesto del juzgado.
   `{cmd:"card", t1:"— Día 1 —", t2:"Investigación"}` muestra la tarjeta de día. `breakdown` acepta `who` y `seq`
