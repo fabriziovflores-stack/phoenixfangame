@@ -97,7 +97,7 @@ const CROSS = {
        contra:"luz",
        contraLines:[
         {who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"Señora, esa noche no había ningún farol encendido."},
-        {who:"ines",mood:"smug",text:"Corte programado en todo el cerro, de [r]23:10 a 00:05[/r]. Sin alumbrado público."},
+        {who:"ines",pose:"papel",text:"Corte programado en todo el cerro, de [r]23:10 a 00:05[/r].[p] Sin alumbrado público."},
         {who:"zoila",mood:"shock",anim:"hit",text:"¡Ay, verdad! ¡Si por eso se me apagó la tele!"},
         {who:"jueza",mood:"serious",text:"Señora, usted declaró que lo vio «clarito»."},
         {who:"zoila",mood:"sweat",text:"Es que una cuenta las cosas como las siente."},
@@ -240,7 +240,7 @@ const CROSS = {
        contra:"bitacora",
        contraLines:[
         {who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"Don Custodio, ¿con qué linterna?"},
-        {who:"ines",mood:"smug",text:"Su bitácora, 23:05: «[r]Linterna sin pilas. Pedir repuesto[/r]»."},
+        {who:"ines",pose:"papel",text:"Su bitácora, 23:05:[p] «[r]Linterna sin pilas. Pedir repuesto[/r]»."},
         {who:"ines",pose:"point",read:["bitacora","Llavín no tenía linterna: no pudo alumbrar a nadie."],text:"Veinticinco minutos antes del robo, usted mismo dejó escrito que no funcionaba."},
         {who:null,text:"Lectura actualizada: Bitácora del guardia."},
         {who:"testigo",mood:"shock",anim:"hit",text:"Eso... eso lo anoté para que me mandaran pilas."},

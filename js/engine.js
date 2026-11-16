@@ -150,7 +150,8 @@ function say(l, done){
     waiting=done;
     blipWho=l.who;
     const start=()=>typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on"); });
-    if(entra){ $("text").textContent=""; busy=true; setTimeout(()=>{ busy=false; start(); }, ENTRADA_MS); } else start();
+    const anima=Math.max(0, seqUntil-Date.now());          // el texto espera a que termine la animación (apuntar, lentes...)
+    if(entra||anima>0){ $("text").textContent=""; busy=true; setTimeout(()=>{ busy=false; start(); }, entra?Math.max(ENTRADA_MS,anima):anima); } else start();
   };
   if(l.bubble) showBubble(l.bubble, go); else go();
 }
@@ -630,13 +631,13 @@ function renderSprite(){
    Justo: levanta el brazo al apuntar y lo baja al terminar; se pone los lentes y toma el papel. */
 const TRANS={ ines:{
   point:{in:["ap2","ap3","ap4","ap5","ap6","ap7","ap8"], out:["ap12","ap13","ap14","ap15","ap16"], ms:45},
-  papel:{in:["le2","le3","le4","le5","le6","le7","le8","le9","le10","le11","le12"], out:["le12","le11","le10","le9","le3","le2"], ms:75},
-  papelThink:{in:["le2","le3","le4","le5","le6","le7","le8","le9","le10","le11","le12"], out:["le12","le11","le10","le9","le3","le2"], ms:75} }};
+  papel:{in:["le2","le3","le4","le5","le6","le7","le8","le9","le10","le11","le12"], out:["le12","le11","le10","le9","le3","le2"], ms:110},
+  papelThink:{in:["le2","le3","le4","le5","le6","le7","le8","le9","le10","le11","le12"], out:["le12","le11","le10","le9","le3","le2"], ms:110} }};
 const RAW={}; function rawImg(who,k){ const key=who+"/"+k; if(!RAW[key]){ RAW[key]=new Image(); RAW[key].src=ART[who][k]; } return RAW[key]; }
 Object.keys(TRANS).forEach(w=>Object.values(TRANS[w]).forEach(t=>t.in.concat(t.out).forEach(k=>rawImg(w,k))));
-let seqTimer=null, seqOn=false;
+let seqTimer=null, seqOn=false, seqUntil=0;
 function playSeq(who,frames,ms){
-  clearInterval(seqTimer); seqOn=true; let i=0; const c=$("spr").getContext("2d");
+  clearInterval(seqTimer); seqOn=true; seqUntil=Date.now()+frames.length*ms; let i=0; const c=$("spr").getContext("2d");
   const draw=()=>{ if(i>=frames.length){ clearInterval(seqTimer); seqOn=false; renderSprite(); return; }
     const im=rawImg(who,frames[i++]); if(im.complete){ c.clearRect(0,0,256,192); c.drawImage(im,0,0); } };
   draw(); seqTimer=setInterval(draw,ms);

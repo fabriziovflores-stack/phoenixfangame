@@ -30,28 +30,45 @@ def place(cell,f,mx,my,iw,ih):
     out=Image.new('RGBA',(CW,192),(0,0,0,0)); out.paste(sm,(round(ax-mx*s),round(ay-my*s)))
     a=np.array(out); m=a[...,3]>150; a[...,:3]&=0xF8; a[...,3]=np.where(m,255,0); a[~m]=0
     return Image.fromarray(a)
+
+def boca(Af,Bf):
+    """Cuadro hablando = cuadro cerrado + SOLO los píxeles de la boca del abierto (zona chica bajo la nariz)."""
+    a=np.array(Af); b=np.array(Bf); al=a[...,3]>0
+    ys=np.where(al.any(1))[0]; t=ys[0]
+    hx1=max(np.where(r)[0].max() for r in al[t:t+20] if r.any())                      # borde derecho del pelo
+    rows=al[t+28:t+50,:hx1+14]; front=max(np.where(r)[0].max() for r in rows if r.any())  # punta de la nariz (mira a la derecha)
+    y0,y1=t+42,t+66; x0,x1=front-26,front+2
+    d=np.abs(a[...,:3].astype(int)-b[...,:3].astype(int)).sum(2)
+    m=np.zeros(al.shape,bool); m[y0:y1,x0:x1]=d[y0:y1,x0:x1]>60
+    if m.any():
+        yy,xx=np.where(m); cy,cx=int(np.median(yy)),int(np.median(xx))
+        k=np.zeros_like(m); k[max(cy-6,0):cy+7,max(cx-8,0):cx+9]=True; m&=k          # solo la boca, nada más
+        mm=m.copy(); mm[1:]|=m[:-1]; mm[:-1]|=m[1:]; mm[:,1:]|=m[:,:-1]; mm[:,:-1]|=m[:,1:]; m=mm&k
+    out=a.copy(); out[m]=b[m]; return Image.fromarray(out)
+def alineado(A,B):
+    _,_,(dx,dy)=fix_pair(A,B); return Image.fromarray(np.roll(np.roll(np.asarray(B),dy,0),dx,1))
 def save(name,im): im.save(f'{OUT}/{name}.png',optimize=True)
 # 1. poses: cada par con su propia alineación de cabeza
 names=["base","smug","sweat","shock","think","angry","point","down"]
 log=[]
 for i,n in enumerate(names):
-    A=main[2*i]; B,_,_=fix_pair(A,main[2*i+1])
+    A=main[2*i]; B=alineado(A,main[2*i+1])
     sc,f,mx,my=match(A) if i else (1,1.0,hx0,top)
     if sc<0.6: sc,f,mx,my=match(A,0.95,1.06)
     log.append((n,round(float(f),3),round(float(sc),2)))
-    save(n,place(A,f,mx,my,iw,ih)); save("talk" if n=="base" else n+"Talk",place(B,f,mx,my,iw,ih))
+    Af=place(A,f,mx,my,iw,ih); save(n,Af); save("talk" if n=="base" else n+"Talk",boca(Af,place(B,f,mx,my,iw,ih)))
 # 2. hojas de animación: una sola alineación para toda la hoja (así no tiembla)
 def anim_sheet(path,prefix):
     cs,iw2,ih2=cells_of(path); sc,f,mx,my=match(cs[0]); log.append((prefix,round(float(f),3),round(float(sc),2)))
     return [place(c,f,mx,my,iw2,ih2) for c in cs], (f,mx,my,iw2,ih2), cs
 ap,P,apc=anim_sheet('arte-original/justo-apunta.png','ap')
 for k,im in enumerate(ap): save(f'ap{k+1}',im)
-f,mx,my,iw2,ih2=P; B,_,_=fix_pair(apc[9],apc[8])          # apuntando: cuadro 10 (boca cerrada) + boca del 9
-save('point',ap[9]); save('pointTalk',place(B,f,mx,my,iw2,ih2))
+f,mx,my,iw2,ih2=P; B=alineado(apc[9],apc[8])               # apuntando: cuadro 10 (boca cerrada) + solo la boca del 9
+save('point',ap[9]); save('pointTalk',boca(ap[9],place(B,f,mx,my,iw2,ih2)))
 le,P2,lec=anim_sheet('arte-original/justo-lentes.png','le')
 for k,im in enumerate(le): save(f'le{k+1}',im)
-f,mx,my,iw2,ih2=P2; B,_,_=fix_pair(lec[12],lec[13])
-save('papel',le[12]); save('papelTalk',place(B,f,mx,my,iw2,ih2))
+f,mx,my,iw2,ih2=P2; B=alineado(lec[12],lec[13])
+save('papel',le[12]); save('papelTalk',boca(le[12],place(B,f,mx,my,iw2,ih2)))
 b0=Image.open(f'{OUT}/base.png'); l,t,r,b=b0.getbbox(); hb=b0.crop((0,t,256,t+40)).getbbox(); cx=(hb[0]+hb[2])//2
 b0.crop((cx-33,t,cx+33,t+70)).save(f'{OUT}/face.png')
 print(log)
