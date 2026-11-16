@@ -409,6 +409,8 @@ function closeRecord(){ $("modal").style.display="none"; }
 /* botones */
 function renderControls(){
   const c=$("controls"); c.innerHTML="";
+  $("box").style.visibility = mode==="invexam" ? "hidden" : "";          // examinando: se ve el lugar completo
+  $("topS").classList.toggle("examinando", mode==="invexam");
   const add=(t,cls,fn,parent)=>{ const b=document.createElement("button"); b.innerHTML=t; if(cls) b.className=cls; b.onclick=fn; (parent||c).appendChild(b); return b; };
   const row=cls=>{ const d=document.createElement("div"); d.className=cls; c.appendChild(d); return d; };
   if(mode==="dialog"){

@@ -59,13 +59,8 @@ function invControls(m,add,row){
     return true;
   }
   if(m==="invexam"){
-    const cv=document.createElement("canvas"); cv.width=256; cv.height=192; cv.id="exam";
-    const g=cv.getContext("2d"); g.drawImage($("bg"),0,0); g.drawImage($("desk"),0,0);
-    cv.onclick=ev=>{ if(busy) return; const r=cv.getBoundingClientRect();
-      const x=(ev.clientX-r.left)/r.width*256, y=(ev.clientY-r.top)/r.height*192;
-      g.strokeStyle="#ffe040"; g.lineWidth=2; g.beginPath(); g.arc(x,y,7,0,7); g.moveTo(x-11,y); g.lineTo(x+11,y); g.moveTo(x,y-11); g.lineTo(x,y+11); g.stroke();
-      busy=true; setTimeout(()=>{ busy=false; invTap(x,y); },220); };
-    $("controls").appendChild(cv); add("◀ Volver","opt back",invMenu); return true;
+    const d=document.createElement("div"); d.className="examhint"; d.innerHTML="🔍<br>Toca en la pantalla de arriba<br>lo que quieras examinar";
+    $("controls").appendChild(d); add("◀ Volver","opt back",invMenu); return true;
   }
   if(m==="invlist"){ X.list.forEach(it=>add(it.t,"opt",it.fn)); add("◀ Volver","opt back",invMenu); return true; }
   if(m==="invpresent"||m==="silpresent"){
@@ -84,8 +79,7 @@ const NADA=["(No hay nada especial ahí.)","(Nada que me llame la atención.)","
 function invExamine(){
   const its=(invPlace().examine||[]).filter(e=>reqOk(e.req));
   if(BGIMG[invBg()] && its.some(e=>e.area)){
-    setScene(invBg(), null); mode="invexam"; $("name").textContent="";
-    const t=$("text"); t.className="narr"; t.style.fontSize=""; t.textContent="🔍 Toca en la pantalla de abajo lo que quieras examinar.";
+    setScene(invBg(), null); mode="invexam"; $("name").textContent=""; $("text").textContent="";
     renderControls(); return;
   }
   if(!its.length) return invThought("(No veo nada más que revisar aquí.)");
@@ -100,6 +94,13 @@ function invTap(x,y){
   const k="ex:"+G.inv.place+":"+e.id, again=G.inv.seen[k]&&e.again; G.inv.seen[k]=1;
   play(again?e.again:e.lines, invExamine);
 }
+/* tocar la pantalla de arriba mientras se examina */
+$("stage").addEventListener("click", ev=>{
+  if(mode!=="invexam" || busy) return;
+  const r=$("stage").getBoundingClientRect(), x=(ev.clientX-r.left)/r.width*256, y=(ev.clientY-r.top)/r.height*192;
+  const m=$("mira"); m.style.left=(x/256*100)+"%"; m.style.top=(y/192*100)+"%"; m.style.display="block";
+  busy=true; setTimeout(()=>{ m.style.display="none"; busy=false; invTap(x,y); },260);
+});
 /* Hablar */
 function invTalk(){
   const here=invPeople(), ts=(invPlace().talk||[]).filter(t=>here.includes(t.who)&&reqOk(t.req));

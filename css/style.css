@@ -163,5 +163,11 @@ button.back{background:#283458!important}
 #spr.fadein{animation:sprin .3s ease-out}
 @keyframes sprin{from{opacity:0}to{opacity:1}}
 
-/* examinar tocando el lugar (pantalla de abajo) */
-#exam{height:calc(100% - 13cqw);max-width:100%;aspect-ratio:4/3;image-rendering:pixelated;cursor:crosshair;border:.7cqw solid #101830;flex:none}
+/* examinar tocando el lugar (pantalla de arriba) */
+#topS.examinando #stage{cursor:crosshair}
+#mira{position:absolute;display:none;z-index:9;width:9cqw;height:9cqw;margin:-4.5cqw 0 0 -4.5cqw;border:.7cqw solid #ffe040;border-radius:50%;pointer-events:none;
+  box-shadow:0 0 0 .4cqw #000,inset 0 0 0 .4cqw #000;animation:mira .26s steps(3)}
+#mira::before,#mira::after{content:"";position:absolute;background:#ffe040;left:50%;top:50%;transform:translate(-50%,-50%)}
+#mira::before{width:13cqw;height:.7cqw} #mira::after{width:.7cqw;height:13cqw}
+@keyframes mira{from{transform:scale(1.8);opacity:.3}to{transform:scale(1);opacity:1}}
+.examhint{color:#203060;font-weight:700;font-size:5cqw;text-align:center;line-height:1.35;flex:1;display:flex;align-items:center;justify-content:center}
