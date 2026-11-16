@@ -3,6 +3,7 @@
    ===================================================================== */
 const $=id=>document.getElementById(id);
 const MAXH=5;
+const ENTRADA_MS=300;     // pausa (ms) cuando entra un personaje, antes de que hable
 let G={}, pc=0, checkpoint=0, mode="idle", waiting=null, typing=false, tTimer=null, X=null, busy=false;
 
 function resetGame(){ hideEv(); EVIDENCE.splice(EV0); G={notes:{}, health:MAXH, nocap:false, pos:"negro", flags:{}, met:{}, inv:null}; pc=0; checkpoint=0; drawHealth(); }
@@ -97,7 +98,9 @@ function say(l, done){
   const go=()=>{
     const ch=l.who?CHARS[l.who]:null;
     const pos=l.pos || (ch?ch.pos:G.pos);
+    const prevWho=cur&&cur.who;
     setScene(pos, l.who?l.who:(l.pos?null:undefined), l.mood, l.pose);
+    const entra = l.who && l.who!==prevWho;              // si entra alguien, pausa breve antes de hablar
     if(l.music!==undefined) music(l.music);
     if(l.anim) anim(l.anim);
     tickEv(l);
@@ -111,7 +114,8 @@ function say(l, done){
     const style = l.cross ? "cross" : think ? "think" : !l.who ? "narr" : "";
     mode="dialog"; renderControls();
     waiting=done;
-    typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on"); });
+    const start=()=>typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on"); });
+    if(entra){ $("text").textContent=""; busy=true; setTimeout(()=>{ busy=false; start(); }, ENTRADA_MS); } else start();
   };
   if(l.bubble) showBubble(l.bubble, go); else go();
 }
@@ -553,7 +557,8 @@ function renderSprite(){
 function drawSprite(who,mood,pose){
   const c=$("spr").getContext("2d");
   if(!who){ cur=null; c.clearRect(0,0,256,192); return; }
-  if(!cur||cur.who!==who) c.clearRect(0,0,256,192);
+  if(!cur||cur.who!==who){ c.clearRect(0,0,256,192);          // entra un personaje nuevo: fundido suave
+    const cv=$("spr"); cv.classList.remove("fadein"); void cv.offsetWidth; cv.classList.add("fadein"); }
   cur={who,mood:mood||"normal",pose:pose||""}; talk=0; blink=0; renderSprite();
   getFrame(who,cur.mood,cur.pose,1,0); getFrame(who,cur.mood,cur.pose,0,1);
 }

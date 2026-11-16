@@ -158,3 +158,7 @@ button.opt{width:100%;font-size:4.3cqw;text-align:left;padding:2.2cqw 3cqw;line-
 #casoSel button{font-size:15px;padding:6px 14px;background:#405078;border-width:3px}
 #casoSel button.on{background:var(--gold);color:#201800}
 button.back{background:#283458!important}
+
+/* personaje que entra: fundido suave (el cambio de cámara sigue siendo corte directo) */
+#spr.fadein{animation:sprin .3s ease-out}
+@keyframes sprin{from{opacity:0}to{opacity:1}}

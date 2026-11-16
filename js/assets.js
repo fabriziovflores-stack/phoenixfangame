@@ -23,7 +23,8 @@ rocky:{angry:"assets/personajes/rocky/angry.png",angryTalk:"assets/personajes/ro
 
 aurelio:{angry:"assets/personajes/aurelio/angry.png",angryTalk:"assets/personajes/aurelio/angryTalk.png",base:"assets/personajes/aurelio/base.png",confused:"assets/personajes/aurelio/confused.png",confusedTalk:"assets/personajes/aurelio/confusedTalk.png",face:"assets/personajes/aurelio/face.png",shock:"assets/personajes/aurelio/shock.png",shockTalk:"assets/personajes/aurelio/shockTalk.png",smile:"assets/personajes/aurelio/smile.png",smileTalk:"assets/personajes/aurelio/smileTalk.png",smug:"assets/personajes/aurelio/smug.png",smugTalk:"assets/personajes/aurelio/smugTalk.png",sweat:"assets/personajes/aurelio/sweat.png",sweatTalk:"assets/personajes/aurelio/sweatTalk.png",talk:"assets/personajes/aurelio/talk.png",think:"assets/personajes/aurelio/think.png",thinkTalk:"assets/personajes/aurelio/thinkTalk.png"}};
 const BGIMG={lobby:"assets/fondos/lobby.png",defensa:"assets/fondos/defensa.png",fiscalia:"assets/fondos/fiscalia.png",estrado:"assets/fondos/estrado.png",
-  oficina:"assets/fondos/oficina.png",hospital:"assets/fondos/hospital.png",locutorio:"assets/fondos/locutorio.png",casona:"assets/fondos/casona.png",pieza:"assets/fondos/pieza.png"};
+  oficina:"assets/fondos/oficina.png",hospital:"assets/fondos/hospital.png",locutorio:"assets/fondos/locutorio.png",casona:"assets/fondos/casona.png",pieza:"assets/fondos/pieza.png",
+  aurelio:"assets/fondos/aurelio.png",comisaria:"assets/fondos/comisaria.png",oficinahostal:"assets/fondos/oficinahostal.png"};
 const DESKIMG={defensa:"assets/muebles/defensa.png",fiscalia:"assets/muebles/fiscalia.png",estrado:"assets/muebles/estrado.png",juez:"assets/muebles/juez.png",locutorio:"assets/muebles/locutorio.png"};
 
 /* Precarga de todas las ilustraciones (así los cortes de cámara son instantáneos) */
