@@ -6,8 +6,9 @@ const MUS_SLOTS=[["corte","Juicio"],["interrogatorio","Testimonios e interrogato
 /* Efectos de sonido que el jugador puede reemplazar: [clave guardada, efecto del juego, nombre visible] */
 const SFX_SLOTS=[["sfx_dano1","damage","Daño (pierdes vida)"],["sfx_dano2","hit","Golpe (alguien queda contra las cuerdas)"],
   ["sfx_prueba","ding","Prueba nueva"],["sfx_recuerdo","flashback","Recuerdo (cinemáticas)"],["sfx_revelacion","realize","Revelación (nueva lectura de una prueba)"],
-  ["sfx_golpe","slam","Golpe en la mesa"],["sfx_badum","badum","Golpe dramático"],["sfx_error","whoops","Error"],["sfx_grito","breakdown","Grito del culpable"]];
-SFX_SLOTS.forEach(([k,fx])=>{ const orig=SFX[fx]; SFX[fx]=function(...a){
+  ["sfx_golpe","slam","Golpe en la mesa"],["sfx_badum","badum","Golpe dramático"],["sfx_error","whoops","Error"],["sfx_grito","breakdown","Grito del culpable"],
+  ["sfx_lugar","","Llegada a un lugar (tecleo de fecha y lugar)"]];
+SFX_SLOTS.filter(([,fx])=>fx).forEach(([k,fx])=>{ const orig=SFX[fx]; SFX[fx]=function(...a){
   const file = LOCALMUS[k] || (typeof SFX_FILES!=="undefined" && SFX_FILES[fx]);     // 1º el del jugador, 2º el del juego
   if(file){ try{ const s=new Audio(file); s.volume=.9; s.muted=muted;
     s.addEventListener("error",()=>orig.apply(this,a)); s.play().catch(()=>{}); }catch(e){ orig.apply(this,a); } return; }

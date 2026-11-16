@@ -3,7 +3,7 @@
    ===================================================================== */
 const $=id=>document.getElementById(id);
 const MAXH=5;
-const ENTRADA_MS=300;     // pausa (ms) cuando entra un personaje, antes de que hable
+const ENTRADA_MS=1500;    // fundido (ms) cuando aparece un personaje sin cambio de cámara; recién después habla
 let G={}, pc=0, checkpoint=0, mode="idle", waiting=null, typing=false, tTimer=null, X=null, busy=false;
 
 function resetGame(){ hideEv(); EVIDENCE.splice(EV0); G={notes:{}, health:MAXH, nocap:false, pos:"negro", flags:{}, met:{}, inv:null}; pc=0; checkpoint=0; drawHealth(); }
@@ -14,6 +14,7 @@ function drawHealth(hit){
 /* escena */
 function setScene(pos, who, mood, pose){
   const st=$("stage");
+  drawSprite.corte = !!(pos && pos!==G.pos);              // cambio de cámara: el personaje aparece de golpe
   if(pos && pos!==G.pos){
     st.className="pos-"+pos; G.pos=pos; drawBG(pos);
     $("health").style.visibility = pos==="negro" ? "hidden" : "";
@@ -60,7 +61,7 @@ function typeText(t, style, voice, done){
     if(c.ch!==" " && i%2===0) voice==="type"?SFX.type():SFX.blip(voice);
     if(canTalk && i%3===0) setTalk((i/3)%2===0);
     i++;
-    const d = ".!?".includes(c.ch) && chars[i] && chars[i].ch===" " ? 260 : c.ch===","? 120 : 26;
+    const d = ".!?".includes(c.ch) && chars[i] && chars[i].ch===" " ? 260 : c.ch===","? 140 : 32;
     tTimer=setTimeout(step,d);
   };
   step();
@@ -99,10 +100,10 @@ function say(l, done){
     const ch=l.who?CHARS[l.who]:null;
     const enInv = G.inv && X && X.inv;                   // en la investigación todos hablan en el lugar donde está Justo
     const pos=l.pos || (enInv ? invBg() : (ch?ch.pos:G.pos));
-    const prevWho=cur&&cur.who;
+    const prevWho=cur&&cur.who, prevPos=G.pos;
     const yo = enInv && l.who==="ines" && !l.pos;          // en la investigación a Justo no se le ve: solo su texto
     setScene(pos, yo ? undefined : (l.who?l.who:(l.pos?null:undefined)), l.mood, l.pose);
-    const entra = l.who && !yo && l.who!==prevWho;              // si entra alguien, pausa breve antes de hablar
+    const entra = l.who && !yo && l.who!==prevWho && pos===prevPos;   // aparece alguien en el mismo lugar (no es cambio de cámara)
     if(l.music!==undefined) music(l.music);
     if(l.anim) anim(l.anim);
     tickEv(l);
@@ -132,6 +133,16 @@ function showBubble(kind, then){
   busy=true; const b=$("bubble"); b.innerHTML=bubbleSVG(kind); b.style.display="flex";
   kind==="momento"?SFX.hold():SFX.objection(); shake(); flash();
   setTimeout(()=>{ b.style.display="none"; busy=false; then(); }, 900);
+}
+/* letrero de lugar: fecha/hora y lugar escritos letra por letra (también al llegar a un lugar nuevo en la investigación) */
+function locCard(text, done){
+  const o=$("loc"), d=o.querySelector("div"); o.style.display="flex"; d.textContent="";
+  $("name").textContent=""; $("text").textContent=""; mode="loc"; renderControls();
+  let i=0; busy=true;
+  const snd = (typeof LOCALMUS!=="undefined" && LOCALMUS.sfx_lugar) ? new Audio(LOCALMUS.sfx_lugar) : null;   // tecleo elegido por el jugador
+  if(snd){ snd.muted=muted; snd.volume=.9; snd.play().catch(()=>{}); }
+  const t=setInterval(()=>{ d.textContent=text.slice(0,++i); if(!snd && text[i-1]!==" "&&text[i-1]!=="\n") SFX.type();
+    if(i>=text.length){ clearInterval(t); if(snd) snd.pause(); setTimeout(()=>{ busy=false; o.style.display="none"; done(); },1400); } },60);
 }
 function confetti(){                // confeti volando sobre la escena
   let c=$("confe"); if(!c){ c=document.createElement("div"); c.id="confe"; $("stage").appendChild(c); }
@@ -170,14 +181,7 @@ function run(){
 }
 const CMD = {
   music(st,done){ music(st.track); done(); },
-  location(st,done){
-    setScene(st.pos||G.pos, null);
-    const o=$("loc"), d=o.querySelector("div"); o.style.display="flex"; d.textContent="";
-    $("name").textContent=""; $("text").textContent=""; mode="loc"; renderControls();
-    let i=0; busy=true;
-    const t=setInterval(()=>{ d.textContent=st.text.slice(0,++i); if(st.text[i-1]!==" "&&st.text[i-1]!=="\n") SFX.type();
-      if(i>=st.text.length){ clearInterval(t); setTimeout(()=>{ busy=false; o.style.display="none"; done(); },1200); } },55);
-  },
+  location(st,done){ setScene(st.pos||G.pos, null); locCard(st.text, done); },
   gavel(st,done){
     const o=$("gavel"); o.style.display="flex"; busy=true;
     o.innerHTML=`<svg viewBox="0 0 400 260"><rect x="110" y="200" width="180" height="40" rx="8" fill="#6b4224"/><rect x="130" y="190" width="140" height="16" rx="6" fill="#8a5a30"/>
@@ -564,8 +568,8 @@ function renderSprite(){
 function drawSprite(who,mood,pose){
   const c=$("spr").getContext("2d");
   if(!who){ cur=null; c.clearRect(0,0,256,192); return; }
-  if(!cur||cur.who!==who){ c.clearRect(0,0,256,192);          // entra un personaje nuevo: fundido suave
-    const cv=$("spr"); cv.classList.remove("fadein"); void cv.offsetWidth; cv.classList.add("fadein"); }
+  if(!cur||cur.who!==who){ c.clearRect(0,0,256,192);          // entra un personaje nuevo: fundido (salvo corte de cámara)
+    const cv=$("spr"); cv.classList.remove("fadein"); void cv.offsetWidth; if(!drawSprite.corte) cv.classList.add("fadein"); }
   cur={who,mood:mood||"normal",pose:pose||""}; talk=0; blink=0; renderSprite();
   getFrame(who,cur.mood,cur.pose,1,0); getFrame(who,cur.mood,cur.pose,0,1);
 }

@@ -160,7 +160,7 @@ button.opt{width:100%;font-size:4.3cqw;text-align:left;padding:2.2cqw 3cqw;line-
 button.back{background:#283458!important}
 
 /* personaje que entra: fundido suave (el cambio de cámara sigue siendo corte directo) */
-#spr.fadein{animation:sprin .3s ease-out}
+#spr.fadein{animation:sprin 1.5s ease-out}
 @keyframes sprin{from{opacity:0}to{opacity:1}}
 
 /* examinar tocando el lugar (pantalla de arriba) */

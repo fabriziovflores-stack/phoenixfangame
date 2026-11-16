@@ -29,13 +29,21 @@ CMD.invest=(st,done)=>{
   invEnter(G.inv.place);
 };
 function invEnter(id){
-  G.inv.place=id; const p=invPlace(), k="in:"+id, first=!G.inv.seen[k]; G.inv.seen[k]=1;
-  const here=invPeople(); setScene(invBg(), here[0]||null);
-  if(first && p.enter) return play(p.enter, invMenu);
-  if(!first){                                              // volver: el primero que está ahí lo comenta
-    const pp=(p.people||[]).find(x=>reqOk(x.req) && x.back && G.inv.seen["hi:"+id+":"+x.who]);
-    if(pp) return play(pp.back, invMenu);
+  G.inv.place=id; const p=invPlace(), k="in:"+id, first=!G.inv.seen[k]; if(!X.inv.fecha) G.inv.seen[k]=1;
+  if(first && X.inv.fecha){                                // primera vez este día: letrero con fecha, hora y lugar
+    const min=(X.inv.hora||600)+(G.inv.reloj||0); G.inv.reloj=(G.inv.reloj||0)+(X.inv.paso||25);
+    const hh=String(Math.floor(min/60)%24).padStart(2,"0"), mm=String(min%60).padStart(2,"0");
+    setScene(invBg(), null);
+    return locCard(X.inv.fecha+" · "+hh+":"+mm+"\n"+p.name, ()=>{ G.inv.seen[k]=1; invEnter2(id, true); });
   }
+  invEnter2(id, first);
+}
+function invEnter2(id, first){
+  const p=invPlace();
+  const here=invPeople();
+  const back = !first && (p.people||[]).find(x=>reqOk(x.req) && x.back && G.inv.seen["hi:"+id+":"+x.who]);
+  if((first && p.enter) || back){ setScene(invBg(), null); return play(first ? p.enter : back.back, invMenu); }   // aparece y luego habla
+  setScene(invBg(), here[0]||null);
   invMenu();
 }
 /* Lo ya conversado o examinado cuenta siempre (también si se hizo en una versión anterior del juego):

@@ -17,8 +17,10 @@ dibujo provisorio por código (`look` en CHARS). Lugares sin fondo muestran un c
 ## Pantalla
 Formato Nintendo DS: dos pantallas 4:3. La escena se dibuja a **256×192** y se amplía con píxeles
 marcados. Cambio de cámara = **corte directo** del fondo (el dueño no quiere fundidos de cámara). Pero cuando **entra un
-personaje nuevo**, aparece con un **fundido suave de 0,3 s** y hay una pausa breve antes de que hable (`ENTRADA_MS` en engine.js),
-como en el original: el dueño lo pidió después, porque sin eso todo se sentía demasiado rápido.
+personaje nuevo** en el mismo lugar (no en un cambio de cámara), aparece con un **fundido lento de 1,5 s** y recién
+entonces habla (`ENTRADA_MS` en engine.js). El dueño quiere el juego **pausado**. Al llegar por primera vez a un lugar
+(cada día) sale el letrero de fecha · hora · lugar escrito letra por letra (`locCard`; `fecha`, `hora`, `paso` en INV.diaN).
+El tecleo puede reemplazarse en «Mi música» (`sfx_lugar`).
 Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (`#desk`) → caja de texto.
 
 ## Formato del guion (`casos/caso1.js`, `casos/caso2.js`)
