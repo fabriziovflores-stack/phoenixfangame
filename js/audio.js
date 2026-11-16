@@ -1,7 +1,16 @@
 /* =====================================================================
    PARTE 2: SONIDO (todo sintetizado, melodías originales)
    ===================================================================== */
-let AC=null, master, musicG, sfxG, noiseBuf, muted=false, blipBuf=null;
+let AC=null, master, musicG, sfxG, noiseBuf, muted=false, blipBuf=null, blipWho=null;
+const VOCES_FEM=new Set(["cote","zoila","jueza","malva","barbara"]);     // usan el blip femenino
+const LOCALBLIP={}, LOCALBLIP_PEND={};
+function localBlip(k){                         // blip elegido por el jugador en «Mi música» (se decodifica una vez)
+  if(LOCALBLIP[k]) return LOCALBLIP[k];
+  const url=typeof LOCALMUS!=="undefined" && LOCALMUS[k];
+  if(url && AC && !LOCALBLIP_PEND[k]){ LOCALBLIP_PEND[k]=1;
+    fetch(url).then(r=>r.arrayBuffer()).then(b=>AC.decodeAudioData(b)).then(buf=>{ LOCALBLIP[k]=buf; }).catch(()=>{}).finally(()=>{ LOCALBLIP_PEND[k]=0; }); }
+  return null;
+}
 function initAudio(){
   if(AC) return;
   try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return; }
@@ -28,8 +37,11 @@ function noise(t,dur,g,type,freq,dest){
 }
 const SFX = {
   blip(f){ if(!AC) return;                    // voz de los diálogos: el blip del dueño, con el tono de cada personaje
-    if(blipBuf){ const s=AC.createBufferSource(), g=AC.createGain(); s.buffer=blipBuf;
-      s.playbackRate.value=Math.min(1.16,Math.max(1.0, 1.08*(1+((f||820)-820)/820*.08)));  /* un poco más agudo; casi igual para todos */ g.gain.value=.55; s.connect(g); g.connect(sfxG); s.start(); return; }
+    const fem=VOCES_FEM.has(blipWho), propioF=fem && localBlip("sfx_blipf"), buf=propioF || localBlip("sfx_blipm") || blipBuf;
+    if(buf){ const s=AC.createBufferSource(), g=AC.createGain(); s.buffer=buf;
+      let r=Math.min(1.16,Math.max(1.0, 1.08*(1+((f||820)-820)/820*.08)));  /* un poco más agudo; casi igual para todos */
+      if(fem && !propioF) r*=1.12; else if(propioF) r=1;                    /* sin blip femenino propio: el mismo, más agudo */
+      s.playbackRate.value=r; g.gain.value=.55; s.connect(g); g.connect(sfxG); s.start(); return; }
     osc("square",f,AC.currentTime,.035,.035); },
   type(){ if(!AC) return; osc("square",1400,AC.currentTime,.02,.03); },
   slam(){ if(!AC) return; const t=AC.currentTime; noise(t,.25,.9,"lowpass",500); osc("sine",140,t,.3,.7,null,40); },
@@ -43,6 +55,7 @@ const SFX = {
   badum(){ if(!AC) return; const t=AC.currentTime; osc("sine",110,t,.25,.6,null,70); osc("sine",82,t+.28,.5,.7,null,50); },
   whoops(){ if(!AC) return; const t=AC.currentTime; osc("square",520,t,.12,.08,null,380); osc("square",300,t+.12,.25,.08,null,180); },
   ding(){ if(!AC) return; const t=AC.currentTime; osc("sine",1320,t,.5,.15); osc("sine",1760,t+.08,.6,.12); },
+  testimony(){ SFX.whoosh(); },
   whoosh(){ if(!AC) return; const t=AC.currentTime; noise(t,.5,.35,"bandpass",1200); },
   knock(){ if(!AC) return; const t=AC.currentTime; noise(t,.12,1,"lowpass",1400); osc("sine",220,t,.15,.6,null,90); },
   thud(){ if(!AC) return; const t=AC.currentTime; noise(t,.3,.9,"lowpass",300); osc("sine",90,t,.35,.8,null,40); },

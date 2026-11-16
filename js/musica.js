@@ -7,7 +7,9 @@ const MUS_SLOTS=[["corte","Juicio"],["interrogatorio","Testimonios e interrogato
 const SFX_SLOTS=[["sfx_dano1","damage","Daño (pierdes vida)"],["sfx_dano2","hit","Golpe (alguien queda contra las cuerdas)"],
   ["sfx_prueba","ding","Prueba nueva"],["sfx_recuerdo","flashback","Recuerdo (cinemáticas)"],["sfx_revelacion","realize","Revelación (nueva lectura de una prueba)"],
   ["sfx_golpe","slam","Golpe en la mesa"],["sfx_badum","badum","Golpe dramático"],["sfx_error","whoops","Error"],["sfx_grito","breakdown","Grito del culpable"],
-  ["sfx_lugar","","Llegada a un lugar (tecleo de fecha y lugar)"]];
+  ["sfx_lugar","","Llegada a un lugar (tecleo de fecha y lugar)"],
+  ["sfx_blipm","","Voz de los diálogos: blip masculino"],["sfx_blipf","","Voz de los diálogos: blip femenino"],
+  ["sfx_objecion","objection","«¡Objeción!» (con el globo)"],["sfx_testimonio","testimony","Letrero de «Testimonio»"]];
 SFX_SLOTS.filter(([,fx])=>fx).forEach(([k,fx])=>{ const orig=SFX[fx]; SFX[fx]=function(...a){
   const file = LOCALMUS[k] || (typeof SFX_FILES!=="undefined" && SFX_FILES[fx]);     // 1º el del jugador, 2º el del juego
   if(file){ try{ const s=new Audio(file); s.volume=.9; s.muted=muted;
@@ -19,6 +21,7 @@ function musStore(mode){ try{ return musDB ? musDB.transaction("pistas",mode).ob
 function musSet(k,v){
   if(LOCALMUS[k]) URL.revokeObjectURL(LOCALMUS[k]);
   if(v){ LOCALMUS[k]=URL.createObjectURL(v.blob); LOCALMUS_NAME[k]=v.name; } else { delete LOCALMUS[k]; delete LOCALMUS_NAME[k]; }
+  if(typeof LOCALBLIP!=="undefined") delete LOCALBLIP[k];          // si cambió un blip, se vuelve a cargar
 }
 function musRestart(k){ if(curTrack===k){ curTrack=null; music(k); } }
 function musSave(k,file){

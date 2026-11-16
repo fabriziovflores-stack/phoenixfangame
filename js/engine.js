@@ -118,6 +118,7 @@ function say(l, done){
     const style = l.cross ? "cross" : think ? "think" : !l.who ? "narr" : "";
     mode="dialog"; renderControls();
     waiting=done;
+    blipWho=l.who;
     const start=()=>typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on"); });
     if(entra){ $("text").textContent=""; busy=true; setTimeout(()=>{ busy=false; start(); }, ENTRADA_MS); } else start();
   };
@@ -195,6 +196,7 @@ const CMD = {
     const def=CROSS[st.ref];
     X={def, list:def.statements.filter(s=>!s.hidden), idx:0, hinted:false, done};
     music("corte");
+    SFX.testimony();
     titleCard("— Testimonio —", def.title, ()=>{
       play(X.list.map(s=>({who:def.who||"testigo",mood:s.mood,text:s.text})), ()=>{
         titleCard("— Contrainterrogatorio —", def.title, ()=>{
@@ -290,7 +292,7 @@ function showStatement(){
   setScene("estrado",W, s.mood||"normal");
   $("name").textContent=CHARS[W].name;
   renderControls();
-  canTalk=true; typeText(s.text,"cross",CHARS[W].voice);
+  canTalk=true; blipWho=W; typeText(s.text,"cross",CHARS[W].voice);
 }
 /* interrogatorio directo: la fiscalía pregunta, la defensa puede objetar */
 function showQuestion(){
@@ -301,7 +303,7 @@ function showQuestion(){
   setScene(CHARS[W].pos, W, q.mood||"normal", q.pose);
   $("name").textContent=CHARS[W].name;
   renderControls();
-  canTalk=true;
+  canTalk=true; blipWho=W;
   typeText(q.text,"",CHARS[W].voice, ()=>{          // coach = consejo que aparece una sola vez (tutorial)
     X.coached=X.coached||{};
     if(q.coach && !X.coached[X.qi]){ X.coached[X.qi]=1; busy=true; setTimeout(()=>{ busy=false; play(q.coach, showQuestion); }, 400); }
