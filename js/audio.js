@@ -1,7 +1,7 @@
 /* =====================================================================
    PARTE 2: SONIDO (todo sintetizado, melodías originales)
    ===================================================================== */
-let AC=null, master, musicG, sfxG, noiseBuf, muted=false, blipBuf=null, blipWho=null;
+let AC=null, master, musicG, sfxG, noiseBuf, muted=false, blipBuf=null, blipFBuf=null, blipWho=null;
 const VOCES_FEM=new Set(["cote","zoila","jueza","malva","barbara"]);     // usan el blip femenino
 const LOCALBLIP={}, LOCALBLIP_PEND={};
 function localBlip(k){                         // blip elegido por el jugador en «Mi música» (se decodifica una vez)
@@ -20,6 +20,7 @@ function initAudio(){
   noiseBuf=AC.createBuffer(1,AC.sampleRate,AC.sampleRate);
   const d=noiseBuf.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
   if(typeof BLIP_FILE!=="undefined") fetch(BLIP_FILE).then(r=>r.arrayBuffer()).then(b=>AC.decodeAudioData(b)).then(buf=>{ blipBuf=buf; }).catch(()=>{});
+  if(typeof BLIP_F_FILE!=="undefined") fetch(BLIP_F_FILE).then(r=>r.arrayBuffer()).then(b=>AC.decodeAudioData(b)).then(buf=>{ blipFBuf=buf; }).catch(()=>{});
 }
 function osc(type,f,t,dur,g,dest,f2){
   if(!AC) return;
@@ -37,10 +38,10 @@ function noise(t,dur,g,type,freq,dest){
 }
 const SFX = {
   blip(f){ if(!AC) return;                    // voz de los diálogos: el blip del dueño, con el tono de cada personaje
-    const fem=VOCES_FEM.has(blipWho), propioF=fem && localBlip("sfx_blipf"), buf=propioF || localBlip("sfx_blipm") || blipBuf;
+    const fem=VOCES_FEM.has(blipWho), propioF=fem && (localBlip("sfx_blipf") || blipFBuf), buf=propioF || localBlip("sfx_blipm") || blipBuf;
     if(buf){ const s=AC.createBufferSource(), g=AC.createGain(); s.buffer=buf;
       let r=Math.min(1.16,Math.max(1.0, 1.08*(1+((f||820)-820)/820*.08)));  /* un poco más agudo; casi igual para todos */
-      if(fem && !propioF) r*=1.12; else if(propioF) r=1;                    /* sin blip femenino propio: el mismo, más agudo */
+      if(fem && !propioF) r*=1.12;                                          /* sin blip femenino: el masculino, más agudo */
       s.playbackRate.value=r; g.gain.value=.55; s.connect(g); g.connect(sfxG); s.start(); return; }
     osc("square",f,AC.currentTime,.035,.035); },
   type(){ if(!AC) return; osc("square",1400,AC.currentTime,.02,.03); },

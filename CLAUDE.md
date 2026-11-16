@@ -89,9 +89,9 @@ Efectos en archivo en `assets/sonidos/` (`SFX_FILES` en js/assets.js; código ab
 daño, golpe, prueba nueva, recuerdo (cinemática), revelación (nueva lectura), golpe en la mesa, error, grito (quiebre)
 y `badum` (golpe dramático: se pone a mano en una línea con `sfx:"badum"`).
 Voz de los diálogos: `assets/sonidos/blip.mp3` (creado por el dueño; `BLIP_FILE`), con el tono de `voice` de cada personaje.
-Voces femeninas (`VOCES_FEM` en audio.js: Coté, Zoila, jueza, Malva, Bárbara) usan el blip femenino si el jugador cargó uno en
-«Mi música» (`sfx_blipf`); si no, el mismo blip un poco más agudo. Los archivos tipo Attorney Online (sfx-blipfemale, sfx-objection,
-sfx-testimony2) no se incluyen en el juego: solo vía «Mi música».
+Voces femeninas (`VOCES_FEM` en audio.js: Coté, Zoila, jueza, Malva, Bárbara) usan `assets/sonidos/blip_f.wav` (`BLIP_F_FILE`).
+Objeción y testimonio: `objecion.wav` y `testimonio.wav`. Estos tres son recreaciones del dueño, que declara tener permiso
+(ver docs/creditos.md). Todo se puede reemplazar desde «Mi música».
 El tecleo de los letreros sigue sintetizado (el archivo que se ofreció era el de Ace Attorney; se usa solo vía «Mi música»).
 Orden: archivo elegido por el jugador en «Mi música» → archivo del juego → sonido sintetizado.
 Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.

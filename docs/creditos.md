@@ -14,7 +14,10 @@ Pendiente: anotar aquí la fuente exacta y la licencia (por ejemplo, el enlace d
 | golpe.mp3 | Golpe en la mesa | 45_Whack_Golpe_Fuerte_2.mp3 |
 | badum.mp3 | Golpe dramático en momentos clave | 03_Badum_Golpe_Dramatico_Badum.mp3 |
 | error.mp3 | El jugador se equivoca | 47_Whoops_Error_Whoops.mp3 |
-| blip.mp3 | Voz de los diálogos (tono según el personaje) | Creado por el dueño del proyecto |
+| blip.mp3 | Voz de los diálogos, personajes masculinos | Creado por el dueño del proyecto |
+| blip_f.wav | Voz de los diálogos, personajes femeninos | Recreación del dueño del proyecto |
+| objecion.wav | «¡Objeción!» con el globo | Recreación del dueño del proyecto |
+| testimonio.wav | Letrero de «Testimonio» | Recreación del dueño del proyecto |
 | grito.mp3 | Quiebre del culpable | 48_Yell_Grito.mp3 |
 
 ## Música

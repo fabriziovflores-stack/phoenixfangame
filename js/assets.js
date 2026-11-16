@@ -34,6 +34,7 @@ Object.values(ART).forEach(a=>Object.values(a).forEach(src=>{ new Image().src=sr
 
 /* Blip de los diálogos (creado por el dueño). Cada personaje lo oye con su tono (voice en CHARS). */
 const BLIP_FILE = "assets/sonidos/blip.mp3";
+const BLIP_F_FILE = "assets/sonidos/blip_f.wav";   // voz femenina (recreación del dueño)
 
 /* Efectos de sonido en archivo (código abierto, aportados por el dueño). Si falta uno, suena el sintetizado. */
 const SFX_FILES = {
@@ -46,6 +47,8 @@ const SFX_FILES = {
   badum:    "assets/sonidos/badum.mp3",       // golpe dramático (sfx:"badum" en una línea)
   whoops:   "assets/sonidos/error.mp3",       // el jugador se equivoca
   breakdown:"assets/sonidos/grito.mp3",       // quiebre del culpable
+  objection:"assets/sonidos/objecion.wav",    // «¡Objeción!» con el globo
+  testimony:"assets/sonidos/testimonio.wav",  // letrero de «Testimonio»
 };
 Object.values(SFX_FILES).forEach(f=>{ const a=new Audio(); a.preload="auto"; a.src=f; });   // precarga
 
