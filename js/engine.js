@@ -237,6 +237,7 @@ const CMD = {
     const W=st.who||"testigo"; setScene("estrado",W,"break");
     $("name").textContent=""; $("text").textContent="";
     const sp=$("sprite"); sp.classList.add("tremble"); SFX.breakdown();
+    if(st.seq) st.seq.forEach((m,i)=>setTimeout(()=>drawSprite(W,m), Math.round(i*1250/st.seq.length)));   // colapso animado
     const cap=$("cap");
     if(W==="testigo"){ cap.innerHTML=CAP_SVG; cap.style.display="block"; cap.style.animation="none"; void cap.offsetWidth; cap.style.animation=""; G.nocap=true; }
     let n=0; const iv=setInterval(()=>{ shake(); flash(n%2); if(++n>5) clearInterval(iv); },200);
@@ -504,6 +505,11 @@ const AMAP={
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},
   cote:{normal:["base","talk"],smile:["happy","happyTalk"],eat:["happy","happyTalk"],excited:["excited","excitedTalk"],think:["think","thinkTalk"],serious:["serious","seriousTalk"],sweat:["sweat","sweatTalk"],worried:["sweat","sweatTalk"],shock:["shock","shockTalk"],pout:["pout","poutTalk"]},
   tomas:{normal:["base","talk"],sweat:["sweat","sweatTalk"],cry:["cry","cryTalk"],beg:["beg","begTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],angry:["indignant","indignantTalk"],smile:["happy","happyTalk"]},
+  tadeo:{normal:["base","talk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],cry:["cry","cryTalk"],angry:["angry","angryTalk"],smile:["smile","smileTalk"],think:["think","thinkTalk"]},
+  malva:{normal:["base","talk"],smile:["tea","teaTalk"],sweat:["sweat","sweatTalk"],down:["down","downTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],smug:["smug","smugTalk"],break:["break","breakTalk"],
+         worried:["q_c1","q_c1"],panic:["q_c2","q_c2"],c1:["q_c1","q_c1"],c2:["q_c2","q_c2"],c3:["q_c3","q_c3"],c4:["q_c4","q_c4"],c5:["q_c5","q_c5"],c6:["q_c6","q_c6"],c7:["q_c7","q_c7"],c8:["q_c8","q_c8"]},
+  rocky:{normal:["base","talk"],angry:["angry","angryTalk"],sweat:["sweat","sweatTalk"],down:["down","downTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],beg:["beg","begTalk"],smile:["smile","smileTalk"]},
+  aurelio:{normal:["base","talk"],smug:["smug","smugTalk"],shock:["shock","shockTalk"],sweat:["sweat","sweatTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],angry:["angry","angryTalk"],confused:["confused","confusedTalk"]},
   eduardo:{normal:["base","talk"],smile:["smile","smileTalk"],think:["scratch","scratchTalk"],sweat:["sweat","sweatTalk"],write:["note","noteTalk"],shock:["shock","shockTalk"],serious:["fist","fistTalk"],angry:["fist","fistTalk"],down:["down","downTalk"]},
   zoila:{normal:["base","talk"],smug:["smug","smugTalk"],smile:["happy","happyTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],serious:["serious","seriousTalk"],angry:["indignant","indignantTalk"]},
 };

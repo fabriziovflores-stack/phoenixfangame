@@ -45,7 +45,8 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. **Silencio**: un tema con `silence` se rompe
   presentando pruebas en orden (`steps`); fallar quita vida (en la investigación nunca baja de 1).
   En líneas: `flag:"x"` marca algo, `meet:"id"` agrega un perfil marcado `hidden:true`.
-  `{cmd:"card", t1:"— Día 1 —", t2:"Investigación"}` muestra la tarjeta de día. `breakdown` acepta `who`.
+  `{cmd:"card", t1:"— Día 1 —", t2:"Investigación"}` muestra la tarjeta de día. `breakdown` acepta `who` y `seq`
+  (lista de emociones que se pasan como animación; Malva usa `c3`…`c8`, su hoja de colapso, sin boca animada).
 - Emociones disponibles por personaje: ver `AMAP` en `js/engine.js`. Si usas una que no existe, cae a `normal`.
 
 ## Reglas de escritura (del dueño; ver `docs/brief-de-guion.md`)
@@ -79,5 +80,6 @@ una respuesta equivocada y la derrota) con un navegador automatizado y confirmar
 
 ## Siguientes pasos sugeridos
 1. Caso 2: es un **esqueleto jugable con textos de borrador** (diseño en `docs/caso2-diseno.md`). Falta: que el
-   dueño escriba los diálogos, cinemática (7 imágenes), fondos de los lugares y hojas de Tadeo, Malva, Rocky, Aurelio, Bárbara.
+   dueño escriba los diálogos, cinemática (7 imágenes), fondos de los lugares y la hoja de Bárbara
+   (Tadeo, Malva, Rocky y Aurelio ya tienen arte; prompts en `docs/caso2-prompts.md`).
 2. Fondo de detrás de la jueza (Caso 1).

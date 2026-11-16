@@ -308,16 +308,16 @@ const CROSS = {
   m3: {who:"malva", title:"Esa noche dormían todos", music:"persecucion",
     loopHint:[{who:"ines",mood:"think",text:"(¿Qué tenía Tadeo en la sangre? ¿Y de quién era?)"}],
     statements:[
-      {id:"a", text:"Tadeo se tomó su pastilla del mareo y se durmió temprano.", contra:"receta",
+      {id:"a", mood:"worried", text:"Tadeo se tomó su pastilla del mareo y se durmió temprano.", contra:"receta",
        press:[{who:"ines",text:"¿Solo la pastilla?"},{who:"malva",mood:"smile",text:"Y mi té. Un té no le hace mal a nadie."}],
        contraLines:[
         {who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"En su sangre había [r]clonazepam[/r]. Y el frasco del baño tiene receta a su nombre."},
-        {who:"malva",mood:"shock",anim:"hit",text:"..."}]},
+        {who:"malva",mood:"panic",anim:"hit",text:"..."}]},
     ]},
   m4: {who:"malva", title:"Cualquiera tiene el pelo largo", music:"persecucion",
     loopHint:[{who:"ines",mood:"think",text:"(¿Dónde estaba Bárbara a las 23:41?)"}],
     statements:[
-      {id:"b", mood:"angry", text:"¡La silueta del video puede ser cualquiera! ¡La señora Plusvalía tiene el pelo largo!", contra:"boleta",
+      {id:"b", mood:"c2", text:"¡La silueta del video puede ser cualquiera! ¡La señora Plusvalía tiene el pelo largo!", contra:"boleta",
        press:[{who:"ines",text:"¿La señora Plusvalía?"},{who:"malva",mood:"angry",text:"¡Ella quería la casa más que nadie!"}],
        contraLines:[
         {who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"La señora Plusvalía salió en taxi a las 23:14 y volvió a las 00:28."},
@@ -402,8 +402,8 @@ const SCRIPT = [
    prompt:"Presenta la prueba de por qué Malva no podía esperar.",
    ok:[{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"Porque ya había vendido la casona. Cobró 40 millones de adelanto."},
        {who:"ines",mood:"serious",text:"Si su padre cambiaba el testamento al día siguiente, perdía todo. Y debía todo."},
-       {who:"malva",mood:"angry",text:"¡Él me iba a dejar sin nada por un cabro que conoció ayer!"}]},
-  {cmd:"breakdown", who:"malva"},
+       {who:"malva",mood:"c7",text:"¡Él me iba a dejar sin nada por un cabro que conoció ayer!"}]},
+  {cmd:"breakdown", who:"malva", seq:["c3","c4","c5","c6","c7","c8"]},
   {who:"fiscal",mood:"serious",text:"La fiscalía retira los cargos contra el señor Fuegos. Y formalizará a Malva Ferrada."},
   {who:"jueza",mood:"smile",text:"Ahora sí estoy contenta. Este tribunal declara al acusado, Tadeo Fuegos..."},
   {cmd:"verdict", text:"NO CULPABLE", good:true},
@@ -411,7 +411,7 @@ const SCRIPT = [
   // ===== FINAL =====
   {cmd:"location", text:"Hospital Van Buren", pos:"hospital"},
   {who:"cote",pos:"hospital",mood:"excited",text:"¡Ganaste! ¡Y sin mí! No sé si alegrarme o sentirme ofendida."},
-  {who:"rocky",pos:"hospital",mood:"down",text:"Señorita... yo fui el de la camioneta. Vengo a pedirle perdón. Y a entregarme por lo suyo."},
+  {who:"rocky",pos:"hospital",mood:"beg",text:"Señorita... yo fui el de la camioneta. Vengo a pedirle perdón. Y a entregarme por lo suyo."},
   {who:"cote",pos:"hospital",mood:"serious",text:"...Gracias por venir. De verdad."},
   {who:"tadeo",pos:"hospital",mood:"down",text:"Abogado. Creo que me voy a quedar en Valparaíso. Es lo único que tengo de él."},
   {who:"ines",pos:"hospital",mood:"smile",text:"(Hoy también alguien se dio el trabajo de escuchar.)"},
