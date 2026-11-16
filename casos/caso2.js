@@ -564,6 +564,54 @@ const CROSS = {
     ]},
 };
 
+/* ---------- INTERROGATORIOS DE LA FISCALÍA (Penna pregunta, Justo puede protestar) ---------- */
+const DIRECT = {
+  p_aurelio: {title:"La fiscalía interroga a Aurelio Mirón", music:"interrogatorio",
+    tutorial:[{who:"ines",mood:"think",text:"(Penna va a interrogar a su testigo. Si le sopla la respuesta o da algo por hecho: protesto.)"}],
+    questions:[
+      {who:"fiscal", text:"Señor Mirón, ¿desde dónde observaba la calle esa noche?",
+       a:[{who:"aurelio",mood:"smug",text:"Desde mi ventana, en el segundo piso. Con mis binoculares alemanes."}]},
+      {who:"fiscal", pose:"point", text:"Y desde ahí vio claramente al acusado en la ventana, ¿no es así?", bad:"sugiere",
+       a:[{who:"aurelio",mood:"smile",text:"¡Claro que sí! Clarito."}],
+       miss:[{who:"ines",mood:"sweat",text:"(Espera. Penna le dictó la respuesta. Aurelio solo tuvo que decir «sí».)"},
+             {who:"ines",mood:"serious",text:"(Eso se protesta. Otra vez, con atención.)"}],
+       ok:[{who:"jueza",mood:"serious",text:"Ha lugar. Fiscal, no le sople las respuestas a su testigo."},
+           {who:"fiscal",mood:"smug",pose:"cafe",text:"Veo que sigue estudiando, Valdivia. Reformulo: ¿qué vio después de los disparos?"},
+           {who:"aurelio",mood:"think",text:"Vi... a alguien. Con algo en la mano. Eso lo cuento bien en mi testimonio."}]},
+      {who:"fiscal", text:"¿Cuántos disparos escuchó?",
+       a:[{who:"aurelio",mood:"shock",text:"¡Dos! Pum, pum. Casi juntos."}],
+       noObj:[{who:"ines",mood:"down",text:"(Era una pregunta limpia. No le sopló nada.)"}]},
+      {who:"fiscal", mood:"smug", text:"¿Cuánto tardó el acusado en esconder el arma en su mochila?", bad:"supone",
+       a:[{who:"aurelio",mood:"confused",text:"Eh... ¿un ratito?"}],
+       miss:[{who:"ines",mood:"think",text:"(Un momento. ¿Quién probó que fue Tadeo el que escondió el arma? Nadie.)"},
+             {who:"ines",mood:"serious",text:"(Penna lo metió en la pregunta como si fuera un hecho. Eso se protesta.)"}],
+       ok:[{who:"jueza",mood:"serious",text:"Ha lugar. Nadie ha probado todavía quién escondió el arma."},
+           {who:"fiscal",pose:"cafe",text:"Retiro la pregunta. *sorbo*"}]},
+    ],
+    end:[{who:"fiscal",mood:"smug",text:"No más preguntas. Que el testigo cuente lo que vio, con sus palabras."}]},
+
+  p_malva: {title:"La fiscalía interroga a Malva Ferrada", music:"interrogatorio",
+    tutorial:[{who:"ines",mood:"think",text:"(Penna va a intentar salvar a su testigo. Atento a cada pregunta.)"}],
+    questions:[
+      {who:"fiscal", text:"Señora Ferrada, ¿dónde estaba usted a las 23:40?",
+       a:[{who:"malva",mood:"sweat",text:"En la cocina. Lavando las tazas del té."}]},
+      {who:"fiscal", mood:"smug", text:"Usted, una hija devota, jamás le haría daño a su padre, ¿verdad?", bad:"sugiere",
+       a:[{who:"malva",mood:"down",text:"Jamás. Era mi papá."}],
+       miss:[{who:"ines",mood:"sweat",text:"(Le puso la respuesta en la boca. Debí protestar.)"}],
+       ok:[{who:"jueza",mood:"serious",text:"Ha lugar. Fiscal, esa pregunta contesta sola."},
+           {who:"fiscal",mood:"sweat",text:"...Retiro la pregunta."}]},
+      {who:"fiscal", text:"¿Su padre tenía enemigos?",
+       a:[{who:"malva",text:"Prestaba plata a interés. Medio cerro le debía."}],
+       noObj:[{who:"ines",mood:"down",text:"(Era una pregunta abierta. No había trampa.)"}]},
+      {who:"fiscal", text:"Cuando vio al acusado con la pistola, ¿qué hizo usted?", bad:"supone",
+       a:[{who:"malva",mood:"sweat",text:"Me... me escondí. Tenía mucho miedo."}],
+       miss:[{who:"ines",mood:"think",text:"(Ella nunca dijo que vio a Tadeo con una pistola. Penna lo dio por hecho.)"}],
+       ok:[{who:"jueza",mood:"serious",text:"Ha lugar. La testigo nunca declaró haber visto una pistola en manos del acusado."},
+           {who:"fiscal",mood:"angry",text:"...No más preguntas, Su Señoría."}]},
+    ],
+    end:[{who:"jueza",mood:"serious",text:"La defensa puede contrainterrogar."}]},
+};
+
 /* ---------- Guion ---------- */
 const SCRIPT = [
   // ===== CINEMÁTICA (imágenes pendientes: por ahora pantalla negra con texto) =====
@@ -612,6 +660,7 @@ const SCRIPT = [
   {cmd:"cross", ref:"e1"},
   {who:"jueza",mood:"think",text:"Dos tiradores, entonces. Uno afuera y otro adentro. Siguiente testigo."},
   {who:"aurelio",mood:"smug",text:"Aurelio Mirón. Vecino. Testigo ocular, como dicen en la tele."},
+  {cmd:"direct", ref:"p_aurelio"},
   {cmd:"cross", ref:"a1"},
   {cmd:"present", who:"jueza", mood:"think", tab:"perfiles", answer:"tadeo",
    text:"¿Una melena? Abogado, ¿adónde quiere llegar?",
@@ -638,6 +687,7 @@ const SCRIPT = [
   {who:"jueza",mood:"serious",text:"Se reanuda la audiencia. Espero que esta vez tengan hechos."},
   {who:"ines",mood:"serious",text:"La defensa llama a Rodrigo Saavedra."},
   {cmd:"cross", ref:"r1"},
+  {cmd:"direct", ref:"p_malva"},
   {cmd:"cross", ref:"m2"},
   {cmd:"cross", ref:"m3"},
   {cmd:"cross", ref:"m4"},
@@ -674,5 +724,5 @@ const SCRIPT = [
 
 return {titulo:"Dos disparos en Cerro Concepción", numero:2,
   intro:"Dos disparos en la misma noche. Un mochilero dormido. Y Coté en el hospital: esta vez, Justo está solo. (Borrador jugable.)",
-  CHARS, BGLABELS, EVIDENCE, EVIMG, EVX, PROFILES, INV, CROSS, SCRIPT};
+  CHARS, BGLABELS, EVIDENCE, EVIMG, EVX, PROFILES, INV, CROSS, DIRECT, SCRIPT};
 })();
