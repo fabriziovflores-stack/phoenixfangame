@@ -64,7 +64,7 @@ const PROFILES = [
   {id:"malva",  who:"malva",  name:"Malva Ferrada",    desc:"Hija de la víctima. Administra el hospedaje. Amable, siempre con delantal.", hidden:true},
   {id:"barbara",who:"barbara",name:"Bárbara Plusvalía",desc:"Representante de una cadena hotelera. Quería comprar la casona.", hidden:true},
   {id:"aurelio",who:"aurelio",name:"Aurelio Mirón",    desc:"Vecino de enfrente. 70 años. Binoculares.", hidden:true},
-  {id:"rocky",  who:"rocky",  name:"Rodrigo «Rocky» Saavedra", desc:"Mecánico. Le debía plata a Leonel. Disparó y huyó. Atropelló a Coté.", hidden:true},
+  {id:"rocky",  who:"rocky",  name:"Rodrigo «Rocky» Saavedra", desc:"Mecánico. Le debía plata a Leonel. Disparó y huyó en su camioneta.", hidden:true},
 ];
 
 /* ---------- INVESTIGACIÓN (formato en js/investigacion.js) ---------- */
@@ -175,7 +175,7 @@ const INV = {
           {id:"e_carpeta", who:"eduardo", t:"La carpeta de investigación", req:{flags:["pasar"]}, lines:[
             {who:"eduardo",evidence:"autopsia",text:"La autopsia. Dos heridas."},
             {who:"eduardo",evidence:"video",text:"El video de la cámara municipal. La camioneta del mecánico, huyendo."},
-            {who:"eduardo",mood:"down",evidence:"fotocam",text:"Y la camioneta. La misma que... lo de su amiga. Lo siento."},
+            {who:"eduardo",evidence:"fotocam",text:"Y la camioneta del mecánico, incautada. Esa noche bajó como bala."},
             {who:"eduardo",mood:"sweat",flag:"edu_fue",text:"Ya. Me voy a la comisaría a dejar esto. Si quiere pelear, el fiscal está allá."},
             {who:"ines",mood:"think",text:"(Se fue. Puedo revisar la casa con calma... y después, ir a ver a Penna.)"}]},
           {id:"e_papa", who:"eduardo", t:"El caso de mi papá", req:{flags:["e_escena"]}, lines:[
@@ -305,7 +305,7 @@ const INV = {
           {id:"p_acusado", who:"fiscal", t:"Tadeo", lines:[
             {who:"fiscal",text:"Llegó antier. Esa misma noche hay un muerto en la puerta. No creo en coincidencias."}]},
           {id:"p_rocky", who:"fiscal", t:"El de la camioneta", req:{ev:["video"]}, lines:[
-            {who:"fiscal",text:"Rodrigo Saavedra. Detenido por amenazas y por el atropello de su amiga."},
+            {who:"fiscal",text:"Rodrigo Saavedra. Detenido por amenazas. Y por otras cosas que no le incumben, colega."},
             {who:"fiscal",mood:"disdain",text:"Su bala está en el marco. No mató a nadie. No me sirve de culpable."}]},
         ],
         present:{fiscal:{
@@ -365,9 +365,10 @@ const INV = {
             {who:"rocky",mood:"sweat",text:"Vi el fogonazo detrás de él. Arranqué. ¿Qué iba a hacer?"}]},
           {id:"r_deuda", who:"rocky", t:"Su deuda con Leonel", lines:[
             {who:"rocky",mood:"down",text:"Le debía cinco palos. Me iba a quitar el taller. Es lo único que tengo."}]},
-          {id:"r_cote", who:"rocky", t:"La mujer que atropelló", lines:[
-            {who:"rocky",mood:"down",text:"...No la vi. Le juro que no la vi. Se me cruzó y yo iba arrancando."},
-            {who:"ines",mood:"angry",text:"(Se llama Coté. Y es mi amiga.)"}]},
+          {id:"r_huida", who:"rocky", t:"La huida", lines:[
+            {who:"rocky",mood:"sweat",text:"Bajé a toda velocidad. No sé ni por dónde. Iba temblando."},
+            {who:"rocky",mood:"down",text:"En Templeman choqué con algo... un tarro de basura, creo. No paré."},
+            {who:"ines",mood:"think",text:"(Templeman. ¿Por qué me suena esa esquina?)"}]},
         ],
         present:{
           rocky:{fotocam:[
@@ -402,6 +403,7 @@ const INV = {
             {who:"ines",mood:"think",evidence:"tarjeta",text:"(La cámara del tablero. Con su tarjeta de memoria.)"},
             {sfx:"badum",who:"ines",mood:"shock",anim:"hit",text:"(23:41... un fogonazo en la puerta. Y otro, dos segundos después, dentro del pasillo.)"},
             {who:"ines",mood:"serious",text:"(Una silueta de pelo largo. Con delantal.)"},
+            {who:"ines",mood:"think",text:"(La grabación sigue... pero esto es lo que necesito. El resto, que lo vea el tribunal.)"},
             {who:"ines",mood:"serious",text:"(Tengo que volver a la casona. Ahora.)"}]},
           {id:"banco", t:"El banco de trabajo", lines:[
             {who:"ines",mood:"think",text:"(Grasa, herramientas... y una foto de Rocky con una niña chica. ¿Su hija?)"}]},
@@ -518,7 +520,17 @@ const CROSS = {
         {who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"Su propia cámara lo grabó. El segundo fogonazo salió [r]del pasillo[/r]."},
         {who:"ines",mood:"serious",text:"A espaldas del señor Ferrada. Nadie le disparó a usted: le dispararon a él."},
         {who:"rocky",mood:"shock",anim:"hit",text:"...Entonces yo no lo maté."},
-        {who:"fiscal",mood:"sweat",text:"Una silueta de pelo largo. Con... delantal."}]},
+        {who:"fiscal",mood:"sweat",text:"Una silueta de pelo largo. Con... delantal."},
+        {who:"jueza",mood:"serious",text:"Que se reproduzca la grabación completa. Hasta el final."},
+        {who:"ines",mood:"think",text:"(La camioneta arranca. Baja el cerro. Dobla en Templeman...)"},
+        {who:"ines",mood:"think",text:"(En las luces aparece una mujer cruzando. Con un moño rosado.)"},
+        {sfx:"badum",who:"ines",mood:"shock",anim:"hit",music:null,text:"(...Coté.)"},
+        {who:"ines",mood:"down",text:"(El «tarro de basura». Era ella.)"},
+        {who:"rocky",mood:"down",read:["rocky","Fue él quien atropelló a Coté en Templeman y no se detuvo."],text:"...¿Esa es su amiga, abogado? Yo... no sabía. Le juro que no sabía."},
+        {who:null,text:"Perfil actualizado: Rodrigo Saavedra."},
+        {who:"fiscal",mood:"serious",text:"La fiscalía lo sabía, Su Señoría. Ese hecho se juzgará aparte. Hoy juzgamos un homicidio."},
+        {who:"ines",mood:"serious",text:"(Respira, Justo. Coté está bien. Y Tadeo te necesita entero.)"},
+        {who:"jueza",mood:"serious",music:"persecucion",text:"Continuemos. Que vuelva a declarar la señora Malva Ferrada."}]},
     ]},
   m2: {who:"malva", title:"Mi padre odiaba las armas", music:"persecucion",
     loopHint:[{who:"ines",mood:"think",text:"(Revisa todo lo que encontré ayer.)"}],
@@ -567,6 +579,8 @@ const SCRIPT = [
   {who:"ines",pos:"oficina",mood:"shock",anim:"hit",text:"¿Coté? ¿Atropellada? ¡Voy para allá!"},
   {cmd:"location", text:"Hospital Van Buren", pos:"hospital"},
   {who:"cote",pos:"hospital",mood:"sweat",text:"Tranquilo. Pierna quebrada, nada más. Ya me puse la anestesia de chiste."},
+  {who:"ines",pos:"hospital",mood:"serious",text:"¿Quién fue? ¿Viste algo?"},
+  {who:"cote",pos:"hospital",mood:"down",text:"Unas luces que me encandilaron. Ni el color de la camioneta vi. Y no paró."},
   {who:"ines",pos:"hospital",mood:"down",text:"Coté..."},
   {who:"cote",pos:"hospital",mood:"serious",text:"Mira la tele. Detuvieron a un mochilero por un asesinato. A dos cuadras de donde me pasó esto."},
   {who:"cote",pos:"hospital",mood:"serious",text:"Anda. Ese cabro no tiene a nadie. Y yo no puedo acompañarte."},
@@ -608,7 +622,6 @@ const SCRIPT = [
   {who:"jueza",mood:"serious",text:"Se reanuda la audiencia. Espero que esta vez tengan hechos."},
   {who:"ines",mood:"serious",text:"La defensa llama a Rodrigo Saavedra."},
   {cmd:"cross", ref:"r1"},
-  {who:"jueza",mood:"serious",text:"Que vuelva a declarar la señora Malva Ferrada."},
   {cmd:"cross", ref:"m2"},
   {cmd:"cross", ref:"m3"},
   {cmd:"cross", ref:"m4"},

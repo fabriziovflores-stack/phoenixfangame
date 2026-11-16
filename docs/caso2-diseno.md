@@ -140,3 +140,9 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
 - Fondos: oficina de Justo, hospital, locutorio, casona (entrada y pasillo), pieza de Tadeo, oficina del hospedaje,
   casa de Aurelio, comisaría, taller de Rocky, notaría.
 - Hojas: Tadeo, Malva (con quiebre), Rocky, Aurelio, Bárbara. Coté en el hospital (opcional: hoja con yeso).
+
+## Revelación del atropello (decisión del dueño)
+Justo **no sabe** que el conductor que atropelló a Coté es Rocky hasta el juicio final. Coté no vio la camioneta;
+Eduardo y Penna no lo mencionan (Penna: «otras cosas que no le incumben»); Rocky dice que chocó «un tarro de basura»
+en Templeman (pista). En el taller Justo solo ve la parte del pasillo. En el juicio final la jueza ordena ver la
+grabación completa: la camioneta atropella a una mujer con moño rosado. Revelación, perfil de Rocky actualizado.
