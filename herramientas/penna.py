@@ -59,29 +59,50 @@ def place(k,T):
 F={}; log=[]
 for k in range(40):
     F[k+1],sc=place(k, PROF if k<24 else FRON); log.append((k+1,sc))
-def boxof(ca,cb):
-    d=np.abs(np.array(F[ca])[...,:3].astype(int)-np.array(F[cb])[...,:3].astype(int)).sum(2)
-    a=np.array(F[ca])[...,3]>0; ys=np.where(a.any(1))[0]; t=ys[0]
-    d[:t+30]=0; d[t+75:]=0; m=d>90
-    yy,xx=np.where(m); cy,cx=int(np.median(yy)),int(np.median(xx))
-    return (max(cy-6,0),cy+7,max(cx-9,0),cx+10)
-BP=boxof(1,3); BF=boxof(25,26)
-def talk(closed,opn,box):
-    a=np.array(F[closed]); b=np.array(F[opn]); y0,y1,x0,x1=box
+def shift_to(a,b):
+    """Corre el cuadro b unos píxeles para que su cara calce con la de a."""
+    al=a[...,3]>0; t=np.where(al.any(1))[0][0]; best=(1e18,0,0)
+    ga=a[t:t+80,...,:3].astype(int)
+    for dy in range(-8,9):
+        for dx in range(-8,9):
+            bb=np.roll(np.roll(b,dy,0),dx,1)[t:t+80,...,:3].astype(int)
+            v=np.abs(ga-bb).sum(2).mean()
+            if v<best[0]: best=(v,dx,dy)
+    return np.roll(np.roll(b,best[2],0),best[1],1)
+def mouthmask(a,b):
     d=np.abs(a[...,:3].astype(int)-b[...,:3].astype(int)).sum(2)
-    m=np.zeros(a.shape[:2],bool); m[y0:y1,x0:x1]=(d[y0:y1,x0:x1]>60)|((a[y0:y1,x0:x1,3]==0)!=(b[y0:y1,x0:x1,3]==0))
+    t=np.where((a[...,3]>0).any(1))[0][0]
+    m=((d>80)|((a[...,3]>0)!=(b[...,3]>0))); m[:t+38]=0; m[t+84:]=0
+    al=a[...,3]>0
+    if FRONT_NOW[0]:                                   # de frente: la boca está al centro de la cabeza
+        xs=np.where(al[t:t+40].any(0))[0]; cx=(xs.min()+xs.max())//2; m[:,:cx-17]=0; m[:,cx+18:]=0
+    else:                                              # de perfil (mira a la izquierda): la boca está bajo la punta del bigote
+        xs=np.where(al[t+35:t+60].any(0))[0]; x0=xs.min(); m[:,:x0]=0; m[:,x0+34:]=0
+    m8=cv2.dilate(m.astype(np.uint8),np.ones((3,3),np.uint8))
+    n,lab,st,_=cv2.connectedComponentsWithStats(m8,8)
+    if n<2: return np.zeros_like(m)
+    k=max(range(1,n),key=lambda i:st[i,4]); x,y,w,h=st[k,:4]
+    w,h=min(w,34),min(h,22)                                              # nunca más grande que una boca (desde el bigote hacia abajo)
+    box=np.zeros_like(m); box[y:y+h,x:x+w]=True
+    return cv2.dilate((m&box).astype(np.uint8),np.ones((3,3),np.uint8)).astype(bool)&box
+FRONT_NOW=[False]
+def talk(closed,opn,box=None):
+    """Hablar = cuadro cerrado + solo la boca del cuadro abierto (alineado a la cara)."""
+    FRONT_NOW[0]=closed>=25
+    a=np.array(F[closed]); b=shift_to(a,np.array(F[opn])); m=mouthmask(a,b)
     o=a.copy(); o[m]=b[m]; return Image.fromarray(o)
+BP=BF=None
 # nombre: (cuadro cerrado, cuadro con la boca abierta o None)
-P={'base':(1,3),'serious':(2,3),'smug':(4,3),'smile':(6,3),'proud':(7,None),'proud2':(8,None),'think':(9,3),'think2':(10,3),
+P={'base':(1,3),'serious':(2,3),'smug':(4,3),'smile':(6,3),'proud':(7,None),'proud2':(8,None),'think':(9,None),'think2':(10,None),
    'cross':(11,12),'gesture':(13,14),'point':(15,16),'sweat':(17,3),'shock':(18,None),'angry':(19,20),'facepalm':(21,None),
    'down':(22,None),'cuff':(23,3),'cross2':(24,3)}
-FR={'base':(25,26),'smug':(28,27),'serious':(29,26),'think':(30,26),'think2':(31,26),'cross':(32,26),'gesture':(33,26),
+FR={'base':(25,26),'smug':(28,27),'serious':(29,26),'think':(30,None),'think2':(31,None),'cross':(32,26),'gesture':(33,26),
     'smile':(35,34),'proud':(36,None),'shock':(37,None),'angry':(38,39),'down':(40,None)}
 def save(n,im): im.save(f'{OUT}/{n}.png',optimize=True)
 for pre,TAB,BOX in (('',P,BP),('frente_',FR,BF)):
     for n,(c,o) in TAB.items():
         save(pre+n,F[c]); t=n+'Talk' if n!='base' else 'talk'
-        save(pre+t, F[c] if o is None else (F[o] if (c,o) in ((11,12),(13,14),(15,16),(19,20)) else talk(c,o,BOX)))
+        save(pre+t, F[c] if o is None else talk(c,o,BOX))       # siempre: cuadro cerrado + solo la boca (el cuerpo no se mueve)
 b0=F[1]; l,t,r_,b_=b0.getbbox(); hb=b0.crop((0,t,CW,t+40)).getbbox(); cx=(hb[0]+hb[2])//2
 b0.crop((cx-33,t,cx+33,t+70)).transpose(Image.FLIP_LEFT_RIGHT).save(f'{OUT}/face.png')
 print(log)
