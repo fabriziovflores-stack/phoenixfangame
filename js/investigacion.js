@@ -50,6 +50,12 @@ function invSyncFlags(){
 function invMenu(){
   if(!X||!X.inv) return;
   invSyncFlags();
+  const kn=G.inv.known=G.inv.known||{};                    // lugares que se acaban de abrir: aviso
+  const nuevos=Object.keys(X.inv.places).filter(id=>!kn[id] && reqOk(X.inv.places[id].req));
+  nuevos.forEach(id=>kn[id]=1);
+  const avisar=nuevos.filter(id=>id!==G.inv.place);
+  if(G.inv.knownInit && avisar.length){ toast("🚶 Nuevo lugar: "+avisar.map(id=>X.inv.places[id].name).join(", ")); SFX.ding(); }
+  G.inv.knownInit=1;
   if(reqOk(X.inv.done)){                                   // ¿ya se reunió lo necesario?
     const done=X.done, end=X.inv.end||[]; X=null; G.inv=null; play(end, done); return;
   }

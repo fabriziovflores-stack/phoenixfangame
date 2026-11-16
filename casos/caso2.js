@@ -78,7 +78,7 @@ const INV = {
          {who:"ines",mood:"down",text:"(Coté sabría qué preguntar. Hoy tengo que saberlo yo.)"},
          {who:"ines",mood:"serious",text:"(Mañana es el juicio. No hay más tiempo.)"}],
     places:{
-      locutorio:{name:"Locutorio de la comisaría", moves:["casona","comisaria"],
+      locutorio:{name:"Locutorio de la comisaría", moves:["casona","comisaria"],   // la casona se abre cuando Tadeo cuenta dónde fue
         people:[{who:"tadeo", back:[{who:"tadeo",mood:"down",text:"¿Volvió, abogado? Aquí sigo. No me dejan ir a ninguna parte."}]}],
         enter:[{who:"tadeo",mood:"sweat",meet:"tadeo",text:"...¿Usted es el abogado? Me dijeron que venía uno."},
                {who:"ines",text:"Justo Valdivia, defensor público. Vengo a escucharte. Desde el principio."}],
@@ -91,7 +91,8 @@ const INV = {
             {who:"tadeo",text:"Me tomé la pastilla del mareo y me acosté temprano. No escuché nada."},
             {who:"tadeo",mood:"shock",evidence:"pistola",text:"Desperté con un carabinero encima. Dicen que en mi mochila había una pistola."},
             {who:"ines",mood:"think",text:"(Una 9 mm. Disparada y limpia. ¿Quién guarda un arma así en su propia mochila?)"},
-            {who:"tadeo",mood:"down",flag:"sabe_casona",text:"Fue en la Casona Ferrada, en Cerro Concepción. Ahí arrendaba una pieza."}]},
+            {who:"tadeo",mood:"down",flag:"sabe_casona",text:"Fue en la Casona Ferrada, en Cerro Concepción. Ahí arrendaba una pieza."},
+            {who:"ines",mood:"serious",text:"(La Casona Ferrada. Tengo que ver ese lugar con mis propios ojos.)"}]},
           {id:"t_casona", who:"tadeo", t:"La casona", req:{flags:["sabe_casona"]}, lines:[
             {who:"tadeo",mood:"smile",text:"Linda casa. La señora Malva me recibió con un té de bienvenida."},
             {who:"tadeo",text:"Don Leonel, el dueño, casi no habló. Pero me miraba raro."},
@@ -130,17 +131,19 @@ const INV = {
             {who:"ines",mood:"think",text:"(Cinta policial. Y en el marco... algo brilla. Desde aquí no alcanzo a verlo.)"}]},
           {id:"calle", t:"La calle", area:[28,10,36,120], lines:[
             {who:"ines",mood:"think",text:"(Cerro Concepción. Adoquines, casas de colores, una escalera que baja al plan.)"},
-            {who:"ines",mood:"shock",flag:"vio_cortina",text:"(Al frente, en el segundo piso, una cortina se movió. Alguien está mirando.)"}]},
+            {who:"ines",mood:"shock",flag:"vio_cortina",text:"(Al frente, en el segundo piso, una cortina se movió. Alguien está mirando.)"},
+            {who:"ines",mood:"think",text:"(Si ese vecino mira todo el día, quizás vio algo esa noche.)"}]},
           {id:"marco", t:"El marco de la puerta", area:[0,0,28,172], req:{flags:["pasar"]}, lines:[
             {who:"ines",mood:"think",evidence:"bala38",text:"(Una bala incrustada en el marco. Calibre .38, de revólver.)"},
             {who:"ines",mood:"think",text:"(Disparada desde la calle, de frente. Le pasó rozando a don Leonel y terminó aquí.)"}],
            again:[{who:"ines",mood:"think",text:"(El agujero de la bala .38. Ya me lo llevé.)"}]},
           {id:"pasillo", t:"El pasillo", area:[112,8,72,124], req:{flags:["pasar"]}, lines:[
             {who:"ines",mood:"think",text:"(Largo y oscuro, justo detrás de la puerta. Aunque afuera haya luz, aquí no llega.)"},
-            {who:"ines",mood:"think",flag:"vio_pasillo",text:"(Al fondo, la pieza de Tadeo. A un lado, una puerta con un cartel: «Oficina».)"}]},
+            {who:"ines",mood:"think",flag:"vio_pasillo",text:"(Al fondo, la pieza de Tadeo. A un lado, una puerta con un cartel: «Oficina».)"},
+            {who:"ines",mood:"think",text:"(Se oye a alguien adentro. ¿Será la familia?)"}]},
           {id:"mostrador", t:"El mostrador", area:[186,78,70,84], req:{flags:["pasar"]}, lines:[
             {who:"ines",mood:"think",evidence:"libro",text:"(El libro de huéspedes. Esa noche había dos: T. Fuegos... y B. Plusvalía.)"},
-            {who:"ines",mood:"think",text:"(¿Plusvalía? ¿Quién es esa?)"}]},
+            {who:"ines",mood:"think",text:"(¿Plusvalía? Otra huésped esa noche. Tengo que saber quién es.)"}]},
           {id:"perchero", t:"El perchero", area:[72,36,30,98], req:{flags:["pasar"]}, lines:[
             {who:"ines",mood:"down",text:"(Una chaqueta de hombre, gastada. La de don Leonel. La colgó para abrir la puerta.)"}]},
           {id:"flores", t:"Las flores", area:[204,54,28,30], lines:[
@@ -152,13 +155,14 @@ const INV = {
             {who:"eduardo",mood:"write",flag:"e_escena",text:"Y en la mochila del cabro, la pistola. Caso cerrado, dice el fiscal."}]},
           {id:"e_pasar", who:"eduardo", t:"Dejarme pasar", req:{flags:["e_escena"]}, lines:[
             {who:"ines",text:"La defensa tiene derecho a ver la escena. Y la carpeta de investigación."},
-            {who:"eduardo",mood:"sweat",flag:"pasar",text:"...Ya, ya. Pero no toque nada. Esta vez medí todo."}]},
+            {who:"eduardo",mood:"sweat",flag:"pasar",text:"...Ya, ya. Pero no toque nada. Esta vez medí todo."},
+            {who:"eduardo",text:"La pieza del cabro es la del fondo. Ahí encontramos la pistola."}]},
           {id:"e_carpeta", who:"eduardo", t:"La carpeta de investigación", req:{flags:["pasar"]}, lines:[
             {who:"eduardo",evidence:"autopsia",text:"La autopsia. Dos heridas."},
             {who:"eduardo",evidence:"video",text:"El video de la cámara municipal. La camioneta del mecánico, huyendo."},
             {who:"eduardo",mood:"down",evidence:"fotocam",text:"Y la camioneta. La misma que... lo de su amiga. Lo siento."},
-            {who:"eduardo",mood:"sweat",flag:"edu_fue",text:"Ya. Me voy a la fiscalía a dejar el informe. No toque nada, ¿ah?"},
-            {who:"ines",mood:"think",text:"(Se fue. Ahora puedo revisar con calma.)"}]},
+            {who:"eduardo",mood:"sweat",flag:"edu_fue",text:"Ya. Me voy a la comisaría a dejar esto. Si quiere pelear, el fiscal está allá."},
+            {who:"ines",mood:"think",text:"(Se fue. Puedo revisar la casa con calma... y después, ir a ver a Penna.)"}]},
           {id:"e_papa", who:"eduardo", t:"El caso de mi papá", req:{flags:["e_escena"]}, lines:[
             {who:"eduardo",mood:"down",text:"Me acuerdo de su viejo. No es un caso que se me olvide."},
             {who:"ines",mood:"down",text:"(Algún día le voy a preguntar más. Hoy no.)"}]},
@@ -270,7 +274,7 @@ const INV = {
           pistola:[{who:"aurelio",mood:"shock",text:"¡Guarde eso, por Dios! ¡Que me da algo!"}],
           default:[{who:"aurelio",mood:"confused",text:"¿Y eso qué es? Déjeme ver con los binoculares... no, igual no sé."}]}}},
 
-      comisaria:{name:"Comisaría", moves:["locutorio","casona"],
+      comisaria:{name:"Comisaría", req:{flags:["edu_fue"]}, moves:["locutorio","casona"],
         examine:[
           {id:"c_mural", t:"El diario mural", area:[30,0,92,62], lines:[
             {who:"ines",mood:"think",text:"(Fotos de otros casos. Ninguno resuelto todavía, parece.)"}]},
@@ -320,13 +324,14 @@ const INV = {
                     {who:"ines",mood:"shock",anim:"hit",damage:true,text:"(Me equivoqué. Se cerró más.)"}],
              broken:[{who:"tadeo",mood:"cry",text:"Mi mamá me dejó una carta. Vine a conocerlo. Él me reconoció por la foto."},
                      {who:"tadeo",mood:"cry",evidence:"carta",text:"Me dijo «mañana arreglamos todo, hijo». Fue la única vez que me dijo hijo."},
-                     {who:"ines",mood:"down",text:"(Lo conoció un día. Y esa misma noche se lo mataron.)"}]},
+                     {who:"ines",mood:"down",text:"(Lo conoció un día. Y esa misma noche se lo mataron.)"},
+                     {who:"ines",mood:"serious",text:"(Necesito saber qué dicen los informes nuevos. A la comisaría.)"}]},
            lines:[{who:"tadeo",text:"Ya le conté todo, abogado."}]},
           {id:"t_te", who:"tadeo", t:"El té de esa noche", lines:[
             {who:"tadeo",text:"La señora Malva me lo llevó a la pieza. Insistió en que me lo tomara caliente."},
             {who:"tadeo",mood:"think",text:"Era más amargo que el del primer día. Pensé que era otra hierba."}]},
         ]},
-      locutorio_rocky:{name:"Locutorio — Rocky Saavedra", bg:"locutorio", moves:["locutorio","comisaria"],
+      locutorio_rocky:{name:"Locutorio — Rocky Saavedra", bg:"locutorio", req:{flags:["rocky_pide"]}, moves:["locutorio","comisaria"],
         people:[{who:"rocky", hello:[{who:"rocky",mood:"angry",text:"¿Usted es el abogado del cabro?"},
                                      {who:"rocky",mood:"angry",meet:"rocky",text:"¡Yo no maté a nadie, ¿ya?! ¡A nadie!"}],
                               back:[{who:"rocky",mood:"down",text:"¿Otra vez? Ya le dije todo."}]}],
@@ -347,10 +352,10 @@ const INV = {
             {who:"rocky",mood:"down",flag:"taller",text:"Pero si sirve pa' algo... la llave está en mi chaqueta."}],
             default:[{who:"rocky",mood:"angry",text:"¿Y eso qué, abogado?"}]},
         }},
-      comisaria:{name:"Comisaría", moves:["locutorio","locutorio_rocky","casona","taller"],
+      comisaria:{name:"Comisaría", req:{flags:["sil:madre3"]}, moves:["locutorio","locutorio_rocky","casona","taller"],
         people:[
           {who:"eduardo", hello:[{who:"eduardo",mood:"sweat",text:"Valdivia. Llegaron informes nuevos. No le van a gustar al fiscal."},
-                                 {who:"eduardo",text:"Y el mecánico está en el locutorio. Pidió hablar con usted, fíjese."}],
+                                 {who:"eduardo",flag:"rocky_pide",text:"Y el mecánico está en el locutorio. Pidió hablar con usted, fíjese."}],
                           back:[{who:"eduardo",text:"¿Necesita algo más? Rápido, que me miran feo."}]}],
         talk:[
           {id:"d_polvora", who:"eduardo", t:"El examen de pólvora", lines:[
@@ -372,15 +377,17 @@ const INV = {
           {id:"cajon", t:"La caja de herramientas", lines:[
             {who:"ines",mood:"think",evidence:"tarjeta",text:"(La cámara del tablero. Con su tarjeta de memoria.)"},
             {who:"ines",mood:"shock",anim:"hit",text:"(23:41... un fogonazo en la puerta. Y otro, dos segundos después, dentro del pasillo.)"},
-            {who:"ines",mood:"serious",text:"(Una silueta de pelo largo. Con delantal.)"}]},
+            {who:"ines",mood:"serious",text:"(Una silueta de pelo largo. Con delantal.)"},
+            {who:"ines",mood:"serious",text:"(Tengo que volver a la casona. Ahora.)"}]},
           {id:"banco", t:"El banco de trabajo", lines:[
             {who:"ines",mood:"think",text:"(Grasa, herramientas... y una foto de Rocky con una niña chica. ¿Su hija?)"}]},
           {id:"calendario", t:"El calendario", lines:[
             {who:"ines",mood:"think",text:"(De 2019. Nadie le ha dado vuelta la hoja en años.)"}]},
         ]},
-      casona:{name:"Casona Ferrada", moves:["oficinahostal","comisaria","locutorio"],
+      casona:{name:"Casona Ferrada", req:{ev:["tarjeta"]}, moves:["oficinahostal","comisaria","locutorio"],
         people:[
-          {who:"malva", hello:[{who:"malva",mood:"sweat",text:"Abogado... ¿otra vez por aquí? Pase. Ya no sé qué más quieren de esta casa."}],
+          {who:"malva", hello:[{who:"malva",mood:"sweat",text:"Abogado... ¿otra vez por aquí? Pase. Ya no sé qué más quieren de esta casa."},
+                               {who:"malva",mood:"angry",flag:"barbara_ofi",text:"Y la señora Plusvalía anda en la oficina revolviendo papeles. Que se vaya luego."}],
                         back:[{who:"malva",mood:"smile",text:"¿Se le quedó algo, abogado?"}]}],
         examine:[
           {id:"marco3", t:"El marco de la puerta", area:[0,0,28,172], lines:[
@@ -402,7 +409,7 @@ const INV = {
             {who:"malva",mood:"sweat",text:"Ya le dije. El cuchillo del pan."},
             {who:"ines",mood:"think",text:"(Un corte justo entre el pulgar y el índice. Raro para un cuchillo.)"}]},
         ]},
-      oficinahostal:{name:"Oficina del hospedaje", moves:["casona"],
+      oficinahostal:{name:"Oficina del hospedaje", req:{flags:["barbara_ofi"]}, moves:["casona"],
         people:[{who:"barbara", hello:[{who:"barbara",mood:"shock",text:"¡Ay! Usted otra vez."},
                                        {who:"barbara",mood:"angry",text:"Vine a buscar mis papeles. Esta casa me da escalofríos."}]}],
         talk:[

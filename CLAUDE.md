@@ -51,6 +51,8 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   la **pantalla de arriba** (el cuadro de texto se esconde mientras se examina; la mirilla es `#mira`). Sin fondo dibujado o sin `area`, se usa una lista. **Una sola persona por lugar**
   (si hay varias en `people`, se muestra la primera cuyo `req` se cumple). En la investigación **a Justo no se le ve**:
   sus líneas se leen sobre el lugar o sobre la persona presente.
+  **Los lugares se abren de a uno**: cada lugar tiene `req` atado a una conversación o hallazgo (el dueño no quiere todo
+  abierto desde el inicio), Justo dice adónde ir, y al abrirse sale el aviso «🚶 Nuevo lugar».
   Cada persona de un lugar reacciona a Justo: `hello` (la primera vez que la ve, también si aparece más tarde)
   y `back` (al volver al lugar). En la investigación, quien habla queda en el fondo del lugar actual, no en su puesto del juzgado.
   `{cmd:"card", t1:"— Día 1 —", t2:"Investigación"}` muestra la tarjeta de día. `breakdown` acepta `who` y `seq`
