@@ -78,21 +78,21 @@ def shift_to(a,b):
             if v<best[0]: best=(v,dx,dy)
     return np.roll(np.roll(b,best[2],0),best[1],1)
 def mouthmask(a,b):
+    """Boca = la mancha que cambia entre boca cerrada y abierta, la más cercana al lugar donde debería estar la boca
+    (bajo el bigote). Así sirve aunque la cabeza esté inclinada y no confunde la boca con una mano."""
     d=np.abs(a[...,:3].astype(int)-b[...,:3].astype(int)).sum(2)
-    t=np.where((a[...,3]>0).any(1))[0][0]
-    m=((d>80)|((a[...,3]>0)!=(b[...,3]>0))); m[:t+38]=0; m[t+84:]=0
-    al=a[...,3]>0
-    if FRONT_NOW[0]:                                   # de frente: la boca está al centro de la cabeza
-        xs=np.where(al[t:t+40].any(0))[0]; cx=(xs.min()+xs.max())//2; m[:,:cx-17]=0; m[:,cx+18:]=0
-    else:                                              # de perfil (mira a la izquierda): la boca está bajo la punta del bigote
-        fl=np.where(al[t:t+25].any(0))[0].min()                 # frente (sin el brazo, que está más abajo)
-        m[:,:max(fl-10,0)]=0; m[:,fl+30:]=0; m[t+62:]=0         # boca: bajo la nariz, nunca la mano
+    al=a[...,3]>0; t=np.where(al.sum(1)>8)[0][0]
+    m=((d>80)|((a[...,3]>0)!=(b[...,3]>0))); m[:t+28]=0; m[t+78:]=0
+    xs=np.where(al[t:t+30].any(0))[0]; hc=(xs.min()+xs.max())/2
+    ex,ey=(hc,t+50) if FRONT_NOW[0] else (hc-12,t+48)            # dónde se espera la boca
     m8=cv2.dilate(m.astype(np.uint8),np.ones((3,3),np.uint8))
-    n,lab,st,_=cv2.connectedComponentsWithStats(m8,8)
-    if n<2: return np.zeros_like(m)
-    k=max(range(1,n),key=lambda i:st[i,4]); x,y,w,h=st[k,:4]
-    w,h=min(w,34),min(h,22)                                              # nunca más grande que una boca (desde el bigote hacia abajo)
-    box=np.zeros_like(m); box[y:y+h,x:x+w]=True
+    n,lab,st,cen=cv2.connectedComponentsWithStats(m8,8)
+    cands=[i for i in range(1,n) if st[i,4]>=40]                  # manchas chicas = ruido del dibujo
+    if not cands: return np.zeros_like(m)
+    k=min(cands,key=lambda i:((cen[i][0]-ex)**2+(cen[i][1]-ey)**2)**.5/st[i,4]**.5)   # cerca de la boca y grande
+    x,y,w,h=st[k,:4]; cx,cy=cen[k]
+    x0,x1=int(max(x,cx-17)),int(min(x+w,cx+17)); y0,y1=int(max(y,cy-13)),int(min(y+h,cy+13))
+    box=np.zeros_like(m); box[y0:y1,x0:x1]=True
     return cv2.dilate((m&box).astype(np.uint8),np.ones((3,3),np.uint8)).astype(bool)&box
 FRONT_NOW=[False]
 def talk(closed,opn,box=None):
@@ -102,9 +102,9 @@ def talk(closed,opn,box=None):
     o=a.copy(); o[m]=b[m]; return Image.fromarray(o)
 BP=BF=None
 # nombre: (cuadro cerrado, cuadro abierto). Tabla según la hoja (env TABLA=v3|v4).
-TABLAS={'v3':{'base':(1,2),'smug':(3,2),'proud':(4,5),'smug2':(6,2),'cross':(7,8),'cuff':(9,2),'think':(10,None),'think2':(11,None),
+TABLAS={'v3':{'base':(1,2),'smug':(3,2),'proud':(5,None),'smug2':(6,2),'cross':(7,8),'cuff':(9,None),'think':(10,None),'think2':(11,None),
    'facepalm':(12,None),'gesture':(13,14),'stop':(15,16),'point':(17,18),'fist':(21,22),'angry':(23,24),
-   'shock':(25,26),'sweat':(27,28),'down':(29,30),'proud2':(31,32),'serious':(1,2),'smile':(6,2)},
+   'shock':(25,26),'sweat':(27,28),'down':(29,None),'proud2':(31,32),'serious':(1,2),'smile':(6,2)},
  'v4':{'base':(1,2),'cross':(3,4),'fist':(5,6),'point':(7,8)}}
 P=TABLAS[os.environ.get('TABLA','v3')]
 FR={}
