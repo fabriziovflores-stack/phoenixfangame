@@ -75,7 +75,7 @@ const INV = {
          {who:"ines",mood:"down",text:"(Coté sabría qué preguntar. Hoy tengo que saberlo yo.)"}],
     places:{
       locutorio:{name:"Locutorio de la comisaría", moves:["casona","comisaria"],
-        people:[{who:"tadeo"}],
+        people:[{who:"tadeo", back:[{who:"tadeo",mood:"down",text:"¿Volvió, abogado? Aquí sigo. No me dejan ir a ninguna parte."}]}],
         enter:[{who:"tadeo",mood:"sweat",meet:"tadeo",text:"...¿Usted es el abogado? Me dijeron que venía uno."},
                {who:"ines",text:"Justo Valdivia, defensor público. Vengo a escucharte."}],
         talk:[
@@ -98,7 +98,13 @@ const INV = {
           taza:[{who:"tadeo",text:"El té de la señora Malva. Muy rico. Después dormí como nunca."}],
           default:[{who:"tadeo",text:"No sé qué es eso, abogado."}]}}},
       casona:{name:"Casona Ferrada — entrada", moves:["pieza","aurelio","comisaria","locutorio"],
-        people:[{who:"eduardo"},{who:"malva",req:{flags:["pasar"]}},{who:"barbara",req:{flags:["pasar"]}}],
+        people:[
+          {who:"eduardo", back:[{who:"eduardo",mood:"sweat",text:"¿Otra vez usted, Valdivia? Mire, pero no toque."}]},
+          {who:"malva", req:{flags:["pasar"]},
+           hello:[{who:"malva",mood:"down",meet:"malva",text:"Usted debe ser el abogado del muchacho. Soy Malva, la hija de... de don Leonel."},
+                  {who:"malva",mood:"smile",text:"Perdone el desorden. ¿Le sirvo un tecito? Es lo único que me calma."}]},
+          {who:"barbara", req:{flags:["pasar"]},
+           hello:[{who:"barbara",mood:"smug",meet:"barbara",text:"¿Y usted? Ah, el defensor. Bárbara Plusvalía. Sea breve, por favor."}]}],
         enter:[{who:"eduardo",mood:"serious",text:"Alto ahí, Valdivia. Escena del crimen. No pasa nadie."}],
         examine:[
           {id:"marco", t:"El marco de la puerta", req:{flags:["pasar"]}, lines:[
@@ -137,7 +143,7 @@ const INV = {
             {who:"ines",mood:"think",evidence:"fotomadre",text:"(Una foto vieja en el bolsillo. «Leo y yo, 2002».)"}]},
         ]},
       aurelio:{name:"Casa de Aurelio Mirón", moves:["casona"],
-        people:[{who:"aurelio"}],
+        people:[{who:"aurelio", back:[{who:"aurelio",mood:"smile",text:"¡Volvió! ¿Quiere mirar por los binoculares? Se ve todo, ah."}]}],
         enter:[{who:"aurelio",meet:"aurelio",text:"¡Un abogado! Pase, pase. Desde aquí se ve todo, ¿ve? Con binoculares."}],
         talk:[
           {id:"a_vio", who:"aurelio", t:"¿Qué vio esa noche?", lines:[
@@ -145,7 +151,9 @@ const INV = {
             {who:"aurelio",mood:"smug",text:"Lo demás lo cuento en el juicio. Me citaron, ¿sabe?"}]},
         ]},
       comisaria:{name:"Comisaría", moves:["locutorio","casona"],
-        people:[{who:"fiscal"}],
+        people:[{who:"fiscal",
+          hello:[{who:"fiscal",mood:"smug",pose:"cafe",text:"Valdivia. Vino a ver a su cliente, supongo. Lo va a necesitar."}],
+          back:[{who:"fiscal",pose:"cafe",text:"¿Todavía por aquí? *sorbo*"}]}],
         talk:[
           {id:"p_caso", who:"fiscal", t:"El caso", lines:[
             {who:"fiscal",mood:"smug",pose:"cafe",text:"Arma en su mochila, víctima en la puerta. No me haga perder el tiempo, Valdivia."}]},
@@ -158,7 +166,7 @@ const INV = {
     end:[{who:"ines",mood:"serious",text:"(Ya sé quién fue. Ahora tengo que demostrarlo.)"}],
     places:{
       locutorio:{name:"Locutorio de la comisaría", moves:["comisaria","casona"],
-        people:[{who:"tadeo"}],
+        people:[{who:"tadeo", back:[{who:"tadeo",mood:"down",text:"Abogado..."}]}],
         enter:[{who:"tadeo",mood:"down",text:"...Ahora todos saben. Ya no importa."}],
         talk:[
           {id:"madre3", who:"tadeo", t:"Tu madre y Leonel",
@@ -180,7 +188,10 @@ const INV = {
            lines:[{who:"tadeo",text:"Ya le conté todo, abogado."}]},
         ]},
       comisaria:{name:"Comisaría", moves:["locutorio","casona","taller"],
-        people:[{who:"eduardo"},{who:"rocky"}],
+        people:[
+          {who:"eduardo", hello:[{who:"eduardo",mood:"sweat",text:"Valdivia. Llegaron informes nuevos. No le van a gustar al fiscal."}],
+                          back:[{who:"eduardo",text:"¿Necesita algo más? Rápido, que me miran feo."}]},
+          {who:"rocky", hello:[{who:"rocky",mood:"angry",meet:"rocky",text:"¿Y este quién es? ¿El abogado del cabro? ¡Yo no maté a nadie, ¿ya?!"}]}],
         talk:[
           {id:"informes", who:"eduardo", t:"Informes nuevos", lines:[
             {who:"eduardo",evidence:"polvora",text:"Pólvora en las manos del cabro: negativo."},
@@ -208,7 +219,10 @@ const INV = {
             {who:"ines",mood:"serious",text:"(Una silueta de pelo largo. Con delantal.)"}]},
         ]},
       casona:{name:"Casona Ferrada", moves:["oficinahostal","comisaria","locutorio"],
-        people:[{who:"malva"},{who:"barbara"}],
+        people:[
+          {who:"malva", hello:[{who:"malva",mood:"sweat",text:"Abogado... ¿otra vez por aquí? Pase. Ya no sé qué más quieren de esta casa."}],
+                        back:[{who:"malva",mood:"smile",text:"¿Se le quedó algo, abogado?"}]},
+          {who:"barbara", hello:[{who:"barbara",mood:"angry",text:"Defensor. Vine a buscar mis cosas. Esta casa me da escalofríos."}]}],
         examine:[
           {id:"bano", t:"El baño", req:{ev:["sangre"]}, lines:[
             {who:"ines",mood:"shock",evidence:"receta",text:"(Un frasco de clonazepam casi vacío. Receta a nombre de... Malva Ferrada.)"}]},

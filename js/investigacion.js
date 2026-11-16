@@ -4,7 +4,7 @@
    INV.dia1 = {
      start:"lugar", music:"pista", done:{flags:[...], ev:[...]}, end:[líneas al terminar],
      places:{ lugar:{ name, bg, req, enter:[líneas la 1ª vez], moves:["otro", ...],
-       people:[{who, req}],
+       people:[{who, req, hello:[al verlo por primera vez], back:[al volver al lugar]}],
        examine:[{id, t, req, lines, again}],
        talk:[{id, who, t, req, lines, silence:{req, closed, intro, steps:[{prompt, answer, tab, ok}], wrong, broken}}],
        present:{ who:{ idPrueba:[líneas], default:[líneas] } } } }
@@ -30,14 +30,22 @@ CMD.invest=(st,done)=>{
 };
 function invEnter(id){
   G.inv.place=id; const p=invPlace(), k="in:"+id, first=!G.inv.seen[k]; G.inv.seen[k]=1;
-  setScene(invBg(), invPeople()[0]||null);
-  if(first && p.enter) play(p.enter, invMenu); else invMenu();
+  const here=invPeople(); setScene(invBg(), here[0]||null);
+  if(first && p.enter) return play(p.enter, invMenu);
+  if(!first){                                              // volver: el primero que está ahí lo comenta
+    const pp=(p.people||[]).find(x=>reqOk(x.req) && x.back && G.inv.seen["hi:"+id+":"+x.who]);
+    if(pp) return play(pp.back, invMenu);
+  }
+  invMenu();
 }
 function invMenu(){
   if(!X||!X.inv) return;
   if(reqOk(X.inv.done)){                                   // ¿ya se reunió lo necesario?
     const done=X.done, end=X.inv.end||[]; X=null; G.inv=null; play(end, done); return;
   }
+  const pl=G.inv.place;                                    // alguien recién visible: reacciona al ver a Justo
+  const nuevo=(invPlace().people||[]).find(x=>reqOk(x.req) && !G.inv.seen["hi:"+pl+":"+x.who]);
+  if(nuevo){ G.inv.seen["hi:"+pl+":"+nuevo.who]=1; if(nuevo.hello) return play(nuevo.hello, invMenu); }
   mode="invmenu"; setScene(invBg(), invPeople()[0]||null);
   $("name").textContent=""; const t=$("text"); t.className="narr"; t.style.fontSize=""; t.textContent="📍 "+invPlace().name;
   $("next").classList.remove("on"); canTalk=false;

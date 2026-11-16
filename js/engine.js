@@ -97,7 +97,8 @@ function say(l, done){
   }
   const go=()=>{
     const ch=l.who?CHARS[l.who]:null;
-    const pos=l.pos || (ch?ch.pos:G.pos);
+    const enInv = G.inv && X && X.inv;                   // en la investigación todos hablan en el lugar donde está Justo
+    const pos=l.pos || (enInv ? invBg() : (ch?ch.pos:G.pos));
     const prevWho=cur&&cur.who;
     setScene(pos, l.who?l.who:(l.pos?null:undefined), l.mood, l.pose);
     const entra = l.who && l.who!==prevWho;              // si entra alguien, pausa breve antes de hablar
