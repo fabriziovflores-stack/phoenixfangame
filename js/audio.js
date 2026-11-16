@@ -1,7 +1,7 @@
 /* =====================================================================
    PARTE 2: SONIDO (todo sintetizado, melodías originales)
    ===================================================================== */
-let AC=null, master, musicG, sfxG, noiseBuf, muted=false;
+let AC=null, master, musicG, sfxG, noiseBuf, muted=false, blipBuf=null;
 function initAudio(){
   if(AC) return;
   try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return; }
@@ -10,6 +10,7 @@ function initAudio(){
   sfxG=AC.createGain(); sfxG.gain.value=.9; sfxG.connect(master);
   noiseBuf=AC.createBuffer(1,AC.sampleRate,AC.sampleRate);
   const d=noiseBuf.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
+  if(typeof BLIP_FILE!=="undefined") fetch(BLIP_FILE).then(r=>r.arrayBuffer()).then(b=>AC.decodeAudioData(b)).then(buf=>{ blipBuf=buf; }).catch(()=>{});
 }
 function osc(type,f,t,dur,g,dest,f2){
   if(!AC) return;
@@ -26,7 +27,10 @@ function noise(t,dur,g,type,freq,dest){
   s.connect(f); f.connect(a); a.connect(dest||sfxG); s.start(t); s.stop(t+dur+.02);
 }
 const SFX = {
-  blip(f){ if(!AC) return; osc("square",f,AC.currentTime,.035,.035); },
+  blip(f){ if(!AC) return;                    // voz de los diálogos: el blip del dueño, con el tono de cada personaje
+    if(blipBuf){ const s=AC.createBufferSource(), g=AC.createGain(); s.buffer=blipBuf;
+      s.playbackRate.value=Math.min(1.7,Math.max(.5,(f||820)/820)); g.gain.value=.55; s.connect(g); g.connect(sfxG); s.start(); return; }
+    osc("square",f,AC.currentTime,.035,.035); },
   type(){ if(!AC) return; osc("square",1400,AC.currentTime,.02,.03); },
   slam(){ if(!AC) return; const t=AC.currentTime; noise(t,.25,.9,"lowpass",500); osc("sine",140,t,.3,.7,null,40); },
   objection(){ if(!AC) return; const t=AC.currentTime; noise(t,.35,.5,"bandpass",1800); osc("sawtooth",220,t,.25,.2,null,880);

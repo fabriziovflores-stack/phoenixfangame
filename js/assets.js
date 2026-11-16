@@ -32,6 +32,9 @@ const DESKIMG={defensa:"assets/muebles/defensa.png",fiscalia:"assets/muebles/fis
 /* Precarga de todas las ilustraciones (así los cortes de cámara son instantáneos) */
 Object.values(ART).forEach(a=>Object.values(a).forEach(src=>{ new Image().src=src; }));
 
+/* Blip de los diálogos (creado por el dueño). Cada personaje lo oye con su tono (voice en CHARS). */
+const BLIP_FILE = "assets/sonidos/blip.mp3";
+
 /* Efectos de sonido en archivo (código abierto, aportados por el dueño). Si falta uno, suena el sintetizado. */
 const SFX_FILES = {
   damage:   "assets/sonidos/dano1.mp3",       // pierdes vida

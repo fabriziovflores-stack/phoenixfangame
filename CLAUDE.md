@@ -88,6 +88,8 @@ nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/ass
 Efectos en archivo en `assets/sonidos/` (`SFX_FILES` en js/assets.js; código abierto según el dueño, ver `docs/creditos.md`):
 daño, golpe, prueba nueva, recuerdo (cinemática), revelación (nueva lectura), golpe en la mesa, error, grito (quiebre)
 y `badum` (golpe dramático: se pone a mano en una línea con `sfx:"badum"`).
+Voz de los diálogos: `assets/sonidos/blip.mp3` (creado por el dueño; `BLIP_FILE`), con el tono de `voice` de cada personaje.
+El tecleo de los letreros sigue sintetizado (el archivo que se ofreció era el de Ace Attorney; se usa solo vía «Mi música»).
 Orden: archivo elegido por el jugador en «Mi música» → archivo del juego → sonido sintetizado.
 Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.
 
