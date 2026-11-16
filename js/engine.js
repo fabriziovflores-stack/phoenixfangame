@@ -573,7 +573,7 @@ function drawBG(pos){
 
 /* Qué celda de la hoja usa cada emoción: [callado, hablando, parpadeo] */
 const AMAP={
-  ines:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],angry:["angry","angryTalk"],down:["down","downTalk"],"pose:point":["point","pointTalk"]},
+  ines:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],angry:["angry","angryTalk"],down:["sweat","sweatTalk"],"pose:point":["point","pointTalk"]},   // down: provisorio hasta tener la pose cabizbaja mirando a la derecha
   fiscal:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],shock:["shock","shockTalk"],sweat:["sweat","sweatTalk"],angry:["angry","angryTalk"],disdain:["cross","crossTalk"],"pose:point":["point","pointTalk"],"pose:cafe":["cafe","cafeTalk"]},
   testigo:{normal:["base","talk"],smile:["proud","proudTalk"],smug:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],break:["break","breakTalk"],cry:["cry","cryTalk"]},
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},

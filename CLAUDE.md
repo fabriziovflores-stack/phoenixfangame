@@ -84,6 +84,8 @@ Proceso (scripts en `herramientas/`, escritos para un entorno puntual: adaptar r
 1. Quitar el croma. 2. Cuadro «hablando» = cuadro de boca cerrada + solo la boca del otro (así el cuerpo no tiembla).
 3. Igualar el tamaño y la posición de la cabeza entre emociones. 4. Reducir a 256×192 con color de 15 bits.
 Los PNG de `assets/` ya están procesados: se dibujan tal cual.
+Justo usa la hoja con chaleco (`arte-original/justo-chaleco.png`); **siempre mira a la derecha**. Su pose `down` (cabizbajo) venía de frente y se
+descartó: hoy `down` usa `sweat` hasta tener esa pose mirando a la derecha.
 Versión de frente: si existe `frente_<cuadro>` en `ART[personaje]`, se usa en vez del cuadro normal. Hoy: Penna
 (la hoja de perfil sigue en `assets/personajes/fiscal/` como respaldo).
 
