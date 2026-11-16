@@ -97,6 +97,8 @@ Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.
 `localStorage`, clave `actacero_caso1_v1`. Guarda el paso del guion, pruebas, lecturas y penalizaciones.
 
 ## Cómo probar
+**Siempre antes de publicar**, aunque el cambio sea mínimo: `for f in js/*.js casos/*.js; do node --check $f; done` y abrir el
+juego tocando «Nueva partida» (un error de sintaxis en un archivo deja el juego sin arrancar).
 `prueba-final.html` = el juego con un botón que salta al veredicto y la escena final del Caso 1 (no toca la partida guardada).
 No hay tests en el repo. Antes de entregar: recorrer el caso completo (ruta ganadora, una prueba equivocada,
 una respuesta equivocada y la derrota) con un navegador automatizado y confirmar que no hay errores de consola.

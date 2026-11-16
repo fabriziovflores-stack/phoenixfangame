@@ -29,7 +29,7 @@ function noise(t,dur,g,type,freq,dest){
 const SFX = {
   blip(f){ if(!AC) return;                    // voz de los diálogos: el blip del dueño, con el tono de cada personaje
     if(blipBuf){ const s=AC.createBufferSource(), g=AC.createGain(); s.buffer=blipBuf;
-      s.playbackRate.value=Math.min(1.16,Math.max(1.0, 1.08*(1+((f||820)-820)/820*.08)));   // un poco más agudo; casi igual para todos g.gain.value=.55; s.connect(g); g.connect(sfxG); s.start(); return; }
+      s.playbackRate.value=Math.min(1.16,Math.max(1.0, 1.08*(1+((f||820)-820)/820*.08)));  /* un poco más agudo; casi igual para todos */ g.gain.value=.55; s.connect(g); g.connect(sfxG); s.start(); return; }
     osc("square",f,AC.currentTime,.035,.035); },
   type(){ if(!AC) return; osc("square",1400,AC.currentTime,.02,.03); },
   slam(){ if(!AC) return; const t=AC.currentTime; noise(t,.25,.9,"lowpass",500); osc("sine",140,t,.3,.7,null,40); },
