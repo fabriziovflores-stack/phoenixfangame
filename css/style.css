@@ -171,3 +171,4 @@ button.back{background:#283458!important}
 #mira::before{width:13cqw;height:.7cqw} #mira::after{width:.7cqw;height:13cqw}
 @keyframes mira{from{transform:scale(1.8);opacity:.3}to{transform:scale(1);opacity:1}}
 .examhint{color:#203060;font-weight:700;font-size:5cqw;text-align:center;line-height:1.35;flex:1;display:flex;align-items:center;justify-content:center}
+#musPanel h3{color:var(--gold);font-size:18px;margin-top:6px}

@@ -82,6 +82,12 @@ Por defecto es sintetizada (`TRACKS` en `js/audio.js`). El jugador puede elegir 
 en «🎵 Mi música» (portada; `js/musica.js`, guardadas solo en su navegador con IndexedDB). También opcional: archivos en `musica-local/` (ignorada por git,
 nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/assets.js`. Si falta un archivo, suena la melodía propia.
 
+## Sonidos
+Efectos en archivo en `assets/sonidos/` (`SFX_FILES` en js/assets.js; código abierto según el dueño, ver `docs/creditos.md`):
+daño, golpe, prueba nueva, recuerdo (al entrar a una cinemática) y revelación (nueva lectura de una prueba).
+Orden: archivo elegido por el jugador en «Mi música» → archivo del juego → sonido sintetizado.
+Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.
+
 ## Guardado
 `localStorage`, clave `actacero_caso1_v1`. Guarda el paso del guion, pruebas, lecturas y penalizaciones.
 

@@ -108,7 +108,7 @@ function say(l, done){
     tickEv(l);
     if(l.damage) takeDamage();
     if(l.confetti) confetti();
-    if(l.read){ G.notes[l.read[0]]=l.read[1]; SFX.ding(); showEvBox(l.read[0],3); }
+    if(l.read){ G.notes[l.read[0]]=l.read[1]; SFX.realize(); showEvBox(l.read[0],3); }
     if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
     if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
     $("name").textContent = ch ? ch.name : "";
@@ -228,6 +228,7 @@ const CMD = {
   },
   cine(st,done){                       // cinemática: imagen a pantalla completa + texto (sin imagen: pantalla negra)
     const show=im=>{
+      if(G.pos!=="cine" && !st.sfx) SFX.flashback();          // al entrar a una cinemática: sonido de recuerdo
       G.pos="cine"; $("stage").className="pos-cine"; drawSprite(null); $("health").style.visibility="hidden";
       const c=$("bg").getContext("2d"); if(im) c.drawImage(im,0,0,256,192); else R(c,0,0,256,192,"#000");
       $("desk").getContext("2d").clearRect(0,0,256,192);

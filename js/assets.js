@@ -32,6 +32,16 @@ const DESKIMG={defensa:"assets/muebles/defensa.png",fiscalia:"assets/muebles/fis
 /* Precarga de todas las ilustraciones (así los cortes de cámara son instantáneos) */
 Object.values(ART).forEach(a=>Object.values(a).forEach(src=>{ new Image().src=src; }));
 
+/* Efectos de sonido en archivo (código abierto, aportados por el dueño). Si falta uno, suena el sintetizado. */
+const SFX_FILES = {
+  damage:   "assets/sonidos/dano1.mp3",       // pierdes vida
+  hit:      "assets/sonidos/dano2.mp3",       // alguien queda contra las cuerdas
+  ding:     "assets/sonidos/prueba.mp3",      // prueba nueva / presentar prueba
+  flashback:"assets/sonidos/recuerdo.mp3",    // al entrar a una cinemática
+  realize:  "assets/sonidos/revelacion.mp3",  // nueva lectura de una prueba
+};
+Object.values(SFX_FILES).forEach(f=>{ const a=new Audio(); a.preload="auto"; a.src=f; });   // precarga
+
 /* ---------- Música en archivos (opcional, solo en tu computador) ----------
    Si pones archivos de música en la carpeta «musica-local» (junto a index.html) y cambias
    MUSICA_LOCAL a true, el juego los usa en vez de las melodías propias.

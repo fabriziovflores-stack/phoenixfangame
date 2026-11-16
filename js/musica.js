@@ -3,6 +3,14 @@
    Quedan guardadas solo en su navegador (IndexedDB): no se suben a ningún lado.
    ===================================================================== */
 const MUS_SLOTS=[["corte","Juicio"],["interrogatorio","Testimonios e interrogatorios"],["persecucion","Cuando el caso se da vuelta"],["espera","Sala de espera"],["victoria","Victoria"]];
+/* Efectos de sonido que el jugador puede reemplazar: [clave guardada, efecto del juego, nombre visible] */
+const SFX_SLOTS=[["sfx_dano1","damage","Daño (pierdes vida)"],["sfx_dano2","hit","Golpe (alguien queda contra las cuerdas)"],
+  ["sfx_prueba","ding","Prueba nueva"],["sfx_recuerdo","flashback","Recuerdo (cinemáticas)"],["sfx_revelacion","realize","Revelación (nueva lectura de una prueba)"]];
+SFX_SLOTS.forEach(([k,fx])=>{ const orig=SFX[fx]; SFX[fx]=function(...a){
+  const file = LOCALMUS[k] || (typeof SFX_FILES!=="undefined" && SFX_FILES[fx]);     // 1º el del jugador, 2º el del juego
+  if(file){ try{ const s=new Audio(file); s.volume=.9; s.muted=muted;
+    s.addEventListener("error",()=>orig.apply(this,a)); s.play().catch(()=>{}); }catch(e){ orig.apply(this,a); } return; }
+  return orig.apply(this,a); }; });
 const LOCALMUS={}, LOCALMUS_NAME={};
 let musDB=null, musMsg="";
 function musStore(mode){ try{ return musDB ? musDB.transaction("pistas",mode).objectStore("pistas") : null; }catch(e){ return null; } }
@@ -25,8 +33,8 @@ function musDel(k){
 function renderMus(){
   const p=$("musPanel"); if(p.style.display!=="flex") return;
   p.innerHTML=`<h2>🎵 Mi música</h2>
-    <p>Elige canciones de tu teléfono para cada momento del juicio. Quedan guardadas <b>solo en este navegador</b>: no se suben a ningún lado.</p>`+
-    MUS_SLOTS.map(([k,t])=>`<div class="mrow"><div class="mtx"><b>${t}</b><small>${LOCALMUS_NAME[k]?"♪ "+esc(LOCALMUS_NAME[k]):"Melodía del juego"}</small></div>
+    <p>Elige canciones y sonidos de tu teléfono para cada momento del juicio. Quedan guardadas <b>solo en este navegador</b>: no se suben a ningún lado.</p>`+
+    MUS_SLOTS.concat([["",""]],SFX_SLOTS.map(([k,,t])=>[k,t])).map(([k,t])=> !k ? `<h3>🔊 Efectos de sonido</h3>` : `<div class="mrow"><div class="mtx"><b>${t}</b><small>${LOCALMUS_NAME[k]?"♪ "+esc(LOCALMUS_NAME[k]):(k.startsWith("sfx_")?"Sonido del juego":"Melodía del juego")}</small></div>
       <label class="mbtn">Elegir<input type="file" accept=".mp3,.m4a,.aac,.wav,.ogg,audio/mpeg,audio/mp4,audio/x-m4a,audio/aac,audio/wav" data-k="${k}"></label>${LOCALMUS_NAME[k]?`<button class="mbtn del" data-del="${k}">Quitar</button>`:""}</div>`).join("")+
     (musMsg?`<div class="mok">${esc(musMsg)}</div>`:"")+`<button class="gold" id="musClose">Listo</button>`;
   p.querySelectorAll("input[type=file]").forEach(i=>i.onchange=()=>{ if(i.files&&i.files[0]) musSave(i.dataset.k,i.files[0]); });
