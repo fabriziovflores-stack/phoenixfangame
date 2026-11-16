@@ -92,6 +92,11 @@ a la izquierda para que el brazo al apuntar salga entero; el CSS (`#sprite[data-
 Versión de frente: si existe `frente_<cuadro>` en `ART[personaje]`, se usa en vez del cuadro normal. Hoy: Penna
 (la hoja de perfil sigue en `assets/personajes/fiscal/` como respaldo).
 
+## Pantalla de abajo (HUD)
+Diseño del dueño en `assets/hud/` (originales en `arte-original/hud/`): `panel.jpg` (fondo 4:3 armado del panel), `botones.png`
+(Examinar/Mover/Hablar/Presentar × normal/encima/apretado/apagado; clase `hudimg k0..k3`), `brillo.png` (8 cuadros), `expediente.png`,
+`dialogo.png` (recuadro de continuar), `flecha.png`. El letrero de arriba a la izquierda (`#hudlabel`) dice Investigación / Juicio / etc.
+
 ## Música
 Por defecto es sintetizada (`TRACKS` en `js/audio.js`). El jugador puede elegir canciones de su dispositivo
 en «🎵 Mi música» (portada; `js/musica.js`, guardadas solo en su navegador con IndexedDB). También opcional: archivos en `musica-local/` (ignorada por git,

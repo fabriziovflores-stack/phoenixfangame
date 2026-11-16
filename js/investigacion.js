@@ -79,8 +79,8 @@ function invMenu(){
 function invList(items){ mode="invlist"; X.list=items; renderControls(); }
 function invControls(m,add,row){
   if(m==="invmenu"){
-    const a=row("rowA"); add("🔍<br>Examinar","hold",invExamine,a); add("💬<br>Hablar","hold",invTalk,a);
-    const b=row("rowA"); add("📁<br>Presentar","obj",invPresentStart,b); add("🚶<br>Moverse","hold",invMove,b);
+    const a=row("rowI"); add("Examinar","hudimg k0",invExamine,a); add("Moverse","hudimg k1",invMove,a);
+    const b=row("rowI"); add("Hablar","hudimg k2",invTalk,b); add("Presentar","hudimg k3",invPresentStart,b);
     add("💭 Pensar: ¿qué me falta?","opt back",invPensar);
     return true;
   }

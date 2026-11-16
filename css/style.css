@@ -199,3 +199,63 @@ button.back{background:#283458!important}
 /* Justo: sus cuadros vienen corridos a la izquierda para que el brazo al apuntar quepa entero en la pantalla */
 #sprite[data-who=ines]{left:66.4%}
 .pos-defensa #sprite[data-who=ines]{left:50%}
+
+/* ================= Pantalla de abajo: HUD del dueño (assets/hud/, originales en arte-original/hud/) ================= */
+#botS{background:#0e1a2e url(../assets/hud/panel.jpg) 0 0/100% 100% no-repeat}
+#bar{align-items:center;padding:2.6cqw 3cqw 0 4.5cqw;min-height:11cqw}
+#hudlabel{font:700 3.4cqw Georgia,'Times New Roman',serif;color:#edcd8e;letter-spacing:.15cqw;text-transform:uppercase;
+  border-bottom:.3cqw solid #b8506e;padding:0 1cqw .4cqw 0;min-width:22cqw}
+#hudlabel:not(:empty)::before{content:"⚖ ";color:#edcd8e}
+#hudlabel:empty{border:0}
+#barR{display:flex;gap:1.4cqw;align-items:center}
+#botS #bar #muteBtn,#botS #bar #saveBtn{font-size:3.6cqw;padding:.8cqw 1.6cqw;width:auto}
+#botS #recBtn{width:27cqw;aspect-ratio:300/84;padding:0;border:0;box-shadow:none;clip-path:none;font-size:0;color:transparent;
+  background:url(../assets/hud/expediente.png) 0 0/400% 100% no-repeat}
+#botS #recBtn:hover{background-position:33.333% 0;filter:none}
+#botS #recBtn:active{background-position:66.666% 0;transform:none;filter:none}
+
+/* botones dibujados (Examinar, Moverse, Hablar, Presentar): 4 filas × 4 estados */
+#botS button.hudimg{position:relative;flex:none;width:44cqw;aspect-ratio:420/124;height:auto;padding:0;border:0;box-shadow:none;clip-path:none;
+  font-size:0;color:transparent;background:url(../assets/hud/botones.png) 0 0/400% 400% no-repeat}
+#botS button.hudimg.k0{background-position-y:0}
+#botS button.hudimg.k1{background-position-y:33.333%}
+#botS button.hudimg.k2{background-position-y:66.666%}
+#botS button.hudimg.k3{background-position-y:100%}
+#botS button.hudimg:hover{background-position-x:33.333%}
+#botS button.hudimg:active{background-position-x:66.666%;transform:translateY(.4cqw);filter:none}
+#botS button.hudimg:disabled{background-position-x:100%}
+#botS button.hudimg::after{content:"";position:absolute;inset:0;background:url(../assets/hud/brillo.png) 0 0/800% 100% no-repeat;
+  mix-blend-mode:screen;opacity:0;pointer-events:none}
+#botS button.hudimg:hover::after{opacity:.45;animation:brillo .8s steps(8) infinite}
+@keyframes brillo{to{background-position-x:114.2857%}}
+.rowI{display:flex;gap:2.5cqw;justify-content:center;width:100%}
+.rowA button.hudimg{align-self:center}
+
+/* el resto de los botones, con el mismo estilo: azul noche, borde dorado, esquinas cortadas */
+#botS button:not(.hudimg):not(#recBtn){font-family:Georgia,'Times New Roman',serif;font-weight:700;color:#f4e6c4;
+  background:linear-gradient(180deg,#24456f,#13243e);border:.45cqw solid #d9b878;border-radius:1.6cqw;
+  box-shadow:inset 0 .5cqw 0 rgba(255,255,255,.12),0 .6cqw 0 rgba(0,0,0,.35);text-shadow:0 .3cqw 0 #0a1424}
+#botS button:not(.hudimg):not(#recBtn):hover{filter:brightness(1.15)}
+#botS button.obj:not(.hudimg){background:linear-gradient(180deg,#8a2a4c,#561630)!important}
+#botS button.gold{background:linear-gradient(180deg,#f4d99a,#d6b067)!important;color:#1b2134!important;text-shadow:none!important}
+#botS .tabs button.on{background:linear-gradient(180deg,#f4d99a,#d6b067);color:#1b2134;text-shadow:none}
+#botS button.opt{font-size:4cqw}
+#botS button.back{background:linear-gradient(180deg,#1a2c48,#101c30)!important}
+.dot{background:#3a4c6c;border-color:#d9b878;border-radius:50%}
+.dot.cur{background:#edcd8e}
+/* continuar: el recuadro de diálogo del HUD (toda la pantalla de abajo sirve para avanzar) */
+#botS button.adv{background:none!important;border:0!important;box-shadow:none!important;display:flex;align-items:flex-end;justify-content:center;padding:0 0 2cqw}
+#botS button.adv .dlgimg{display:block;width:94cqw;aspect-ratio:940/182;background:url(../assets/hud/dialogo.png) 0 0/200% 200% no-repeat}
+#botS button.adv:hover .dlgimg{background-position:100% 0}
+#botS button.adv:active .dlgimg{background-position:0 100%}
+#controls:empty::before{content:none}
+#modal{background:#0e1a2e;border-top:.5cqw solid #d9b878}
+#mhead h2{font-family:Georgia,serif;color:#edcd8e}
+.card{background:#1a2f50;border-color:#3d5577}
+.card.sel{border-color:#edcd8e;background:#24456f}
+#mdesc{background:#081322;border-color:#3d5577}
+#hudlabel.largo{font-size:2.6cqw}
+/* filas de dos botones: mismo tamaño que los botones dibujados */
+#botS .rowA{flex:none;align-items:center;justify-content:center;gap:2.5cqw}
+#botS .rowA button:not(.hudimg){flex:none;width:44cqw;aspect-ratio:420/124;height:auto;padding:0 2cqw;font-size:5.4cqw;line-height:1.05}
+#botS #controls{justify-content:center;gap:4cqw}

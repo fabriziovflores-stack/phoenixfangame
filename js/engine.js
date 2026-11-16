@@ -470,16 +470,18 @@ function renderControls(){
   $("topS").classList.toggle("examinando", mode==="invexam");
   const add=(t,cls,fn,parent)=>{ const b=document.createElement("button"); b.innerHTML=t; if(cls) b.className=cls; b.onclick=fn; (parent||c).appendChild(b); return b; };
   const row=cls=>{ const d=document.createElement("div"); d.className=cls; c.appendChild(d); return d; };
+  $("hudlabel").textContent = G.inv ? "Investigación" : (X&&X.tag) ? X.tag : (["defensa","fiscalia","estrado","juez","rayos"].includes(G.pos) ? "Juicio" : "");
+  $("botS").classList.toggle("enInv", !!G.inv); $("hudlabel").classList.toggle("largo", $("hudlabel").textContent.length>14);
   if(mode==="dialog"){
-    add("▶","adv",()=>$("box").onclick());
+    add('<span class="dlgimg"></span>',"adv",()=>$("box").onclick());
   } else if(mode==="cross"){
-    const a=row("rowA"); add("Presionar","hold",press,a); add("¡Presentar!","obj",()=>openRecord("pruebas"),a);
+    const a=row("rowA"); add("Presionar","hold",press,a); add("Presentar","hudimg k3",()=>openRecord("pruebas"),a);
     const b=row("rowB"); add("◀","nav",()=>move(-1),b);
     const dots=document.createElement("div"); dots.id="dots";
     X.list.forEach((_,i)=>{ const d=document.createElement("div"); d.className="dot"+(i===X.idx?" cur":""); dots.appendChild(d); }); b.appendChild(dots);
     add("▶","nav",()=>move(1),b);
   } else if(mode==="direct"){
-    const a=row("rowA"); add("Dejar<br>pasar ▶","hold",letPass,a); add("¡Protestar!","obj",objectQuestion,a);
+    const a=row("rowA"); add("Dejar pasar ▶","hold",letPass,a); add("¡Protestar!","obj",objectQuestion,a);
   } else if(mode==="reason"){
     OBJ_REASONS.forEach((o,i)=>add(o.t,"opt",()=>X.pick&&X.pick(i)));
   } else if(mode==="choice"){
