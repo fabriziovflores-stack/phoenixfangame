@@ -494,7 +494,7 @@ function drawBG(pos){
   if(bi&&bi.complete&&bi.naturalWidth) c.drawImage(bi,0,0);
   if(di&&di.complete&&di.naturalWidth){ d.clearRect(0,0,256,192); d.drawImage(di,0,0); }
 }
-["lobby","defensa","fiscalia","estrado","juez"].forEach(p=>{ scnImg("bg",p); scnImg("desk",p); });
+[...new Set([...Object.keys(BGIMG),...Object.keys(DESKIMG)])].forEach(p=>{ scnImg("bg",p); scnImg("desk",p); });
 /* Ilustraciones de personajes (prueba): si existe ART[personaje], reemplaza al dibujo por código */
 
 /* Qué celda de la hoja usa cada emoción: [callado, hablando, parpadeo] */
