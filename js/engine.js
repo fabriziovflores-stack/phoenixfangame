@@ -404,12 +404,19 @@ function openRecord(tab, prompt){
   $("mbox").querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{ recTab=b.dataset.t; openRecord(recTab,prompt); });
   $("mbox").querySelectorAll(".card").forEach(card=>card.onclick=()=>{
     $("mbox").querySelectorAll(".card").forEach(c=>c.classList.remove("sel"));
-    card.classList.add("sel"); sel=items[+card.dataset.i]; $("mdesc").innerHTML=(EVIMG[sel.id]?`<img src="${EVIMG[sel.id]}" style="float:left;width:19cqw;margin:0 2cqw .5cqw 0;image-rendering:pixelated">`:"")+esc(sel.desc)+((G.notes[sel.id]||sel.read)?"\n<span style=\"color:var(--blue)\">▸ Lectura actual: "+esc(G.notes[sel.id]||sel.read)+"</span>":"");
+    card.classList.add("sel"); sel=items[+card.dataset.i]; $("mdesc").innerHTML=(sel.ver?`<button id="mver">🔍 Ver en grande</button>`:"")+(EVIMG[sel.id]?`<img src="${EVIMG[sel.id]}" style="float:left;width:19cqw;margin:0 2cqw .5cqw 0;image-rendering:pixelated">`:"")+esc(sel.desc)+((G.notes[sel.id]||sel.read)?"\n<span style=\"color:var(--blue)\">▸ Lectura actual: "+esc(G.notes[sel.id]||sel.read)+"</span>":"")
+;
+    const v=$("mver"); if(v) v.onclick=()=>verPrueba(sel.ver);
     const a=$("mact"); if(a) a.style.opacity=1;
   });
   const c=$("mclose"); if(c) c.onclick=()=>{ closeRecord(); if(mode==="invpresent") invMenu(); };
   const q=$("mquit"); if(q) q.onclick=()=>{ closeRecord(); play([{who:"ines",mood:"sweat",text:"(Mejor vuelvo cuando tenga cómo hacerlo hablar.)"}], invMenu); };
   const a=$("mact"); if(a) a.onclick=()=>{ if(sel) presentItem(sel.id); };
+}
+/* ver una prueba en grande en la pantalla de arriba (tocar para cerrar) */
+function verPrueba(src){
+  const o=$("verPrueba"); o.innerHTML=`<img src="${src}"><div>Toca para cerrar</div>`; o.style.display="flex"; SFX.ding();
+  o.onclick=()=>{ o.style.display="none"; };
 }
 function miniFace(who){ if(ART[who]) return `<img src="${ART[who].face}" style="height:9cqw;image-rendering:pixelated">`; return sprite(who,"normal",null,0,0).replace('viewBox="0 0 256 192"','viewBox="96 2 64 72" shape-rendering="crispEdges"'); }
 function closeRecord(){ $("modal").style.display="none"; }

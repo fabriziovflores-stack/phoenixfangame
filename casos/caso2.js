@@ -31,12 +31,12 @@ const BGLABELS = {oficina:"OFICINA DE JUSTO", hospital:"HOSPITAL VAN BUREN", loc
 const EVIDENCE = [
   {id:"credencial", icon:"🪪", name:"Credencial", desc:"Credencial de defensor penal público. Ya tiene un caso ganado.", read:"Mi segundo caso."},
 ];
-const EVIMG = {credencial:"assets/pruebas/credencial.png"};
+const EVIMG = {credencial:"assets/pruebas/credencial.png", plano:"assets/pruebas/plano.png"};
 const EVX = {
   pistola:   {id:"pistola",   icon:"🔫", name:"Pistola 9 mm", desc:"Encontrada en la mochila de Tadeo. Disparada una vez. Sin huellas: alguien la limpió.", read:"El arma del crimen."},
   autopsia:  {id:"autopsia",  icon:"📄", name:"Informe de autopsia", desc:"Leonel Ferrada, 61. Roce de bala en la mejilla izquierda, de frente. Bala 9 mm en la nuca, disparada por la espalda. Muerte instantánea.", read:"Dos heridas, dos direcciones."},
   bala38:    {id:"bala38",    icon:"🔩", name:"Bala .38", desc:"Incrustada en el marco de la puerta de entrada. Calibre .38, de revólver. No es la bala que mató.", read:"El disparo de Rocky."},
-  plano:     {id:"plano",     icon:"🗺️", name:"Plano de la casona", desc:"Plano de evacuación. La entrada da a un pasillo oscuro. La cocina está a la derecha, sin vista al pasillo. La pieza de Tadeo, al fondo, no tiene ventana a la calle.", read:"Quién podía ver qué."},
+  plano:     {id:"plano",     icon:"🗺️", ver:"assets/pruebas/plano.png", name:"Plano de la casona", desc:"Plano de evacuación. La entrada da a un pasillo oscuro. La cocina está a la derecha, sin vista al pasillo. La pieza de Tadeo, al fondo, no tiene ventana a la calle.", read:"Quién podía ver qué."},
   video:     {id:"video",     icon:"📹", name:"Video cámara municipal", desc:"Calle Templeman. 23:15: sale un taxi desde la casona. 23:42: camioneta roja baja a toda velocidad.", read:"La huida de Rocky."},
   fotocam:   {id:"fotocam",   icon:"🚙", name:"Foto de la camioneta", desc:"Camioneta roja de Rocky Saavedra, incautada. En el parabrisas hay un soporte vacío.", read:"El vehículo del atropello."},
   libro:     {id:"libro",     icon:"📒", name:"Libro de huéspedes", desc:"Casona Ferrada, 14 de marzo. Huéspedes: T. Fuegos (pieza del fondo) y B. Plusvalía (pieza del segundo piso).", read:"Dos huéspedes esa noche."},

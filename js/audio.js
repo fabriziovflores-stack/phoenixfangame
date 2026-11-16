@@ -41,7 +41,7 @@ const SFX = {
     const fem=VOCES_FEM.has(blipWho), propioF=fem && (localBlip("sfx_blipf") || blipFBuf), buf=propioF || localBlip("sfx_blipm") || blipBuf;
     if(buf){ const s=AC.createBufferSource(), g=AC.createGain(); s.buffer=buf;
       let r=Math.min(1.16,Math.max(1.0, 1.08*(1+((f||820)-820)/820*.08)));  /* un poco más agudo; casi igual para todos */
-      if(fem && !propioF) r*=1.12;                                          /* sin blip femenino: el masculino, más agudo */
+      if(propioF) r=1; else if(fem) r*=1.12;      /* el blip femenino suena tal cual; sin él, el masculino un poco más agudo */
       s.playbackRate.value=r; g.gain.value=.55; s.connect(g); g.connect(sfxG); s.start(); return; }
     osc("square",f,AC.currentTime,.035,.035); },
   type(){ if(!AC) return; osc("square",1400,AC.currentTime,.02,.03); },
