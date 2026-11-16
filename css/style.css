@@ -259,3 +259,5 @@ button.back{background:#283458!important}
 #botS .rowA{flex:none;align-items:center;justify-content:center;gap:2.5cqw}
 #botS .rowA button:not(.hudimg){flex:none;width:44cqw;aspect-ratio:420/124;height:auto;padding:0 2cqw;font-size:5.4cqw;line-height:1.05}
 #botS #controls{justify-content:center;gap:4cqw}
+.card .ic{height:9.5cqw}
+.card .ic img{height:100%;width:auto;max-width:100%;image-rendering:pixelated}

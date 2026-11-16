@@ -31,7 +31,8 @@ const BGLABELS = {oficina:"OFICINA DE JUSTO", hospital:"HOSPITAL VAN BUREN", loc
 const EVIDENCE = [
   {id:"credencial", icon:"🪪", name:"Credencial", desc:"Credencial de defensor penal público. Ya tiene un caso ganado.", read:"Mi segundo caso."},
 ];
-const EVIMG = {credencial:"assets/pruebas/credencial.png", plano:"assets/pruebas/plano.png"};
+const EVIMG = {credencial:"assets/pruebas/credencial.png", plano:"assets/pruebas/plano.png",
+  pistola:"assets/pruebas/pistola.png", autopsia:"assets/pruebas/autopsia.png", bala38:"assets/pruebas/bala38.png", video:"assets/pruebas/video.png", fotocam:"assets/pruebas/fotocam.png", taza:"assets/pruebas/taza.png", pastillas:"assets/pruebas/pastillas.png", fotomadre:"assets/pruebas/fotomadre.png", libro:"assets/pruebas/libro.png", agenda:"assets/pruebas/agenda.png", carta:"assets/pruebas/carta.png", polvora:"assets/pruebas/polvora.png", sangre:"assets/pruebas/sangre.png", inscripcion:"assets/pruebas/inscripcion.png", tarjeta:"assets/pruebas/tarjeta.png", receta:"assets/pruebas/receta.png"};
 const EVX = {
   pistola:   {id:"pistola",   icon:"🔫", name:"Pistola 9 mm", desc:"Encontrada en la mochila de Tadeo. Disparada una vez. Sin huellas: alguien la limpió.", read:"El arma del crimen."},
   autopsia:  {id:"autopsia",  icon:"📄", name:"Informe de autopsia", desc:"Leonel Ferrada, 61. Roce de bala en la mejilla izquierda, de frente. Bala 9 mm en la nuca, disparada por la espalda. Muerte instantánea.", read:"Dos heridas, dos direcciones."},
