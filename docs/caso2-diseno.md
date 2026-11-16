@@ -153,3 +153,10 @@ grabación completa: la camioneta atropella a una mujer con moño rosado. Revela
   defensores rechazaron el caso y nombran a Justo como el único que le ha ganado.
 - Día 1: nadie sabe quién disparó desde la calle. El video muestra una camioneta roja sin patente legible; Penna la descarta.
 - Día 3: la policía identifica la camioneta (Rodrigo Saavedra, revólver .38) y Rocky aparece. Así Justo tiene tiempo de investigar.
+
+## Ajustes del dueño (Penna cuidadoso, culpables complejos)
+- Penna llega preparado tras perder el Caso 1: no dice una palabra de más y guarda el hijo secreto para cuando el caso parece ganado.
+- Juicio 1: receso en la sala de espera con Tadeo (miente sobre su secreto) y falsa victoria antes del golpe de Penna.
+- Día 3: Eduardo explica la corredera (prueba «Nota de Estuardo») y admite que no le hizo el examen de pólvora a Malva.
+- Juicio final: Malva cambia su historia cada vez que la pillan; último intento («nunca he tomado un arma») × corredera + curita.
+- Rocky queda formalizado (disparo y atropello con fuga). Final largo: Eduardo, Penna, Rocky con Coté y el cierre de Tadeo.
