@@ -84,6 +84,6 @@ una respuesta equivocada y la derrota) con un navegador automatizado y confirmar
 
 ## Siguientes pasos sugeridos
 1. Caso 2: es un **esqueleto jugable con textos de borrador** (diseño en `docs/caso2-diseno.md`). Falta: que el
-   dueño escriba los diálogos, cinemática (7 imágenes), fondos de los lugares y la hoja de Bárbara
-   (Tadeo, Malva, Rocky y Aurelio ya tienen arte; prompts en `docs/caso2-prompts.md`).
+   dueño escriba los diálogos y la cinemática (7 imágenes). Personajes y fondos del Caso 2: completos
+   (prompts en `docs/caso2-prompts.md`).
 2. Fondo de detrás de la jueza (Caso 1).
