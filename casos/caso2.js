@@ -39,6 +39,7 @@ const EVX = {
   plano:     {id:"plano",     icon:"🗺️", name:"Plano de la casona", desc:"Plano de evacuación. La entrada da a un pasillo oscuro. La cocina está a la derecha, sin vista al pasillo. La pieza de Tadeo, al fondo, no tiene ventana a la calle.", read:"Quién podía ver qué."},
   video:     {id:"video",     icon:"📹", name:"Video cámara municipal", desc:"Calle Templeman. 23:15: sale un taxi desde la casona. 23:42: camioneta roja baja a toda velocidad.", read:"La huida de Rocky."},
   fotocam:   {id:"fotocam",   icon:"🚙", name:"Foto de la camioneta", desc:"Camioneta roja de Rocky Saavedra, incautada. En el parabrisas hay un soporte vacío.", read:"El vehículo del atropello."},
+  libro:     {id:"libro",     icon:"📒", name:"Libro de huéspedes", desc:"Casona Ferrada, 14 de marzo. Huéspedes: T. Fuegos (pieza del fondo) y B. Plusvalía (pieza del segundo piso).", read:"Dos huéspedes esa noche."},
   taza:      {id:"taza",      icon:"🍵", name:"Taza de té", desc:"En el velador de Tadeo. Restos de té. «El té de bienvenida», según Malva.", read:"Un té."},
   pastillas: {id:"pastillas", icon:"💊", name:"Pastillas para el mareo", desc:"Mareamina suave. Falta una. Producen algo de sueño, no un sueño profundo.", read:"Por qué Tadeo durmió."},
   fotomadre: {id:"fotomadre", icon:"🖼️", name:"Foto de una mujer", desc:"Foto antigua de una mujer joven en Puerto Williams. Al reverso: «Leo y yo, 2002».", read:"Tadeo no quiere hablar de ella."},
@@ -68,104 +69,239 @@ const PROFILES = [
 
 /* ---------- INVESTIGACIÓN (formato en js/investigacion.js) ---------- */
 const INV = {
+  /* ===================== DÍA 1 ===================== */
   dia1: {
     start:"locutorio", music:"espera",
-    done:{ev:["pistola","autopsia","bala38","plano","video","fotocam","taza","pastillas","fotomadre"], flags:["vio_aurelio"]},
-    end:[{who:"ines",mood:"think",text:"(Ya tengo bastante. Mañana es el juicio.)"},
-         {who:"ines",mood:"down",text:"(Coté sabría qué preguntar. Hoy tengo que saberlo yo.)"}],
+    done:{ev:["pistola","autopsia","bala38","plano","video","fotocam","taza","pastillas","fotomadre","libro"],
+          flags:["vio_aurelio","habla_malva","habla_barbara","habla_penna"]},
+    end:[{who:"ines",mood:"think",text:"(Un muerto, dos disparos, una pistola en la mochila equivocada.)"},
+         {who:"ines",mood:"down",text:"(Coté sabría qué preguntar. Hoy tengo que saberlo yo.)"},
+         {who:"ines",mood:"serious",text:"(Mañana es el juicio. No hay más tiempo.)"}],
     places:{
       locutorio:{name:"Locutorio de la comisaría", moves:["casona","comisaria"],
         people:[{who:"tadeo", back:[{who:"tadeo",mood:"down",text:"¿Volvió, abogado? Aquí sigo. No me dejan ir a ninguna parte."}]}],
         enter:[{who:"tadeo",mood:"sweat",meet:"tadeo",text:"...¿Usted es el abogado? Me dijeron que venía uno."},
-               {who:"ines",text:"Justo Valdivia, defensor público. Vengo a escucharte."}],
+               {who:"ines",text:"Justo Valdivia, defensor público. Vengo a escucharte. Desde el principio."}],
         talk:[
-          {id:"noche", who:"tadeo", t:"Esa noche", lines:[
-            {who:"tadeo",text:"Me tomé la pastilla del mareo y me dormí. Desperté con un carabinero encima."},
-            {who:"tadeo",mood:"shock",evidence:"pistola",text:"Dicen que en mi mochila había una pistola. ¡Yo nunca he tenido una!"},
-            {who:"ines",mood:"think",text:"(Una 9 mm, disparada y limpia. Alguien la puso ahí.)"}]},
-          {id:"viaje", who:"tadeo", t:"¿Qué hacías en Valparaíso?", lines:[
-            {who:"tadeo",text:"Vengo de Puerto Williams. Tres días de ferry y bus."},
-            {who:"tadeo",mood:"sweat",text:"Quería... conocer. Nada más."},
-            {who:"ines",mood:"think",text:"(Está ocultando algo.)"}]},
+          {id:"t_quien", who:"tadeo", t:"¿Quién eres?", lines:[
+            {who:"tadeo",text:"Tadeo Fuegos. De Puerto Williams. Más al sur ya no hay nada, puros pingüinos."},
+            {who:"tadeo",text:"Tres días de ferry y bus para llegar. Llegué antier."},
+            {who:"ines",mood:"think",flag:"t_quien",text:"(Puerto Williams. El fin del mundo, literal.)"}]},
+          {id:"t_noche", who:"tadeo", t:"Esa noche", lines:[
+            {who:"tadeo",text:"Me tomé la pastilla del mareo y me acosté temprano. No escuché nada."},
+            {who:"tadeo",mood:"shock",evidence:"pistola",text:"Desperté con un carabinero encima. Dicen que en mi mochila había una pistola."},
+            {who:"ines",mood:"think",text:"(Una 9 mm. Disparada y limpia. ¿Quién guarda un arma así en su propia mochila?)"},
+            {who:"tadeo",mood:"down",flag:"sabe_casona",text:"Fue en la Casona Ferrada, en Cerro Concepción. Ahí arrendaba una pieza."}]},
+          {id:"t_casona", who:"tadeo", t:"La casona", req:{flags:["sabe_casona"]}, lines:[
+            {who:"tadeo",mood:"smile",text:"Linda casa. La señora Malva me recibió con un té de bienvenida."},
+            {who:"tadeo",text:"Don Leonel, el dueño, casi no habló. Pero me miraba raro."},
+            {who:"tadeo",mood:"sweat",text:"Como si... como si me conociera."},
+            {who:"ines",mood:"think",text:"(¿Como si lo conociera?)"}]},
+          {id:"t_por", who:"tadeo", t:"¿Por qué viniste a Valparaíso?", req:{flags:["t_quien"]}, lines:[
+            {who:"tadeo",mood:"sweat",text:"Por... conocer. Turismo. Eso."},
+            {who:"ines",mood:"think",text:"(Mintió. Se le notó en toda la cara.)"}]},
           {id:"madre", who:"tadeo", t:"La foto de la mochila", req:{ev:["fotomadre"]},
            silence:{req:{flags:["juicio1"]},
-             closed:[{who:"tadeo",mood:"down",text:"...Eso no tiene nada que ver. No quiero hablar de ella."},
+             closed:[{who:"tadeo",mood:"angry",text:"...Eso no tiene nada que ver. No quiero hablar de ella."},
                      {who:"ines",mood:"sweat",text:"(Se cerró. 🔒 Todavía no tengo cómo hacerlo hablar.)"}]},
            lines:[{who:"tadeo",text:"(Este tema ya se habló.)"}]},
         ],
         present:{tadeo:{
-          pistola:[{who:"tadeo",mood:"sweat",text:"Nunca la había visto. Se lo juro."}],
-          taza:[{who:"tadeo",text:"El té de la señora Malva. Muy rico. Después dormí como nunca."}],
+          pistola:[{who:"tadeo",mood:"sweat",text:"Nunca la había visto. Se lo juro por mi mamá."}],
+          taza:[{who:"tadeo",text:"El té de la señora Malva. Muy rico. Después dormí como nunca en mi vida."},
+                {who:"ines",mood:"think",text:"(«Como nunca en su vida».)"}],
+          pastillas:[{who:"tadeo",text:"Esas son mías. Para el mareo. Son suavecitas, me dan un poco de sueño no más."}],
+          fotomadre:[{who:"tadeo",mood:"angry",text:"¡¿Por qué anda con eso?! Es mía. Devuélvamela."}],
           default:[{who:"tadeo",text:"No sé qué es eso, abogado."}]}}},
-      casona:{name:"Casona Ferrada — entrada", moves:["pieza","aurelio","comisaria","locutorio"],
+
+      casona:{name:"Casona Ferrada — entrada", req:{flags:["sabe_casona"]}, moves:["pieza","oficinahostal","aurelio","comisaria","locutorio"],
         people:[
-          {who:"eduardo", back:[{who:"eduardo",mood:"sweat",text:"¿Otra vez usted, Valdivia? Mire, pero no toque."}]},
-          {who:"malva", req:{flags:["pasar"]},
-           hello:[{who:"malva",mood:"down",meet:"malva",text:"Usted debe ser el abogado del muchacho. Soy Malva, la hija de... de don Leonel."},
-                  {who:"malva",mood:"smile",text:"Perdone el desorden. ¿Le sirvo un tecito? Es lo único que me calma."}]},
-          {who:"barbara", req:{flags:["pasar"]},
-           hello:[{who:"barbara",mood:"smug",meet:"barbara",text:"¿Y usted? Ah, el defensor. Bárbara Plusvalía. Sea breve, por favor."}]}],
-        enter:[{who:"eduardo",mood:"serious",text:"Alto ahí, Valdivia. Escena del crimen. No pasa nadie."}],
+          {who:"eduardo", req:{not:["edu_fue"]}, back:[{who:"eduardo",mood:"sweat",text:"¿Otra vez usted, Valdivia? Mire, pero no toque."}]},
+          {who:"barbara", req:{ev:["libro"],flags:["edu_fue"]},
+           hello:[{who:"barbara",mood:"smug",text:"¿Y usted quién es? ¿Otro policía? El de la huincha se acaba de ir."},
+                  {who:"ines",text:"Justo Valdivia. Defensor de Tadeo Fuegos."},
+                  {who:"barbara",meet:"barbara",text:"Bárbara Plusvalía. Hoteles Mirador del Pacífico. Venía saliendo."}]}],
+        enter:[{who:"eduardo",mood:"serious",text:"Alto ahí. Escena del crimen. No pasa nadie."},
+               {who:"ines",mood:"shock",text:"(Eduardo Estuardo. El investigador que llevó el caso de mi papá.)"},
+               {who:"eduardo",mood:"shock",text:"...¿Valdivia? ¿El hijo del taxista?"},
+               {who:"eduardo",mood:"sweat",text:"Mire qué cosas. Igual no pasa."}],
         examine:[
-          {id:"marco", t:"El marco de la puerta", req:{flags:["pasar"]}, lines:[
+          {id:"puerta", t:"La puerta", area:[0,0,28,172], req:{not:["pasar"]}, lines:[
+            {who:"ines",mood:"think",text:"(Cinta policial. Y en el marco... algo brilla. Desde aquí no alcanzo a verlo.)"}]},
+          {id:"calle", t:"La calle", area:[28,10,36,120], lines:[
+            {who:"ines",mood:"think",text:"(Cerro Concepción. Adoquines, casas de colores, una escalera que baja al plan.)"},
+            {who:"ines",mood:"shock",flag:"vio_cortina",text:"(Al frente, en el segundo piso, una cortina se movió. Alguien está mirando.)"}]},
+          {id:"marco", t:"El marco de la puerta", area:[0,0,28,172], req:{flags:["pasar"]}, lines:[
             {who:"ines",mood:"think",evidence:"bala38",text:"(Una bala incrustada en el marco. Calibre .38, de revólver.)"},
-            {who:"eduardo",text:"La del mecánico. Esa no mató a nadie: solo le rozó la cara."}]},
-          {id:"pasillo", t:"El pasillo oscuro", req:{flags:["pasar"]}, lines:[
-            {who:"ines",mood:"think",text:"(Justo detrás de la puerta. Oscuro aunque haya luz afuera.)"}]},
+            {who:"ines",mood:"think",text:"(Disparada desde la calle, de frente. Le pasó rozando a don Leonel y terminó aquí.)"}],
+           again:[{who:"ines",mood:"think",text:"(El agujero de la bala .38. Ya me lo llevé.)"}]},
+          {id:"pasillo", t:"El pasillo", area:[112,8,72,124], req:{flags:["pasar"]}, lines:[
+            {who:"ines",mood:"think",text:"(Largo y oscuro, justo detrás de la puerta. Aunque afuera haya luz, aquí no llega.)"},
+            {who:"ines",mood:"think",flag:"vio_pasillo",text:"(Al fondo, la pieza de Tadeo. A un lado, una puerta con un cartel: «Oficina».)"}]},
+          {id:"mostrador", t:"El mostrador", area:[186,78,70,84], req:{flags:["pasar"]}, lines:[
+            {who:"ines",mood:"think",evidence:"libro",text:"(El libro de huéspedes. Esa noche había dos: T. Fuegos... y B. Plusvalía.)"},
+            {who:"ines",mood:"think",text:"(¿Plusvalía? ¿Quién es esa?)"}]},
+          {id:"perchero", t:"El perchero", area:[72,36,30,98], req:{flags:["pasar"]}, lines:[
+            {who:"ines",mood:"down",text:"(Una chaqueta de hombre, gastada. La de don Leonel. La colgó para abrir la puerta.)"}]},
+          {id:"flores", t:"Las flores", area:[204,54,28,30], lines:[
+            {who:"ines",mood:"think",text:"(Hortensias frescas. Alguien las cambió hoy. En una casa donde anoche mataron a un hombre.)"}]},
         ],
         talk:[
-          {id:"pasar", who:"eduardo", t:"Dejarme pasar", lines:[
-            {who:"ines",text:"La defensa tiene derecho a ver la escena y la carpeta de investigación."},
+          {id:"e_escena", who:"eduardo", t:"¿Qué pasó aquí?", lines:[
+            {who:"eduardo",text:"Víctima en la entrada, boca abajo. Dos disparos. El de la camioneta huyó."},
+            {who:"eduardo",mood:"write",flag:"e_escena",text:"Y en la mochila del cabro, la pistola. Caso cerrado, dice el fiscal."}]},
+          {id:"e_pasar", who:"eduardo", t:"Dejarme pasar", req:{flags:["e_escena"]}, lines:[
+            {who:"ines",text:"La defensa tiene derecho a ver la escena. Y la carpeta de investigación."},
             {who:"eduardo",mood:"sweat",flag:"pasar",text:"...Ya, ya. Pero no toque nada. Esta vez medí todo."}]},
-          {id:"carpeta", who:"eduardo", t:"La carpeta", req:{flags:["pasar"]}, lines:[
+          {id:"e_carpeta", who:"eduardo", t:"La carpeta de investigación", req:{flags:["pasar"]}, lines:[
             {who:"eduardo",evidence:"autopsia",text:"La autopsia. Dos heridas."},
             {who:"eduardo",evidence:"video",text:"El video de la cámara municipal. La camioneta del mecánico, huyendo."},
-            {who:"eduardo",mood:"down",evidence:"fotocam",text:"Y la camioneta. La misma que... bueno. Lo de su amiga. Lo siento."}]},
+            {who:"eduardo",mood:"down",evidence:"fotocam",text:"Y la camioneta. La misma que... lo de su amiga. Lo siento."},
+            {who:"eduardo",mood:"sweat",flag:"edu_fue",text:"Ya. Me voy a la fiscalía a dejar el informe. No toque nada, ¿ah?"},
+            {who:"ines",mood:"think",text:"(Se fue. Ahora puedo revisar con calma.)"}]},
+          {id:"e_papa", who:"eduardo", t:"El caso de mi papá", req:{flags:["e_escena"]}, lines:[
+            {who:"eduardo",mood:"down",text:"Me acuerdo de su viejo. No es un caso que se me olvide."},
+            {who:"ines",mood:"down",text:"(Algún día le voy a preguntar más. Hoy no.)"}]},
+          {id:"b_quien", who:"barbara", t:"¿Qué hace aquí?", lines:[
+            {who:"barbara",mood:"smug",flag:"habla_barbara",text:"Negocios. Mi cadena quiere esta casona. Vista al mar, cerro patrimonial."},
+            {who:"barbara",text:"El señor Ferrada era... difícil. Ahora habrá que conversar con la heredera."}]},
+          {id:"b_cena", who:"barbara", t:"La discusión de la cena", req:{flags:["habla_barbara"]}, lines:[
+            {who:"barbara",mood:"angry",text:"Le ofrecí el triple de lo que vale. Me dijo que antes muerto."},
+            {who:"barbara",mood:"smug",text:"Mala elección de palabras, ¿no?"}]},
+          {id:"b_noche", who:"barbara", t:"¿Dónde estaba esa noche?", req:{flags:["habla_barbara"]}, lines:[
+            {who:"barbara",mood:"angry",text:"Eso no es asunto suyo, abogado."},
+            {who:"ines",mood:"think",text:"(No quiso contestar.)"}]},
+        ],
+        present:{
+          barbara:{pistola:[{who:"barbara",mood:"smug",text:"Qué vulgar. Yo resuelvo las cosas con contratos."}],
+                   default:[{who:"barbara",text:"No tengo tiempo para esto."}]},
+          eduardo:{default:[{who:"eduardo",text:"No me muestre cosas, Valdivia. Yo trabajo para la fiscalía."}]}}},
+
+      oficinahostal:{name:"Oficina del hospedaje", req:{flags:["vio_pasillo"]}, moves:["casona","pieza"],
+        people:[{who:"malva",
+           hello:[{who:"malva",mood:"shock",text:"¡Ay! Me asustó. Perdone, estaba ordenando las cuentas..."},
+                  {who:"malva",mood:"down",meet:"malva",text:"Soy Malva. La hija de... de don Leonel."},
+                  {who:"malva",mood:"smile",text:"Usted es el abogado del muchacho, ¿no? ¿Le sirvo un tecito? Es lo único que me tiene en pie."}],
+           back:[{who:"malva",mood:"smile",text:"Abogado. ¿Otro tecito?"}]}],
+        examine:[
+          {id:"cajon1", t:"El cajón abierto", area:[28,96,66,40], lines:[
+            {who:"ines",mood:"think",text:"(Un cajón con la cerradura forzada. Vacío.)"},
+            {who:"malva",mood:"sweat",text:"Ahí mi papá guardaba la plata de la caja. Esa noche alguien lo forzó."},
+            {who:"malva",mood:"down",text:"Ladrones, abogado. Seguro el mismo que..."}]},
+          {id:"reservas1", t:"El libro abierto", area:[16,58,66,34], lines:[
+            {who:"ines",mood:"think",text:"(El libro de reservas. Letra ordenada, todo anotado al centavo.)"},
+            {who:"malva",mood:"smile",text:"Llevo las cuentas de la casa desde los veinte años."}]},
+          {id:"cuadro1", t:"El cuadro", area:[10,0,48,46], lines:[
+            {who:"ines",mood:"think",text:"(Un grabado antiguo del ascensor Concepción.)"},
+            {who:"malva",mood:"smile",text:"Lo dibujó mi abuelo. Él construyó esta casa."}]},
+          {id:"ventana1", t:"La ventana", area:[96,0,100,94], lines:[
+            {who:"ines",mood:"think",text:"(Vista a la bahía. Desde aquí no se ve ni la entrada ni el pasillo.)"}]},
+        ],
+        talk:[
+          {id:"m_casa", who:"malva", t:"La casona", lines:[
+            {who:"malva",text:"Era de mi abuelo. Mi papá la convirtió en hospedaje. Yo la administro."},
+            {who:"malva",mood:"smile",flag:"habla_malva",text:"Desayunos, sábanas, cuentas... y el té. Siempre el té."}]},
           {id:"m_noche", who:"malva", t:"Esa noche", lines:[
-            {who:"malva",mood:"sweat",meet:"malva",text:"Yo estaba en la cocina, lavando las tazas del té. Sentí los disparos..."},
+            {who:"malva",mood:"sweat",text:"Yo estaba en la cocina, lavando las tazas. Sentí los disparos..."},
             {who:"ines",mood:"think",text:"(Tiene una curita en la mano.)"},
             {who:"malva",text:"¿Esto? Me corté con el cuchillo del pan. Qué torpe."}]},
           {id:"m_papa", who:"malva", t:"Su padre", lines:[
-            {who:"malva",mood:"down",text:"Era duro, pero bueno. Y odiaba las armas, abogado. Nunca tuvo una."}]},
-          {id:"b_quien", who:"barbara", t:"¿Quién es usted?", lines:[
-            {who:"barbara",meet:"barbara",text:"Bárbara Plusvalía. Cadena Hoteles Mirador del Pacífico."},
-            {who:"barbara",mood:"smug",text:"Discutí con el señor Ferrada en la cena, sí. No quería vender. Ahora... ya veremos."}]},
+            {who:"malva",mood:"down",text:"Era duro, pero bueno. Prestaba plata, sí. Medio cerro le debía."},
+            {who:"malva",text:"Y odiaba las armas, abogado. Nunca tuvo una."}]},
+          {id:"m_tadeo", who:"malva", t:"Tadeo", lines:[
+            {who:"malva",text:"Un muchacho tranquilo. Llegó antier. Le di su té, como a todos."},
+            {who:"malva",mood:"down",text:"Nunca pensé que... ay. No sé qué pensar."}]},
+          {id:"m_barbara", who:"malva", t:"La señora Plusvalía", req:{ev:["libro"]}, lines:[
+            {who:"malva",mood:"sweat",text:"Quiere comprar la casa para un hotel. Mi papá no quería vender."},
+            {who:"malva",text:"Esa noche discutieron en la cena. Fuerte. Ella salió dando un portazo."}]},
+          {id:"m_vecino", who:"malva", t:"Los vecinos", lines:[
+            {who:"malva",mood:"smile",flag:"vio_cortina",text:"Don Aurelio, el de enfrente. Ve todo con sus binoculares. Todo."}]},
         ],
-        present:{
-          malva:{pistola:[{who:"malva",mood:"shock",text:"¡Qué horror! Le digo que mi papá odiaba las armas."}]},
-          eduardo:{default:[{who:"eduardo",text:"No me muestre cosas, Valdivia. Yo soy de la fiscalía."}]}}},
+        present:{malva:{
+          pistola:[{who:"malva",mood:"shock",text:"¡Qué horror! Le digo que mi papá odiaba las armas."}],
+          taza:[{who:"malva",mood:"smile",text:"Mi té de bienvenida. Receta de mi abuela. ¿Quiere uno?"}],
+          libro:[{who:"malva",text:"Dos huéspedes. Es temporada baja."}],
+          default:[{who:"malva",mood:"sweat",text:"No sé qué decirle de eso, abogado."}]}}},
+
       pieza:{name:"Pieza de Tadeo", req:{flags:["pasar"]}, moves:["casona"],
         examine:[
-          {id:"plano", t:"Plano de evacuación", lines:[{who:"ines",mood:"think",evidence:"plano",text:"(El plano de la casa. Esta pieza no tiene ventana a la calle.)"}]},
-          {id:"taza", t:"Taza en el velador", lines:[{who:"ines",mood:"think",evidence:"taza",text:"(Una taza con restos de té.)"}]},
-          {id:"pastillas", t:"Caja de pastillas", lines:[{who:"ines",mood:"think",evidence:"pastillas",text:"(Pastillas para el mareo. Suaves. Falta una.)"}]},
-          {id:"mochila", t:"La mochila", lines:[
-            {who:"ines",mood:"think",evidence:"fotomadre",text:"(Una foto vieja en el bolsillo. «Leo y yo, 2002».)"}]},
+          {id:"plano", t:"El plano de la pared", area:[74,30,64,34], lines:[{who:"ines",mood:"think",evidence:"plano",text:"(Plano de evacuación. Esta pieza no tiene ventana a la calle. Y la cocina no da al pasillo.)"}]},
+          {id:"taza", t:"La taza del velador", area:[88,80,17,22], lines:[{who:"ines",mood:"think",evidence:"taza",text:"(Una taza con restos de té. Huele a hierbas... y a algo más.)"}]},
+          {id:"pastillas", t:"La caja de pastillas", area:[105,80,18,22], lines:[{who:"ines",mood:"think",evidence:"pastillas",text:"(Pastillas para el mareo. Suaves. Falta solo una.)"}]},
+          {id:"mochila", t:"La mochila", area:[198,84,58,80], lines:[
+            {who:"ines",mood:"think",text:"(Enorme. Ropa, un saco de dormir, un mapa de la Patagonia lleno de anotaciones.)"},
+            {who:"ines",mood:"think",evidence:"fotomadre",text:"(Y una foto vieja en el bolsillo. Al reverso: «Leo y yo, 2002».)"}]},
+          {id:"cama", t:"La cama", area:[0,76,88,116], lines:[{who:"ines",mood:"think",text:"(Deshecha, pero casi ni movida. Durmió como tronco. Demasiado como tronco.)"}]},
+          {id:"puertap", t:"La puerta", area:[144,24,56,112], lines:[{who:"ines",mood:"think",text:"(No tiene llave por dentro. Cualquiera pudo entrar mientras él dormía.)"}]},
         ]},
-      aurelio:{name:"Casa de Aurelio Mirón", moves:["casona"],
+
+      aurelio:{name:"Casa de Aurelio Mirón", req:{flags:["vio_cortina"]}, moves:["casona"],
+        examine:[
+          {id:"a_ventana", t:"La ventana", area:[70,0,170,100], lines:[
+            {who:"ines",mood:"think",text:"(La Casona Ferrada, justo enfrente. Se ve la puerta perfecta.)"},
+            {who:"ines",mood:"think",text:"(Pero el pasillo queda adentro, en penumbra. Y la pieza del fondo no se ve.)"}]},
+          {id:"a_cuaderno", t:"El cuaderno de la mesita", area:[34,84,48,24], lines:[
+            {who:"ines",mood:"think",text:"(Un cuaderno lleno de patentes de autos y horas. «Martes: el cartero llegó tarde».)"},
+            {who:"aurelio",mood:"sweat",text:"¡Eso es privado! Es... es un diario. De vida."}]},
+          {id:"a_sillon", t:"El sillón", area:[0,76,64,104], lines:[
+            {who:"ines",mood:"think",text:"(Hundido justo en la forma de una persona. Apuntando a la ventana.)"}]},
+        ],
         people:[{who:"aurelio", back:[{who:"aurelio",mood:"smile",text:"¡Volvió! ¿Quiere mirar por los binoculares? Se ve todo, ah."}]}],
-        enter:[{who:"aurelio",meet:"aurelio",text:"¡Un abogado! Pase, pase. Desde aquí se ve todo, ¿ve? Con binoculares."}],
+        enter:[{who:"aurelio",mood:"shock",text:"¡Lo vi mirando para acá! ¿Usted es de la tele?"},
+               {who:"ines",mood:"sweat",text:"Abogado. Defensor."},
+               {who:"aurelio",mood:"smug",meet:"aurelio",text:"Aurelio Mirón. Vecino. Vigilante del barrio, sin sueldo."}],
         talk:[
           {id:"a_vio", who:"aurelio", t:"¿Qué vio esa noche?", lines:[
-            {who:"aurelio",flag:"vio_aurelio",text:"La camioneta roja. El fogonazo en la puerta. ¡Y otro! Casi juntos."},
-            {who:"aurelio",mood:"smug",text:"Lo demás lo cuento en el juicio. Me citaron, ¿sabe?"}]},
-        ]},
+            {who:"aurelio",text:"La camioneta roja. Un tipo grandote en la puerta. ¡Y el fogonazo!"},
+            {who:"aurelio",mood:"shock",flag:"vio_aurelio",text:"Y otro, casi al tiro. ¡Pum, pum!"},
+            {who:"aurelio",mood:"smug",text:"Lo demás lo cuento en el juicio. Me citaron, ¿sabe? Como testigo."}]},
+          {id:"a_ferrada", who:"aurelio", t:"Los Ferrada", lines:[
+            {who:"aurelio",text:"Don Leonel prestaba plata. Cobraba caro. Medio barrio le debía."},
+            {who:"aurelio",mood:"smile",text:"La Malva es trabajadora. Siempre con su delantal, de arriba para abajo."}]},
+          {id:"a_senora", who:"aurelio", t:"La señora de traje", req:{ev:["libro"]}, lines:[
+            {who:"aurelio",mood:"think",text:"¿La elegante? Vino tres veces esta semana. Con cara de dueña."},
+            {who:"aurelio",mood:"smug",text:"Esa noche salió en taxi. Temprano. No le vi la hora, estaba en el baño."}]},
+          {id:"a_bino", who:"aurelio", t:"Los binoculares", lines:[
+            {who:"aurelio",mood:"smug",text:"Alemanes. De mi suegro. Se ve hasta el puerto con estos."},
+            {who:"ines",mood:"sweat",text:"(Y la vida de todos los vecinos, seguro.)"}]},
+        ],
+        present:{aurelio:{
+          fotocam:[{who:"aurelio",mood:"shock",text:"¡Esa! ¡La camioneta roja! Bajó como alma que lleva el diablo."}],
+          pistola:[{who:"aurelio",mood:"shock",text:"¡Guarde eso, por Dios! ¡Que me da algo!"}],
+          default:[{who:"aurelio",mood:"confused",text:"¿Y eso qué es? Déjeme ver con los binoculares... no, igual no sé."}]}}},
+
       comisaria:{name:"Comisaría", moves:["locutorio","casona"],
+        examine:[
+          {id:"c_mural", t:"El diario mural", area:[30,0,92,62], lines:[
+            {who:"ines",mood:"think",text:"(Fotos de otros casos. Ninguno resuelto todavía, parece.)"}]},
+          {id:"c_bandera", t:"La bandera", area:[0,0,28,110], lines:[
+            {who:"ines",mood:"think",text:"(La bandera. Un poco desteñida, pero bien planchada.)"}]},
+        ],
         people:[{who:"fiscal",
           hello:[{who:"fiscal",mood:"smug",pose:"cafe",text:"Valdivia. Vino a ver a su cliente, supongo. Lo va a necesitar."}],
           back:[{who:"fiscal",pose:"cafe",text:"¿Todavía por aquí? *sorbo*"}]}],
         talk:[
           {id:"p_caso", who:"fiscal", t:"El caso", lines:[
-            {who:"fiscal",mood:"smug",pose:"cafe",text:"Arma en su mochila, víctima en la puerta. No me haga perder el tiempo, Valdivia."}]},
-        ]},
+            {who:"fiscal",mood:"smug",pose:"cafe",flag:"habla_penna",text:"Arma en su mochila, víctima en la puerta. No me haga perder el tiempo."}]},
+          {id:"p_acusado", who:"fiscal", t:"Tadeo", lines:[
+            {who:"fiscal",text:"Llegó antier. Esa misma noche hay un muerto en la puerta. No creo en coincidencias."}]},
+          {id:"p_rocky", who:"fiscal", t:"El de la camioneta", req:{ev:["video"]}, lines:[
+            {who:"fiscal",text:"Rodrigo Saavedra. Detenido por amenazas y por el atropello de su amiga."},
+            {who:"fiscal",mood:"disdain",text:"Su bala está en el marco. No mató a nadie. No me sirve de culpable."}]},
+        ],
+        present:{fiscal:{
+          pistola:[{who:"fiscal",pose:"cafe",text:"La del acusado. Ya la vio. ¿Algo más?"}],
+          default:[{who:"fiscal",mood:"smug",text:"Guárdese eso para el juicio, colega."}]}}},
     }},
 
+  /* ===================== DÍA 3 ===================== */
   dia3: {
     start:"locutorio", music:"espera",
     done:{ev:["carta","polvora","sangre","inscripcion","tarjeta","receta","contrato","boleta"]},
-    end:[{who:"ines",mood:"serious",text:"(Ya sé quién fue. Ahora tengo que demostrarlo.)"}],
+    end:[{who:"ines",mood:"serious",text:"(Ya sé quién fue.)"},
+         {who:"ines",mood:"serious",text:"(Ahora tengo que demostrarlo. Prueba por prueba.)"}],
     places:{
-      locutorio:{name:"Locutorio de la comisaría", moves:["comisaria","casona"],
+      locutorio:{name:"Locutorio — Tadeo", moves:["locutorio_rocky","comisaria","casona"],
         people:[{who:"tadeo", back:[{who:"tadeo",mood:"down",text:"Abogado..."}]}],
         enter:[{who:"tadeo",mood:"down",text:"...Ahora todos saben. Ya no importa."}],
         talk:[
@@ -186,23 +322,23 @@ const INV = {
                      {who:"tadeo",mood:"cry",evidence:"carta",text:"Me dijo «mañana arreglamos todo, hijo». Fue la única vez que me dijo hijo."},
                      {who:"ines",mood:"down",text:"(Lo conoció un día. Y esa misma noche se lo mataron.)"}]},
            lines:[{who:"tadeo",text:"Ya le conté todo, abogado."}]},
+          {id:"t_te", who:"tadeo", t:"El té de esa noche", lines:[
+            {who:"tadeo",text:"La señora Malva me lo llevó a la pieza. Insistió en que me lo tomara caliente."},
+            {who:"tadeo",mood:"think",text:"Era más amargo que el del primer día. Pensé que era otra hierba."}]},
         ]},
-      comisaria:{name:"Comisaría", moves:["locutorio","casona","taller"],
-        people:[
-          {who:"eduardo", hello:[{who:"eduardo",mood:"sweat",text:"Valdivia. Llegaron informes nuevos. No le van a gustar al fiscal."}],
-                          back:[{who:"eduardo",text:"¿Necesita algo más? Rápido, que me miran feo."}]},
-          {who:"rocky", hello:[{who:"rocky",mood:"angry",meet:"rocky",text:"¿Y este quién es? ¿El abogado del cabro? ¡Yo no maté a nadie, ¿ya?!"}]}],
+      locutorio_rocky:{name:"Locutorio — Rocky Saavedra", bg:"locutorio", moves:["locutorio","comisaria"],
+        people:[{who:"rocky", hello:[{who:"rocky",mood:"angry",text:"¿Usted es el abogado del cabro?"},
+                                     {who:"rocky",mood:"angry",meet:"rocky",text:"¡Yo no maté a nadie, ¿ya?! ¡A nadie!"}],
+                              back:[{who:"rocky",mood:"down",text:"¿Otra vez? Ya le dije todo."}]}],
         talk:[
-          {id:"informes", who:"eduardo", t:"Informes nuevos", lines:[
-            {who:"eduardo",evidence:"polvora",text:"Pólvora en las manos del cabro: negativo."},
-            {who:"eduardo",evidence:"sangre",text:"Y en la sangre... clonazepam. Harto. No es el remedio del mareo."},
-            {who:"eduardo",mood:"sweat",text:"El fiscal dice que se lavó y se drogó solo. A mí... no me cuadra."}]},
-          {id:"arma", who:"eduardo", t:"La pistola", lines:[
-            {who:"eduardo",mood:"write",evidence:"inscripcion",text:"La busqué en el registro. Inscrita en 2015... a nombre de Leonel Ferrada."},
-            {who:"ines",mood:"shock",text:"(¿«Odiaba las armas»?)"}]},
           {id:"r_noche", who:"rocky", t:"Esa noche", lines:[
-            {who:"rocky",mood:"angry",meet:"rocky",text:"¡Yo no lo maté! Le disparé pa' asustarlo y el viejo me disparó de vuelta."},
-            {who:"rocky",mood:"down",text:"Y la cabra de la esquina... no la vi. Le juro que no la vi."}]},
+            {who:"rocky",mood:"angry",text:"Le disparé pa' asustarlo. ¡Y el viejo me disparó de vuelta!"},
+            {who:"rocky",mood:"sweat",text:"Vi el fogonazo detrás de él. Arranqué. ¿Qué iba a hacer?"}]},
+          {id:"r_deuda", who:"rocky", t:"Su deuda con Leonel", lines:[
+            {who:"rocky",mood:"down",text:"Le debía cinco palos. Me iba a quitar el taller. Es lo único que tengo."}]},
+          {id:"r_cote", who:"rocky", t:"La mujer que atropelló", lines:[
+            {who:"rocky",mood:"down",text:"...No la vi. Le juro que no la vi. Se me cruzó y yo iba arrancando."},
+            {who:"ines",mood:"angry",text:"(Se llama Coté. Y es mi amiga.)"}]},
         ],
         present:{
           rocky:{fotocam:[
@@ -210,37 +346,80 @@ const INV = {
             {who:"rocky",mood:"sweat",text:"...En el taller. La escondí. Me graba disparando."},
             {who:"rocky",mood:"down",flag:"taller",text:"Pero si sirve pa' algo... la llave está en mi chaqueta."}],
             default:[{who:"rocky",mood:"angry",text:"¿Y eso qué, abogado?"}]},
+        }},
+      comisaria:{name:"Comisaría", moves:["locutorio","locutorio_rocky","casona","taller"],
+        people:[
+          {who:"eduardo", hello:[{who:"eduardo",mood:"sweat",text:"Valdivia. Llegaron informes nuevos. No le van a gustar al fiscal."},
+                                 {who:"eduardo",text:"Y el mecánico está en el locutorio. Pidió hablar con usted, fíjese."}],
+                          back:[{who:"eduardo",text:"¿Necesita algo más? Rápido, que me miran feo."}]}],
+        talk:[
+          {id:"d_polvora", who:"eduardo", t:"El examen de pólvora", lines:[
+            {who:"eduardo",evidence:"polvora",text:"Pólvora en las manos del cabro: negativo."},
+            {who:"eduardo",mood:"sweat",text:"El fiscal dice que se lavó. A mí... no me cuadra."}]},
+          {id:"d_sangre", who:"eduardo", t:"¿Le sacaron sangre a Tadeo?", req:{ev:["taza"]}, lines:[
+            {who:"ines",text:"Tadeo durmió como piedra con dos disparos al lado. ¿Le tomaron muestra de sangre?"},
+            {who:"eduardo",mood:"write",text:"...Sí. Protocolo. Llegó hoy."},
+            {who:"eduardo",mood:"shock",evidence:"sangre",text:"Clonazepam. Harto. Eso no es el remedio del mareo."}]},
+          {id:"d_arma", who:"eduardo", t:"La pistola", lines:[
+            {who:"eduardo",mood:"write",text:"La busqué en el registro de armas. Esta vez lo revisé todo."},
+            {who:"eduardo",evidence:"inscripcion",text:"Inscrita en 2015... a nombre de Leonel Ferrada."},
+            {who:"ines",mood:"shock",text:"(¿«Odiaba las armas»?)"}]},
+        ],
+        present:{
           eduardo:{default:[{who:"eduardo",text:"Ya le di todo lo que podía, Valdivia."}]}}},
       taller:{name:"Taller de Rocky", req:{flags:["taller"]}, moves:["comisaria"],
         examine:[
-          {id:"cajon", t:"El cajón de herramientas", lines:[
-            {who:"ines",mood:"think",evidence:"tarjeta",text:"(La cámara del tablero. Con su tarjeta.)"},
+          {id:"cajon", t:"La caja de herramientas", lines:[
+            {who:"ines",mood:"think",evidence:"tarjeta",text:"(La cámara del tablero. Con su tarjeta de memoria.)"},
             {who:"ines",mood:"shock",anim:"hit",text:"(23:41... un fogonazo en la puerta. Y otro, dos segundos después, dentro del pasillo.)"},
             {who:"ines",mood:"serious",text:"(Una silueta de pelo largo. Con delantal.)"}]},
+          {id:"banco", t:"El banco de trabajo", lines:[
+            {who:"ines",mood:"think",text:"(Grasa, herramientas... y una foto de Rocky con una niña chica. ¿Su hija?)"}]},
+          {id:"calendario", t:"El calendario", lines:[
+            {who:"ines",mood:"think",text:"(De 2019. Nadie le ha dado vuelta la hoja en años.)"}]},
         ]},
       casona:{name:"Casona Ferrada", moves:["oficinahostal","comisaria","locutorio"],
         people:[
           {who:"malva", hello:[{who:"malva",mood:"sweat",text:"Abogado... ¿otra vez por aquí? Pase. Ya no sé qué más quieren de esta casa."}],
-                        back:[{who:"malva",mood:"smile",text:"¿Se le quedó algo, abogado?"}]},
-          {who:"barbara", hello:[{who:"barbara",mood:"angry",text:"Defensor. Vine a buscar mis cosas. Esta casa me da escalofríos."}]}],
+                        back:[{who:"malva",mood:"smile",text:"¿Se le quedó algo, abogado?"}]}],
         examine:[
-          {id:"bano", t:"El baño", req:{ev:["sangre"]}, lines:[
+          {id:"marco3", t:"El marco de la puerta", area:[0,0,28,172], lines:[
+            {who:"ines",mood:"think",text:"(El agujero de la bala .38 sigue ahí. Ya nadie lo mira.)"}]},
+          {id:"flores3", t:"Las flores", area:[204,54,28,30], lines:[
+            {who:"ines",mood:"think",text:"(Las hortensias ya están marchitas. Nadie las cambió esta vez.)"}]},
+          {id:"pasillo3", t:"El pasillo", area:[112,8,72,124], req:{not:["vio_bano"]}, lines:[
+            {who:"ines",mood:"think",text:"(El pasillo. A un costado, el baño de la casa.)"},
+            {who:"ines",mood:"think",flag:"vio_bano",text:"(Tadeo durmió como piedra. ¿Habrá algo ahí que lo explique?)"}],
+           again:[{who:"ines",mood:"think",text:"(El pasillo de nuevo.)"}]},
+          {id:"bano", t:"El baño del pasillo", area:[112,8,72,124], req:{ev:["sangre"],flags:["vio_bano"]}, lines:[
             {who:"ines",mood:"shock",evidence:"receta",text:"(Un frasco de clonazepam casi vacío. Receta a nombre de... Malva Ferrada.)"}]},
         ],
         talk:[
-          {id:"b_noche", who:"barbara", t:"¿Dónde estaba esa noche?", lines:[
-            {who:"barbara",mood:"smug",evidence:"boleta",text:"En un bar del plan. Aquí está la boleta del taxi. Salí 23:14, volví 00:28."},
-            {who:"barbara",text:"Pregúntele mejor a Malva por los 40 millones que le adelantamos."}]},
           {id:"m_hoy", who:"malva", t:"¿Cómo está?", lines:[
             {who:"malva",mood:"down",text:"Cansada. ¿Le sirvo un tecito, abogado?"},
-            {who:"ines",mood:"sweat",text:"(No, gracias.)"}]},
+            {who:"ines",mood:"sweat",text:"(No, gracias. Hoy no.)"}]},
+          {id:"m_mano", who:"malva", t:"Su mano", lines:[
+            {who:"malva",mood:"sweat",text:"Ya le dije. El cuchillo del pan."},
+            {who:"ines",mood:"think",text:"(Un corte justo entre el pulgar y el índice. Raro para un cuchillo.)"}]},
         ]},
       oficinahostal:{name:"Oficina del hospedaje", moves:["casona"],
+        people:[{who:"barbara", hello:[{who:"barbara",mood:"shock",text:"¡Ay! Usted otra vez."},
+                                       {who:"barbara",mood:"angry",text:"Vine a buscar mis papeles. Esta casa me da escalofríos."}]}],
+        talk:[
+          {id:"b_noche3", who:"barbara", t:"¿Dónde estaba esa noche?", lines:[
+            {who:"barbara",mood:"sweat",text:"...Está bien. En un bar del plan. No quería que mi empresa lo supiera."},
+            {who:"barbara",evidence:"boleta",text:"Aquí está la boleta del taxi. Salí 23:14, volví 00:28."}]},
+          {id:"b_adelanto", who:"barbara", t:"El negocio de la casona", req:{ev:["boleta"]}, lines:[
+            {who:"barbara",mood:"smug",flag:"adelanto",text:"Pregúntele a Malva por los 40 millones que le adelantamos. Sin que su padre supiera."},
+            {who:"ines",mood:"shock",text:"(¿Malva vendió la casa a escondidas?)"}]},
+        ],
         examine:[
-          {id:"contrato", t:"Carpetas del escritorio", lines:[
-            {who:"ines",mood:"think",evidence:"contrato",text:"(Un contrato: 40 millones de adelanto por la casona. Firmado solo por Malva.)"}]},
-          {id:"cajonvacio", t:"Cajón con llave", lines:[
-            {who:"ines",mood:"think",text:"(Forzado. Vacío. Aquí cabría justo una pistola.)"}]},
+          {id:"contrato", t:"Las carpetas del escritorio", area:[0,50,38,56], req:{flags:["adelanto"]}, lines:[
+            {who:"ines",mood:"think",evidence:"contrato",text:"(Aquí está: 40 millones de adelanto por la casona. Firmado solo por Malva.)"}]},
+          {id:"cajonvacio", t:"El cajón forzado", area:[28,96,66,40], lines:[
+            {who:"ines",mood:"think",text:"(Forzado. Vacío. Del tamaño justo para una pistola.)"}]},
+          {id:"reservas", t:"El libro de reservas", area:[16,58,66,34], lines:[
+            {who:"ines",mood:"think",text:"(Ordenado, con letra de mujer. Malva lleva todo al centavo.)"}]},
         ]},
     }},
 };

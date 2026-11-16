@@ -162,3 +162,6 @@ button.back{background:#283458!important}
 /* personaje que entra: fundido suave (el cambio de cámara sigue siendo corte directo) */
 #spr.fadein{animation:sprin .3s ease-out}
 @keyframes sprin{from{opacity:0}to{opacity:1}}
+
+/* examinar tocando el lugar (pantalla de abajo) */
+#exam{height:calc(100% - 13cqw);max-width:100%;aspect-ratio:4/3;image-rendering:pixelated;cursor:crosshair;border:.7cqw solid #101830;flex:none}

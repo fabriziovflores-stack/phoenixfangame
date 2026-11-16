@@ -47,6 +47,10 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. **Silencio**: un tema con `silence` se rompe
   presentando pruebas en orden (`steps`); fallar quita vida (en la investigación nunca baja de 1).
   En líneas: `flag:"x"` marca algo, `meet:"id"` agrega un perfil marcado `hidden:true`.
+  **Examinar = tocar el lugar** (como en la DS): cada objeto lleva `area:[x,y,ancho,alto]` en coordenadas 256×192; el fondo
+  aparece en la pantalla de abajo. Sin fondo dibujado o sin `area`, se usa una lista. **Una sola persona por lugar**
+  (si hay varias en `people`, se muestra la primera cuyo `req` se cumple). En la investigación **a Justo no se le ve**:
+  sus líneas se leen sobre el lugar o sobre la persona presente.
   Cada persona de un lugar reacciona a Justo: `hello` (la primera vez que la ve, también si aparece más tarde)
   y `back` (al volver al lugar). En la investigación, quien habla queda en el fondo del lugar actual, no en su puesto del juzgado.
   `{cmd:"card", t1:"— Día 1 —", t2:"Investigación"}` muestra la tarjeta de día. `breakdown` acepta `who` y `seq`

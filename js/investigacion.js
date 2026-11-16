@@ -17,7 +17,7 @@ function reqOk(r){
   return [].concat(r.flags||[]).every(f=>G.flags[f]) && [].concat(r.ev||[]).every(has) && ![].concat(r.not||[]).some(f=>G.flags[f]);
 }
 function invPlace(){ return X.inv.places[G.inv.place]; }
-function invPeople(){ return (invPlace().people||[]).filter(p=>reqOk(p.req)).map(p=>p.who); }
+function invPeople(){ return (invPlace().people||[]).filter(p=>reqOk(p.req)).map(p=>p.who).slice(0,1); }   // una sola persona por lugar
 function invBg(){ return invPlace().bg||G.inv.place; }
 
 CMD.invest=(st,done)=>{
@@ -58,6 +58,15 @@ function invControls(m,add,row){
     const b=row("rowA"); add("📁<br>Presentar","obj",invPresentStart,b); add("🚶<br>Moverse","hold",invMove,b);
     return true;
   }
+  if(m==="invexam"){
+    const cv=document.createElement("canvas"); cv.width=256; cv.height=192; cv.id="exam";
+    const g=cv.getContext("2d"); g.drawImage($("bg"),0,0); g.drawImage($("desk"),0,0);
+    cv.onclick=ev=>{ if(busy) return; const r=cv.getBoundingClientRect();
+      const x=(ev.clientX-r.left)/r.width*256, y=(ev.clientY-r.top)/r.height*192;
+      g.strokeStyle="#ffe040"; g.lineWidth=2; g.beginPath(); g.arc(x,y,7,0,7); g.moveTo(x-11,y); g.lineTo(x+11,y); g.moveTo(x,y-11); g.lineTo(x,y+11); g.stroke();
+      busy=true; setTimeout(()=>{ busy=false; invTap(x,y); },220); };
+    $("controls").appendChild(cv); add("◀ Volver","opt back",invMenu); return true;
+  }
   if(m==="invlist"){ X.list.forEach(it=>add(it.t,"opt",it.fn)); add("◀ Volver","opt back",invMenu); return true; }
   if(m==="invpresent"||m==="silpresent"){
     add("📁 Abrir expediente","obj wide",()=>openRecord("pruebas", m==="silpresent"?silPrompt():null));
@@ -69,12 +78,27 @@ function invControls(m,add,row){
 }
 function invThought(t){ play([{who:"ines",mood:"think",text:t}], invMenu); }
 
-/* Examinar */
+/* Examinar: como en la DS, se toca el lugar en la pantalla de abajo (area:[x,y,ancho,alto] en 256×192).
+   Si el lugar no tiene fondo dibujado o sus objetos no tienen area, se usa una lista. */
+const NADA=["(No hay nada especial ahí.)","(Nada que me llame la atención.)","(Mmm... no. Nada.)"];
 function invExamine(){
   const its=(invPlace().examine||[]).filter(e=>reqOk(e.req));
+  if(BGIMG[invBg()] && its.some(e=>e.area)){
+    setScene(invBg(), null); mode="invexam"; $("name").textContent="";
+    const t=$("text"); t.className="narr"; t.style.fontSize=""; t.textContent="🔍 Toca en la pantalla de abajo lo que quieras examinar.";
+    renderControls(); return;
+  }
   if(!its.length) return invThought("(No veo nada más que revisar aquí.)");
   invList(its.map(e=>{ const k="ex:"+G.inv.place+":"+e.id;
     return {t:(G.inv.seen[k]?"✓ ":"🔍 ")+e.t, fn:()=>{ const again=G.inv.seen[k]&&e.again; G.inv.seen[k]=1; setScene(invBg(),null); play(again?e.again:e.lines, invMenu); }}; }));
+}
+function invTap(x,y){
+  const its=(invPlace().examine||[]).filter(e=>reqOk(e.req)&&e.area)
+    .sort((a,b)=>a.area[2]*a.area[3]-b.area[2]*b.area[3]);            // si dos se tocan, gana el más chico
+  const e=its.find(e=>{ const [ax,ay,aw,ah]=e.area; return x>=ax&&x<ax+aw&&y>=ay&&y<ay+ah; });
+  if(!e) return play([{who:"ines",mood:"think",text:NADA[Math.floor(Math.random()*NADA.length)]}], invExamine);
+  const k="ex:"+G.inv.place+":"+e.id, again=G.inv.seen[k]&&e.again; G.inv.seen[k]=1;
+  play(again?e.again:e.lines, invExamine);
 }
 /* Hablar */
 function invTalk(){
