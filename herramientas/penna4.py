@@ -105,7 +105,8 @@ BP=BF=None
 TABLAS={'v3':{'base':(1,2),'smug':(3,2),'proud':(5,None),'smug2':(6,2),'cross':(7,8),'cuff':(9,None),'think':(10,None),'think2':(11,None),
    'facepalm':(12,None),'gesture':(13,14),'stop':(15,16),'point':(17,18),'fist':(21,22),'angry':(23,24),
    'shock':(25,26),'sweat':(27,28),'down':(29,None),'proud2':(31,32),'serious':(1,2),'smile':(6,2)},
- 'v4':{'base':(1,2),'cross':(3,4),'fist':(5,6),'point':(7,8)}}
+ 'v4':{'base':(1,2),'cross':(3,4),'fist':(5,6),'point':(7,8)},
+ 'v5':{'base':(1,2),'smug':(3,4),'cross':(5,6),'point':(7,8),'angry':(9,10),'shock':(11,12),'sweat':(13,14),'cafe':(15,16)}}
 P=TABLAS[os.environ.get('TABLA','v3')]
 FR={}
 def save(n,im): im.save(f'{OUT}/{n}.png',optimize=True)

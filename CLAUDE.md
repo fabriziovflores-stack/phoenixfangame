@@ -89,12 +89,12 @@ Justo: poses de `arte-original/justo-perfil-b.png` (perfil, **siempre mira a la 
 los lentes y toma un papel). `TRANS` en engine.js pasa esos cuadros al entrar o salir de `pose:"point"` y `pose:"papel"`
 (`papelThink` = pensando con el papel). Las tres hojas se alinean juntas con `herramientas/justo.py` (args: carpeta 50 142 -20). Los cuadros vienen corridos
 a la izquierda para que el brazo al apuntar salga entero; el CSS (`#sprite[data-who=ines]`) compensa la posición.
-Penna: de perfil. Normal, `cruzado`, `puno` y `point` salen de `arte-original/penna-v4.jpg` (4×2, medio cuerpo):
-`SHEET=arte-original/penna-v4.jpg GX=4 GY=2 TABLA=v4 HH=140 HEADY=20 python3 herramientas/penna4.py CARPETA 46 0 18`.
-El resto de las caras, de `penna-v3.jpg` al mismo tamaño: `HH=110 HEADY=20 python3 herramientas/penna4.py CARPETA 54 0 20`
-(se juntan en la misma carpeta; las 4 poses de v4 reemplazan a las de v3). Al hablar solo se pega la boca.
+Penna: de perfil. Hoja principal `arte-original/penna-v5.jpg` (4×4, el formato del prompt unificado): normal, smug, cruzado,
+point, angry, shock, sweat y `cafe` (con taza): `SHEET=arte-original/penna-v5.jpg GX=4 GY=4 TABLA=v5 HH=110 HEADY=20
+python3 herramientas/penna4.py CARPETA 41 0 18`. Las caras que no trae (think, down, facepalm, proud, laugh, gesto, alto, puno)
+vienen de `penna-v3.jpg`/`penna-v4.jpg` al mismo tamaño (ver TABLAS en penna4.py). Al hablar solo se pega la boca.
 De frente (`frente_*`, de `arte-original/penna-nuevo.jpg` con `herramientas/penna.py`) se usa **fuera de la fiscalía**.
-Poses: `point`, `cafe` (puño al pecho de la hoja v4: no hay café), `gesto`, `cruzado`, `alto` (mano en alto), `puno` (puño al pecho);
+Poses: `point`, `cafe` (taza de café), `gesto`, `cruzado`, `alto` (mano en alto), `puno` (puño al pecho);
 emociones extra: `think`, `proud` (mentón arriba), `laugh` (se ríe), `down`, `facepalm`.
 
 ## Pantalla de abajo (HUD)
