@@ -39,6 +39,10 @@ const SFX_FILES = {
   ding:     "assets/sonidos/prueba.mp3",      // prueba nueva / presentar prueba
   flashback:"assets/sonidos/recuerdo.mp3",    // al entrar a una cinemática
   realize:  "assets/sonidos/revelacion.mp3",  // nueva lectura de una prueba
+  slam:     "assets/sonidos/golpe.mp3",       // golpe en la mesa (anim:"slam")
+  badum:    "assets/sonidos/badum.mp3",       // golpe dramático (sfx:"badum" en una línea)
+  whoops:   "assets/sonidos/error.mp3",       // el jugador se equivoca
+  breakdown:"assets/sonidos/grito.mp3",       // quiebre del culpable
 };
 Object.values(SFX_FILES).forEach(f=>{ const a=new Audio(); a.preload="auto"; a.src=f; });   // precarga
 

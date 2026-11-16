@@ -166,7 +166,7 @@ function invPresent(id){
   if(mode==="silpresent"){
     const {t,i}=X.sil, st=t.silence.steps[i];
     if([].concat(st.answer).includes(id)) play(st.ok||[], ()=>silStep(t,i+1));
-    else play(t.silence.wrong||[{who:"ines",mood:"shock",anim:"hit",damage:true,text:"(No... eso no era. Se cerró más.)"}], ()=>silStep(t,i));
+    else SFX.whoops(), play(t.silence.wrong||[{who:"ines",mood:"shock",anim:"hit",damage:true,text:"(No... eso no era. Se cerró más.)"}], ()=>silStep(t,i));
     return true;
   }
   if(mode==="invpresent"){

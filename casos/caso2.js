@@ -388,10 +388,10 @@ const INV = {
           {id:"d_sangre", who:"eduardo", t:"¿Le sacaron sangre a Tadeo?", req:{ev:["taza"]}, lines:[
             {who:"ines",text:"Tadeo durmió como piedra con dos disparos al lado. ¿Le tomaron muestra de sangre?"},
             {who:"eduardo",mood:"write",text:"...Sí. Protocolo. Llegó hoy."},
-            {who:"eduardo",mood:"shock",evidence:"sangre",text:"Clonazepam. Harto. Eso no es el remedio del mareo."}]},
+            {sfx:"badum",who:"eduardo",mood:"shock",evidence:"sangre",text:"Clonazepam. Harto. Eso no es el remedio del mareo."}]},
           {id:"d_arma", who:"eduardo", t:"La pistola", lines:[
             {who:"eduardo",mood:"write",text:"La busqué en el registro de armas. Esta vez lo revisé todo."},
-            {who:"eduardo",evidence:"inscripcion",text:"Inscrita en 2015... a nombre de Leonel Ferrada."},
+            {sfx:"badum",who:"eduardo",evidence:"inscripcion",text:"Inscrita en 2015... a nombre de Leonel Ferrada."},
             {who:"ines",mood:"shock",text:"(¿«Odiaba las armas»?)"}]},
         ],
         present:{
@@ -400,7 +400,7 @@ const INV = {
         examine:[
           {id:"cajon", t:"La caja de herramientas", lines:[
             {who:"ines",mood:"think",evidence:"tarjeta",text:"(La cámara del tablero. Con su tarjeta de memoria.)"},
-            {who:"ines",mood:"shock",anim:"hit",text:"(23:41... un fogonazo en la puerta. Y otro, dos segundos después, dentro del pasillo.)"},
+            {sfx:"badum",who:"ines",mood:"shock",anim:"hit",text:"(23:41... un fogonazo en la puerta. Y otro, dos segundos después, dentro del pasillo.)"},
             {who:"ines",mood:"serious",text:"(Una silueta de pelo largo. Con delantal.)"},
             {who:"ines",mood:"serious",text:"(Tengo que volver a la casona. Ahora.)"}]},
           {id:"banco", t:"El banco de trabajo", lines:[
@@ -594,7 +594,7 @@ const SCRIPT = [
   {who:"jueza",mood:"think",text:"El testimonio se debilita. Fiscal, ¿algo más?"},
   {who:"fiscal",mood:"smug",pose:"cafe",text:"Sí, Su Señoría. Algo que el acusado no le contó a su propio abogado."},
   {who:"fiscal",pose:"point",evidence:"agenda",text:"Agenda del notario: Leonel Ferrada iba a cambiar su testamento para reconocer a un hijo."},
-  {who:"fiscal",pose:"point",text:"Ese hijo es [r]el acusado[/r]. Vino a cobrar su herencia antes de tiempo."},
+  {sfx:"badum",who:"fiscal",pose:"point",text:"Ese hijo es [r]el acusado[/r]. Vino a cobrar su herencia antes de tiempo."},
   {who:"tadeo",mood:"shock",anim:"hit",text:"¡No! ¡No fue así!"},
   {who:"ines",mood:"shock",anim:"hit",text:"(¿Su hijo...? ¡¿Por qué no me lo dijo?!)"},
   {who:"jueza",mood:"disappoint",text:"Me han dado dos tiradores, una melena y un hijo secreto. Y ninguna prueba de quién disparó."},

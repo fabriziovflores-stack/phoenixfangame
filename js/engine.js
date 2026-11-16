@@ -108,6 +108,7 @@ function say(l, done){
     tickEv(l);
     if(l.damage) takeDamage();
     if(l.confetti) confetti();
+    if(l.sfx && SFX[l.sfx]) SFX[l.sfx]();                   // sonido puntual: sfx:"badum", etc.
     if(l.read){ G.notes[l.read[0]]=l.read[1]; SFX.realize(); showEvBox(l.read[0],3); }
     if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
     if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
@@ -203,7 +204,7 @@ const CMD = {
     checkpoint=pc-1;
     const ask=()=>say({who:st.who,mood:st.mood,pos:st.pos,text:st.text}, ()=>{
       mode="choice"; $("next").classList.remove("on");
-      X={choice:st, pick:i=>{ const o=st.options[i]; if(o.ok) play(st.ok||[],done); else play(o.w||[],ask); }};
+      X={choice:st, pick:i=>{ const o=st.options[i]; if(o.ok) play(st.ok||[],done); else { SFX.whoops(); play(o.w||[],ask); } }};
       renderControls();
     });
     ask();
@@ -320,8 +321,8 @@ function objectQuestion(){
     X.pick=i=>{
       const r=OBJ_REASONS[i].id; X.pick=null;
       if(q.bad && r===q.bad) play(q.ok||[], nextQuestion);
-      else if(q.bad) play(DIRECT_LINES.wrongReason, ()=>{ if(G.health<=0) return gameOver(); showQuestion(); });
-      else play(DIRECT_LINES.noReason.concat(q.noObj||[]), ()=>{ if(G.health<=0) return gameOver(); play(q.a||[], nextQuestion); });
+      else if(q.bad) SFX.whoops(), play(DIRECT_LINES.wrongReason, ()=>{ if(G.health<=0) return gameOver(); showQuestion(); });
+      else SFX.whoops(), play(DIRECT_LINES.noReason.concat(q.noObj||[]), ()=>{ if(G.health<=0) return gameOver(); play(q.a||[], nextQuestion); });
     };
     renderControls();
   });
@@ -357,7 +358,7 @@ function presentItem(id){
     const p=X.prompt;
     if([].concat(p.answer).includes(id)){ const d=X.done; play(p.ok, d); }
     else if(p.soft) play(p.wrong||[], ()=>{ pc=checkpoint; run(); });     // sin castigo (fuera del juicio)
-    else play([{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"¡Mire esto, Su Señoría!"},
+    else SFX.whoops(), play([{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"¡Mire esto, Su Señoría!"},
                {who:"jueza",mood:"serious",text:"...¿Y eso qué tiene que ver, abogado?"},
                {who:"fiscal",mood:"smug",pose:"cafe",text:"Hmph. Novato. *sorbo*"},
                {who:"jueza",mood:"disappoint",damage:true,text:"Se lo descontaré a la defensa."},
@@ -368,7 +369,7 @@ function presentItem(id){
   const s=X.list[X.idx];
   if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; play(s.contraLines, done); }
   else if(s.early && [].concat(s.early.ids).includes(id)) play(s.early.lines, showStatement);   // correcta, pero antes de tiempo: sin castigo
-  else play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });
+  else SFX.whoops(), play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });
 }
 function gameOver(){
   music(null);

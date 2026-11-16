@@ -84,7 +84,8 @@ nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/ass
 
 ## Sonidos
 Efectos en archivo en `assets/sonidos/` (`SFX_FILES` en js/assets.js; código abierto según el dueño, ver `docs/creditos.md`):
-daño, golpe, prueba nueva, recuerdo (al entrar a una cinemática) y revelación (nueva lectura de una prueba).
+daño, golpe, prueba nueva, recuerdo (cinemática), revelación (nueva lectura), golpe en la mesa, error, grito (quiebre)
+y `badum` (golpe dramático: se pone a mano en una línea con `sfx:"badum"`).
 Orden: archivo elegido por el jugador en «Mi música» → archivo del juego → sonido sintetizado.
 Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.
 

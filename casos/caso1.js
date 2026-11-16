@@ -171,7 +171,7 @@ const CROSS = {
         // La fiscalía lo da vuelta — punto más bajo
         {who:"fiscal",mood:"serious",text:"Acepto la observación. De hecho, me ordena el caso."},
         {who:"ines",mood:"sweat",text:"(Otra vez no.)"},
-        {who:"fiscal",pose:"point",text:"El ladrón no necesitó entrar a las once y media. [r]Ya estaba adentro[/r]."},
+        {sfx:"badum",who:"fiscal",pose:"point",text:"El ladrón no necesitó entrar a las once y media. [r]Ya estaba adentro[/r]."},
         {who:"fiscal",mood:"serious",text:"Libro de visitas: el acusado entra a las 18:10. No consta que haya salido."},
         {who:"fiscal",mood:"serious",text:"Se esconde. Espera el corte de luz. Envuelve el cuadro. Rompe la ventana para salir."},
         {who:"tomas",mood:"beg",text:"¡Salí por el patio! ¡Si nadie anota cuando uno sale!"},
@@ -215,7 +215,7 @@ const CROSS = {
        press:[{who:"ines",mood:"serious",text:"Señora, piénselo bien. ¿El bulto apareció después del vidrio?"},
               {who:"zoila",mood:"think",text:"A ver... Yo iba en la mitad del té cuando vi el bulto."},
               {who:"zoila",mood:"think",text:"Y cuando sonó el vidrio casi boto la taza... que ya estaba vacía."},
-              {who:"zoila",mood:"shock",anim:"hit",text:"¡Ay! ¡El bulto fue primero! Unos cinco minutos antes."},
+              {sfx:"badum",who:"zoila",mood:"shock",anim:"hit",text:"¡Ay! ¡El bulto fue primero! Unos cinco minutos antes."},
               {who:"jueza",mood:"shock",text:"¿Está segura, señora?"},
               {who:"zoila",mood:"serious",text:"De mi té estoy segura siempre."}]},
       {id:"d", text:"Después llegaron los carabineros y les conté todo.",
@@ -501,7 +501,7 @@ const SCRIPT = [
    ok:[
     {who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"Las medidas, Su Señoría."},
     {who:"ines",mood:"smug",text:"La ventana mide [r]60 por 80[/r]. El cuadro, [r]180 por 120[/r], con marco rígido."},
-    {who:"ines",pose:"point",anim:"slam",read:["ventana","Un montaje: el cuadro no cabe, y ya había salido cuando la rompieron."],text:"No pasa ni de canto. La ventana rota es un [r]montaje[/r]."},
+    {sfx:"badum",who:"ines",pose:"point",anim:"slam",read:["ventana","Un montaje: el cuadro no cabe, y ya había salido cuando la rompieron."],text:"No pasa ni de canto. La ventana rota es un [r]montaje[/r]."},
     {who:null,text:"Lectura actualizada: Foto de la ventana."},
     {who:"fiscal",mood:"shock",anim:"hit",text:"Sesenta por ochenta..."},
     {who:"fiscal",mood:"sweat",text:"...Tuve esa foto dos días en mi escritorio."},
