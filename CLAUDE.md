@@ -89,8 +89,10 @@ Justo: poses de `arte-original/justo-perfil-b.png` (perfil, **siempre mira a la 
 los lentes y toma un papel). `TRANS` en engine.js pasa esos cuadros al entrar o salir de `pose:"point"` y `pose:"papel"`
 (`papelThink` = pensando con el papel). Las tres hojas se alinean juntas con `herramientas/justo.py` (args: carpeta 50 142 -20). Los cuadros vienen corridos
 a la izquierda para que el brazo al apuntar salga entero; el CSS (`#sprite[data-who=ines]`) compensa la posición.
-Versión de frente: si existe `frente_<cuadro>` en `ART[personaje]`, se usa en vez del cuadro normal. Hoy: Penna
-(la hoja de perfil sigue en `assets/personajes/fiscal/` como respaldo).
+Penna: hoja nueva `arte-original/penna-nuevo.jpg` (8×5): filas 1-3 de perfil (mira a la izquierda, sin espejo), filas 4-5 de frente.
+Se procesa con `herramientas/penna.py CARPETA 72 160 14`. Versión de frente: `frente_<cuadro>` se usa **fuera de la fiscalía**
+(sala de espera, etc.); en su puesto sale de perfil. Poses: `point`, `cafe` (hoy se acomoda el puño: la hoja nueva no trae café),
+`gesto`, `cruzado`; emociones extra: `think`, `proud`, `down`, `facepalm`.
 
 ## Pantalla de abajo (HUD)
 Diseño del dueño en `assets/hud/` (originales en `arte-original/hud/`): `panel.jpg` (fondo 4:3 armado del panel), `botones.png`

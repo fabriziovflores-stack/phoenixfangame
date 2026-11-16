@@ -26,7 +26,7 @@ function setScene(pos, who, mood, pose, yaVisto){
   if(who===null){ drawSprite(null); return; }
   drawSprite(who,mood,pose);
   sp.dataset.who=who;                                   // Justo tiene su propio encuadre (para que el brazo al apuntar salga completo)
-  sp.classList.toggle("flip", G.pos==="fiscalia");
+  sp.classList.toggle("flip", G.pos==="fiscalia" && who!=="fiscal");   // Penna ya viene dibujado mirando a la izquierda
 }
 function anim(name){
   const sp=$("sprite"), st=$("stage");
@@ -578,7 +578,7 @@ function drawBG(pos){
 /* Qué celda de la hoja usa cada emoción: [callado, hablando, parpadeo] */
 const AMAP={
   ines:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],angry:["angry","angryTalk"],down:["down","downTalk"],"pose:point":["point","pointTalk"],"pose:papel":["papel","papelTalk"],"pose:papelThink":["le16","le16"]},
-  fiscal:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],shock:["shock","shockTalk"],sweat:["sweat","sweatTalk"],angry:["angry","angryTalk"],disdain:["cross","crossTalk"],"pose:point":["point","pointTalk"],"pose:cafe":["cafe","cafeTalk"]},
+  fiscal:{normal:["base","talk"],serious:["serious","seriousTalk"],smug:["smug","smugTalk"],smile:["smile","smileTalk"],shock:["shock","shockTalk"],sweat:["sweat","sweatTalk"],angry:["angry","angryTalk"],disdain:["cross","crossTalk"],think:["think","thinkTalk"],proud:["proud","proudTalk"],down:["down","downTalk"],facepalm:["facepalm","facepalmTalk"],"pose:point":["point","pointTalk"],"pose:cafe":["cuff","cuffTalk"],"pose:gesto":["gesture","gestureTalk"],"pose:cruzado":["cross","crossTalk"]},
   testigo:{normal:["base","talk"],smile:["proud","proudTalk"],smug:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],break:["break","breakTalk"],cry:["cry","cryTalk"]},
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},
   cote:{normal:["base","talk"],smile:["happy","happyTalk"],eat:["happy","happyTalk"],excited:["excited","excitedTalk"],think:["think","thinkTalk"],serious:["serious","seriousTalk"],sweat:["sweat","sweatTalk"],worried:["sweat","sweatTalk"],shock:["shock","shockTalk"],pout:["pout","poutTalk"]},
@@ -596,7 +596,7 @@ function artFor(who,mood,pose,m,b){ const A=ART[who]; if(!A) return null; const 
   if(pose==="cafe"&&(mood==="shock"||mood==="sweat")) pose="";
   let e=(pose&&M["pose:"+pose])||M[mood]||M.normal; if(typeof e==="string") e=[e];
   let a=m?(e[1]||e[0]):((b&&e[2])||e[0]);
-  if(A["frente_"+a]) a="frente_"+a;     // si el personaje tiene versión de frente, se usa esa
+  if(A["frente_"+a] && G.pos!=="fiscalia") a="frente_"+a;     // de frente fuera de su puesto (Penna: de perfil en la fiscalía, de frente en la sala de espera)
   return a; }
 const SPR={}; let cur=null, talk=0, blink=0, canTalk=false;
 const off=document.createElement("canvas"); off.width=1024; off.height=768;

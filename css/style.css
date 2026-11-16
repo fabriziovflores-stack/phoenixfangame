@@ -261,3 +261,6 @@ button.back{background:#283458!important}
 #botS #controls{justify-content:center;gap:4cqw}
 .card .ic{height:9.5cqw}
 .card .ic img{height:100%;width:auto;max-width:100%;image-rendering:pixelated}
+/* Penna: sus cuadros vienen corridos a la derecha para que el dedo al apuntar no se corte */
+#sprite[data-who=fiscal]{left:42.2%}
+.pos-fiscalia #sprite[data-who=fiscal]{left:50%}
