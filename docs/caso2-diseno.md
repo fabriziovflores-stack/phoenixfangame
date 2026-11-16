@@ -146,3 +146,10 @@ Justo **no sabe** que el conductor que atropelló a Coté es Rocky hasta el juic
 Eduardo y Penna no lo mencionan (Penna: «otras cosas que no le incumben»); Rocky dice que chocó «un tarro de basura»
 en Templeman (pista). En el taller Justo solo ve la parte del pasillo. En el juicio final la jueza ordena ver la
 grabación completa: la camioneta atropella a una mujer con moño rosado. Revelación, perfil de Rocky actualizado.
+
+## Comienzo y misterio de Rocky (decisión del dueño)
+- Abre en el hospital: Justo y Coté buscan al conductor que la atropelló (ella no vio nada). Llama Estuardo: un asesinato,
+  un solo sospechoso, y prefiere darle el caso «al hijo del taxista». En la tele: el fiscal será Máximo Penna, varios
+  defensores rechazaron el caso y nombran a Justo como el único que le ha ganado.
+- Día 1: nadie sabe quién disparó desde la calle. El video muestra una camioneta roja sin patente legible; Penna la descarta.
+- Día 3: la policía identifica la camioneta (Rodrigo Saavedra, revólver .38) y Rocky aparece. Así Justo tiene tiempo de investigar.

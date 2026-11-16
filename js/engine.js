@@ -101,7 +101,7 @@ function say(l, done){
     const enInv = G.inv && X && X.inv;                   // en la investigación todos hablan en el lugar donde está Justo
     const pos=l.pos || (enInv ? invBg() : (ch?ch.pos:G.pos));
     const prevWho=cur&&cur.who, prevPos=G.pos;
-    const yo = enInv && l.who==="ines" && !l.pos;          // en la investigación a Justo no se le ve: solo su texto
+    const yo = (enInv && l.who==="ines" && !l.pos) || l.phone;   // a Justo no se le ve en la investigación; por teléfono, tampoco a quien llama
     setScene(pos, yo ? undefined : (l.who?l.who:(l.pos?null:undefined)), l.mood, l.pose);
     const entra = l.who && !yo && l.who!==prevWho && pos===prevPos;   // aparece alguien en el mismo lugar (no es cambio de cámara)
     if(l.music!==undefined) music(l.music);
@@ -113,7 +113,7 @@ function say(l, done){
     if(l.read){ G.notes[l.read[0]]=l.read[1]; SFX.realize(); showEvBox(l.read[0],3); }
     if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
     if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
-    $("name").textContent = ch ? ch.name : "";
+    $("name").textContent = ch ? (l.phone?"📞 ":"")+ch.name : "";
     const think = l.text.startsWith("("); canTalk = !!l.who && !think && !yo;
     const style = l.cross ? "cross" : think ? "think" : !l.who ? "narr" : "";
     mode="dialog"; renderControls();

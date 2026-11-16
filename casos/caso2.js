@@ -37,8 +37,8 @@ const EVX = {
   autopsia:  {id:"autopsia",  icon:"📄", name:"Informe de autopsia", desc:"Leonel Ferrada, 61. Roce de bala en la mejilla izquierda, de frente. Bala 9 mm en la nuca, disparada por la espalda. Muerte instantánea.", read:"Dos heridas, dos direcciones."},
   bala38:    {id:"bala38",    icon:"🔩", name:"Bala .38", desc:"Incrustada en el marco de la puerta de entrada. Calibre .38, de revólver. No es la bala que mató.", read:"El disparo de Rocky."},
   plano:     {id:"plano",     icon:"🗺️", ver:"assets/pruebas/plano.png", name:"Plano de la casona", desc:"Plano de evacuación. La entrada da a un pasillo oscuro. La cocina está a la derecha, sin vista al pasillo. La pieza de Tadeo, al fondo, no tiene ventana a la calle.", read:"Quién podía ver qué."},
-  video:     {id:"video",     icon:"📹", name:"Video cámara municipal", desc:"Calle Templeman. 23:15: sale un taxi desde la casona. 23:42: camioneta roja baja a toda velocidad.", read:"La huida de Rocky."},
-  fotocam:   {id:"fotocam",   icon:"🚙", name:"Foto de la camioneta", desc:"Camioneta roja de Rocky Saavedra, incautada. En el parabrisas hay un soporte vacío.", read:"El vehículo del atropello."},
+  video:     {id:"video",     icon:"📹", name:"Video cámara municipal", desc:"Calle Templeman. 23:15: sale un taxi desde la casona. 23:42: una camioneta roja baja a toda velocidad. La patente no se lee.", read:"Una camioneta sin identificar huyó."},
+  fotocam:   {id:"fotocam",   icon:"🚙", name:"Foto de la camioneta", desc:"Camioneta roja de Rodrigo Saavedra, identificada gracias al video e incautada. En el parabrisas hay un soporte vacío.", read:"La camioneta que huyó esa noche."},
   libro:     {id:"libro",     icon:"📒", name:"Libro de huéspedes", desc:"Casona Ferrada, 14 de marzo. Huéspedes: T. Fuegos (pieza del fondo) y B. Plusvalía (pieza del segundo piso).", read:"Dos huéspedes esa noche."},
   taza:      {id:"taza",      icon:"🍵", name:"Taza de té", desc:"En el velador de Tadeo. Restos de té. «El té de bienvenida», según Malva.", read:"Un té."},
   pastillas: {id:"pastillas", icon:"💊", name:"Pastillas para el mareo", desc:"Mareamina suave. Falta una. Producen algo de sueño, no un sueño profundo.", read:"Por qué Tadeo durmió."},
@@ -64,7 +64,7 @@ const PROFILES = [
   {id:"malva",  who:"malva",  name:"Malva Ferrada",    desc:"Hija de la víctima. Administra el hospedaje. Amable, siempre con delantal.", hidden:true},
   {id:"barbara",who:"barbara",name:"Bárbara Plusvalía",desc:"Representante de una cadena hotelera. Quería comprar la casona.", hidden:true},
   {id:"aurelio",who:"aurelio",name:"Aurelio Mirón",    desc:"Vecino de enfrente. 70 años. Binoculares.", hidden:true},
-  {id:"rocky",  who:"rocky",  name:"Rodrigo «Rocky» Saavedra", desc:"Mecánico. Le debía plata a Leonel. Disparó y huyó en su camioneta.", hidden:true},
+  {id:"rocky",  who:"rocky",  name:"Rodrigo «Rocky» Saavedra", desc:"Mecánico. Dueño de la camioneta roja del video. Le debía plata a Leonel.", hidden:true},
 ];
 
 /* ---------- INVESTIGACIÓN (formato en js/investigacion.js) ---------- */
@@ -72,13 +72,12 @@ const INV = {
   /* ===================== DÍA 1 ===================== */
   dia1: {
     start:"locutorio", music:"espera", fecha:"15 de marzo", hora:9*60+40, paso:25,   // hora de llegada al primer lugar; +25 min por lugar nuevo
-    done:{ev:["pistola","autopsia","bala38","plano","video","fotocam","taza","pastillas","fotomadre","libro"],
+    done:{ev:["pistola","autopsia","bala38","plano","video","taza","pastillas","fotomadre","libro"],
           flags:["vio_aurelio","habla_malva","habla_barbara","habla_penna"]},
     hints:{
       pistola:"(Tadeo todavía no me ha contado bien qué pasó esa noche.)",
       autopsia:"(La defensa tiene derecho a ver la carpeta de investigación. La tiene Eduardo.)",
       video:"(La defensa tiene derecho a ver la carpeta de investigación. La tiene Eduardo.)",
-      fotocam:"(La defensa tiene derecho a ver la carpeta de investigación. La tiene Eduardo.)",
       bala38:"(En la entrada de la casona, algo brillaba en el marco de la puerta.)",
       plano:"(No he revisado la pieza de Tadeo rincón por rincón. La pared, por ejemplo.)",
       taza:"(En la pieza de Tadeo, junto a la cama, había algo que no revisé.)",
@@ -166,7 +165,7 @@ const INV = {
         ],
         talk:[
           {id:"e_escena", who:"eduardo", t:"¿Qué pasó aquí?", lines:[
-            {who:"eduardo",text:"Víctima en la entrada, boca abajo. Dos disparos. El de la camioneta huyó."},
+            {who:"eduardo",text:"Víctima en la entrada, boca abajo. Dos disparos. Y una camioneta que huyó, sin identificar."},
             {who:"eduardo",mood:"write",flag:"e_escena",text:"Y en la mochila del cabro, la pistola. Caso cerrado, dice el fiscal."}]},
           {id:"e_pasar", who:"eduardo", t:"Dejarme pasar", req:{flags:["e_escena"]}, lines:[
             {who:"ines",text:"La defensa tiene derecho a ver la escena. Y la carpeta de investigación."},
@@ -174,8 +173,8 @@ const INV = {
             {who:"eduardo",text:"La pieza del cabro es la del fondo. Ahí encontramos la pistola."}]},
           {id:"e_carpeta", who:"eduardo", t:"La carpeta de investigación", req:{flags:["pasar"]}, lines:[
             {who:"eduardo",evidence:"autopsia",text:"La autopsia. Dos heridas."},
-            {who:"eduardo",evidence:"video",text:"El video de la cámara municipal. La camioneta del mecánico, huyendo."},
-            {who:"eduardo",evidence:"fotocam",text:"Y la camioneta del mecánico, incautada. Esa noche bajó como bala."},
+            {who:"eduardo",evidence:"video",text:"El video de la cámara municipal. Una camioneta roja, huyendo."},
+            {who:"eduardo",mood:"sweat",text:"La camioneta todavía no la ubicamos. La patente no se lee. Estamos en eso."},
             {who:"eduardo",mood:"sweat",flag:"edu_fue",text:"Ya. Me voy a la comisaría a dejar esto. Si quiere pelear, el fiscal está allá."},
             {who:"ines",mood:"think",text:"(Se fue. Puedo revisar la casa con calma... y después, ir a ver a Penna.)"}]},
           {id:"e_papa", who:"eduardo", t:"El caso de mi papá", req:{flags:["e_escena"]}, lines:[
@@ -285,7 +284,8 @@ const INV = {
             {who:"ines",mood:"sweat",text:"(Y la vida de todos los vecinos, seguro.)"}]},
         ],
         present:{aurelio:{
-          fotocam:[{who:"aurelio",mood:"shock",text:"¡Esa! ¡La camioneta roja! Bajó como alma que lleva el diablo."}],
+          video:[{who:"aurelio",mood:"shock",text:"¡Esa! ¡La camioneta roja! Bajó como alma que lleva el diablo."},
+                 {who:"aurelio",mood:"sweat",text:"¿La patente? Ay, no... a esa distancia ni con binoculares."}],
           pistola:[{who:"aurelio",mood:"shock",text:"¡Guarde eso, por Dios! ¡Que me da algo!"}],
           default:[{who:"aurelio",mood:"confused",text:"¿Y eso qué es? Déjeme ver con los binoculares... no, igual no sé."}]}}},
 
@@ -304,9 +304,10 @@ const INV = {
             {who:"fiscal",mood:"smug",pose:"cafe",flag:"habla_penna",text:"Arma en su mochila, víctima en la puerta. No me haga perder el tiempo."}]},
           {id:"p_acusado", who:"fiscal", t:"Tadeo", lines:[
             {who:"fiscal",text:"Llegó antier. Esa misma noche hay un muerto en la puerta. No creo en coincidencias."}]},
-          {id:"p_rocky", who:"fiscal", t:"El de la camioneta", req:{ev:["video"]}, lines:[
-            {who:"fiscal",text:"Rodrigo Saavedra. Detenido por amenazas. Y por otras cosas que no le incumben, colega."},
-            {who:"fiscal",mood:"disdain",text:"Su bala está en el marco. No mató a nadie. No me sirve de culpable."}]},
+          {id:"p_camioneta", who:"fiscal", t:"La camioneta del video", req:{ev:["video"]}, lines:[
+            {who:"fiscal",pose:"cafe",text:"¿La camioneta? Un vecino asustado que escapó de los balazos, nada más."},
+            {who:"fiscal",mood:"smug",text:"El asesino estaba adentro, colega. Y dormía en la pieza del fondo."},
+            {who:"ines",mood:"think",text:"(¿Y la bala del marco? Alguien disparó desde la calle. Penna no quiere verlo.)"}]},
         ],
         present:{fiscal:{
           pistola:[{who:"fiscal",pose:"cafe",text:"La del acusado. Ya la vio. ¿Algo más?"}],
@@ -380,7 +381,9 @@ const INV = {
       comisaria:{name:"Comisaría", req:{flags:["sil:madre3"]}, moves:["locutorio","locutorio_rocky","casona","taller"],
         people:[
           {who:"eduardo", hello:[{who:"eduardo",mood:"sweat",text:"Valdivia. Llegaron informes nuevos. No le van a gustar al fiscal."},
-                                 {who:"eduardo",flag:"rocky_pide",text:"Y el mecánico está en el locutorio. Pidió hablar con usted, fíjese."}],
+                                 {who:"eduardo",mood:"write",evidence:"fotocam",text:"Y ubicamos la camioneta del video. Rodrigo Saavedra, mecánico. Lo detuvimos anoche."},
+                                 {sfx:"badum",who:"eduardo",text:"Tenía un revólver calibre .38. Igual que la bala del marco."},
+                                 {who:"eduardo",flag:"rocky_pide",text:"Está en el locutorio. Y pidió hablar con usted, fíjese."}],
                           back:[{who:"eduardo",text:"¿Necesita algo más? Rápido, que me miran feo."}]}],
         talk:[
           {id:"d_polvora", who:"eduardo", t:"El examen de pólvora", lines:[
@@ -574,16 +577,29 @@ const SCRIPT = [
   {cmd:"cine", img:null, text:"A la mañana siguiente, ya había un culpable. Venía del fin del mundo."},
   // ===== PARTE 1 =====
   {cmd:"card", t1:"— Día 1 —", t2:"Investigación"},
-  {cmd:"location", text:"15 de marzo · 2:10\nOficina de Justo", pos:"oficina"},
-  {who:"ines",pos:"oficina",mood:"sweat",text:"(El teléfono. A esta hora.)"},
-  {who:"ines",pos:"oficina",mood:"shock",anim:"hit",text:"¿Coté? ¿Atropellada? ¡Voy para allá!"},
-  {cmd:"location", text:"Hospital Van Buren", pos:"hospital"},
-  {who:"cote",pos:"hospital",mood:"sweat",text:"Tranquilo. Pierna quebrada, nada más. Ya me puse la anestesia de chiste."},
-  {who:"ines",pos:"hospital",mood:"serious",text:"¿Quién fue? ¿Viste algo?"},
+  {cmd:"location", text:"15 de marzo · 8:10\nHospital Van Buren", pos:"hospital"},
+  {who:"cote",pos:"hospital",mood:"sweat",text:"Ya, deja de mirarme así. Pierna quebrada, nada más. Ya me puse la anestesia de chiste."},
+  {who:"ines",pos:"hospital",mood:"serious",text:"¿Te acuerdas de algo? ¿Cualquier cosa?"},
   {who:"cote",pos:"hospital",mood:"down",text:"Unas luces que me encandilaron. Ni el color de la camioneta vi. Y no paró."},
-  {who:"ines",pos:"hospital",mood:"down",text:"Coté..."},
-  {who:"cote",pos:"hospital",mood:"serious",text:"Mira la tele. Detuvieron a un mochilero por un asesinato. A dos cuadras de donde me pasó esto."},
+  {who:"ines",pos:"hospital",mood:"angry",text:"Carabineros no tiene nada. Ni patente, ni testigos. Nada."},
+  {who:"ines",pos:"hospital",mood:"serious",text:"Lo voy a encontrar, Coté. Te lo prometo."},
+  {who:"cote",pos:"hospital",mood:"smile",text:"Mi abogado favorito. El único que tengo, pero igual."},
+  {who:"ines",pos:"hospital",mood:"shock",text:"(El teléfono. Número desconocido.)"},
+  {who:"eduardo",pos:"hospital",phone:true,text:"¿Valdivia? Habla Estuardo. Eduardo Estuardo, de la PDI."},
+  {who:"eduardo",pos:"hospital",phone:true,text:"Tengo un caso. Asesinato en Cerro Concepción. Un solo sospechoso: un mochilero."},
+  {who:"eduardo",pos:"hospital",phone:true,text:"Y pensé... ¿a quién se lo doy? Al hijo del taxista."},
+  {who:"ines",pos:"hospital",mood:"think",text:"¿Por qué yo?"},
+  {who:"eduardo",pos:"hospital",phone:true,text:"Porque esta vez es más complicado. No es un cuadro: es un muerto."},
+  {who:"eduardo",pos:"hospital",phone:true,text:"Y porque el cabro dice que no fue. Igual que su viejo."},
+  {who:"ines",pos:"hospital",mood:"down",text:"(...)"},
+  {who:"cote",pos:"hospital",mood:"shock",text:"¡Justo! ¡La tele! ¡Mira!"},
+  {who:null,pos:"hospital",text:"«...el fiscal a cargo será Máximo Penna: dieciocho juicios, diecisiete condenas.»"},
+  {who:null,pos:"hospital",text:"«Según fuentes, varios defensores ya rechazaron el caso.»"},
+  {who:null,pos:"hospital",text:"«El único que le ha ganado es un defensor novato: Justo Valdivia.»"},
+  {who:"cote",pos:"hospital",mood:"excited",text:"¡Saliste en la tele! ¡Con nombre y todo!"},
+  {who:"ines",pos:"hospital",mood:"sweat",text:"(Y con Penna al frente otra vez.)"},
   {who:"cote",pos:"hospital",mood:"serious",text:"Anda. Ese cabro no tiene a nadie. Y yo no puedo acompañarte."},
+  {who:"cote",pos:"hospital",mood:"smile",text:"Y si de paso encuentras al de la camioneta, mejor."},
   {who:"ines",pos:"hospital",mood:"serious",text:"(Esta vez, solo.)"},
   {cmd:"invest", ref:"dia1"},
   // ===== PARTE 2: JUICIO =====
