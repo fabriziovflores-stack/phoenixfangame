@@ -87,7 +87,8 @@ Los PNG de `assets/` ya están procesados: se dibujan tal cual.
 Justo: poses de `arte-original/justo-perfil-b.png` (perfil, **siempre mira a la derecha**), más dos hojas de animación:
 `justo-apunta.png` (cuadros `ap1`…`ap16`: levanta el brazo, apunta y lo baja) y `justo-lentes.png` (`le1`…`le16`: se pone
 los lentes y toma un papel). `TRANS` en engine.js pasa esos cuadros al entrar o salir de `pose:"point"` y `pose:"papel"`
-(`papelThink` = pensando con el papel). Las tres hojas se alinean juntas con `herramientas/justo.py`.
+(`papelThink` = pensando con el papel). Las tres hojas se alinean juntas con `herramientas/justo.py` (args: carpeta 50 142 -20). Los cuadros vienen corridos
+a la izquierda para que el brazo al apuntar salga entero; el CSS (`#sprite[data-who=ines]`) compensa la posición.
 Versión de frente: si existe `frente_<cuadro>` en `ART[personaje]`, se usa en vez del cuadro normal. Hoy: Penna
 (la hoja de perfil sigue en `assets/personajes/fiscal/` como respaldo).
 

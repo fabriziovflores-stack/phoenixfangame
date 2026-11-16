@@ -25,6 +25,7 @@ function setScene(pos, who, mood, pose, yaVisto){
   if(who===undefined) return;
   if(who===null){ drawSprite(null); return; }
   drawSprite(who,mood,pose);
+  sp.dataset.who=who;                                   // Justo tiene su propio encuadre (para que el brazo al apuntar salga completo)
   sp.classList.toggle("flip", G.pos==="fiscalia");
 }
 function anim(name){

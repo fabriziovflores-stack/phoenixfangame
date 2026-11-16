@@ -5,7 +5,7 @@ s1=open(H+'01_croma_y_utilidades.py').read(); exec(s1[:s1.index("def sheet(")])
 s2=open(H+'02_pares_de_boca.py').read(); exec(s2[s2.index("from PIL"):s2.index("def sheet(")])
 def g8(im):
     a=np.asarray(im).astype(np.float32); g=a[...,:3].mean(axis=2); g[a[...,3]==0]=128; return g.astype(np.uint8)
-OUT=sys.argv[1]; HH=100; TGT=float(sys.argv[2]); BOT=int(sys.argv[3]); DX=int(sys.argv[4])
+OUT=sys.argv[1]; HH=100; TGT=float(sys.argv[2]); BOT=int(sys.argv[3]); DX=int(sys.argv[4]); CW=int(os.environ.get('CW','256'))
 os.makedirs(OUT,exist_ok=True)
 def cells_of(path):
     im=load(path); W,Hh=im.size; cw=W/4; ch=Hh/4; iw=int(cw)-2; ih=int(ch)-2
@@ -27,7 +27,7 @@ def match(cell,lo=0.7,hi=1.46):
     return best
 def place(cell,f,mx,my,iw,ih):
     s=SC/f; w=round(iw*s); h=round(ih*s); sm=cell.resize((w,h),Image.LANCZOS)
-    out=Image.new('RGBA',(256,192),(0,0,0,0)); out.paste(sm,(round(ax-mx*s),round(ay-my*s)))
+    out=Image.new('RGBA',(CW,192),(0,0,0,0)); out.paste(sm,(round(ax-mx*s),round(ay-my*s)))
     a=np.array(out); m=a[...,3]>150; a[...,:3]&=0xF8; a[...,3]=np.where(m,255,0); a[~m]=0
     return Image.fromarray(a)
 def save(name,im): im.save(f'{OUT}/{name}.png',optimize=True)

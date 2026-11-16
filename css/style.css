@@ -196,3 +196,6 @@ button.back{background:#283458!important}
   text-shadow:.3cqw .3cqw 0 #063,-.2cqw -.2cqw 0 #063;letter-spacing:.2cqw;pointer-events:none}
 #tag:empty{display:none}
 .pos-rayos #sprite{left:50%}
+/* Justo: sus cuadros vienen corridos a la izquierda para que el brazo al apuntar quepa entero en la pantalla */
+#sprite[data-who=ines]{left:66.4%}
+.pos-defensa #sprite[data-who=ines]{left:50%}
