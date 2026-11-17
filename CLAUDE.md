@@ -50,7 +50,9 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   a mitad de frase, `[a=slam|hit|tremble]` = animación, `[s]` = temblor, `[f]` = destello. Los «...» se escriben lento.
   Cuando alguien interrumpe (burbuja o golpe en la mesa) y cambia la cámara entre defensa/estrado/fiscalía, hay un **barrido**
   rápido (`PAN_MS` en engine.js; 0 = todo corte directo; `pan:false` en una línea lo evita). `pos:"rayos"` = primer plano
-  dramático con rayos azules. Al terminar un testimonio la escena se oscurece. Etiqueta de esquina: Testimonio /
+  dramático con rayos azules. Al terminar un testimonio la escena se oscurece. Al empezar un testimonio cae el letrero dibujado «Testimonio del Testigo» (`assets/hud/titulo-*.png`, `logoCard`); antes de un
+  contrainterrogatorio o un interrogatorio de Penna sale el **enfrentamiento** (`versus`: caras de Justo y Penna en dos franjas,
+  `assets/hud/vs_*.png`, recortadas de las hojas originales con `herramientas/vs.py`) y luego el letrero rojo. Etiqueta de esquina: Testimonio /
   Contrainterrogatorio / Interrogatorio. Preferir cuadros cortos y reacciones breves («¡¿Q-qué?!», «Mmm...»).
 - En una línea: `evidence:"id"` hace entrar la prueba al expediente (el juego se detiene, baja el panel y
   espera al jugador); `read:["id","nueva lectura"]` reinterpreta una prueba; `damage:true` penaliza;

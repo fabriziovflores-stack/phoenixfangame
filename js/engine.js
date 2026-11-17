@@ -263,13 +263,13 @@ const CMD = {
     X={def, list:def.statements.filter(s=>!s.hidden), idx:0, hinted:false, done, tag:"Testimonio"};
     music("corte");
     SFX.testimony();
-    titleCard("— Testimonio —", def.title, ()=>{
+    logoCard("assets/hud/titulo-testimonio.png", def.title, ()=>{
       play(X.list.map(s=>({who:def.who||"testigo",mood:s.mood,text:s.text})), ()=>dim(()=>{
         X.tag="Contrainterrogatorio";
-        titleCard("— Contrainterrogatorio —", def.title, ()=>{
+        versus(()=>logoCard("assets/hud/titulo-contra.png", def.title, ()=>{
           music(def.music||"interrogatorio");
           play(def.tutorial||[], showStatement);
-        });
+        }));
       }));
     });
   },
@@ -295,10 +295,10 @@ const CMD = {
     checkpoint=pc-1;
     const def=DIRECT[st.ref];
     X={dir:def, qi:0, done, tag:"Interrogatorio"};
-    titleCard("— Interrogatorio —", def.title, ()=>{
+    versus(()=>logoCard("assets/hud/titulo-interrogatorio.png", def.title, ()=>{
       music(def.music||"interrogatorio");
       play(def.tutorial||[], showQuestion);
-    });
+    }));
   },
   cine(st,done){                       // cinemática: imagen a pantalla completa + texto (sin imagen: pantalla negra)
     const show=im=>{
@@ -340,6 +340,21 @@ function titleCard(t1,t2,done){
   busy=true; const o=$("tcard"); o.innerHTML=`<div class="band"><div class="t1">${t1}</div><div class="t2">${t2}</div></div>`;
   o.style.display="flex"; SFX.whoosh(); mode="loc"; renderControls();
   setTimeout(()=>{ o.style.display="none"; busy=false; done(); },T.dia);
+}
+/* Letrero dibujado («Testimonio del Testigo», «Contrainterrogatorio») que cae sobre la escena, con el título debajo */
+const LOGO_MS=1500, VS_MS=1700;
+function logoCard(img,t2,done){
+  busy=true; const o=$("tcard"); o.className="ov logo";
+  o.innerHTML=`<img src="${img}" alt=""><div class="t2">${t2||""}</div>`;
+  o.style.display="flex"; SFX.whoosh(); setTimeout(SFX.thud,180); mode="loc"; renderControls();
+  setTimeout(()=>{ o.style.display="none"; o.className="ov"; busy=false; done(); },LOGO_MS);
+}
+/* Antes del contrainterrogatorio: las caras de Justo y Penna, frente a frente */
+function versus(done){
+  busy=true; const o=$("tcard"); o.className="ov vs";
+  o.innerHTML=`<div class="vsb a"><img src="assets/hud/vs_justo.png" alt=""></div><div class="vsm"></div><div class="vsb b"><img src="assets/hud/vs_penna.png" alt=""></div>`;
+  o.style.display="block"; SFX.whoosh(); setTimeout(SFX.slam,380); mode="loc"; renderControls();
+  setTimeout(()=>{ o.style.display="none"; o.className="ov"; busy=false; done(); },VS_MS);
 }
 function verdict(text, good, done){
   const o=$("verdict"); o.className="ov "+(good?"good":"bad"); o.innerHTML=""; o.style.display="flex"; busy=true; mode="loc"; renderControls();
