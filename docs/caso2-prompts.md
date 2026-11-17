@@ -41,5 +41,5 @@ Todas llevan al inicio: *Anime visual novel cutscene illustration, same art styl
 3. Close-up of a muzzle flash from a revolver in the dark, the older man's face turned aside, a thin red scratch on his cheek. Not graphic.
 4. Inside a dark hallway behind the older man, seen from his back: only a hand holding a pistol emerges from the shadows, a second muzzle flash. Only a hand: no face, no hair, no apron, no clothing visible.
 5. A red pickup truck speeding down a steep cobblestone street at night, headlights blazing, motion blur, seen from a street security camera angle high on a pole.
-6. A young woman with curly auburn hair and a pink bow crossing a street at night, turning toward blinding headlights, startled. Freeze frame before impact, no injury shown.
+6. A young woman with long wavy brown hair, a dark red beret, pink-framed glasses and a burgundy blazer, crossing a street at night, turning toward blinding headlights, startled. Freeze frame before impact, no injury shown.
 7. Morning, police officers leading a confused young man with a buzz cut, gray wool beanie and pajamas out of the guesthouse, a huge travel backpack held up by an officer as evidence.

@@ -3,7 +3,6 @@
    ===================================================================== */
 const LOOK={
   ines:   {eye:"#3a70b0",outfit:"blazer",fem:1},
-  cote:   {eye:"#3a9a5a",outfit:"cardigan",fem:1},
   tomas:  {eye:"#6a4a2a",outfit:"hoodie"},
   fiscal: {eye:"#7a5a9a",outfit:"suit"},
   testigo:{eye:"#4a4a4a",outfit:"uniform"},

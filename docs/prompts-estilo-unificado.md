@@ -28,12 +28,12 @@ CHARACTER: Judge Prudencia Fallo, a 68-year-old Chilean woman. Silver-gray hair 
 Row 1: frames 1-2 neutral, calm; frames 3-4 serious, stern. Row 2: frames 5-6 shocked, eyes wide behind the glasses; frames 7-8 thinking, hand on chin. Row 3: frames 9-10 warm smile; frames 11-12 confused, head tilted. Row 4: frames 13-14 disappointed, sighing, eyes half closed; frames 15-16 raising a wooden gavel in her right hand, whole gavel inside the frame.
 ```
 
-## Coté (de frente, apenas girada)
-*base, happy · excited, think · serious, sweat · shock, pout*
+## Chayo (Rosario Velado) (de frente, apenas girada)
+*Su hoja actual ya está en el juego (`arte-original/chayo.jpg`). Este prompt es solo si quieres rehacerla en el formato 4×4.*
 ```
 Character sprite sheet for a Japanese-style courtroom visual novel. STYLE (identical for every character of this game): anime with realistic adult proportions (not chibi, normal head size), angular well-defined faces, clean thick dark outlines, flat cel shading with exactly one darker shadow tone, slightly muted rich colors, no gradients, no textures. LAYOUT: a 4x4 grid of 16 equal frames on a solid pure chroma green background (#00FF00), no shadows on the background, no text, no borders, no grid lines. Every frame shows the character from the waist up, head at exactly the same size and height in every frame (head about one third of the frame height, small margin above the hair), arms and hands always fully inside the frame. Frames come in pairs, left to right: first frame mouth CLOSED, second frame IDENTICAL (same pose, eyes, hands and hair) but mouth OPEN. Only the mouth changes inside each pair.
-CHARACTER: Coté, a 23-year-old Chilean paralegal. Long curly copper-red hair in a high ponytail with a big pink bow, bright brown eyes, lively expression. Pink knitted cardigan over a white top. Facing the viewer, turned very slightly to the left.
-Row 1: frames 1-2 neutral, cheerful; frames 3-4 big happy smile, eyes closed. Row 2: frames 5-6 excited, both fists up; frames 7-8 thinking, finger on chin. Row 3: frames 9-10 serious, determined; frames 11-12 nervous, sweat drop. Row 4: frames 13-14 shocked, hands near her face; frames 15-16 pouting, puffed cheeks, arms crossed.
+CHARACTER: Rosario "Chayo" Velado, a 24-year-old Chilean law intern who studied psychology and journalism before law. Long wavy brown hair, dark red beret, pink-framed glasses, burgundy blazer over a white shirt and black vest, brown leather camera strap across her chest. Facing the viewer, turned very slightly to the left.
+Row 1: frames 1-2 neutral, curious; frames 3-4 warm smile. Row 2: frames 5-6 laughing, eyes closed; frames 7-8 thinking, hand on chin. Row 3: frames 9-10 holding a camera up to take a photo; frames 11-12 shocked. Row 4: frames 13-14 pointing forward, whole hand inside the frame; frames 15-16 annoyed, pouting.
 ```
 
 ## Custodio Llavín, guardia (de frente, apenas girado)

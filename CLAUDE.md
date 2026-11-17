@@ -32,7 +32,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `contra` (id o lista de ids de la prueba correcta) + `contraLines`, `adds` (agrega una declaración oculta, marcada `hidden:true`; hoy: Llavín «partí para la sala» → «ventana desde la calle»),
   `ends:true` (presionar esa declaración cierra el contrainterrogatorio), `mood`.
   `early:{ids,lines}`: prueba correcta pero antes de tiempo; se muestran esas líneas sin castigo (hoy no se usa).
-  `loopHint`: pista de Coté al completar la primera vuelta; una línea con `ifHidden:"id"` solo sale si esa declaración sigue oculta.
+  `loopHint`: pista de Chayo al completar la primera vuelta; una línea con `ifHidden:"id"` solo sale si esa declaración sigue oculta.
 - `DIRECT`: interrogatorios directos (la fiscalía pregunta, el jugador puede objetar). Cada pregunta: `text`,
   `a` (respuesta), `bad` (id del motivo en `OBJ_REASONS` si es tramposa), `ok` (objeción acertada), `miss`
   (pista si la deja pasar; la pregunta se repite sin castigo), `noObj` (comentario si objeta una pregunta limpia). `coach` = consejo que se muestra una sola vez después de la pregunta (tutorial).
@@ -97,7 +97,7 @@ De frente (`frente_*`, de `arte-original/penna-nuevo.jpg` con `herramientas/penn
 Poses: `point`, `cafe` (taza de café), `gesto`, `cruzado`, `alto` (mano en alto), `puno` (puño al pecho);
 emociones extra: `think`, `proud` (mentón arriba), `laugh` (se ríe), `down`, `facepalm`.
 
-Chayo (Rosario Velado, nueva acompañante de Justo): `arte-original/chayo.jpg` (8×6, figuras sueltas: se detectan por silueta),
+Chayo (Rosario Velado, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): `arte-original/chayo.jpg` (8×6, figuras sueltas: se detectan por silueta),
 `AUTOGRID=1 FRONT=1 MOUTHDX=4 SHEET=arte-original/chayo.jpg GX=8 GY=6 TABLA=chayo HH=60 HEADY=22 python3 herramientas/penna4.py CARPETA 44 0 0`.
 Emociones: ver `AMAP.chayo` (incluye `laugh`, `giggle`, `blush`, `wink`, `panic`, `embarrassed`, `cry`); poses `point`, `lentes`
 (se arregla los lentes), `camara` y `foto` (su pasado de periodista). Voz femenina.
@@ -117,7 +117,7 @@ Efectos en archivo en `assets/sonidos/` (`SFX_FILES` en js/assets.js; código ab
 daño, golpe, prueba nueva, recuerdo (cinemática), revelación (nueva lectura), golpe en la mesa, error, grito (quiebre)
 y `badum` (golpe dramático: se pone a mano en una línea con `sfx:"badum"`).
 Voz de los diálogos: `assets/sonidos/blip.mp3` (creado por el dueño; `BLIP_FILE`), con el tono de `voice` de cada personaje.
-Voces femeninas (`VOCES_FEM` en audio.js: Coté, Zoila, jueza, Malva, Bárbara) usan `assets/sonidos/blip_f.wav` (`BLIP_F_FILE`).
+Voces femeninas (`VOCES_FEM` en audio.js: Chayo, Zoila, jueza, Malva, Bárbara) usan `assets/sonidos/blip_f.wav` (`BLIP_F_FILE`).
 Objeción y testimonio: `objecion.wav` y `testimonio.wav`. Estos tres son recreaciones del dueño, que declara tener permiso
 (ver docs/creditos.md). Todo se puede reemplazar desde «Mi música».
 El tecleo de los letreros sigue sintetizado (el archivo que se ofreció era el de Ace Attorney; se usa solo vía «Mi música»).

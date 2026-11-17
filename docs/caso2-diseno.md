@@ -24,7 +24,7 @@ Esa misma noche arma el plan:
 **Lo que ella no previó:** a las 23:38 llega **Rocky Saavedra**, mecánico que le debe plata a Leonel. Discuten en la
 puerta. Rocky saca un revólver para asustarlo y a las 23:41 dispara: **la bala le roza la mejilla** y se clava en el
 marco. Malva, en el pasillo oscuro, aprovecha el ruido y **dispara dos segundos después, por la espalda** (nuca).
-Rocky oye el segundo disparo, cree que el viejo le disparó a él, y huye. Al bajar, a las 23:42, **atropella a Coté** en
+Rocky oye el segundo disparo, cree que el viejo le disparó a él, y huye. Al bajar, a las 23:42, **atropella a Chayo** en
 la esquina de Templeman (pierna fracturada: hospital, fuera del caso). La cámara de su tablero lo graba todo.
 
 23:44: Malva limpia la pistola, la mete en la mochila de Tadeo (que no despierta) y llama a Carabineros llorando.
@@ -50,14 +50,14 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
 |---|---|---|---|
 | `tadeo` | Tadeo Fuegos | Acusado | Rapado, gorro de lana, mochila enorme. Habla poco, honesto, guarda un secreto por miedo. |
 | `malva` | Malva Ferrada | Hija, asesina | Amable, siempre con delantal y té. Curita en la mano. Pelo largo tomado. |
-| `rocky` | Rodrigo «Rocky» Saavedra | Primer tirador | Mecánico. Atropelló a Coté y huyó. Testigo hostil; al final le pide perdón a Coté. |
+| `rocky` | Rodrigo «Rocky» Saavedra | Primer tirador | Mecánico. Atropelló a Chayo y huyó. Testigo hostil; al final le pide perdón a Chayo. |
 | `aurelio` | Aurelio Mirón | Vecino de enfrente | 70 años, binoculares. Lo ve todo, entiende la mitad. Testigo cómico. |
 | `barbara` | Bárbara Plusvalía | Representante hotelera | Pista falsa. Elegante, fría, pelo largo suelto. |
 | `eduardo` | Eduardo Estuardo | Investigador policial a cargo del caso | Trabaja para la fiscalía, no para Justo. Custodia la escena, entrega lo que la ley obliga (la carpeta de investigación) y a veces se le escapa un dato de más. Testigo de la fiscalía en el juicio 1. Anda con huincha de medir («esta vez medí todo»). |
 | `fiscal` | Máximo Penna | Fiscal | Competente: él descubre que Tadeo es el hijo. |
-| `cote` | Coté | En el hospital | Escenas emocionales, **sin pistas**. |
+| `chayo` | Chayo (Rosario Velado) | En el hospital | Escenas emocionales, **sin pistas**. |
 
-**Justo investiga solo.** Sin Coté no hay pistas de nadie: solo sus propios pensamientos. Algún momento lo remarca: «(Coté sabría qué preguntar.)»
+**Justo investiga solo.** Sin Chayo no hay pistas de nadie: solo sus propios pensamientos. Algún momento lo remarca: «(Chayo sabría qué preguntar.)»
 
 ## Pruebas
 
@@ -86,8 +86,8 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
 
 ### Parte 1 — Investigación (Día 1)
 1. Cinemática.
-2. Oficina de Justo, de madrugada. Llamada del hospital: Coté fue atropellada. Corte.
-3. Hospital. Coté con la pierna enyesada, haciendo chistes para no llorar. Por la tele se enteran del acusado.
+2. Oficina de Justo, de madrugada. Llamada del hospital: Chayo fue atropellada. Corte.
+3. Hospital. Chayo con la pierna enyesada, haciendo chistes para no llorar. Por la tele se enteran del acusado.
    «Anda. Ese cabro no tiene a nadie.» (sin pistas)
 4. Locutorio: Tadeo. No recuerda nada. Cuando Justo menciona la foto de su madre, se cierra: **Silencio** (mecánica
    nueva: no se puede romper aún).
@@ -120,7 +120,7 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
    «Tadeo se durmió con su pastilla» × clonazepam + receta; silueta con delantal.
 3. Clímax legal: ¿por qué culpar a Tadeo y no a Rocky? Indignidad para suceder: si Tadeo era condenado, no heredaba.
    Malva se quiebra. Penna retira los cargos.
-4. Final: hospital. Coté, Tadeo y Rocky pidiéndole perdón a Coté. Tadeo decide quedarse en Valparaíso.
+4. Final: hospital. Chayo, Tadeo y Rocky pidiéndole perdón a Chayo. Tadeo decide quedarse en Valparaíso.
 
 ## Pistas justas sobre Malva (todas antes del juicio final)
 - Día 1: curita en la mano («me corté cortando el pan»).
@@ -139,16 +139,16 @@ bar del plan y volvió a las 00:30 (la cámara municipal y la boleta del taxi lo
 - Cinemática: 7 imágenes.
 - Fondos: oficina de Justo, hospital, locutorio, casona (entrada y pasillo), pieza de Tadeo, oficina del hospedaje,
   casa de Aurelio, comisaría, taller de Rocky, notaría.
-- Hojas: Tadeo, Malva (con quiebre), Rocky, Aurelio, Bárbara. Coté en el hospital (opcional: hoja con yeso).
+- Hojas: Tadeo, Malva (con quiebre), Rocky, Aurelio, Bárbara. Chayo en el hospital (opcional: hoja con yeso).
 
 ## Revelación del atropello (decisión del dueño)
-Justo **no sabe** que el conductor que atropelló a Coté es Rocky hasta el juicio final. Coté no vio la camioneta;
+Justo **no sabe** que el conductor que atropelló a Chayo es Rocky hasta el juicio final. Chayo no vio la camioneta;
 Eduardo y Penna no lo mencionan (Penna: «otras cosas que no le incumben»); Rocky dice que chocó «un tarro de basura»
 en Templeman (pista). En el taller Justo solo ve la parte del pasillo. En el juicio final la jueza ordena ver la
-grabación completa: la camioneta atropella a una mujer con moño rosado. Revelación, perfil de Rocky actualizado.
+grabación completa: la camioneta atropella a una mujer con boina roja. Revelación, perfil de Rocky actualizado.
 
 ## Comienzo y misterio de Rocky (decisión del dueño)
-- Abre en el hospital: Justo y Coté buscan al conductor que la atropelló (ella no vio nada). Llama Estuardo: un asesinato,
+- Abre en el hospital: Justo y Chayo buscan al conductor que la atropelló (ella no vio nada). Llama Estuardo: un asesinato,
   un solo sospechoso, y prefiere darle el caso «al hijo del taxista». En la tele: el fiscal será Máximo Penna, varios
   defensores rechazaron el caso y nombran a Justo como el único que le ha ganado.
 - Día 1: nadie sabe quién disparó desde la calle. El video muestra una camioneta roja sin patente legible; Penna la descarta.
@@ -159,4 +159,4 @@ grabación completa: la camioneta atropella a una mujer con moño rosado. Revela
 - Juicio 1: receso en la sala de espera con Tadeo (miente sobre su secreto) y falsa victoria antes del golpe de Penna.
 - Día 3: Eduardo explica la corredera (prueba «Nota de Estuardo») y admite que no le hizo el examen de pólvora a Malva.
 - Juicio final: Malva cambia su historia cada vez que la pillan; último intento («nunca he tomado un arma») × corredera + curita.
-- Rocky queda formalizado (disparo y atropello con fuga). Final largo: Eduardo, Penna, Rocky con Coté y el cierre de Tadeo.
+- Rocky queda formalizado (disparo y atropello con fuga). Final largo: Eduardo, Penna, Rocky con Chayo y el cierre de Tadeo.

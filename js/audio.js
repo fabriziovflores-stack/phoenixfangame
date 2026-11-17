@@ -2,7 +2,7 @@
    PARTE 2: SONIDO (todo sintetizado, melodías originales)
    ===================================================================== */
 let AC=null, master, musicG, sfxG, noiseBuf, muted=false, blipBuf=null, blipFBuf=null, blipWho=null;
-const VOCES_FEM=new Set(["chayo","cote","zoila","jueza","malva","barbara"]);     // usan el blip femenino
+const VOCES_FEM=new Set(["chayo","zoila","jueza","malva","barbara"]);     // usan el blip femenino
 const LOCALBLIP={}, LOCALBLIP_PEND={};
 function localBlip(k){                         // blip elegido por el jugador en «Mi música» (se decodifica una vez)
   if(LOCALBLIP[k]) return LOCALBLIP[k];
