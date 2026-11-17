@@ -362,7 +362,7 @@ const SCRIPT = [
   {who:"ines",pos:L,mood:"think",text:"(Bien.[p] ¿Dónde estará esa mocosa?)"},
   // ===== Chayo =====
   {who:"chayo",pos:L,mood:"excited",sfx:"hit",text:"[s]¡BUENOS DÍAS!"},
-  {who:"ines",pos:L,mood:"shock",anim:"hit",text:"¡¿Waaa?!"},
+  {who:"ines",pos:L,mood:"hit",anim:"hit",text:"¡¿Waaa?!"},
   {who:"chayo",pos:L,pose:"foto",text:"[f]*Clic*[p] Sales muy bien, Justicio."},
   {who:"ines",pos:L,mood:"down",text:"(Es Justo...[p] Justo Valdivia.)"},
   {who:"ines",pos:L,mood:"think",text:"(Rosario Velado. «Chayo». Practicante. Estudió Psicología, después Periodismo. Ahora, Derecho.)"},

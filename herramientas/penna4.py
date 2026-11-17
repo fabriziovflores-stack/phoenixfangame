@@ -51,7 +51,7 @@ HH=int(os.environ.get('HH','110')); SC=TGT/HH
 def anchor(k0):
     c,off=cells[k0]; bb=c.getbbox(); top=bb[1]; hb=c.crop((0,top,c.width,top+HH)).getbbox()
     return dict(tpl=g8(c)[top:top+HH,hb[0]:hb[2]],hx0=hb[0],top=top,bb=bb,w=c.width)
-PROF=anchor(0); FRON=None
+PROF=anchor(int(os.environ.get('REFK','1'))-1); FRON=None
 def match(c,T):
     g=g8(c); best=(-1,1,0,0)
     for f in np.arange(.8,1.25,.02):
@@ -73,6 +73,7 @@ def head_anchor(c,front):
     rows=np.where(a.sum(1)>8)[0]; t=rows[0]
     band=a[t:t+40]; xs=np.where(band.any(0))[0]
     if front: return (xs.min()+xs.max())/2, t
+    if os.environ.get('FACER')=='1': return xs.min(), t                 # mira a la derecha: la nuca queda a la izquierda
     return xs.max(), t
 def place(k,T):
     """Mismo tamaño para todo el grupo; cada cuadro se alinea por la parte de arriba y de atrás de la cabeza."""
@@ -80,13 +81,18 @@ def place(k,T):
     if key not in REF:
         _,f0,mx0,my0=match(c,T); hx,hy=head_anchor(c,front); REF[key]=(f0,mx0-hx,my0-hy)
     f,dx,dy=REF[key]; hx,hy=head_anchor(c,front); mx,my=hx+dx,hy+dy; sc=1.0
+    if os.environ.get('ANCHOR')=='cell':                               # la hoja ya trae el encuadre parejo: misma posición de celda
+        if 'cell' not in REF: REF['cell']=(mx-(-off),my)
+        cx0,cy0=REF['cell']; mx,my=cx0+(-off),cy0
     s=SC/f; sm=c.resize((round(c.width*s),round(c.height*s)),Image.LANCZOS)
     hw=T['tpl'].shape[1]*SC                                      # ancho de la cabeza en pantalla
     out=Image.new('RGBA',(CW,192)); out.paste(sm,(round(AX-hw/2-mx*s),round(AY-my*s)),sm)
     a=np.array(out); m=a[...,3]>140; a[...,:3]&=0xF8; a[...,3]=np.where(m,255,0); a[~m]=0
     return Image.fromarray(a),round(float(sc),2)
 F={}; log=[]
-for k in range(GX*GY):
+_ord=list(range(GX*GY))
+if os.environ.get('REFK'): r=int(os.environ['REFK'])-1; _ord=[r]+[k for k in _ord if k!=r]
+for k in _ord:
     F[k+1],sc=place(k, PROF); log.append((k+1,sc))
 def shift_to(a,b):
     """Corre el cuadro b unos píxeles para que su cara calce con la de a."""
@@ -133,6 +139,9 @@ TABLAS={'v3':{'base':(1,2),'smug':(3,2),'proud':(5,None),'smug2':(6,2),'cross':(
    'point':(39,37,'f'),'smug':(40,34),'sad':(41,42,'f'),'facepalm':(43,None),'cry':(44,None),'happy':(45,46,'f'),'grin':(48,None)},
  'chayoA':{'base':(1,2,'f'),'happy':(3,4,'f'),'surprise':(5,6,'f'),'think':(7,8,'f')},
  'chayoB':{'worried':(1,2,'f'),'smug':(3,4,'f'),'annoyed':(5,6,'f'),'point':(7,8,'f')},
+ 'justoB':{'cruzado':(1,2,'f'),'serious':(3,4,'f'),'sad':(5,6,'f'),'confused':(7,8,'f')},
+ 'justoC':{'slam':(1,2,'f'),'hit':(3,4,'f'),'relieved':(5,6,'f'),'angry2':(7,8,'f')},
+ 'justoD':{'ld1':(1,None),'ld2':(2,None),'ld3':(3,None),'ld4':(4,None),'papel':(5,6,'f'),'papelThink':(7,8,'f')},
  'v5':{'base':(1,2),'smug':(3,4),'cross':(5,6),'point':(7,8),'angry':(9,10),'shock':(11,12),'sweat':(13,14),'cafe':(15,16)}}
 P=TABLAS[os.environ.get('TABLA','v3')]
 FR={}

@@ -416,7 +416,7 @@ function presentItem(id){
                {who:"jueza",mood:"serious",text:"...¿Y eso qué tiene que ver, abogado?"},
                {who:"fiscal",mood:"smug",pose:"cafe",text:"Hmph. Novato. *sorbo*"},
                {who:"jueza",mood:"disappoint",damage:true,text:"Se lo descontaré a la defensa."},
-   {who:"ines",mood:"shock",anim:"hit",text:"(¡Aaagh! ¡Me equivoqué!)"}],
+   {who:"ines",mood:"hit",anim:"hit",text:"(¡Aaagh! ¡Me equivoqué!)"}],
               ()=>{ if(G.health<=0) return gameOver(); pc=checkpoint; run(); });
     return;
   }
@@ -583,7 +583,7 @@ function drawBG(pos){
 
 /* Qué celda de la hoja usa cada emoción: [callado, hablando, parpadeo] */
 const AMAP={
-  ines:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],angry:["angry","angryTalk"],down:["down","downTalk"],"pose:point":["point","pointTalk"],"pose:papel":["papel","papelTalk"],"pose:papelThink":["le16","le16"]},
+  ines:{normal:["base","talk"],smug:["smug","smugTalk"],smile:["relieved","relievedTalk"],relieved:["relieved","relievedTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],hit:["hit","hitTalk"],think:["cruzado","cruzadoTalk"],think2:["think","thinkTalk"],confused:["confused","confusedTalk"],serious:["serious","seriousTalk"],angry:["angry2","angry2Talk"],down:["sad","sadTalk"],sad:["sad","sadTalk"],"pose:point":["point","pointTalk"],"pose:papel":["papel","papelTalk"],"pose:papelThink":["papelThink","papelThinkTalk"],"pose:slam":["slam","slamTalk"],"pose:cruzado":["cruzado","cruzadoTalk"]},
   fiscal:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smile","smileTalk"],shock:["shock","shockTalk"],sweat:["sweat","sweatTalk"],angry:["angry","angryTalk"],disdain:["cross","crossTalk"],think:["think","thinkTalk"],proud:["proud2","proud2Talk"],laugh:["proud","proudTalk"],down:["down","downTalk"],facepalm:["facepalm","facepalmTalk"],"pose:point":["point","pointTalk"],"pose:cafe":["cafe","cafeTalk"],"pose:gesto":["gesture","gestureTalk"],"pose:cruzado":["cross","crossTalk"],"pose:alto":["stop","stopTalk"],"pose:puno":["fist","fistTalk"]},
   testigo:{normal:["base","talk"],smile:["proud","proudTalk"],smug:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],break:["break","breakTalk"],cry:["cry","cryTalk"]},
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},
@@ -642,8 +642,8 @@ function renderSprite(){
    Justo: levanta el brazo al apuntar y lo baja al terminar; se pone los lentes y toma el papel. */
 const TRANS={ ines:{
   point:{in:["ap2","ap3","ap4","ap5","ap6","ap7","ap8"], out:["ap12","ap13","ap14","ap15","ap16"], ms:45},
-  papel:{in:["le2","le3","le4","le5","le6","le7","le8","le9","le10","le11","le12"], out:["le12","le11","le10","le9","le3","le2"], ms:110},
-  papelThink:{in:["le2","le3","le4","le5","le6","le7","le8","le9","le10","le11","le12"], out:["le12","le11","le10","le9","le3","le2"], ms:110} }};
+  papel:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170},
+  papelThink:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170} }};
 const RAW={}; function rawImg(who,k){ const key=who+"/"+k; if(!RAW[key]){ RAW[key]=new Image(); RAW[key].src=ART[who][k]; } return RAW[key]; }
 Object.keys(TRANS).forEach(w=>Object.values(TRANS[w]).forEach(t=>t.in.concat(t.out).forEach(k=>rawImg(w,k))));
 let seqTimer=null, seqOn=false, seqUntil=0;

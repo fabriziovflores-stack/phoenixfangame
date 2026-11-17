@@ -84,11 +84,14 @@ Proceso (scripts en `herramientas/`, escritos para un entorno puntual: adaptar r
 1. Quitar el croma. 2. Cuadro «hablando» = cuadro de boca cerrada + solo la boca del otro (así el cuerpo no tiembla).
 3. Igualar el tamaño y la posición de la cabeza entre emociones. 4. Reducir a 256×192 con color de 15 bits.
 Los PNG de `assets/` ya están procesados: se dibujan tal cual.
-Justo: poses de `arte-original/justo-perfil-b.png` (perfil, **siempre mira a la derecha**), más dos hojas de animación:
-`justo-apunta.png` (cuadros `ap1`…`ap16`: levanta el brazo, apunta y lo baja) y `justo-lentes.png` (`le1`…`le16`: se pone
-los lentes y toma un papel). `TRANS` en engine.js pasa esos cuadros al entrar o salir de `pose:"point"` y `pose:"papel"`
-(`papelThink` = pensando con el papel). Las tres hojas se alinean juntas con `herramientas/justo.py` (args: carpeta 50 142 -20). Los cuadros vienen corridos
-a la izquierda para que el brazo al apuntar salga entero; el CSS (`#sprite[data-who=ines]`) compensa la posición.
+Justo (**siempre mira a la derecha**): base/smug/sweat/shock/think/point de `arte-original/justo-perfil-b.png` (+ `justo-apunta.png`,
+cuadros `ap1`…`ap16` para levantar el brazo; `herramientas/justo.py`). Hojas nuevas 4×2 en pares exactos:
+`justo-v2-b.png` (cruzado, serious, sad, confused), `justo-v2-c.png` (slam, hit, relieved, angry2), `justo-v2-d.png` (ld1–ld4 =
+animación de ponerse los lentes y tomar el papel; papel y papelThink en pares). Se procesan con
+`ANCHOR=cell REFK=<1|5> FACER=1 SHEET=… GX=4 GY=2 TABLA=justoB|C|D HH=110 HEADY=… python3 herramientas/penna4.py CARPETA <tam> 0 -45`
+(tamaño/posición igualados al `base.png` actual: cabeza arriba en y=13, ancho ~58). Emociones: ver `AMAP.ines` (think = brazos
+cruzados, confused, serious, sad, relieved, hit = golpeado por la objeción); poses `point`, `papel`, `papelThink`, `slam`.
+Los cuadros vienen corridos a la izquierda para que el brazo al apuntar salga entero; el CSS (`#sprite[data-who=ines]`) compensa.
 Penna: de perfil. Hoja principal `arte-original/penna-v5.jpg` (4×4, el formato del prompt unificado): normal, smug, cruzado,
 point, angry, shock, sweat y `cafe` (con taza): `SHEET=arte-original/penna-v5.jpg GX=4 GY=4 TABLA=v5 HH=110 HEADY=20
 python3 herramientas/penna4.py CARPETA 41 0 18`. Las caras que no trae (think, down, facepalm, proud, laugh, gesto, alto, puno)
