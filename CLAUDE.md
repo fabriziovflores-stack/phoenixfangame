@@ -97,11 +97,11 @@ De frente (`frente_*`, de `arte-original/penna-nuevo.jpg` con `herramientas/penn
 Poses: `point`, `cafe` (taza de café), `gesto`, `cruzado`, `alto` (mano en alto), `puno` (puño al pecho);
 emociones extra: `think`, `proud` (mentón arriba), `laugh` (se ríe), `down`, `facepalm`.
 
-Chayo (Rosario Velado, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): `arte-original/chayo.jpg` (8×6, figuras sueltas: se detectan por silueta),
-`AUTOGRID=1 FRONT=1 MOUTHDX=4 SHEET=arte-original/chayo.jpg GX=8 GY=6 TABLA=chayo HH=60 HEADY=22 python3 herramientas/penna4.py CARPETA 44 0 0`.
-Emociones: ver `AMAP.chayo` (incluye `laugh`, `giggle`, `blush`, `wink`, `panic`, `embarrassed`, `cry`); poses `point`, `lentes`
-(se arregla los lentes), `camara` y `foto` (su pasado de periodista). Voz femenina. **Chayo siempre mueve la boca**:
-sus caras sin pareja (risa, pánico, cámara...) son reacciones: se ven un instante y luego habla con una cara con pareja (`REACT` en engine.js).
+Chayo (Rosario Velado, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): dos hojas 4×2 en pares
+exactos, `arte-original/chayo-v2-a.png` (normal, happy, surprise, think) y `chayo-v2-b.png` (worried, smug, annoyed, point):
+`FRONT=1 MOUTHDX=4 SHEET=… GX=4 GY=2 TABLA=chayoA|chayoB HH=110 HEADY=22 python3 herramientas/penna4.py CARPETA 30 0 0`.
+Hablar = el cuadro de boca abierta completo, alineado. Todas sus emociones del guion se reparten entre esas 8 (ver `AMAP.chayo`);
+`camara`/`foto`/`lentes` hoy no tienen dibujo propio (la cámara ya cuelga en su diseño). Voz femenina.
 
 ## Pantalla de abajo (HUD)
 Diseño del dueño en `assets/hud/` (originales en `arte-original/hud/`): `panel.jpg` (fondo 4:3 armado del panel), `botones.png`

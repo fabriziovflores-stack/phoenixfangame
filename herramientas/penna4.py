@@ -131,6 +131,8 @@ TABLAS={'v3':{'base':(1,2),'smug':(3,2),'proud':(5,None),'smug2':(6,2),'cross':(
    'blush':(13,None),'glasses':(15,None),'wink':(16,None),'camera':(19,None),'photo':(20,None),'excited':(24,23),'surprise':(25,26,'f'),
    'shock':(27,None),'panic':(28,None),'sweat':(29,None),'down':(30,31,'f'),'embarrassed':(32,None),'annoyed':(33,34,'f'),'angry':(35,36,'f'),
    'point':(39,37,'f'),'smug':(40,34),'sad':(41,42,'f'),'facepalm':(43,None),'cry':(44,None),'happy':(45,46,'f'),'grin':(48,None)},
+ 'chayoA':{'base':(1,2,'f'),'happy':(3,4,'f'),'surprise':(5,6,'f'),'think':(7,8,'f')},
+ 'chayoB':{'worried':(1,2,'f'),'smug':(3,4,'f'),'annoyed':(5,6,'f'),'point':(7,8,'f')},
  'v5':{'base':(1,2),'smug':(3,4),'cross':(5,6),'point':(7,8),'angry':(9,10),'shock':(11,12),'sweat':(13,14),'cafe':(15,16)}}
 P=TABLAS[os.environ.get('TABLA','v3')]
 FR={}
