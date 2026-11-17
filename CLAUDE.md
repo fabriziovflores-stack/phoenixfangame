@@ -129,6 +129,7 @@ sola al acertar una contradicción o una prueba), `persecucion` = Cornered, `cor
 **Pauta del dueño:** primer testimonio de cada testigo = Moderato; cuando sube la tensión = Allegro; el testimonio suena con su canción
 desde la primera lectura. **Cornered y Telling the Truth no se interrumpen**: mientras suenan, Objection!/Logic and Trick no entran (`MUSICA_TENSA`).
 `present` acepta `music` (null = silencio) y `choice` acepta `pickMusic` (al elegir bien); `breakdown` con `keepMusic:true` no corta la música.
+Al cambiar de canción (o a silencio) la que termina se apaga con un **fundido** (`FADE_MS` en audio.js; dos reproductores `musicEls`).
 Para probar: si solo cambia `casos/casoN.js`, basta recorrer ese caso; si cambia `js/`, recorrer todos.
 Un lugar de la investigación puede tener su propia `music` (vuelve la del día al salir). Sin archivo, cada tema cae a la melodía sintetizada
 (`TRACKS` en `js/audio.js`, con `TRACK_ALIAS`). El jugador puede elegir canciones de su dispositivo

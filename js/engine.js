@@ -768,7 +768,7 @@ setInterval(()=>{ if(!cur||blink) return; blink=1; renderSprite(); setTimeout(()
 /* entradas */
 $("box").onclick=()=>{ if(mode==="dialog"){ verdict.clear&&$("verdict").style.display==="flex"&&!busy&&verdict.clear(); advance(); } else if((mode==="cross"||mode==="direct")&&typing) typeText.finish(); };
 $("recBtn").onclick=()=>{ if(busy) return; if(mode==="cross") openRecord("pruebas"); else if(mode==="present") openRecord(X.prompt.tab,X.prompt.prompt); else openRecord(); };
-$("muteBtn").onclick=()=>{ muted=!muted; if(master) master.gain.value=muted?0:.8; if(musicEl) musicEl.muted=muted; $("muteBtn").textContent=muted?"🔇":"🔊"; };
+$("muteBtn").onclick=()=>{ muted=!muted; if(master) master.gain.value=muted?0:.8; musicEls.forEach(m=>m.muted=muted); $("muteBtn").textContent=muted?"🔇":"🔊"; };
 document.addEventListener("keydown",e=>{
   if($("modal").style.display==="flex"){ if(e.key==="Escape"&&mode!=="present") closeRecord(); return; }
   if(e.key===" "||e.key==="Enter"){ e.preventDefault(); $("box").onclick(); }

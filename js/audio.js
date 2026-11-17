@@ -91,26 +91,37 @@ function freqOf(n){ const m=n.match(/^([A-G])(#|b)?(\d)$/); if(!m) return 0;
   let s=NOTE_IDX[m[1]]+(m[2]==="#"?1:m[2]==="b"?-1:0); const midi=(+m[3]+1)*12+s; return 440*Math.pow(2,(midi-69)/12); }
 function parseSeq(str){ return str.replace(/\|/g," ").trim().split(/\s+/); }
 let curTrack=null, seq=null, stepI=0, nextT=0, musTimer=null;
-/* Un solo reproductor para la música en archivo. Se «despierta» con el primer toque
-   (los celulares no dejan sonar audio sin que el jugador toque la pantalla antes). */
-const musicEl=new Audio(); musicEl.loop=true; musicEl.volume=.5;
+/* Dos reproductores para la música en archivo: mientras uno se apaga con un fundido, el otro empieza la canción nueva.
+   Se «despiertan» con el primer toque (los celulares no dejan sonar audio sin que el jugador toque la pantalla antes). */
+const MUSIC_VOL=.5, FADE_MS=900;                       // volumen de la música y duración del fundido al terminar una canción
+const musicEls=[new Audio(), new Audio()]; let musicIdx=0, musicEl=musicEls[0];
+musicEls.forEach(e=>{ e.loop=true; e.volume=MUSIC_VOL;
+  e.addEventListener("error",()=>{ if(e===musicEl && musicFile){ musicFile=null; if(curTrack) synth(curTrack); } }); });  // si falla el archivo, suena la melodía propia
 let musicFile=null;
-musicEl.addEventListener("error",()=>{ if(musicFile){ musicFile=null; if(curTrack) synth(curTrack); } });  // si falla el archivo, suena la melodía propia
 function unlockMusic(){
   const n=800, b=new Uint8Array(44+n), v=new DataView(b.buffer), w=(o,s)=>[...s].forEach((c,i)=>b[o+i]=c.charCodeAt(0));
   w(0,"RIFF"); v.setUint32(4,36+n,true); w(8,"WAVEfmt "); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true);
   v.setUint32(24,8000,true); v.setUint32(28,8000,true); v.setUint16(32,1,true); v.setUint16(34,8,true); w(36,"data"); v.setUint32(40,n,true); b.fill(128,44);
   if(musicFile) return;
-  musicEl.src=URL.createObjectURL(new Blob([b],{type:"audio/wav"})); musicEl.play().then(()=>{ if(!musicFile) musicEl.pause(); }).catch(()=>{});
+  const url=URL.createObjectURL(new Blob([b],{type:"audio/wav"}));
+  musicEls.forEach(e=>{ e.src=url; e.play().then(()=>{ if(!musicFile||e!==musicEl) e.pause(); }).catch(()=>{}); });
+}
+/* Baja el volumen de a poco y después detiene la canción */
+function fadeOut(e){
+  clearInterval(e._fade); const v0=e.volume, t0=Date.now();
+  e._fade=setInterval(()=>{ const k=(Date.now()-t0)/FADE_MS;
+    if(k>=1){ clearInterval(e._fade); e._fade=null; e.pause(); e.volume=MUSIC_VOL; } else e.volume=Math.max(0,v0*(1-k)); }, 40);
 }
 function music(name){
   if(curTrack===name) return;
   if(musTimer){ clearInterval(musTimer); musTimer=null; }
-  musicEl.pause(); musicFile=null;
+  if(musicFile && !musicEl.paused) fadeOut(musicEl); else musicEl.pause();     // la canción que termina se apaga con un fundido
+  musicFile=null;
   curTrack=name; if(!name||!AC) return;
   const file=(typeof LOCALMUS!=="undefined" && LOCALMUS[name]) || (typeof MUSIC_GAME!=="undefined" && MUSIC_GAME[name]) || (MUSICA_LOCAL && MUSIC_FILES[name]);   // música elegida por el jugador, o en archivo
   if(file){
-    musicFile=file; musicEl.src=file; musicEl.muted=muted; musicEl.currentTime=0;
+    musicIdx^=1; musicEl=musicEls[musicIdx]; clearInterval(musicEl._fade); musicEl._fade=null;
+    musicFile=file; musicEl.src=file; musicEl.muted=muted; musicEl.volume=MUSIC_VOL; musicEl.currentTime=0;
     musicEl.play().catch(()=>{});
     return;
   }
