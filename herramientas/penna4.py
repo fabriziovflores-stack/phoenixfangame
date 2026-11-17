@@ -127,18 +127,22 @@ TABLAS={'v3':{'base':(1,2),'smug':(3,2),'proud':(5,None),'smug2':(6,2),'cross':(
    'facepalm':(12,None),'gesture':(13,14),'stop':(15,16),'point':(17,18),'fist':(21,22),'angry':(23,24),
    'shock':(25,26),'sweat':(27,28),'down':(29,None),'proud2':(31,32),'serious':(1,2),'smile':(6,2)},
  'v4':{'base':(1,2),'cross':(3,4),'fist':(5,6),'point':(7,8)},
- 'chayo':{'base':(1,2),'serious':(3,4),'smile':(5,6),'laugh':(7,None),'giggle':(8,None),'think':(9,10),'think2':(11,12),
-   'blush':(13,None),'glasses':(15,None),'smug':(16,None),'camera':(19,None),'photo':(20,None),'excited':(24,23),'surprise':(25,26),
-   'shock':(27,None),'panic':(28,None),'sweat':(29,None),'down':(31,None),'embarrassed':(32,None),'angry':(35,36),'point':(39,38),
-   'annoyed':(41,42),'facepalm':(43,None),'cry':(44,None),'wink':(48,None)},
+ 'chayo':{'base':(1,2,'f'),'serious':(3,4,'f'),'smile':(5,2),'laugh':(7,None),'giggle':(8,None),'think':(9,10,'f'),'think2':(11,12,'f'),
+   'blush':(13,None),'glasses':(15,None),'wink':(16,None),'camera':(19,None),'photo':(20,None),'excited':(24,23),'surprise':(25,26,'f'),
+   'shock':(27,None),'panic':(28,None),'sweat':(29,None),'down':(30,31,'f'),'embarrassed':(32,None),'annoyed':(33,34,'f'),'angry':(35,36,'f'),
+   'point':(39,37,'f'),'smug':(40,34),'sad':(41,42,'f'),'facepalm':(43,None),'cry':(44,None),'happy':(45,46,'f'),'grin':(48,None)},
  'v5':{'base':(1,2),'smug':(3,4),'cross':(5,6),'point':(7,8),'angry':(9,10),'shock':(11,12),'sweat':(13,14),'cafe':(15,16)}}
 P=TABLAS[os.environ.get('TABLA','v3')]
 FR={}
+if os.environ.get('DUMP'):
+    os.makedirs(os.environ['DUMP'],exist_ok=True)
+    for k,f in F.items(): f.save(os.path.join(os.environ['DUMP'],'f%02d.png'%k))
 def save(n,im): im.save(f'{OUT}/{n}.png',optimize=True)
 for pre,TAB,BOX in (('',P,BP),('frente_',FR,BF)):
-    for n,(c,o) in TAB.items():
+    for n,v in TAB.items():
+        c,o=v[0],v[1]; full=len(v)>2
         save(pre+n,F[c]); t=n+'Talk' if n!='base' else 'talk'
-        save(pre+t, F[c] if o is None else talk(c,o,BOX))       # siempre: cuadro cerrado + solo la boca (el cuerpo no se mueve)
+        save(pre+t, F[c] if o is None else (Image.fromarray(shift_to(np.array(F[c]),np.array(F[o]))) if full else talk(c,o,BOX)))       # siempre: cuadro cerrado + solo la boca (el cuerpo no se mueve)
 b0=F[1]; l,t,r_,b_=b0.getbbox(); hb=b0.crop((0,t,CW,t+40)).getbbox(); cx=(hb[0]+hb[2])//2
 b0.crop((cx-33,t,cx+33,t+70)).transpose(Image.FLIP_LEFT_RIGHT).save(f'{OUT}/face.png')
 print(log)
