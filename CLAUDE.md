@@ -124,7 +124,8 @@ Diseño del dueño en `assets/hud/` (originales en `arte-original/hud/`): `panel
 Archivos del juego en `assets/musica/` (`MUSIC_GAME` en assets.js; recreaciones del dueño, ver docs/creditos.md): `interrogatorio` =
 Moderato, `allegro` (contrainterrogatorios tensos), `logica` (suena sola cuando la jueza pide deducir, `choice`), `objecion` (suena
 sola al acertar una contradicción o una prueba), `persecucion` = Cornered, `corte` = Trial (abre el juicio), `espera` = Courtroom Lobby, `suspenso` = Suspense (cinemáticas, entrada de Penna en el Caso 1),
-`detencion` = Jailer's Elegy (locutorio del Caso 2). `verdad` = Telling the Truth, `variacion` = Pursuit ~ Cornered (Variation) (golpe final: entra con `cmd:"zoom"` al presentar la lona y suena sin cortes hasta el veredicto).
+`detencion` = Jailer's Elegy (locutorio del Caso 2). `verdad` = Telling the Truth, `variacion` = Pursuit ~ Cornered (Variation) (golpe final: al presentar la lona, ¡Objeción! + golpe en la mesa en silencio, y en la frase siguiente entra con el zoom mientras Justo habla; suena sin cortes hasta el veredicto).
+En una línea, `zoom:true` (con `pos:"rayos"`) = primer plano que se acerca de golpe mientras el personaje habla; si la línea siguiente también lleva zoom, se mantiene.
 `{cmd:"zoom", who, mood, pose, music, ms}` = primer plano de golpe sobre rayos con la música que entra en ese instante (sin texto, no se salta).
 **Pauta del dueño:** primer testimonio de cada testigo = Moderato; cuando sube la tensión = Allegro; el testimonio suena con su canción
 desde la primera lectura. **Cornered y Telling the Truth no se interrumpen**: mientras suenan, Objection!/Logic and Trick no entran (`MUSICA_TENSA`).

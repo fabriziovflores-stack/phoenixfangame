@@ -783,10 +783,9 @@ const SCRIPT = [
    text:"¿Qué prueba desmiente la explicación del contacto durante una mantención anterior?",
    prompt:"La explicación del testigo supone un contacto anterior. ¿Qué prueba no encaja con ella?",
    ok:[
-    {who:"ines",bubble:"mire",pose:"papel",show:"lona",text:"¡Porque la cubierta no estaba en la galería hace semanas!"},
-    {cmd:"zoom", who:"ines", mood:"serious", pose:"point", music:"variacion", ms:1600},
-    {who:"ines",mood:"serious",text:"Es [r]la lona de Tomás[/r], sacada de su andamio durante el apagón del 3 de noviembre. No se usó para proteger cuadros en una mantención antigua."},
-    {who:"ines",pose:"point",text:"Y la fibra quedó [r]atrapada dentro del nudo[/r] que alguien hizo para cubrir el marco. El chaleco se rasgó [r]al envolverlo[/r], no al revisar la sala semanas atrás."},
+    {who:"ines",bubble:"objecion",pose:"slam",anim:"slam",show:"lona",text:"¡Porque la cubierta no estaba en la galería hace semanas!"},
+    {who:"ines",pos:"rayos",zoom:true,pose:"point",music:"variacion",text:"Es [r]la lona de Tomás[/r], sacada de su andamio durante el apagón del 3 de noviembre. No se usó para proteger cuadros en una mantención antigua."},
+    {who:"ines",pos:"rayos",zoom:true,pose:"point",text:"Y la fibra quedó [r]atrapada dentro del nudo[/r] que alguien hizo para cubrir el marco. El chaleco se rasgó [r]al envolverlo[/r], no al revisar la sala semanas atrás."},
     {who:"testigo",mood:"angry",anim:"hit",text:"¡No! ¡Alguien pudo amarrar la lona después de que yo rozara el cuadro!"},
     {who:"fiscal",pose:"cuff",mood:"serious",text:"Una explicación posible... si la fibra hubiese estado suelta sobre el marco. Pero estaba comprimida [r]entre dos vueltas del nudo[/r]."},
     {who:"testigo",mood:"sweat",text:"Entonces me enganché sin querer esa noche. No saben [r]cuándo[/r]."},

@@ -145,6 +145,9 @@ function say(l, done){
     setScene(pos, yo ? undefined : (l.who?l.who:(l.pos?null:undefined)), l.mood, l.pose, yaVisto);
     if(l.who && !yo) vistos.add(l.who);
     const entra = l.who && !yo && l.who!==prevWho && pos===prevPos && !yaVisto;   // aparece alguien por primera vez en este lugar
+    { const sg=$("stage");                                  // zoom:true = primer plano que se acerca de golpe (sigue si la línea anterior también era zoom)
+      if(l.zoom){ if(!sg.classList.contains("zoomIn")){ void sg.offsetWidth; sg.classList.add("zoomIn"); flash(); shake(); } }
+      else sg.classList.remove("zoomIn"); }
     if(l.music!==undefined) music(l.music);
     if(l.anim) anim(l.anim);
     tickEv(l);
