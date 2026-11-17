@@ -61,12 +61,31 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;image-rendering:pix
 #tcard .band{width:100%;text-align:center;background:#081428;border-top:.8cqw solid #f87838;border-bottom:.8cqw solid #f87838;padding:2.5cqw 0;animation:band 1.8s steps(24) forwards}
 #tcard .t1{font-size:9cqw;font-weight:700;color:#f87838;text-shadow:.6cqw .6cqw 0 #000}
 #tcard .t2{font-size:5.4cqw;color:#fff}
-#tcard.logo{background:rgba(0,0,0,.25)}
-#tcard.logo img{width:88%;image-rendering:auto;animation:logoIn .22s ease-out both}
-#tcard.logo .t2{margin-top:2cqw;font-size:5.4cqw;color:#fff;background:#081428;padding:1cqw 4cqw;border-top:.6cqw solid #f87838;border-bottom:.6cqw solid #f87838;animation:logoT .3s 1.7s both}
-@keyframes logoIn{0%{transform:scale(1.9);opacity:0}70%{transform:scale(.96);opacity:1}100%{transform:scale(1)}}
-@keyframes logoT{from{opacity:0;transform:translateY(40%)}to{opacity:1;transform:none}}
-#topS.carta #box{visibility:hidden}
+#tcard.logo{display:block;background:none}
+#tcard.logo .lg{position:absolute;left:6%;width:88%;top:40%;transform:translateY(-50%)}
+#tcard.logo .lg img{display:block;width:100%;image-rendering:auto}
+#tcard.logo .lg .h2,#tcard.logo .lg .brillo{position:absolute;left:0;top:0;width:100%;height:100%}
+#tcard.logo .dos .h1{clip-path:inset(0 0 50% 0)} #tcard.logo .dos .h2{clip-path:inset(50% 0 0 0)}
+#tcard.logo .uno .h1{clip-path:inset(0 50% 0 0)} #tcard.logo .uno .h2{clip-path:inset(0 0 0 50%)}
+#tcard.logo .h1{animation:lgInL .32s cubic-bezier(.2,.9,.3,1) both}
+#tcard.logo .h2{animation:lgInR .32s cubic-bezier(.2,.9,.3,1) both}
+#tcard.logo .brillo{-webkit-mask-size:100% 100%;mask-size:100% 100%;background:linear-gradient(100deg,transparent 36%,rgba(255,255,255,.95) 50%,transparent 64%);
+  background-size:300% 100%;animation:brillo .9s .35s linear both}
+#tcard.logo.sale .h1{animation:lgOutL .4s ease-in forwards}
+#tcard.logo.sale .h2{animation:lgOutR .4s ease-in forwards}
+#tcard.logo.sale .brillo{display:none}
+#tcard.logo .sub{position:absolute;left:0;right:0;top:70%;height:19%;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;
+  color:#f6c890;font-size:5cqw;letter-spacing:.2cqw;animation:subIn .25s .15s both}
+@keyframes lgInL{from{transform:translateX(-115%)}to{transform:none}}
+@keyframes lgInR{from{transform:translateX(115%)}to{transform:none}}
+@keyframes lgOutL{to{transform:translate(-30%,-90%);opacity:0}}
+@keyframes lgOutR{to{transform:translate(30%,90%);opacity:0}}
+@keyframes brillo{from{background-position:100% 0}to{background-position:0 0}}
+@keyframes subIn{from{opacity:0}to{opacity:1}}
+#vsS.fin::after{content:"";position:absolute;inset:0;z-index:5;background:radial-gradient(circle at 50% 50%,#ff9a4a 0,#ffd6a8 12%,#fff 38%);animation:vsFin .45s both}
+@keyframes vsFin{0%{opacity:0}25%{opacity:1}100%{opacity:.85}}
+#vsS.fin{animation:vsGone .3s .15s forwards}
+@keyframes vsGone{to{opacity:0}}
 #vsS{display:none;position:absolute;inset:0;z-index:60;background:#fff;overflow:hidden}
 #vsS .vsb{position:absolute;left:0;width:100%;height:29%;overflow:hidden;border-top:1cqw solid #000;border-bottom:1cqw solid #000;box-sizing:border-box;
   background:repeating-linear-gradient(0deg,rgba(255,255,255,.12) 0 1px,transparent 1px 3px),linear-gradient(#3fd6b8,#2fbfa6)}

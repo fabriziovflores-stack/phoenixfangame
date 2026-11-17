@@ -340,21 +340,30 @@ function titleCard(t1,t2,done){
   o.style.display="flex"; SFX.whoosh(); mode="loc"; renderControls();
   setTimeout(()=>{ o.style.display="none"; busy=false; done(); },T.dia);
 }
-/* Letrero dibujado («Testimonio del Testigo», «Contrainterrogatorio», «Interrogatorio») en la pantalla de arriba.
-   Con vs=true, al mismo tiempo las caras de Justo y Penna se enfrentan en la pantalla de abajo. No se puede saltar. */
-const LOGO_MS=3050, VS_MS=3050;   // lo que dura el sonido «testimonio» (assets/sonidos/testimonio.wav)
+/* Letrero dibujado («Testimonio del Testigo», «Contrainterrogatorio», «Interrogatorio») en la pantalla de arriba, como en la DS:
+   entra partido en dos mitades (una por cada lado), le pasa un brillo, abajo se escribe el nombre en una franja oscura,
+   y sale separándose en diagonal. Con vs=true, las caras de Justo y Penna se enfrentan en la pantalla de abajo.
+   No se puede saltar: la música se calla, suena «testimonio» y todo dura lo mismo que ese sonido. */
+const LOGO_MS=3050, LOGO_SALE=2600;
 function logoCard(img,t2,done,vs){
-  busy=true; const o=$("tcard"); o.className="ov logo";
-  o.innerHTML=`<img src="${img}" alt=""><div class="t2">${t2||""}</div>`;
-  o.style.display="flex"; $("topS").classList.add("carta"); mode="loc"; renderControls();
+  busy=true; const o=$("tcard"), lineas=/interrogatorio\.png$/.test(img)&&!/contra/.test(img)?"uno":"dos";
+  o.className="ov logo";
+  o.innerHTML=`<div class="lg ${lineas}"><img class="h1" src="${img}" alt=""><img class="h2" src="${img}" alt=""><div class="brillo" style="-webkit-mask-image:url(${img});mask-image:url(${img})"></div></div>`+
+    (t2?`<div class="sub"><span></span></div>`:"");
+  o.style.display="block"; $("topS").classList.add("carta"); mode="loc"; renderControls();
   music(null); SFX.testimony();                                   // silencio: solo el sonido del letrero
+  const sp=o.querySelector(".sub span"), txt=t2?"– "+t2+" –":""; let k=0;
+  const tip=setInterval(()=>{ if(!sp||k>=txt.length){ clearInterval(tip); return; } sp.textContent=txt.slice(0,++k); }, 40);
   let v=null;
   if(vs){
     v=$("vsS"); if(!v){ v=document.createElement("div"); v.id="vsS"; $("botS").appendChild(v); }
+    v.className="";
     v.innerHTML=`<div class="vsb a"><img src="assets/hud/vs_justo.png" alt=""></div><div class="vsm"></div><div class="vsb b"><img src="assets/hud/vs_penna.png" alt=""></div>`;
     v.style.display="block";
   }
-  setTimeout(()=>{ o.style.display="none"; o.className="ov"; if(v) v.style.display="none"; $("topS").classList.remove("carta"); busy=false; done(); }, vs?VS_MS:LOGO_MS);
+  setTimeout(()=>{ o.classList.add("sale"); if(v) v.classList.add("fin"); }, LOGO_SALE);
+  setTimeout(()=>{ clearInterval(tip); o.style.display="none"; o.className="ov"; o.innerHTML=""; if(v){ v.style.display="none"; v.className=""; }
+    $("topS").classList.remove("carta"); busy=false; done(); }, LOGO_MS);
 }
 function verdict(text, good, done){
   const o=$("verdict"); o.className="ov "+(good?"good":"bad"); o.innerHTML=""; o.style.display="flex"; busy=true; mode="loc"; renderControls();
