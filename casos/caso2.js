@@ -9,6 +9,7 @@ CASOS.caso2 = (()=>{
 const CHARS = {
   ines:   {name:"Justo",          skin:"#f0c39d", hair:"#3b2416", suit:"#1f3a6b", accent:"#e6c34a", style:"long",  voice:820, pos:"defensa"},
   cote:   {name:"Coté",           skin:"#e9b48a", hair:"#8a3b1e", suit:"#c44f7a", accent:"#ffd1e0", style:"pony",  voice:1040,pos:"hospital"},
+  chayo:  {name:"Chayo",          skin:"#f0c8a8", hair:"#6a3a22", suit:"#9a2a38", accent:"#f2a0b0", style:"long",  voice:980, pos:"defensa"},
   fiscal: {name:"Fiscal Penna",   skin:"#f2cfac", hair:"#7a5230", suit:"#6b1d2a", accent:"#e2b23c", style:"slick", voice:300, pos:"fiscalia"},
   jueza:  {name:"Jueza",          skin:"#dba97f", hair:"#d9d9d9", suit:"#17171c", accent:"#f2f2f2", style:"bun",   voice:620, pos:"juez"},
   eduardo:{name:"Estuardo",       skin:"#d6a27a", hair:"#3a2e26", suit:"#c8a878", accent:"#b8502a", style:"messy", voice:360, pos:"estrado"},

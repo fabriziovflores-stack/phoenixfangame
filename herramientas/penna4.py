@@ -9,10 +9,10 @@ im=np.array(Image.open(os.environ.get('SHEET','arte-original/penna-v3.jpg')+'').
 H0,W0=im.shape[:2]; r,g,b=im[...,0],im[...,1],im[...,2]
 key=(g>140)&(g>r*1.45)&(g>b*1.45); spill=(g>r*1.15)&(g>b*1.15)&~key; im[...,1]=np.where(spill,np.maximum(r,b),g)
 A=np.where(key,0,255).astype(np.uint8); RGB=im.clip(0,255).astype(np.uint8)
-GX,GY=int(os.environ.get('GX','8')),int(os.environ.get('GY','4')); cw,ch=W0/GX,H0/GY; M=70
+GX,GY=int(os.environ.get('GX','8')),int(os.environ.get('GY','4')); cw,ch=W0/GX,H0/GY; M=int(os.environ.get('MARGIN','70')); TOPCUT=int(os.environ.get('TOPCUT','0'))
 def cell(k):
     x0,y0=round(k%GX*cw),round(k//GX*ch); x1,y1=round(x0+cw),round(y0+ch)
-    X0,Y0,X1,Y1=max(x0-M,0),y0,min(x1+M,W0),min(y1,H0)
+    X0,Y0,X1,Y1=max(x0-M,0),y0+TOPCUT,min(x1+M,W0),min(y1,H0)
     a=A[Y0:Y1,X0:X1].copy(); n,lab,st,cen=cv2.connectedComponentsWithStats((a>0).astype(np.uint8),8)
     keep=np.zeros_like(a,bool); cx,cy=(x0+x1)/2-X0,(y0+y1)/2-Y0
     big=max(range(1,n),key=lambda i:st[i,4]-1e6*((cen[i][0]<x0-X0)|(cen[i][0]>x1-X0)))   # la figura de esta celda
@@ -29,7 +29,24 @@ def cell(k):
     return Image.fromarray(np.dstack([RGB[Y0:Y1,X0:X1],a]),'RGBA'), X0-x0
 def g8(c):
     a=np.asarray(c).astype(np.float32); g=a[...,:3].mean(2); g[a[...,3]==0]=128; return g.astype(np.uint8)
-cells=[cell(k) for k in range(GX*GY)]
+def auto_cells():
+    """Hojas sin cuadrícula exacta: encuentra cada figura por su silueta y las ordena en filas y columnas."""
+    fig=cv2.dilate((A>0).astype(np.uint8),np.ones((7,7),np.uint8))
+    n,lab,st,cen=cv2.connectedComponentsWithStats(fig,8)
+    big=[i for i in range(1,n) if st[i,4]>1500]
+    big=sorted(big,key=lambda i:cen[i][1]); rows=[sorted(big[r*GX:(r+1)*GX],key=lambda i:cen[i][0]) for r in range(GY)]
+    out=[]
+    for row in rows:
+        for i in row:
+            x,y,w,h=st[i,:4]; P=22
+            X0,Y0,X1,Y1=max(x-P,0),max(y-P,0),min(x+w+P,W0),min(y+h+P,H0)
+            sub=lab[Y0:Y1,X0:X1]; a=A[Y0:Y1,X0:X1].copy()
+            mine=(sub==i)
+            others=(sub>0)&(sub!=i)&np.isin(sub,big)          # pedazos de otras figuras: fuera
+            a[others]=0; a[~(mine|((sub>0)&~np.isin(sub,big)))]=0
+            out.append((Image.fromarray(np.dstack([RGB[Y0:Y1,X0:X1],a]),'RGBA'),0))
+    return out
+cells=auto_cells() if os.environ.get('AUTOGRID')=='1' else [cell(k) for k in range(GX*GY)]
 HH=int(os.environ.get('HH','110')); SC=TGT/HH
 def anchor(k0):
     c,off=cells[k0]; bb=c.getbbox(); top=bb[1]; hb=c.crop((0,top,c.width,top+HH)).getbbox()
@@ -48,14 +65,18 @@ AX=128+DX; AY=BOT-round(PROF['bb'][3]*SC)+PROF['top']*SC
 if os.environ.get('HEADY'): AY=float(os.environ['HEADY'])        # dónde queda lo alto del pelo en pantalla
 REF={}
 def head_anchor(c,front):
-    """Punto fijo de la cabeza: arriba del pelo y la nuca (perfil) o el centro del pelo (frente)."""
-    a=np.array(c)[...,3]>0; rows=np.where(a.sum(1)>8)[0]; t=rows[0]
+    """Punto fijo de la cabeza: arriba del pelo y la nuca (perfil) o el centro del pelo (frente).
+    Se mide solo sobre la figura principal (los signos de sorpresa o destellos no cuentan)."""
+    a=np.array(c)[...,3]>0
+    n,lab,st,_=cv2.connectedComponentsWithStats(a.astype(np.uint8),8)
+    if n>2: a=lab==(1+int(np.argmax(st[1:,4])))
+    rows=np.where(a.sum(1)>8)[0]; t=rows[0]
     band=a[t:t+40]; xs=np.where(band.any(0))[0]
     if front: return (xs.min()+xs.max())/2, t
     return xs.max(), t
 def place(k,T):
     """Mismo tamaño para todo el grupo; cada cuadro se alinea por la parte de arriba y de atrás de la cabeza."""
-    c,off=cells[k]; front=T is FRON; key=id(T)
+    c,off=cells[k]; front=(T is FRON) or os.environ.get('FRONT')=='1'; key=id(T)
     if key not in REF:
         _,f0,mx0,my0=match(c,T); hx,hy=head_anchor(c,front); REF[key]=(f0,mx0-hx,my0-hy)
     f,dx,dy=REF[key]; hx,hy=head_anchor(c,front); mx,my=hx+dx,hy+dy; sc=1.0
@@ -84,7 +105,7 @@ def mouthmask(a,b):
     al=a[...,3]>0; t=np.where(al.sum(1)>8)[0][0]
     m=((d>80)|((a[...,3]>0)!=(b[...,3]>0))); m[:t+28]=0; m[t+78:]=0
     xs=np.where(al[t:t+30].any(0))[0]; hc=(xs.min()+xs.max())/2
-    ex,ey=(hc,t+50) if FRONT_NOW[0] else (hc-12,t+48)            # dónde se espera la boca
+    ex,ey=(hc+float(os.environ.get('MOUTHDX','0')),t+float(os.environ.get('MOUTHDY','50'))) if FRONT_NOW[0] else (hc-12,t+48)   # dónde se espera la boca
     m8=cv2.dilate(m.astype(np.uint8),np.ones((3,3),np.uint8))
     n,lab,st,cen=cv2.connectedComponentsWithStats(m8,8)
     cands=[i for i in range(1,n) if st[i,4]>=40]                  # manchas chicas = ruido del dibujo
@@ -97,7 +118,7 @@ def mouthmask(a,b):
 FRONT_NOW=[False]
 def talk(closed,opn,box=None):
     """Hablar = cuadro cerrado + solo la boca del cuadro abierto (alineado a la cara)."""
-    FRONT_NOW[0]=False
+    FRONT_NOW[0]=os.environ.get('FRONT')=='1'
     a=np.array(F[closed]); b=shift_to(a,np.array(F[opn])); m=mouthmask(a,b)
     o=a.copy(); o[m]=b[m]; return Image.fromarray(o)
 BP=BF=None
@@ -106,6 +127,10 @@ TABLAS={'v3':{'base':(1,2),'smug':(3,2),'proud':(5,None),'smug2':(6,2),'cross':(
    'facepalm':(12,None),'gesture':(13,14),'stop':(15,16),'point':(17,18),'fist':(21,22),'angry':(23,24),
    'shock':(25,26),'sweat':(27,28),'down':(29,None),'proud2':(31,32),'serious':(1,2),'smile':(6,2)},
  'v4':{'base':(1,2),'cross':(3,4),'fist':(5,6),'point':(7,8)},
+ 'chayo':{'base':(1,2),'serious':(3,4),'smile':(5,6),'laugh':(7,None),'giggle':(8,None),'think':(9,10),'think2':(11,12),
+   'blush':(13,None),'glasses':(15,None),'smug':(16,None),'camera':(19,None),'photo':(20,None),'excited':(24,23),'surprise':(25,26),
+   'shock':(27,None),'panic':(28,None),'sweat':(29,None),'down':(31,None),'embarrassed':(32,None),'angry':(35,36),'point':(39,38),
+   'annoyed':(41,42),'facepalm':(43,None),'cry':(44,None),'wink':(48,None)},
  'v5':{'base':(1,2),'smug':(3,4),'cross':(5,6),'point':(7,8),'angry':(9,10),'shock':(11,12),'sweat':(13,14),'cafe':(15,16)}}
 P=TABLAS[os.environ.get('TABLA','v3')]
 FR={}
