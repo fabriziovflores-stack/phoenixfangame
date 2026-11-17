@@ -3,7 +3,15 @@
    ===================================================================== */
 const $=id=>document.getElementById(id);
 const MAXH=5;
-const ENTRADA_MS=1500;    // fundido (ms) cuando aparece un personaje sin cambio de cámara; recién después habla
+/* ===== Tiempos del juego (pauta del dueño) ===== */
+const ENTRADA_MS=300;     // fundido cuando aparece un personaje nuevo en el mismo lugar
+const T={ letra:35, rapido:20, nervioso:50, drama:75, coma:100, punto:180, suspensivos:450, pausa:450,
+  trasAparecer:120,       // empieza a hablar después de aparecer
+  camara:150,             // cambio de cámara en el juicio (ej. de Justo a Penna)
+  anim:250,               // animación previa a hablar (golpe en la mesa, salto...)
+  revelacion:650,         // silencio antes de una revelación (sfx badum o primer plano de rayos)
+  lugar:750,              // cambio de ubicación (fundido a negro, ida y vuelta)
+  dia:1100 };             // tarjeta de cambio de día
 let G={}, pc=0, checkpoint=0, mode="idle", waiting=null, typing=false, tTimer=null, X=null, busy=false;
 
 function resetGame(){ hideEv(); EVIDENCE.splice(EV0); G={notes:{}, health:MAXH, nocap:false, pos:"negro", flags:{}, met:{}, inv:null}; pc=0; checkpoint=0; vistos.clear(); drawHealth(); }
@@ -72,7 +80,7 @@ function typeText(t, style, voice, done){
   const step=()=>{
     let pausa=0;
     if(ctlAt[i] && !ctlAt[i].done){ ctlAt[i].done=1; ctlAt[i].forEach(x=>{ if(x==="p") pausa+=450; else runCtl(x); }); }
-    if(pausa){ setTalk(0); tTimer=setTimeout(step,pausa); return; }
+    if(pausa){ setTalk(0); tTimer=setTimeout(step,pausa*T.pausa/450); return; }
     if(i>=chars.length){ finish(); return; }
     const c=chars[i];
     if(!span||spanCls!==c.cls){ span=document.createElement("span"); if(c.cls) span.className=c.cls; spanCls=c.cls; el.appendChild(span); }
@@ -81,8 +89,10 @@ function typeText(t, style, voice, done){
     if(canTalk && i%3===0) setTalk((i/3)%2===0);
     i++;
     const nx=chars[i]&&chars[i].ch;
-    const d = c.ch==="." && nx==="." ? 120                       // puntos suspensivos: se escriben lento
-            : ".!?…".includes(c.ch) && nx===" " ? 300 : c.ch===","? 140 : 32;
+    const pv=chars[i-2]&&chars[i-2].ch;
+    const d = c.ch==="…" || (c.ch==="." && pv==="." && nx!==".") ? T.suspensivos     // puntos suspensivos
+            : c.ch==="." && nx==="." ? typeText.vel
+            : ".!?".includes(c.ch) && (nx===" "||nx===undefined) ? T.punto : c.ch===","? T.coma : typeText.vel;
     tTimer=setTimeout(step,d);
   };
   step();
@@ -150,9 +160,14 @@ function say(l, done){
     mode="dialog"; renderControls();
     waiting=done;
     blipWho=l.who;
+    const reveal = l.sfx==="badum" || pos==="rayos";
+    typeText.vel = typeof l.speed==="number" ? l.speed : l.speed==="rapido" ? T.rapido : l.speed==="nervioso" ? T.nervioso : l.speed==="drama" ? T.drama
+      : reveal ? T.drama : ["sweat","worried","panic","nervous"].includes(l.mood) ? T.nervioso : T.letra;
     const start=()=>typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on"); });
     const anima=Math.max(0, seqUntil-Date.now());          // el texto espera a que termine la animación (apuntar, lentes...)
-    if(entra||anima>0){ $("text").textContent=""; busy=true; setTimeout(()=>{ busy=false; start(); }, entra?Math.max(ENTRADA_MS,anima):anima); } else start();
+    const camara = pos!==prevPos && prevPos!=="negro" && ["defensa","fiscalia","estrado","juez"].includes(pos);
+    const espera=Math.max(entra?ENTRADA_MS+T.trasAparecer:0, anima, l.anim?T.anim:0, camara?T.camara:0, reveal?T.revelacion:0);
+    if(espera>0){ $("text").textContent=""; busy=true; setTimeout(()=>{ busy=false; start(); }, espera); } else start();
   };
   const R=REACT[l.who], rk=R && (l.pose && R["pose:"+l.pose] ? "pose:"+l.pose : (R[l.mood||"normal"] ? (l.mood||"normal") : null));
   if(rk && !(plainText(l.text).startsWith("(") && l.who==="ines")){
@@ -229,7 +244,10 @@ function run(){
 }
 const CMD = {
   music(st,done){ music(st.track); done(); },
-  location(st,done){ setScene(st.pos||G.pos, null); locCard(st.text, done); },
+  location(st,done){
+    const d=$("dim"); busy=true; d.style.transition="opacity "+(T.lugar/2)+"ms"; d.classList.add("negro");
+    setTimeout(()=>{ setScene(st.pos||G.pos, null); d.classList.remove("negro"); setTimeout(()=>{ busy=false; d.style.transition=""; locCard(st.text, done); }, T.lugar/2); }, T.lugar/2);
+  },
   gavel(st,done){
     const o=$("gavel"); o.style.display="flex"; busy=true;
     o.innerHTML=`<svg viewBox="0 0 400 260"><rect x="110" y="200" width="180" height="40" rx="8" fill="#6b4224"/><rect x="130" y="190" width="140" height="16" rx="6" fill="#8a5a30"/>
@@ -314,7 +332,7 @@ const CMD = {
 function titleCard(t1,t2,done){
   busy=true; const o=$("tcard"); o.innerHTML=`<div class="band"><div class="t1">${t1}</div><div class="t2">${t2}</div></div>`;
   o.style.display="flex"; SFX.whoosh(); mode="loc"; renderControls();
-  setTimeout(()=>{ o.style.display="none"; busy=false; done(); },1850);
+  setTimeout(()=>{ o.style.display="none"; busy=false; done(); },T.dia);
 }
 function verdict(text, good, done){
   const o=$("verdict"); o.className="ov "+(good?"good":"bad"); o.innerHTML=""; o.style.display="flex"; busy=true; mode="loc"; renderControls();
