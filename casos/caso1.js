@@ -25,7 +25,7 @@ const EVIDENCE = [
 ];
 const EV0 = EVIDENCE.length;
 /* Ilustraciones de las pruebas */
-const EVIMG={ /* boleta, plano1, chatvecinal, fotozoila, parte, fibra: sin dibujo todavía */ credencial:"assets/pruebas/credencial.png",ficha:"assets/pruebas/ficha.png",luz:"assets/pruebas/luz.png",bitacora:"assets/pruebas/bitacora.png",ventana:"assets/pruebas/ventana.png",visitas:"assets/pruebas/visitas.png",lona:"assets/pruebas/lona.png",llave:"assets/pruebas/llave.png"};
+const EVIMG={boleta:"assets/pruebas/ferreteria.png",plano1:"assets/pruebas/plano-galeria.png",chatvecinal:"assets/pruebas/mensajes.png",fotozoila:"assets/pruebas/foto2324.png",parte:"assets/pruebas/parte.png",fibra:"assets/pruebas/f4.png",credencial:"assets/pruebas/credencial.png",ficha:"assets/pruebas/ficha.png",luz:"assets/pruebas/luz.png",bitacora:"assets/pruebas/bitacora.png",ventana:"assets/pruebas/ventana.png",visitas:"assets/pruebas/visitas.png",lona:"assets/pruebas/lona.png",llave:"assets/pruebas/llave.png"};
 const EVX = {
   ficha:   {id:"ficha",   icon:"🖼️", name:"Ficha del cuadro", desc:"«La Sirena del Puerto», óleo sobre tela. 180 × 120 cm con marco de roble. 22 kg. Rígido: no se enrolla ni se desarma.", read:"Datos de catálogo del cuadro robado."},
   luz:     {id:"luz",     icon:"⚡", name:"Aviso de corte", desc:"Aviso de la compañía eléctrica, pegado en todo Cerro Alegre: corte programado por mantención el 3 de noviembre, de 23:10 a 00:05. Sin luz en las casas ni alumbrado público.", read:"Explica por qué la galería estaba a oscuras."},
