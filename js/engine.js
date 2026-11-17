@@ -262,7 +262,7 @@ const CMD = {
     const def=CROSS[st.ref];
     X={def, list:def.statements.filter(s=>!s.hidden), idx:0, hinted:false, done, tag:"Testimonio"};
     logoCard("assets/hud/titulo-testimonio.png", def.title, ()=>{
-      music("corte");
+      music(def.music||"interrogatorio");                          // el testimonio ya suena con su propia canción
       play(X.list.map(s=>({who:def.who||"testigo",mood:s.mood,text:s.text})), ()=>dim(()=>{
         X.tag="Contrainterrogatorio";
         logoCard("assets/hud/titulo-contra.png", def.title, ()=>{
@@ -273,10 +273,10 @@ const CMD = {
     });
   },
   choice(st,done){
-    checkpoint=pc-1; if(st.who==="jueza") music("logica");          // la jueza pide deducir: suena «Lógica»
+    checkpoint=pc-1; if(st.who==="jueza") musicaAuto("logica");          // la jueza pide deducir: suena «Lógica»
     const ask=()=>say({who:st.who,mood:st.mood,pose:st.pose,pos:st.pos,text:st.text}, ()=>{
       mode="choice"; $("next").classList.remove("on");
-      X={choice:st, pick:i=>{ const o=st.options[i]; if(o.then) play(o.then,done); else if(o.ok) play(st.ok||[],done); else { SFX.whoops(); play(o.w||[],ask); } }};
+      X={choice:st, pick:i=>{ const o=st.options[i]; if(o.then) play(o.then,done); else if(o.ok){ if(st.pickMusic!==undefined) music(st.pickMusic); play(st.ok||[],done); } else { SFX.whoops(); play(o.w||[],ask); } }};
       renderControls();
     });
     ask();
@@ -319,7 +319,7 @@ const CMD = {
   },
   card(st,done){ vistos.clear(); titleCard(st.t1||"", st.t2||"", done); },     // tarjeta «Día N — Investigación»
   breakdown(st,done){
-    music(null); busy=true; mode="loc"; renderControls();
+    if(!st.keepMusic) music(null); busy=true; mode="loc"; renderControls();
     const W=st.who||"testigo"; setScene("estrado",W,"break");
     $("name").textContent=""; $("text").textContent="";
     const sp=$("sprite"); sp.classList.add("tremble"); SFX.breakdown();
@@ -473,12 +473,15 @@ function press(){
     } else showStatement();
   });
 }
+/* Mientras suena una de estas, Objection! y Logic and Trick no la interrumpen (pauta del dueño: «si suena Cornered, no hay que detenerla») */
+const MUSICA_TENSA=["persecucion","verdad"];
+function musicaAuto(t){ if(!MUSICA_TENSA.includes(curTrack)) music(t); }
 function presentItem(id){
   closeRecord(); showEvBox(id,5);
   if(typeof invPresent==="function" && invPresent(id)) return;     // investigación (js/investigacion.js)
   if(mode==="present"){
     const p=X.prompt;
-    if([].concat(p.answer).includes(id)){ const d=X.done; if(!p.soft) music("objecion"); play(p.ok, d); }
+    if([].concat(p.answer).includes(id)){ const d=X.done; if(p.music!==undefined) music(p.music); else if(!p.soft) musicaAuto("objecion"); play(p.ok, d); }
     else if(p.soft) play(p.wrong||[], ()=>{ pc=checkpoint; run(); });     // sin castigo (fuera del juicio)
     else SFX.whoops(), play([{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"¡Mire esto, Su Señoría!"},
                {who:"jueza",mood:"serious",text:"...¿Y eso qué tiene que ver, abogado?"},
@@ -489,7 +492,7 @@ function presentItem(id){
     return;
   }
   const s=X.list[X.idx];
-  if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; music("objecion"); play(s.contraLines, done); }   // contradicción acertada: suena «Objeción»
+  if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; musicaAuto("objecion"); play(s.contraLines, done); }   // contradicción acertada: suena «Objeción»
   else if(s.early && [].concat(s.early.ids).includes(id)) play(s.early.lines, showStatement);   // correcta, pero antes de tiempo: sin castigo
   else SFX.whoops(), play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });
 }

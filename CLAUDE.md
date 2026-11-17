@@ -124,7 +124,12 @@ Diseño del dueño en `assets/hud/` (originales en `arte-original/hud/`): `panel
 Archivos del juego en `assets/musica/` (`MUSIC_GAME` en assets.js; recreaciones del dueño, ver docs/creditos.md): `interrogatorio` =
 Moderato, `allegro` (contrainterrogatorios tensos), `logica` (suena sola cuando la jueza pide deducir, `choice`), `objecion` (suena
 sola al acertar una contradicción o una prueba), `persecucion` = Cornered, `corte` = Trial (abre el juicio), `espera` = Courtroom Lobby, `suspenso` = Suspense (cinemáticas, entrada de Penna en el Caso 1),
-`detencion` = Jailer's Elegy (locutorio del Caso 2). Un lugar de la investigación puede tener su propia `music` (vuelve la del día al salir). Sin archivo, cada tema cae a la melodía sintetizada
+`detencion` = Jailer's Elegy (locutorio del Caso 2). `verdad` = Telling the Truth (sin archivo todavía: melodía propia).
+**Pauta del dueño:** primer testimonio de cada testigo = Moderato; cuando sube la tensión = Allegro; el testimonio suena con su canción
+desde la primera lectura. **Cornered y Telling the Truth no se interrumpen**: mientras suenan, Objection!/Logic and Trick no entran (`MUSICA_TENSA`).
+`present` acepta `music` (null = silencio) y `choice` acepta `pickMusic` (al elegir bien); `breakdown` con `keepMusic:true` no corta la música.
+Para probar: si solo cambia `casos/casoN.js`, basta recorrer ese caso; si cambia `js/`, recorrer todos.
+Un lugar de la investigación puede tener su propia `music` (vuelve la del día al salir). Sin archivo, cada tema cae a la melodía sintetizada
 (`TRACKS` en `js/audio.js`, con `TRACK_ALIAS`). El jugador puede elegir canciones de su dispositivo
 en «🎵 Mi música» (portada; `js/musica.js`, guardadas solo en su navegador con IndexedDB). También opcional: archivos en `musica-local/` (ignorada por git,
 nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/assets.js`. Si falta un archivo, suena la melodía propia.

@@ -247,7 +247,7 @@ const CROSS = {
     ]
   },
   g2: {
-    title:"Lo que alumbré", music:"persecucion",
+    title:"Lo que alumbré", music:"allegro",
     hintLoops:2,
     loopHint:[{who:"chayo",mood:"think",text:"(¿Con qué luz lo vio? Lee su bitácora entera, Justo. Hasta la última línea.)"}],
     statements:[
@@ -318,7 +318,7 @@ const CROSS = {
     ]
   },
   g4: {
-    title:"La X en la oscuridad", music:"persecucion",
+    title:"La X en la oscuridad", music:"allegro",
     hintLoops:2,
     loopHint:[{who:"chayo",mood:"think",text:"(Dice que nadie estuvo cerca de la bodega antes del vidrio. ¿Y la foto de Zoila? Tiene hora.)"}],
     statements:[
@@ -350,7 +350,7 @@ const CROSS = {
     ]
   },
   g5: {
-    title:"La marca que nadie vio", music:"persecucion",
+    title:"La marca que nadie vio", music:"allegro",
     hintLoops:2,
     loopHint:[{who:"chayo",mood:"think",text:"(«Papel plateado». ¿Qué dice el cotejo que acaba de presentar Penna?)"}],
     statements:[
@@ -674,11 +674,12 @@ const SCRIPT = [
     {who:"jueza",mood:"serious",text:"La presencia de Tomás a las 23:30 sigue sin demostrarse. Aclaremos el orden de lo que vio Zoila."},
    ]},
   // ===== Zoila vuelve =====
+  {cmd:"music", track:null},
   {cmd:"negro", ms:700, pos:"estrado"},
   {who:"zoila",mood:"smug",wait:700,text:"¿Otra vez yo? ¡Mi grupo de vecinos me va a cobrar horas extra!"},
   {who:"jueza",mood:"serious",text:"Señora Vecina, necesitamos hechos en orden. Y no otra teoría sobre chaquetas gigantes."},
   {cmd:"cross", ref:"z3"},
-  {cmd:"choice", who:"jueza", mood:"think", text:"¿Qué han demostrado los mensajes de Zoila?",
+  {cmd:"choice", who:"jueza", mood:"think", pickMusic:null, text:"¿Qué han demostrado los mensajes de Zoila?",
    options:[
     {t:"Que el cuadro estaba en la bodega a las 23:22", w:[
       {who:"fiscal",mood:"smug",damage:true,text:"El mensaje dice «va hacia el pasillo», colega. No dice «bodega». Ni «cuadro»."},
@@ -689,7 +690,7 @@ const SCRIPT = [
       {who:"jueza",mood:"disappoint",damage:true,text:"No ponga en boca de la testigo lo que no dijo, abogado."}]},
    ],
    ok:[
-    {who:"ines",pose:"point",anim:"slam",music:"persecucion",text:"¡El bulto pasó a las [r]23:22[/r]! El vidrio no se rompió hasta las [r]23:31[/r]."},
+    {who:"ines",pose:"point",anim:"slam",music:"persecucion",wait:500,text:"¡El bulto pasó a las [r]23:22[/r]! El vidrio no se rompió hasta las [r]23:31[/r]."},
     {who:"ines",mood:"serious",text:"El vidrio no sirvió para sacar lo que Zoila vio. Fue roto DESPUÉS."},
     {who:"fiscal",pose:"cuff",mood:"serious",text:"Aceptado. Pero el mensaje no identifica quién cargaba el bulto."},
    ]},
@@ -760,7 +761,7 @@ const SCRIPT = [
   {who:"testigo",mood:"smug",text:"Puesto. Siempre. La X remendada es mía. Nadie más lo usa."},
   {who:"jueza",mood:"serious",text:"Incorpórese esa respuesta a una nueva declaración. La defensa podrá contrainterrogar."},
   {cmd:"cross", ref:"g4"},
-  {cmd:"present", who:"jueza", mood:"serious", tab:"pruebas", answer:"parte",
+  {cmd:"present", who:"jueza", mood:"serious", tab:"pruebas", answer:"parte", music:null,
    text:"La foto no muestra un rostro. ¿Qué prueba relaciona esa X reflectante con el testigo?",
    prompt:"¿Qué elemento del expediente permite comprobar la identidad sin depender del rostro?",
    ok:[
@@ -778,7 +779,7 @@ const SCRIPT = [
     {who:"jueza",mood:"serious",text:"Señor Llavín, tendrá oportunidad de explicar el contacto. Una última declaración."},
    ]},
   {cmd:"cross", ref:"g5"},
-  {cmd:"present", who:"jueza", mood:"serious", tab:"pruebas", answer:"lona",
+  {cmd:"present", who:"jueza", mood:"serious", tab:"pruebas", answer:"lona", music:"verdad",
    text:"¿Qué prueba desmiente la explicación del contacto durante una mantención anterior?",
    prompt:"La explicación del testigo supone un contacto anterior. ¿Qué prueba no encaja con ella?",
    ok:[
@@ -790,17 +791,17 @@ const SCRIPT = [
     {who:"testigo",mood:"sweat",text:"Entonces me enganché sin querer esa noche. No saben [r]cuándo[/r]."},
     {who:"fiscal",bubble:"objecion",pose:"point",text:"¡Protesto! Esa es la última cuestión. ¿Cuándo se rompió la X? El fragmento solo no da una hora."},
    ]},
-  {cmd:"present", who:"fiscal", mood:"serious", tab:"pruebas", answer:"fotozoila",
+  {cmd:"present", who:"fiscal", mood:"serious", tab:"pruebas", answer:"fotozoila", music:"verdad",
    text:"Una última contradicción, Valdivia: ¿qué prueba permite acotar el momento del desgarro?",
    prompt:"El cotejo no trae un reloj. ¿Qué registro aporta un límite temporal independiente?",
    ok:[
-    {who:"ines",bubble:"mire",pose:"papel",music:null,show:"fotozoila",text:"¡La fotografía de Zoila! A las [r]23:24[/r], la X estaba [r]completa[/r]."},
+    {who:"ines",bubble:"mire",pose:"papel",show:"fotozoila",text:"¡La fotografía de Zoila! A las [r]23:24[/r], la X estaba [r]completa[/r]."},
     {who:"ines",pose:"papel",show:"parte",text:"A las [r]23:33[/r], el parte describe su [r]extremo inferior desgarrado[/r]."},
     {who:"ines",mood:"serious",text:"Entre esas dos horas, el pedazo faltante terminó [r]dentro del nudo de la lona[/r] que envolvía el cuadro. El cotejo físico encaja exactamente."},
     {who:"fiscal",mood:"serious",text:"El traslado ocurrió antes de que el acceso quedara custodiado. Y el fragmento permaneció sellado con la obra hasta hoy."},
     {sfx:"badum",who:"ines",pose:"point",anim:"slam",text:"¡Usted estuvo junto a la bodega a las 23:24! [r]La pieza de su propio uniforme quedó atrapada cuando envolvió el cuadro[/r]."},
     {who:"testigo",mood:"shock",anim:"hit",text:"Eso... ¡eso no puede ser!"},
-    {who:"fiscal",bubble:"momento",pose:"point",music:"persecucion",text:"¡Un momento, Valdivia! Aun así, probar que trasladó el cuadro no demuestra, por sí solo, que haya roto el vidrio."},
+    {who:"fiscal",bubble:"momento",pose:"point",text:"¡Un momento, Valdivia! Aun así, probar que trasladó el cuadro no demuestra, por sí solo, que haya roto el vidrio."},
     {who:"ines",mood:"serious",text:"No he dicho lo contrario, fiscal. Pero ya no puede culpar a Tomás de cargar el cuadro sin explicar por qué la prueba física conduce al guardia."},
     {who:"fiscal",mood:"serious",text:"...Correcto. En ese punto, la hipótesis de la Fiscalía ya no se sostiene."},
     {who:"jueza",mood:"serious",text:"Queda acreditado el contacto directo del guardia con la obra envuelta esa noche. Ahora escucharemos su explicación, si desea darla."},
@@ -819,16 +820,16 @@ const SCRIPT = [
    ok:[
     {who:"ines",pose:"point",anim:"slam",text:"El guardia trasladó el cuadro envuelto antes de que llegara Carabineros. Tomás no está situado allí por ninguna prueba fiable."},
     {who:"fiscal",mood:"serious",text:"Coincido en los límites: el contacto físico incrimina al guardia y [r]la acusación contra Tomás no está acreditada[/r]."},
-    {who:"fiscal",mood:"disdain",text:"Retiro la identificación personal de Llavín como prueba de cargo. Solicitaré que su conducta se investigue separadamente."},
+    {who:"fiscal",mood:"disdain",music:null,text:"Retiro la identificación personal de Llavín como prueba de cargo. Solicitaré que su conducta se investigue separadamente."},
    ]},
-  {cmd:"present", who:"jueza", mood:"think", tab:"pruebas", answer:"bitacora",
+  {cmd:"present", who:"jueza", mood:"think", tab:"pruebas", answer:"bitacora", music:null,
    text:"Llavín sostuvo una historia que perjudicaba a Tomás. ¿Hay algo que permita plantear un posible motivo?",
    prompt:"Busca un documento que explique qué temía perder el guardia. Un motivo no es prueba de autoría.",
    ok:[
     {who:"ines",bubble:"mire",pose:"papel",show:"bitacora",text:"El memo de la galería elimina el turno nocturno el [r]1 de diciembre[/r]."},
     {who:"fiscal",mood:"serious",text:"La prueba material explica el traslado. El memorándum plantea un posible motivo, nada más."},
     {who:"jueza",mood:"serious",text:"Señor Llavín, puede guardar silencio. ¿Desea aclarar lo sucedido?"},
-    {who:"testigo",mood:"smug",text:"Sí. ¡Porque ninguno de ustedes entiende lo que significa cuidar esa galería!"},
+    {who:"testigo",mood:"smug",music:"persecucion",text:"Sí. ¡Porque ninguno de ustedes entiende lo que significa cuidar esa galería!"},
     {who:"testigo",mood:"angry",text:"¡Doce años sin que faltara una sola cosa! ¡Doce años dejando mi casa para cuidar las de otros!"},
     {who:"fiscal",mood:"serious",text:"No le preguntaron por su antigüedad. Le preguntaron por qué mintió sobre Tomás."},
     {who:"testigo",mood:"angry",anim:"slam",text:"[s]¡NO MENTÍ! ¡Ese cabro siempre dejaba cosas tiradas! ¡Hasta su maldita lona!"},
@@ -838,7 +839,7 @@ const SCRIPT = [
     {who:"fiscal",bubble:"objecion",pose:"point",text:"¡Protesto! Eso contradice su declaración de que [r]jamás tocó el cuadro[/r]. ¿Afirma que prestó auxilio o que no estuvo allí?"},
     {who:"testigo",mood:"angry",text:"¡No sé qué dije hace un rato! ¡Todos me hicieron hablar!"},
     {who:"jueza",mood:"serious",text:"Señor Llavín. No estamos discutiendo su orgullo. Estamos discutiendo la situación de un hombre acusado falsamente."},
-    {who:"testigo",mood:"sweat",music:null,text:"..."},
+    {who:"testigo",mood:"sweat",text:"..."},
     {who:null,text:"El silencio dura lo suficiente para que se oiga el roce de una hoja en el estrado."},
     {who:"testigo",mood:"down",text:"Yo iba a encontrarlo."},
     {who:"ines",mood:"think",text:"¿Encontrar qué?"},
@@ -850,7 +851,7 @@ const SCRIPT = [
     {who:"tomas",mood:"down",text:"Yo le convidaba mate, don Custodio."},
     {who:"testigo",mood:"shock",text:"..."},
    ]},
-  {cmd:"breakdown", who:"testigo", seq:["shock","angry","sweat","break"]},
+  {cmd:"breakdown", who:"testigo", keepMusic:true, seq:["shock","angry","sweat","break"]},
   {who:"testigo",mood:"cry",text:"¡La saqué yo de tu andamio, cabro! ¡Y la usé para envolver el cuadro!"},
   {who:"testigo",mood:"cry",text:"Yo rompí ese vidrio. Yo mentí cuando dije que te vi. Tú no tenías nada que ver."},
   {who:"testigo",mood:"down",text:"Dije que lo cuidaba todo...[p] y no fui capaz de cuidar a una sola persona."},
