@@ -108,7 +108,7 @@ function music(name){
   if(musTimer){ clearInterval(musTimer); musTimer=null; }
   musicEl.pause(); musicFile=null;
   curTrack=name; if(!name||!AC) return;
-  const file=(typeof LOCALMUS!=="undefined" && LOCALMUS[name]) || (MUSICA_LOCAL && MUSIC_FILES[name]);   // música elegida por el jugador, o en archivo
+  const file=(typeof LOCALMUS!=="undefined" && LOCALMUS[name]) || (typeof MUSIC_GAME!=="undefined" && MUSIC_GAME[name]) || (MUSICA_LOCAL && MUSIC_FILES[name]);   // música elegida por el jugador, o en archivo
   if(file){
     musicFile=file; musicEl.src=file; musicEl.muted=muted; musicEl.currentTime=0;
     musicEl.play().catch(()=>{});
@@ -116,8 +116,9 @@ function music(name){
   }
   synth(name);
 }
+const TRACK_ALIAS={allegro:"interrogatorio", logica:"interrogatorio", objecion:"persecucion"};   // sin archivo: melodía parecida
 function synth(name){
-  const t=TRACKS[name]; seq={bpm:t.bpm, lead:parseSeq(t.lead), bass:parseSeq(t.bass), drums:t.drums.replace(/\s/g,"").split("")};
+  const t=TRACKS[name]||TRACKS[TRACK_ALIAS[name]]; seq={bpm:t.bpm, lead:parseSeq(t.lead), bass:parseSeq(t.bass), drums:t.drums.replace(/\s/g,"").split("")};
   stepI=0; nextT=AC.currentTime+.08; musTimer=setInterval(schedule,25);
 }
 function noteLen(arr,i){ let n=1; while(arr[(i+n)%arr.length]==="-"&&n<16) n++; return n; }

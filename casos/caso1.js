@@ -135,7 +135,7 @@ const CROSS = {
     ]
   },
   z2: {
-    who:"zoila", title:"Lo que de verdad vi", music:"interrogatorio",
+    who:"zoila", title:"Lo que de verdad vi", music:"allegro",
     hintLoops:2,
     loopHint:[{who:"chayo",mood:"think",text:"(¿Una chaqueta de ese tamaño? ¿Qué otra cosa mide tanto en este caso? Yo sé, pero no te digo.)"}],
     statements:[
@@ -227,7 +227,7 @@ const CROSS = {
     ]
   },
   z3: {
-    who:"zoila", title:"El orden de las cosas", music:"interrogatorio",
+    who:"zoila", title:"El orden de las cosas", music:"allegro",
     hintLoops:2,
     loopHint:[{who:"chayo",mood:"think",text:"(Pregúntale por el bulto, Justo. Cuándo lo vio, exactamente. Los detalles chicos son los que delatan.)"}],
     statements:[

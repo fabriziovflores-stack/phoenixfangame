@@ -56,6 +56,14 @@ Object.values(SFX_FILES).forEach(f=>{ const a=new Audio(); a.preload="auto"; a.s
    Si pones archivos de música en la carpeta «musica-local» (junto a index.html) y cambias
    MUSICA_LOCAL a true, el juego los usa en vez de las melodías propias.
    Esa carpeta NO se sube a GitHub. Los temas sin archivo siguen con la melodía propia. */
+/* Música del juego en archivo (recreaciones del dueño, ver docs/creditos.md). Prioridad: «Mi música» del jugador → esta → melodía sintetizada. */
+const MUSIC_GAME = {
+  interrogatorio: "assets/musica/moderato.mp3",     // testimonios y contrainterrogatorios
+  allegro:        "assets/musica/allegro.mp3",      // contrainterrogatorios más tensos
+  logica:         "assets/musica/logica.mp3",       // cuando Justo deduce (preguntas de la jueza)
+  objecion:       "assets/musica/objecion.mp3",     // después de una contradicción acertada
+  persecucion:    "assets/musica/persecucion.mp3",  // cuando el caso se da vuelta / acorralar al culpable
+};
 const MUSICA_LOCAL = false;
 const MUSIC_FILES = {
   corte:          "musica-local/juicio.mp3",          // el juicio en general

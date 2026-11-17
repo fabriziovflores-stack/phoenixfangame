@@ -274,7 +274,7 @@ const CMD = {
     });
   },
   choice(st,done){
-    checkpoint=pc-1;
+    checkpoint=pc-1; if(st.who==="jueza") music("logica");          // la jueza pide deducir: suena «Lógica»
     const ask=()=>say({who:st.who,mood:st.mood,pose:st.pose,pos:st.pos,text:st.text}, ()=>{
       mode="choice"; $("next").classList.remove("on");
       X={choice:st, pick:i=>{ const o=st.options[i]; if(o.then) play(o.then,done); else if(o.ok) play(st.ok||[],done); else { SFX.whoops(); play(o.w||[],ask); } }};
@@ -438,7 +438,7 @@ function presentItem(id){
   if(typeof invPresent==="function" && invPresent(id)) return;     // investigación (js/investigacion.js)
   if(mode==="present"){
     const p=X.prompt;
-    if([].concat(p.answer).includes(id)){ const d=X.done; play(p.ok, d); }
+    if([].concat(p.answer).includes(id)){ const d=X.done; if(!p.soft) music("objecion"); play(p.ok, d); }
     else if(p.soft) play(p.wrong||[], ()=>{ pc=checkpoint; run(); });     // sin castigo (fuera del juicio)
     else SFX.whoops(), play([{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"¡Mire esto, Su Señoría!"},
                {who:"jueza",mood:"serious",text:"...¿Y eso qué tiene que ver, abogado?"},
@@ -449,7 +449,7 @@ function presentItem(id){
     return;
   }
   const s=X.list[X.idx];
-  if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; play(s.contraLines, done); }
+  if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; music("objecion"); play(s.contraLines, done); }   // contradicción acertada: suena «Objeción»
   else if(s.early && [].concat(s.early.ids).includes(id)) play(s.early.lines, showStatement);   // correcta, pero antes de tiempo: sin castigo
   else SFX.whoops(), play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });
 }

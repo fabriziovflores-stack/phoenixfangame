@@ -2,7 +2,7 @@
    MI MÚSICA: el jugador elige canciones de su propio dispositivo.
    Quedan guardadas solo en su navegador (IndexedDB): no se suben a ningún lado.
    ===================================================================== */
-const MUS_SLOTS=[["corte","Juicio"],["interrogatorio","Testimonios e interrogatorios"],["persecucion","Cuando el caso se da vuelta"],["espera","Sala de espera"],["victoria","Victoria"]];
+const MUS_SLOTS=[["corte","Juicio"],["interrogatorio","Testimonios e interrogatorios"],["allegro","Contrainterrogatorios tensos"],["logica","Deducciones"],["objecion","Después de una objeción acertada"],["persecucion","Cuando el caso se da vuelta"],["espera","Sala de espera"],["victoria","Victoria"]];
 /* Efectos de sonido que el jugador puede reemplazar: [clave guardada, efecto del juego, nombre visible] */
 const SFX_SLOTS=[["sfx_dano1","damage","Daño (pierdes vida)"],["sfx_dano2","hit","Golpe (alguien queda contra las cuerdas)"],
   ["sfx_prueba","ding","Prueba nueva"],["sfx_recuerdo","flashback","Recuerdo (cinemáticas)"],["sfx_revelacion","realize","Revelación (nueva lectura de una prueba)"],

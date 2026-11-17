@@ -23,3 +23,9 @@ Pendiente: anotar aquí la fuente exacta y la licencia (por ejemplo, el enlace d
 ## Música
 Sintetizada por el propio juego (`js/audio.js`). El jugador puede usar música propia desde «🎵 Mi música»;
 esa música queda solo en su navegador y nunca se sube al proyecto.
+
+## Música en archivo (`assets/musica/`)
+Recreaciones en MIDI hechas por el dueño de cinco temas de la serie Ace Attorney (Capcom): «Examination ~ Moderato»
+(`moderato.mp3`), «Examination ~ Allegro» (`allegro.mp3`), «Logic and Trick» (`logica.mp3`), «Objection!» (`objecion.mp3`)
+y «Pursuit ~ Cornered» (`persecucion.mp3`). Composiciones originales © Capcom. El dueño declara contar con autorización de
+Capcom por correo para usarlas en este proyecto personal y sin fines de lucro; conviene guardar ese correo junto al proyecto.

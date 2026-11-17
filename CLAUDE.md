@@ -116,7 +116,10 @@ Diseño del dueño en `assets/hud/` (originales en `arte-original/hud/`): `panel
 `dialogo.png` (recuadro de continuar), `flecha.png`. El letrero de arriba a la izquierda (`#hudlabel`) dice Investigación / Juicio / etc.
 
 ## Música
-Por defecto es sintetizada (`TRACKS` en `js/audio.js`). El jugador puede elegir canciones de su dispositivo
+Archivos del juego en `assets/musica/` (`MUSIC_GAME` en assets.js; recreaciones del dueño, ver docs/creditos.md): `interrogatorio` =
+Moderato, `allegro` (contrainterrogatorios tensos), `logica` (suena sola cuando la jueza pide deducir, `choice`), `objecion` (suena
+sola al acertar una contradicción o una prueba), `persecucion` = Cornered. Sin archivo, cada tema cae a la melodía sintetizada
+(`TRACKS` en `js/audio.js`, con `TRACK_ALIAS`). El jugador puede elegir canciones de su dispositivo
 en «🎵 Mi música» (portada; `js/musica.js`, guardadas solo en su navegador con IndexedDB). También opcional: archivos en `musica-local/` (ignorada por git,
 nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/assets.js`. Si falta un archivo, suena la melodía propia.
 

@@ -493,7 +493,7 @@ const CROSS = {
        press:[{who:"ines",text:"¿Limpia?"},{who:"eduardo",text:"Sin una huella. Ni siquiera las del acusado."},
               {who:"ines",mood:"think",text:"(¿Quién limpia un arma y la deja en su propia mochila?)"}]},
     ]},
-  a1: {who:"aurelio", title:"Lo que vi con mis binoculares", music:"interrogatorio",
+  a1: {who:"aurelio", title:"Lo que vi con mis binoculares", music:"allegro",
     loopHint:[{who:"ines",mood:"think",text:"(¿Desde la casa de enfrente se puede ver la pieza del fondo? Revisa el plano.)"}],
     statements:[
       {id:"a", mood:"smug", text:"Yo miro la calle todas las noches. Por seguridad, ah.",
@@ -508,7 +508,7 @@ const CROSS = {
         {who:"aurelio",mood:"sweat",text:"Bueno...[p] vi algo en el pasillo.[p][m=think] Una melena. Larga. Moviéndose."},
         {who:"ines",mood:"think",text:"(¿Una melena?)"}]},
     ]},
-  m1: {who:"malva", title:"Lo que vi desde la cocina", music:"interrogatorio",
+  m1: {who:"malva", title:"Lo que vi desde la cocina", music:"allegro",
     loopHint:[{who:"ines",mood:"think",text:"(¿Desde la cocina se ve el pasillo? Revisa el plano.)"}],
     statements:[
       {id:"a", text:"Yo estaba en la cocina, lavando las tazas del té.",
