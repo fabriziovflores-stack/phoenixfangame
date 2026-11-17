@@ -45,7 +45,8 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `gavel`, `cross`, `direct`, `choice` (elegir respuesta, sin penalización; una opción con `then:[líneas]` es un camino propio y no se repite), `present` (presentar prueba o perfil),
   `breakdown`, `verdict`, `end`, `negro` (fundido a negro y vuelta, `ms`, `pos` = escena vacía al volver; sirve para llamar
   a un testigo: jueza «Llamaremos a…» → negro → el testigo aparece con `wait:ms` y saluda), `cine` (`img`, `text`, opcional `sfx`/`flash`/`shake`: imagen 256×192 a pantalla completa,
-  en `assets/cine/`; originales en `arte-original/cine/`). `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite.
+  en `assets/cine/`; originales en `arte-original/cine/`), `senalar` (`img`, `area:[x,y,ancho,alto]`, `ayuda`, `wrong`: la imagen ocupa la pantalla de arriba
+  y hay que tocar el punto exacto; fallar quita vida; se usa dentro de `contraLines`, hoy en la foto de las 23:24 del Caso 1). `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite.
 - **Ritmo como en la DS** (ver el video de referencia del dueño): dentro del texto, `[p]` = pausa, `[m=emoción]` = cambia la cara
   a mitad de frase, `[a=slam|hit|tremble]` = animación, `[s]` = temblor, `[f]` = destello. Los «...» se escriben lento.
   Cuando alguien interrumpe (burbuja o golpe en la mesa) y cambia la cámara entre defensa/estrado/fiscalía, hay un **barrido**
@@ -155,3 +156,5 @@ una respuesta equivocada y la derrota) con un navegador automatizado y confirmar
    dueño escriba los diálogos y la cinemática (7 imágenes). Personajes y fondos del Caso 2: completos
    (prompts en `docs/caso2-prompts.md`).
 2. Fondo de detrás de la jueza (Caso 1).
+3. Caso 1 = guion del dueño «La X que faltaba» (8 testimonios + interrogatorio de Penna). Pruebas nuevas: boleta, plano1,
+   chatvecinal, fotozoila (foto grande `assets/pruebas/foto2324-grande.png`, X en (156,85)), parte, fibra. Íconos con `herramientas/pruebas.py`.

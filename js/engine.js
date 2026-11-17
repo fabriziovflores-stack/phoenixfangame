@@ -333,6 +333,22 @@ const CMD = {
   },
   verdict(st,done){ verdict(st.text, st.good, ()=>{ mode="dialog"; waiting=()=>{ verdict.clear(); done(); }; $("next").classList.add("on"); }); },
   end(){ clearSave(); mode="end"; renderControls(); },
+  /* Señalar en una imagen: la foto ocupa la pantalla de arriba y hay que tocar el punto exacto (area:[x,y,ancho,alto] en 256×192).
+     Fallar quita vida (wrong) y se repite. Sirve dentro de las líneas de una contradicción: {cmd:"senalar", img, area, ayuda, wrong} */
+  senalar(st,done){
+    const prevX=X, o=$("verPrueba");
+    const abrir=()=>{ o.innerHTML=`<img src="${st.img}">`; o.style.display="flex"; o.onclick=null;
+      $("topS").classList.add("carta"); X=Object.assign({}, prevX||{}, {senal:st}); mode="senalar"; renderControls(); };
+    X={senal:st, prevX}; abrir();
+    senalar.tap=(x,y)=>{ const [ax,ay,aw,ah]=st.area, ok=x>=ax&&x<ax+aw&&y>=ay&&y<ay+ah;
+      const m=$("mira"); m.style.left=(x/256*100)+"%"; m.style.top=(y/192*100)+"%"; m.style.display="block"; busy=true;
+      setTimeout(()=>{ m.style.display="none"; busy=false; o.style.display="none"; $("topS").classList.remove("carta"); X=prevX;
+        if(ok){ SFX.realize&&SFX.realize(); senalar.tap=null; done(); }
+        else { SFX.whoops(); play(st.wrong||[{who:"jueza",mood:"disappoint",damage:true,text:"¿Ahí? No veo nada que contradiga al testigo, abogado."}],
+                 ()=>{ if(G.health<=0) return gameOver(); abrir(); }); }
+      }, 420);
+    };
+  },
 };
 
 function titleCard(t1,t2,done){
@@ -514,6 +530,11 @@ function openRecord(tab, prompt){
   const a=$("mact"); if(a) a.onclick=()=>{ if(sel) presentItem(sel.id); };
 }
 /* ver una prueba en grande en la pantalla de arriba (tocar para cerrar) */
+function senalar(){}
+$("stage").addEventListener("click", ev=>{
+  if(mode!=="senalar" || busy || !senalar.tap) return;
+  const r=$("stage").getBoundingClientRect(); senalar.tap((ev.clientX-r.left)/r.width*256, (ev.clientY-r.top)/r.height*192);
+});
 function verPrueba(src){
   const o=$("verPrueba"); o.innerHTML=`<img src="${src}"><div>Toca para cerrar</div>`; o.style.display="flex"; SFX.ding();
   o.onclick=()=>{ o.style.display="none"; };
@@ -549,6 +570,8 @@ function renderControls(){
   } else if(typeof invControls==="function" && invControls(mode,add,row)){
   } else if(mode==="gameover"){
     add("↺ Reintentar desde el último testimonio","gold",()=>{ verdict.clear&&verdict.clear(); G.health=MAXH; G.nocap=false; drawHealth(); pc=checkpoint; run(); });
+  } else if(mode==="senalar"){
+    const d=document.createElement("div"); d.className="senalaAyuda"; d.textContent=(X&&X.senal&&X.senal.ayuda)||"Toca en la foto (pantalla de arriba) el punto que contradice al testigo."; c.appendChild(d);
   } else if(mode==="end"){
     add("↺ Jugar de nuevo","gold",()=>{ verdict.clear&&verdict.clear(); resetGame(); run(); });
   }

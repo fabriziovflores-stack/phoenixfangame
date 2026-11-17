@@ -306,3 +306,6 @@ button.back{background:#283458!important}
 #sprite[data-who=fiscal]{left:42.2%}
 .pos-fiscalia #sprite[data-who=fiscal]{left:50%}
 #dim.negro{opacity:1}
+
+.senalaAyuda{margin:auto 6cqw;padding:3cqw 4cqw;font-size:4.4cqw;color:#fff;text-align:center;background:rgba(8,20,40,.85);border:.6cqw solid #ffe040;border-radius:2cqw}
+#topS.carta #verPrueba{cursor:crosshair}
