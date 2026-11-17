@@ -67,6 +67,8 @@ const MUSIC_GAME = {
   espera:         "assets/musica/lobby.mp3",        // sala de espera del tribunal
   suspenso:       "assets/musica/suspenso.mp3",     // cinemáticas y momentos de tensión
   detencion:      "assets/musica/detencion.mp3",    // locutorio de la comisaría (Caso 2)
+  verdad:         "assets/musica/verdad.mp3",       // Telling the Truth: cuando la verdad sale a la luz
+  variacion:      "assets/musica/variacion.mp3",    // Pursuit ~ Cornered (Variation): el golpe final contra el culpable
 };
 const MUSICA_LOCAL = false;
 const MUSIC_FILES = {

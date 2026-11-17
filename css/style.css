@@ -309,3 +309,9 @@ button.back{background:#283458!important}
 
 .senalaAyuda{margin:auto 6cqw;padding:3cqw 4cqw;font-size:4.4cqw;color:#fff;text-align:center;background:rgba(8,20,40,.85);border:.6cqw solid #ffe040;border-radius:2cqw}
 #topS.carta #verPrueba{cursor:crosshair}
+
+/* Zoom a un personaje (cmd:"zoom"): se acerca de golpe a la cara sobre los rayos */
+#stage.zoomIn #sprite{animation:zoomIn .28s cubic-bezier(.2,.9,.3,1) forwards;transform-origin:50% 18%}
+#stage.zoomIn #bg{animation:zoomBg .28s ease-out forwards}
+@keyframes zoomIn{from{transform:translateX(-50%) scale(1)}to{transform:translateX(-50%) scale(1.75)}}
+@keyframes zoomBg{from{transform:scale(1)}to{transform:scale(1.25)}}

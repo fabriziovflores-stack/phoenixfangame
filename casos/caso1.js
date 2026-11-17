@@ -827,9 +827,10 @@ const SCRIPT = [
    prompt:"Busca un documento que explique qué temía perder el guardia. Un motivo no es prueba de autoría.",
    ok:[
     {who:"ines",bubble:"mire",pose:"papel",show:"bitacora",text:"El memo de la galería elimina el turno nocturno el [r]1 de diciembre[/r]."},
+    {cmd:"zoom", who:"ines", mood:"serious", pose:"point", music:"variacion", ms:1600},
     {who:"fiscal",mood:"serious",text:"La prueba material explica el traslado. El memorándum plantea un posible motivo, nada más."},
     {who:"jueza",mood:"serious",text:"Señor Llavín, puede guardar silencio. ¿Desea aclarar lo sucedido?"},
-    {who:"testigo",mood:"smug",music:"persecucion",text:"Sí. ¡Porque ninguno de ustedes entiende lo que significa cuidar esa galería!"},
+    {who:"testigo",mood:"smug",text:"Sí. ¡Porque ninguno de ustedes entiende lo que significa cuidar esa galería!"},
     {who:"testigo",mood:"angry",text:"¡Doce años sin que faltara una sola cosa! ¡Doce años dejando mi casa para cuidar las de otros!"},
     {who:"fiscal",mood:"serious",text:"No le preguntaron por su antigüedad. Le preguntaron por qué mintió sobre Tomás."},
     {who:"testigo",mood:"angry",anim:"slam",text:"[s]¡NO MENTÍ! ¡Ese cabro siempre dejaba cosas tiradas! ¡Hasta su maldita lona!"},

@@ -333,6 +333,17 @@ const CMD = {
   },
   verdict(st,done){ verdict(st.text, st.good, ()=>{ mode="dialog"; waiting=()=>{ verdict.clear(); done(); }; $("next").classList.add("on"); }); },
   end(){ clearSave(); mode="end"; renderControls(); },
+  /* Zoom: primer plano de golpe sobre rayos, con la música que entra en ese instante. Sin texto ni toque: dura `ms`.
+     {cmd:"zoom", who:"ines", mood, pose, music:"variacion", ms:1500} */
+  zoom(st,done){
+    busy=true; mode="loc"; renderControls(); $("name").textContent=""; $("text").textContent="";
+    if(st.music!==undefined) music(st.music);
+    setScene("rayos", st.who||"ines", st.mood||"serious", st.pose, true);
+    const sg=$("stage"); sg.classList.remove("zoomIn"); void sg.offsetWidth; sg.classList.add("zoomIn");
+    $("topS").classList.add("carta");
+    SFX.slam&&SFX.slam(); flash(); shake();
+    setTimeout(()=>{ sg.classList.remove("zoomIn"); $("topS").classList.remove("carta"); busy=false; done(); }, st.ms||1500);
+  },
   /* Señalar en una imagen: la foto ocupa la pantalla de arriba y hay que tocar el punto exacto (area:[x,y,ancho,alto] en 256×192).
      Fallar quita vida (wrong) y se repite. Sirve dentro de las líneas de una contradicción: {cmd:"senalar", img, area, ayuda, wrong} */
   senalar(st,done){
@@ -474,7 +485,7 @@ function press(){
   });
 }
 /* Mientras suena una de estas, Objection! y Logic and Trick no la interrumpen (pauta del dueño: «si suena Cornered, no hay que detenerla») */
-const MUSICA_TENSA=["persecucion","verdad"];
+const MUSICA_TENSA=["persecucion","verdad","variacion"];
 function musicaAuto(t){ if(!MUSICA_TENSA.includes(curTrack)) music(t); }
 function presentItem(id){
   closeRecord(); showEvBox(id,5);
