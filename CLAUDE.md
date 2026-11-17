@@ -49,7 +49,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   Contrainterrogatorio / Interrogatorio. Preferir cuadros cortos y reacciones breves («¡¿Q-qué?!», «Mmm...»).
 - En una línea: `evidence:"id"` hace entrar la prueba al expediente (el juego se detiene, baja el panel y
   espera al jugador); `read:["id","nueva lectura"]` reinterpreta una prueba; `damage:true` penaliza;
-  `music:null` corta la música; `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena; `show:"id"` muestra en grande una prueba que ya está en el expediente. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento.
+  `music:null` corta la música; `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena; `show:"id"` muestra en grande una prueba que ya está en el expediente. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento (letra celeste). Solo en Justo la boca queda quieta; en los demás es un susurro y la boca se mueve.
 - `INV` (investigación; formato completo al inicio de `js/investigacion.js`): `{cmd:"invest", ref:"dia1"}` abre la
   investigación: lugares con Examinar / Hablar / Presentar / Moverse; termina cuando se cumple `done` (pruebas/marcas).
   `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. **Silencio**: un tema con `silence` se rompe
@@ -100,7 +100,8 @@ emociones extra: `think`, `proud` (mentón arriba), `laugh` (se ríe), `down`, `
 Chayo (Rosario Velado, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): `arte-original/chayo.jpg` (8×6, figuras sueltas: se detectan por silueta),
 `AUTOGRID=1 FRONT=1 MOUTHDX=4 SHEET=arte-original/chayo.jpg GX=8 GY=6 TABLA=chayo HH=60 HEADY=22 python3 herramientas/penna4.py CARPETA 44 0 0`.
 Emociones: ver `AMAP.chayo` (incluye `laugh`, `giggle`, `blush`, `wink`, `panic`, `embarrassed`, `cry`); poses `point`, `lentes`
-(se arregla los lentes), `camara` y `foto` (su pasado de periodista). Voz femenina.
+(se arregla los lentes), `camara` y `foto` (su pasado de periodista). Voz femenina. **Chayo siempre mueve la boca**:
+sus caras sin pareja (risa, pánico, cámara...) son reacciones: se ven un instante y luego habla con una cara con pareja (`REACT` en engine.js).
 
 ## Pantalla de abajo (HUD)
 Diseño del dueño en `assets/hud/` (originales en `arte-original/hud/`): `panel.jpg` (fondo 4:3 armado del panel), `botones.png`

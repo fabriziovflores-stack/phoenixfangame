@@ -63,7 +63,7 @@ function typeText(t, style, voice, done){
   const runCtl=(c,quiet)=>{
     if(c==="s"){ if(!quiet) shake(); }
     else if(c==="f"){ if(!quiet) flash(); }
-    else if(c.startsWith("m=") && cur){ cur.mood=c.slice(2); renderSprite(); }
+    else if(c.startsWith("m=") && cur){ let v=c.slice(2); if(v.startsWith("np:")){ v=v.slice(3); cur.pose=""; } cur.mood=v; renderSprite(); }
     else if(c.startsWith("a=") && !quiet) anim(c.slice(2));
   };
   const finish=()=>{ clearTimeout(tTimer); setTalk(0);
@@ -145,7 +145,7 @@ function say(l, done){
     if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
     if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
     $("name").textContent = ch ? (l.phone?"📞 ":"")+ch.name : "";
-    const think = plainText(l.text).startsWith("("); canTalk = !!l.who && !think && !yo;
+    const think = plainText(l.text).startsWith("("); canTalk = !!l.who && !yo && !(think && l.who==="ines");   // solo Justo piensa en silencio; los demás entre paréntesis susurran y mueven la boca
     const style = l.cross ? "cross" : think ? "think" : !l.who ? "narr" : "";
     mode="dialog"; renderControls();
     waiting=done;
@@ -154,6 +154,11 @@ function say(l, done){
     const anima=Math.max(0, seqUntil-Date.now());          // el texto espera a que termine la animación (apuntar, lentes...)
     if(entra||anima>0){ $("text").textContent=""; busy=true; setTimeout(()=>{ busy=false; start(); }, entra?Math.max(ENTRADA_MS,anima):anima); } else start();
   };
+  const R=REACT[l.who], rk=R && (l.pose && R["pose:"+l.pose] ? "pose:"+l.pose : (R[l.mood||"normal"] ? (l.mood||"normal") : null));
+  if(rk && !(plainText(l.text).startsWith("(") && l.who==="ines")){
+    const pre=/^\[(m|a)=/.test(l.text)?"":"[p]";
+    l=Object.assign({},l,{text:pre+"[m="+(rk.startsWith("pose:")?"np:":"")+R[rk]+"]"+l.text});
+  }
   if(l.bubble) showBubble(l.bubble, go); else go();
 }
 /* Barrido rápido de cámara (como en la DS cuando alguien interrumpe). PAN_MS=0 lo apaga: todo vuelve a ser corte directo. */
@@ -593,6 +598,11 @@ const AMAP={
   chayo:{normal:["base","talk"],serious:["serious","seriousTalk"],smile:["smile","smileTalk"],happy:["happy","happyTalk"],laugh:["laugh","laughTalk"],giggle:["giggle","giggleTalk"],eat:["giggle","giggleTalk"],think:["think","thinkTalk"],think2:["think2","think2Talk"],blush:["blush","blushTalk"],smug:["smug","smugTalk"],wink:["wink","winkTalk"],grin:["grin","grinTalk"],excited:["excited","excitedTalk"],surprise:["surprise","surpriseTalk"],shock:["shock","shockTalk"],panic:["panic","panicTalk"],sweat:["sweat","sweatTalk"],worried:["sweat","sweatTalk"],down:["down","downTalk"],sad:["sad","sadTalk"],embarrassed:["embarrassed","embarrassedTalk"],angry:["angry","angryTalk"],pout:["annoyed","annoyedTalk"],annoyed:["annoyed","annoyedTalk"],facepalm:["facepalm","facepalmTalk"],cry:["cry","cryTalk"],"pose:point":["point","pointTalk"],"pose:lentes":["glasses","glassesTalk"],"pose:camara":["camera","cameraTalk"],"pose:foto":["photo","photoTalk"]},
   zoila:{normal:["base","talk"],smug:["smug","smugTalk"],smile:["happy","happyTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],serious:["serious","seriousTalk"],angry:["indignant","indignantTalk"]},
 };
+/* Caras sin pareja de boca (solo reacción): al empezar la línea se ven un momento y luego el personaje
+   sigue hablando con una cara que SÍ tiene boca cerrada/abierta. «pose:x» = la pose también se deja. */
+const REACT={ chayo:{laugh:"happy",giggle:"happy",eat:"happy",blush:"happy",wink:"happy",grin:"happy",excited:"happy",
+  shock:"surprise",panic:"surprise",sweat:"serious",worried:"sad",embarrassed:"sad",cry:"sad",facepalm:"annoyed",
+  "pose:lentes":"base","pose:camara":"happy","pose:foto":"happy"} };
 function artFor(who,mood,pose,m,b){ const A=ART[who]; if(!A) return null; const M=AMAP[who];
   if(pose==="cafe"&&(mood==="shock"||mood==="sweat")) pose="";
   let e=(pose&&M["pose:"+pose])||M[mood]||M.normal; if(typeof e==="string") e=[e];
