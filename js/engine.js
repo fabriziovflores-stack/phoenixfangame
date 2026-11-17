@@ -141,6 +141,7 @@ function say(l, done){
     if(l.confetti) confetti();
     if(l.sfx && SFX[l.sfx]) SFX[l.sfx]();                   // sonido puntual: sfx:"badum", etc.
     if(l.read){ G.notes[l.read[0]]=l.read[1]; SFX.realize(); showEvBox(l.read[0],3); }
+    if(l.show) showEvBox(l.show,3);                          // muestra una prueba que ya está en el expediente
     if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
     if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
     $("name").textContent = ch ? (l.phone?"📞 ":"")+ch.name : "";
@@ -250,9 +251,9 @@ const CMD = {
   },
   choice(st,done){
     checkpoint=pc-1;
-    const ask=()=>say({who:st.who,mood:st.mood,pos:st.pos,text:st.text}, ()=>{
+    const ask=()=>say({who:st.who,mood:st.mood,pose:st.pose,pos:st.pos,text:st.text}, ()=>{
       mode="choice"; $("next").classList.remove("on");
-      X={choice:st, pick:i=>{ const o=st.options[i]; if(o.ok) play(st.ok||[],done); else { SFX.whoops(); play(o.w||[],ask); } }};
+      X={choice:st, pick:i=>{ const o=st.options[i]; if(o.then) play(o.then,done); else if(o.ok) play(st.ok||[],done); else { SFX.whoops(); play(o.w||[],ask); } }};
       renderControls();
     });
     ask();

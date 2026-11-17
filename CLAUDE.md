@@ -38,7 +38,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   (pista si la deja pasar; la pregunta se repite sin castigo), `noObj` (comentario si objeta una pregunta limpia). `coach` = consejo que se muestra una sola vez después de la pregunta (tutorial).
   Motivo equivocado u objetar una pregunta limpia = penalización (`DIRECT_LINES`).
 - `SCRIPT`: lista de pasos. Una línea es `{who, mood, pose, anim, text}`. Comandos: `music`, `location`,
-  `gavel`, `cross`, `direct`, `choice` (elegir respuesta, sin penalización), `present` (presentar prueba o perfil),
+  `gavel`, `cross`, `direct`, `choice` (elegir respuesta, sin penalización; una opción con `then:[líneas]` es un camino propio y no se repite), `present` (presentar prueba o perfil),
   `breakdown`, `verdict`, `end`, `cine` (`img`, `text`, opcional `sfx`/`flash`/`shake`: imagen 256×192 a pantalla completa,
   en `assets/cine/`; originales en `arte-original/cine/`). `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite.
 - **Ritmo como en la DS** (ver el video de referencia del dueño): dentro del texto, `[p]` = pausa, `[m=emoción]` = cambia la cara
@@ -49,7 +49,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   Contrainterrogatorio / Interrogatorio. Preferir cuadros cortos y reacciones breves («¡¿Q-qué?!», «Mmm...»).
 - En una línea: `evidence:"id"` hace entrar la prueba al expediente (el juego se detiene, baja el panel y
   espera al jugador); `read:["id","nueva lectura"]` reinterpreta una prueba; `damage:true` penaliza;
-  `music:null` corta la música; `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento.
+  `music:null` corta la música; `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena; `show:"id"` muestra en grande una prueba que ya está en el expediente. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento.
 - `INV` (investigación; formato completo al inicio de `js/investigacion.js`): `{cmd:"invest", ref:"dia1"}` abre la
   investigación: lugares con Examinar / Hablar / Presentar / Moverse; termina cuando se cumple `done` (pruebas/marcas).
   `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. **Silencio**: un tema con `silence` se rompe
