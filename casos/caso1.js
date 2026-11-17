@@ -46,15 +46,33 @@ const PROFILES = [
   {id:"gerardo", who:"testigo",name:"Custodio Llavín",desc:"Guardia nocturno de la Galería Mirador hace doce años. Maneja la única llave de la sala principal."},
 ];
 
+/* Cuando Justo presiona, Penna interviene (una de estas, por turno). Una declaración puede traer las suyas en `fiscal:[...]`. */
+const FISCAL_PRESS = [
+  [{who:"fiscal",bubble:"objecion",pose:"point",text:"¡Objeción! La defensa repite preguntas para ganar tiempo."},
+   {who:"jueza",mood:"serious",text:"Ha lugar en parte. Abogado, vaya al punto."}],
+  [{who:"fiscal",pose:"cafe",text:"*sorbo* Pregunte lo que quiera, Valdivia. La respuesta va a ser la misma."}],
+  [{who:"fiscal",mood:"smug",text:"Diecisiete defensores presionaron así antes que usted. Pregúnteme cómo les fue."}],
+  [{who:"fiscal",bubble:"objecion",pose:"point",text:"¡Objeción! El colega está hostigando al testigo."},
+   {who:"jueza",text:"No ha lugar. Pero cuide el tono, abogado."},
+   {who:"fiscal",pose:"bigote",text:"Mmm. Valía la pena intentarlo."}],
+  [{who:"fiscal",mood:"proud",text:"En primer año enseñan a no preguntar sin saber la respuesta. ¿Faltó a esa clase?"},
+   {who:"ines",mood:"sweat",text:"(Gracias por la clase gratis.)"}],
+  [{who:"fiscal",pose:"tirar",text:"...Su Señoría, ¿esto va a durar mucho? Tengo otra audiencia a las doce."},
+   {who:"jueza",mood:"serious",text:"Durará lo que tenga que durar, fiscal."}],
+  [{who:"fiscal",mood:"smug",text:"Anote, Valdivia: «presionar» no es lo mismo que «tener razón»."}],
+  [{who:"fiscal",pose:"cruzado",text:"El testigo ya respondió. Si no le gusta la respuesta, no es culpa de él."}],
+];
+
 const WRONG = [
   [{who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"¡Esta prueba contradice esa declaración!"},
    {who:"jueza",mood:"confused",text:"¿En qué punto, abogado?"},
    {who:"ines",mood:"sweat",text:"(...En ninguno, parece.)"},
-   {who:"fiscal",mood:"smug",pose:"cafe",text:"Tómese su tiempo, colega."},
+   {who:"fiscal",mood:"smug",pose:"cafe",text:"Tómese su tiempo, colega. Yo cobro igual."},
    {who:"jueza",mood:"disappoint",damage:true,text:"Lo anoto como una objeción infundada."},
    {who:"ines",mood:"shock",anim:"hit",text:"(Cuidado. No me quedan tantas.)"}],
   [{who:"ines",bubble:"objecion",pose:"point",anim:"slam",text:"¡Su Señoría, mire esto!"},
    {who:"jueza",mood:"confused",text:"Lo estoy mirando. No veo la relación."},
+   {who:"fiscal",mood:"smug",text:"Su Señoría, ¿podríamos dejar que el colega practique en su casa?"},
    {who:"jueza",mood:"disappoint",damage:true,text:"Objeción infundada."},
    {who:"ines",mood:"down",text:"(Releer. ¿Qué dijo exactamente? ¿Qué dice la prueba?)"}],
 ];
@@ -78,7 +96,8 @@ const CROSS = {
       {who:"chayo",text:"(Si algo no te cuadra, [r]presiona[/r]. En Periodismo le decíamos «repreguntar». A la gente se le escapan cosas.)"},
       {who:"chayo",mood:"think",text:"(Y si algo no calza con el expediente, [r]preséntale la prueba[/r]. Eso ya es puro Derecho.)"},
     ],
-    loopHint:[{who:"chayo",mood:"think",text:"(Justo, ¿qué tanto se veía en esa calle a esa hora? Revisa lo que te pasé. Yo ya lo leí tres veces.)"}],
+    loopHint:[{who:"chayo",mood:"think",ifHidden:"d",text:"(Justo, no dijo qué vio cuando sonó el vidrio. ¡Presiónala justo ahí!)"},
+              {who:"chayo",mood:"think",text:"(¿Y qué tanto se veía en esa calle a esa hora? Revisa lo que te pasé. Yo ya lo leí tres veces.)"}],
     statements:[
       {id:"a", mood:"smug", text:"Vivo al frente de la galería, en el segundo piso. Desde mi balcón se ve la entrada completa.",
        press:[{who:"ines",text:"¿Pasa mucho tiempo en el balcón, señora?"},
@@ -88,10 +107,13 @@ const CROSS = {
        press:[{who:"ines",mood:"think",text:"¿Qué le pasó a la tele?"},
               {who:"zoila",mood:"sweat",text:"Se apagó, pues. Justo cuando empezaba mi teleserie."},
               {who:"chayo",mood:"think",text:"(Se apagó sola. A esa hora. Anotado.)"}]},
-      {id:"c", text:"Como a las once y media sentí que se quebraba un vidrio.",
+      {id:"c", text:"Como a las once y media sentí que se quebraba un vidrio.", adds:"d",
        press:[{who:"ines",text:"¿Está segura de la hora?"},
-              {who:"zoila",text:"Mi teleserie empieza a las once. Ya me había resignado hace rato."}]},
-      {id:"d", mood:"smile", text:"Miré y lo vi clarito, bajo el farol: el cabro de la chaqueta amarilla.",
+              {who:"zoila",text:"Mi teleserie empieza a las once. Ya me había resignado hace rato."},
+              {who:"ines",mood:"think",text:"¿Y qué vio cuando sonó el vidrio?"},
+              {who:"zoila",mood:"smug",text:"¡Uy, si lo vi todo! Espérese que le cuento."},
+              {who:"jueza",mood:"serious",text:"Agréguelo a su declaración, señora."}]},
+      {id:"d", hidden:true, mood:"smile", text:"Miré y lo vi clarito, bajo el farol: el cabro de la chaqueta amarilla.",
        press:[{who:"ines",mood:"think",text:"¿Clarito?"},
               {who:"zoila",mood:"smug",text:"Como lo estoy viendo a usted, mijito."}],
        contra:"luz",
@@ -104,6 +126,7 @@ const CROSS = {
         {who:"fiscal",mood:"serious",text:"Su Señoría, la oscuridad no borra lo que la testigo vio. Pido que lo precise."},
         {who:"jueza",text:"De acuerdo. Señora: solo lo que vio. Sin adornos."},
         {who:"ines",mood:"think",text:"(No es mucho. Pero ya no fue «clarito».)"},
+        {who:"fiscal",mood:"smug",pose:"cafe",text:"Felicitaciones, colega. Descubrió que de noche está oscuro."},
        ]},
       {id:"e", text:"Iba con el cuadro, cerro abajo.",
        press:[{who:"ines",text:"¿Vio el cuadro?"},
@@ -113,6 +136,7 @@ const CROSS = {
   },
   z2: {
     who:"zoila", title:"Lo que de verdad vi", music:"interrogatorio",
+    hintLoops:2,
     loopHint:[{who:"chayo",mood:"think",text:"(¿Una chaqueta de ese tamaño? ¿Qué otra cosa mide tanto en este caso? Yo sé, pero no te digo.)"}],
     statements:[
       {id:"a", mood:"sweat", text:"Ya, estaba oscuro. Pero había luna, y una se acostumbra.",
@@ -142,6 +166,7 @@ const CROSS = {
   },
   g1: {
     title:"Lo que vi esa noche", music:"interrogatorio",
+    hintLoops:2,
     loopHint:[{who:"chayo",mood:"think",ifHidden:"c",text:"(Justo, no dijo qué encontró al llegar a la sala. ¡Presiónalo! Me muero de curiosidad.)"},
               {who:"chayo",mood:"think",text:"(Y si alguien rompe una ventana desde la calle, ¿para dónde caen los vidrios?)"}],
     statements:[
@@ -203,6 +228,7 @@ const CROSS = {
   },
   z3: {
     who:"zoila", title:"El orden de las cosas", music:"interrogatorio",
+    hintLoops:2,
     loopHint:[{who:"chayo",mood:"think",text:"(Pregúntale por el bulto, Justo. Cuándo lo vio, exactamente. Los detalles chicos son los que delatan.)"}],
     statements:[
       {id:"a", text:"Yo estaba en el balcón desde que se cortó la luz. Con mi tecito.",
@@ -226,15 +252,20 @@ const CROSS = {
   },
   g2: {
     title:"Lo que alumbré", music:"persecucion",
-    loopHint:[{who:"chayo",mood:"think",text:"(¿Qué anotó él en su bitácora esa noche? Léela entera, Justo. Hasta la tapa. Yo leo hasta las etiquetas.)"}],
+    hintLoops:2,
+    loopHint:[{who:"chayo",mood:"think",ifHidden:"c",text:"(¿Cómo vio algo en la oscuridad? Pregúntale por la luz, Justo.)"},
+              {who:"chayo",mood:"think",text:"(¿Qué anotó él en su bitácora esa noche? Léela entera, Justo. Hasta la tapa. Yo leo hasta las etiquetas.)"}],
     statements:[
       {id:"a", mood:"sweat", text:"Mire, yo tengo llave porque es mi pega. Eso no me hace ladrón.",
        press:[{who:"ines",text:"Nadie dijo «ladrón», don Custodio."},
               {who:"testigo",mood:"sweat",text:"...Por si acaso."}]},
-      {id:"b", text:"Entré a la sala cuando sentí el vidrio. Estaba oscuro como boca de lobo.",
+      {id:"b", text:"Entré a la sala cuando sentí el vidrio. Estaba oscuro como boca de lobo.", adds:"c",
        press:[{who:"ines",mood:"think",text:"¿No había ninguna luz?"},
-              {who:"testigo",text:"Ninguna. Ni la de emergencia. Para eso uno anda con linterna."}]},
-      {id:"c", mood:"smug", text:"Prendí la linterna y lo alumbré de lleno.",
+              {who:"testigo",text:"Ninguna. Ni la de emergencia. Para eso uno anda con linterna."},
+              {who:"ines",mood:"think",text:"¿Usó una linterna esa noche?"},
+              {who:"testigo",mood:"smug",text:"¡Claro! Si no, ¿cómo lo iba a ver?"},
+              {who:"jueza",mood:"serious",text:"Agréguelo a su declaración, señor Llavín."}]},
+      {id:"c", hidden:true, mood:"smug", text:"Prendí la linterna y lo alumbré de lleno.",
        press:[{who:"ines",mood:"think",text:"¿Qué linterna?"},
               {who:"testigo",mood:"smug",text:"La de servicio. La que cuelga en la caseta."}],
        contra:"bitacora",
@@ -433,6 +464,7 @@ const SCRIPT = [
   {who:"ines",pos:L,mood:"serious",text:"Entonces hay que escuchar muy bien lo que dice."},
   // ===== EL JUICIO =====
   {cmd:"music", track:null},
+  {cmd:"negro", ms:1000, pos:"juez"},
   {cmd:"gavel"},
   {cmd:"music", track:"corte"},
   {who:"jueza",mood:"gavel",text:"Se abre la audiencia. Causa contra Tomás Pincheira Soto, por robo."},
@@ -444,6 +476,9 @@ const SCRIPT = [
   {who:"ines",mood:"smug",anim:"slam",text:"Lista, Su Señoría."},
   {who:"fiscal",mood:"disdain",text:"Volvemos a vernos, Valdivia. Me contaron que es su primera vez."},
   {who:"fiscal",pose:"cafe",text:"Tranquilo. Va a ser corto."},
+  {who:"fiscal",pose:"bigote",text:"Mi último novato duró once minutos. Lo cronometré."},
+  {who:"fiscal",mood:"smug",text:"Al anterior lo hice llorar antes del almuerzo. Espero que usted haya desayunado."},
+  {who:"ines",mood:"down",text:"(...No desayuné.)"},
   {who:"ines",mood:"angry",text:"(Qué amable.)"},
   {who:"jueza",text:"Fiscal, su exposición."},
   {who:"fiscal",mood:"serious",text:"Noche del 3 de noviembre. Galería Mirador, Cerro Alegre. Desaparece el óleo «La Sirena del Puerto»."},
@@ -462,9 +497,12 @@ const SCRIPT = [
   {who:"fiscal",mood:"smug",text:"Además, dos personas lo vieron esa noche."},
   {who:"ines",mood:"shock",text:"(¿Dos?)"},
   {who:"chayo",mood:"sweat",text:"(...A mí me dijeron una. Mi fuente me falló. Perdón.)"},
-  {who:"jueza",text:"Que pase la primera testigo. El otro espera afuera hasta que lo llamen."},
+  {who:"jueza",text:"El segundo testigo esperará afuera hasta que lo llamen."},
   {who:"ines",mood:"think",text:"(El guardia [r]espera afuera[/r]. No va a oír nada de lo que se diga aquí hasta que lo llamen.)"},
   // ===== TESTIGO 1 =====
+  {who:"jueza",mood:"gavel",text:"Llamaremos a la primera testigo."},
+  {cmd:"negro", ms:800, pos:"estrado"},
+  {who:"zoila",mood:"smile",wait:900,text:"Buenos días, señorita jueza. Buenos días, jóvenes."},
   {who:"zoila",mood:"smile",text:"Zoila Vecina Morales, para servirle."},
   {who:"jueza",mood:"confused",text:"¿«Vecina» es su apellido o su relación con la galería?"},
   {who:"zoila",mood:"smug",text:"Las dos cosas, señorita jueza. Vivo al frente hace treinta años."},
@@ -501,9 +539,12 @@ const SCRIPT = [
     {who:"jueza",mood:"confused",text:"¿Y eso cómo lo sabe?"},
     {who:"zoila",mood:"smug",text:"Está pegado en la galería, pues. Una lee."},
     {who:"ines",mood:"think",text:"(¿Pegado en la galería? Lo dejo anotado.)"},
-    {who:"jueza",text:"Gracias, señora. Que pase el señor Llavín."},
+    {who:"jueza",text:"Gracias, señora. Puede retirarse."},
    ]},
   // ===== TESTIGO 2 =====
+  {who:"jueza",mood:"gavel",text:"Llamaremos ahora al guardia, señor Custodio Llavín."},
+  {cmd:"negro", ms:800, pos:"estrado"},
+  {who:"testigo",mood:"normal",wait:1000,text:"Buenos días. Con permiso."},
   {who:"testigo",mood:"smile",read:["gerardo","Esperó afuera de la sala mientras declaraba Zoila."],text:"Custodio Llavín Reyes. Guardia nocturno de la Mirador hace doce años."},
   {who:null,text:"Perfil actualizado: Custodio Llavín."},
   {who:"jueza",text:"¿Conoce al acusado?"},
@@ -514,17 +555,18 @@ const SCRIPT = [
   {who:"jueza",text:"Cuente lo que vio."},
   {cmd:"cross", ref:"g1"},
   // ===== Zoila vuelve: el giro central =====
-  {who:"zoila",mood:"smile",text:"¿Me echaban de menos?"},
+  {cmd:"negro", ms:700, pos:"estrado"},
+  {who:"zoila",mood:"smile",wait:700,text:"¿Me echaban de menos?"},
   {who:"jueza",mood:"serious",text:"Señora, repita con cuidado en qué orden pasaron las cosas."},
   {cmd:"cross", ref:"z3"},
   {cmd:"choice", who:"jueza", mood:"think", text:"El bulto primero, el vidrio después. ¿Qué cambia eso, abogado?",
    options:[
     {t:"Que la testigo no es confiable", w:[
-      {who:"fiscal",mood:"smug",text:"Eso perjudica a su propia tesis, colega."},
+      {who:"fiscal",mood:"smug",damage:true,text:"Eso perjudica a su propia tesis, colega. ¿Seguro que es abogado defensor?"},
       {who:"ines",mood:"sweat",text:"(Cierto. Su corrección me sirve. ¿Para qué?)"}]},
     {t:"Que el cuadro ya estaba afuera cuando la ventana seguía entera", ok:true},
     {t:"Que hubo dos ladrones", w:[
-      {who:"jueza",mood:"serious",text:"¿Tiene alguna prueba de un segundo ladrón?"},
+      {who:"jueza",mood:"serious",damage:true,text:"¿Tiene alguna prueba de un segundo ladrón? No especule en mi sala."},
       {who:"ines",mood:"sweat",text:"(Ninguna. Más simple: ¿dónde estaba el cuadro cuando sonó el vidrio?)"}]},
    ],
    ok:[
@@ -559,18 +601,19 @@ const SCRIPT = [
     {who:"fiscal",mood:"serious",text:"Tener llave es su trabajo, Su Señoría. Eso es oportunidad, no prueba."},
     {who:"fiscal",pose:"point",text:"Y sigue en pie lo central: el testigo [r]vio[/r] al acusado en la sala."},
     {who:"jueza",text:"De acuerdo. Que vuelva el señor Llavín."},
-    {who:"testigo",mood:"sweat",text:"¿Otra vez yo?"},
+    {cmd:"negro", ms:700, pos:"estrado"},
+    {who:"testigo",mood:"sweat",wait:700,text:"¿Otra vez yo?"},
     {who:"jueza",mood:"serious",text:"Explique cómo pudo ver al acusado esa noche."},
    ]},
   {cmd:"cross", ref:"g2"},
   {cmd:"choice", who:"jueza", mood:"think", text:"Sin luz y sin linterna. ¿Qué parte de su testimonio no pudo haber visto?",
    options:[
     {t:"Que alguien rompió la ventana", w:[
-      {who:"jueza",mood:"serious",text:"Eso lo oyó. Para oír no hace falta luz."},
+      {who:"jueza",mood:"serious",damage:true,text:"Eso lo oyó. Para oír no hace falta luz."},
       {who:"ines",mood:"sweat",text:"(Algo que solo se sabe mirando.)"}]},
     {t:"Que el cuadro iba envuelto en una lona amarilla", ok:true},
     {t:"Que el ladrón se le arrancó", w:[
-      {who:"fiscal",mood:"serious",text:"Que alguien corra se nota hasta a oscuras."},
+      {who:"fiscal",mood:"smug",damage:true,text:"Que alguien corra se nota hasta a oscuras. Siga intentando, colega."},
       {who:"ines",mood:"sweat",text:"(Un detalle visual. Uno muy preciso.)"}]},
    ],
    ok:[
@@ -689,5 +732,5 @@ const SCRIPT = [
 
 return {titulo:"La Sirena del Puerto", numero:1,
   intro:"Valparaíso. Un defensor en su primer juicio. Y un cuadro de casi dos metros que habría salido por una ventana de sesenta centímetros.",
-  CHARS, EVIDENCE, EV0, EVIMG, EVX, PROFILES, WRONG, CROSS, OBJ_REASONS, DIRECT, DIRECT_LINES, SCRIPT};
+  CHARS, EVIDENCE, EV0, EVIMG, EVX, PROFILES, WRONG, FISCAL_PRESS, CROSS, OBJ_REASONS, DIRECT, DIRECT_LINES, SCRIPT};
 })();

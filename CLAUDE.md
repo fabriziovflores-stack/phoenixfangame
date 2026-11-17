@@ -33,16 +33,18 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
 - `EVIDENCE` (expediente inicial) y `EVX` (pruebas que entran durante el caso). `read` = lectura inicial.
 - `CROSS`: contrainterrogatorios. Cada declaración: `text`, `press` (líneas al presionar),
   `contra` (id o lista de ids de la prueba correcta) + `contraLines`, `adds` (agrega una declaración oculta, marcada `hidden:true`; hoy: Llavín «partí para la sala» → «ventana desde la calle»),
-  `ends:true` (presionar esa declaración cierra el contrainterrogatorio), `mood`.
+  `ends:true` (presionar esa declaración cierra el contrainterrogatorio), `mood`, `fiscal:[líneas]` (lo que dice Penna tras presionar
+  esa declaración; si no hay, sale una del repertorio `FISCAL_PRESS` del caso, por turno: Penna interrumpe en cada presión).
   `early:{ids,lines}`: prueba correcta pero antes de tiempo; se muestran esas líneas sin castigo (hoy no se usa).
-  `loopHint`: pista de Chayo al completar la primera vuelta; una línea con `ifHidden:"id"` solo sale si esa declaración sigue oculta.
+  `loopHint`: pista de Chayo al completar la primera vuelta (o la vuelta N con `hintLoops:N` en el testimonio); una línea con `ifHidden:"id"` solo sale si esa declaración sigue oculta.
 - `DIRECT`: interrogatorios directos (la fiscalía pregunta, el jugador puede objetar). Cada pregunta: `text`,
   `a` (respuesta), `bad` (id del motivo en `OBJ_REASONS` si es tramposa), `ok` (objeción acertada), `miss`
   (pista si la deja pasar; la pregunta se repite sin castigo), `noObj` (comentario si objeta una pregunta limpia). `coach` = consejo que se muestra una sola vez después de la pregunta (tutorial).
   Motivo equivocado u objetar una pregunta limpia = penalización (`DIRECT_LINES`).
 - `SCRIPT`: lista de pasos. Una línea es `{who, mood, pose, anim, text}`. Comandos: `music`, `location`,
   `gavel`, `cross`, `direct`, `choice` (elegir respuesta, sin penalización; una opción con `then:[líneas]` es un camino propio y no se repite), `present` (presentar prueba o perfil),
-  `breakdown`, `verdict`, `end`, `cine` (`img`, `text`, opcional `sfx`/`flash`/`shake`: imagen 256×192 a pantalla completa,
+  `breakdown`, `verdict`, `end`, `negro` (fundido a negro y vuelta, `ms`, `pos` = escena vacía al volver; sirve para llamar
+  a un testigo: jueza «Llamaremos a…» → negro → el testigo aparece con `wait:ms` y saluda), `cine` (`img`, `text`, opcional `sfx`/`flash`/`shake`: imagen 256×192 a pantalla completa,
   en `assets/cine/`; originales en `arte-original/cine/`). `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite.
 - **Ritmo como en la DS** (ver el video de referencia del dueño): dentro del texto, `[p]` = pausa, `[m=emoción]` = cambia la cara
   a mitad de frase, `[a=slam|hit|tremble]` = animación, `[s]` = temblor, `[f]` = destello. Los «...» se escriben lento.

@@ -124,6 +124,7 @@ function evBeat(it,by,done){
   typeText("«"+it.name+"» se agregó al expediente.","narr","type",()=>{ if(mode==="dialog") $("next").classList.add("on"); });
 }
 function say(l, done){
+  if(l.cmd && CMD[l.cmd]) return CMD[l.cmd](l, done);        // un comando simple dentro de una lista de líneas (ej. negro)
   if(l.evidence && EVX[l.evidence] && !EVIDENCE.find(e=>e.id===l.evidence)){
     const d0=done, it=EVX[l.evidence], by=l.who?CHARS[l.who].name:""; done=()=>evBeat(it,by,d0);
   }
@@ -166,7 +167,7 @@ function say(l, done){
     const start=()=>typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on"); });
     const anima=Math.max(0, seqUntil-Date.now());          // el texto espera a que termine la animación (apuntar, lentes...)
     const camara = pos!==prevPos && prevPos!=="negro" && ["defensa","fiscalia","estrado","juez"].includes(pos);
-    const espera=Math.max(entra?ENTRADA_MS+T.trasAparecer:0, anima, l.anim?T.anim:0, camara?T.camara:0, reveal?T.revelacion:0);
+    const espera=Math.max(entra?ENTRADA_MS+T.trasAparecer:0, anima, l.anim?T.anim:0, camara?T.camara:0, reveal?T.revelacion:0)+(l.wait||0);
     if(espera>0){ $("text").textContent=""; busy=true; setTimeout(()=>{ busy=false; start(); }, espera); } else start();
   };
   const R=REACT[l.who], rk=R && (l.pose && R["pose:"+l.pose] ? "pose:"+l.pose : (R[l.mood||"normal"] ? (l.mood||"normal") : null));
@@ -311,6 +312,12 @@ const CMD = {
     if(!st.img) return show(null);
     const im=new Image(); im.onload=()=>show(im); im.onerror=()=>show(null); im.src=st.img;
   },
+  negro(st,done){                                       // fundido a negro y vuelta (ej.: llamar a un testigo)
+    const d=$("dim"), ms=st.ms||700; busy=true; d.style.transition="opacity "+(ms/2)+"ms"; d.classList.add("negro");
+    $("name").textContent=""; $("text").textContent=""; mode="loc"; renderControls();
+    setTimeout(()=>{ if(st.pos){ vistos.clear(); setScene(st.pos,null); } d.classList.remove("negro");
+      setTimeout(()=>{ busy=false; d.style.transition=""; done(); }, ms/2); }, ms/2);
+  },
   card(st,done){ vistos.clear(); titleCard(st.t1||"", st.t2||"", done); },     // tarjeta «Día N — Investigación»
   breakdown(st,done){
     music(null); busy=true; mode="loc"; renderControls();
@@ -402,8 +409,8 @@ function objectQuestion(){
 function move(d){
   if(busy) return;
   if(d>0 && X.idx===X.list.length-1){
-    X.idx=0;
-    if(!X.hinted && X.def.loopHint){ X.hinted=true;
+    X.idx=0; X.loops=(X.loops||0)+1;
+    if(!X.hinted && X.def.loopHint && X.loops>=(X.def.hintLoops||1)){ X.hinted=true;
       const h=X.def.loopHint.filter(l=>!(l.ifHidden && X.list.find(x=>x.id===l.ifHidden)));   // ifHidden: solo si esa declaración sigue oculta
       if(h.length){ play(h, showStatement); return; } }
   } else X.idx=(X.idx+d+X.list.length)%X.list.length;
@@ -412,8 +419,11 @@ function move(d){
 function press(){
   if(busy) return;
   const s=X.list[X.idx];
-  const lines=s.press.map((l,i)=>i===0?Object.assign({bubble:"momento"},l):l);
+  let lines=s.press.map((l,i)=>i===0?Object.assign({bubble:"momento"},l):l);
   if(s.ends){ const done=X.done; X=null; play(lines, done); return; }
+  const pool=(typeof FISCAL_PRESS!=="undefined" && FISCAL_PRESS) || null;
+  const extra = s.fiscal || (pool && pool.length ? pool[(G.fp=(G.fp||0)+1) % pool.length] : null);
+  if(extra && X.def.fiscal!==false) lines=lines.concat(extra);
   play(lines, ()=>{
     if(s.adds && !X.list.find(x=>x.id===s.adds)){
       const ns=X.def.statements.find(x=>x.id===s.adds);
