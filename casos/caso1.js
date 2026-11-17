@@ -373,6 +373,7 @@ const DIRECT_LINES = {
 const L="lobby";
 const SCRIPT = [
   // ===== CINEMÁTICA: la noche del robo (no muestra al culpable) =====
+  {cmd:"music", track:"suspenso"},
   {cmd:"cine", img:"assets/cine/1.png", text:"3 de noviembre. Cerro Alegre, Valparaíso. 23:09."},
   {cmd:"cine", img:"assets/cine/2.png", sfx:"thud", text:"23:10. Se corta la luz en todo el cerro."},
   {cmd:"cine", img:"assets/cine/3.png", text:"(...)"},
@@ -427,7 +428,7 @@ const SCRIPT = [
   {who:"chayo",pos:L,pose:"camara",text:"Por supuesto. Tenemos nuestra lógica...[p] y también mi cámara."},
   {who:"ines",pos:L,mood:"sweat",text:"No puedes entrar con una cámara al tribunal, Chayo."},
   {who:"chayo",pos:L,mood:"sad",text:"..."},
-  {cmd:"music", track:null},
+  {cmd:"music", track:"suspenso"},
   {who:"fiscal",pos:L,mood:"serious",text:"Con permiso."},
   {who:"fiscal",pos:L,mood:"smile",text:"Los veo con ánimo. ¿Qué caso les toca el día de hoy?"},
   {who:"chayo",pos:L,mood:"excited",text:"¡¿Es quien creo que es?!"},

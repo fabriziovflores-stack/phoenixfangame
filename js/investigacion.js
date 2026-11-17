@@ -40,6 +40,7 @@ function invEnter(id){
 }
 function invEnter2(id, first){
   const p=invPlace();
+  if(X.inv.music!==undefined) music(p.music!==undefined ? p.music : X.inv.music);   // un lugar puede tener su propia música
   const here=invPeople();
   const back = !first && (p.people||[]).find(x=>reqOk(x.req) && x.back && G.inv.seen["hi:"+id+":"+x.who]);
   if(back) vistos.add(back.who);                            // al volver, la persona ya está ahí: sin fundido

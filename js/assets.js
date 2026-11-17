@@ -63,6 +63,10 @@ const MUSIC_GAME = {
   logica:         "assets/musica/logica.mp3",       // cuando Justo deduce (preguntas de la jueza)
   objecion:       "assets/musica/objecion.mp3",     // después de una contradicción acertada
   persecucion:    "assets/musica/persecucion.mp3",  // cuando el caso se da vuelta / acorralar al culpable
+  corte:          "assets/musica/juicio.mp3",       // al abrirse el juicio
+  espera:         "assets/musica/lobby.mp3",        // sala de espera del tribunal
+  suspenso:       "assets/musica/suspenso.mp3",     // cinemáticas y momentos de tensión
+  detencion:      "assets/musica/detencion.mp3",    // locutorio de la comisaría (Caso 2)
 };
 const MUSICA_LOCAL = false;
 const MUSIC_FILES = {

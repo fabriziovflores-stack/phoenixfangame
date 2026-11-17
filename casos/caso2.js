@@ -94,7 +94,7 @@ const INV = {
          {who:"ines",mood:"down",text:"(Chayo le leería las manos a este cabro. Hoy tengo que leerlas yo.)"},
          {who:"ines",mood:"serious",text:"(Mañana es el juicio. No hay más tiempo.)"}],
     places:{
-      locutorio:{name:"Locutorio de la comisaría", moves:["casona","comisaria"],   // la casona se abre cuando Tadeo cuenta dónde fue
+      locutorio:{name:"Locutorio de la comisaría", music:"detencion", moves:["casona","comisaria"],   // la casona se abre cuando Tadeo cuenta dónde fue
         people:[{who:"tadeo", back:[{who:"tadeo",mood:"down",text:"¿Volvió, abogado? Aquí sigo. No me dejan ir a ninguna parte."}]}],
         enter:[{who:"tadeo",mood:"sweat",meet:"tadeo",text:"...¿Usted es el abogado? Me dijeron que venía uno."},
                {who:"ines",text:"Justo Valdivia, defensor público. Vengo a escucharte. Desde el principio."}],
@@ -333,7 +333,7 @@ const INV = {
     end:[{who:"ines",mood:"serious",text:"(Ya sé quién fue.)"},
          {who:"ines",mood:"serious",text:"(Ahora tengo que demostrarlo. Prueba por prueba.)"}],
     places:{
-      locutorio:{name:"Locutorio — Tadeo", moves:["locutorio_rocky","comisaria","casona"],
+      locutorio:{name:"Locutorio — Tadeo", music:"detencion", moves:["locutorio_rocky","comisaria","casona"],
         people:[{who:"tadeo", back:[{who:"tadeo",mood:"down",text:"Abogado..."}]}],
         enter:[{who:"tadeo",mood:"down",text:"...Ahora todos saben. Ya no importa."}],
         talk:[
@@ -359,7 +359,7 @@ const INV = {
             {who:"tadeo",text:"La señora Malva me lo llevó a la pieza. Insistió en que me lo tomara caliente."},
             {who:"tadeo",mood:"think",text:"Era más amargo que el del primer día. Pensé que era otra hierba."}]},
         ]},
-      locutorio_rocky:{name:"Locutorio — Rocky Saavedra", bg:"locutorio", req:{flags:["rocky_pide"]}, moves:["locutorio","comisaria"],
+      locutorio_rocky:{name:"Locutorio — Rocky Saavedra", music:"detencion", bg:"locutorio", req:{flags:["rocky_pide"]}, moves:["locutorio","comisaria"],
         people:[{who:"rocky", hello:[{who:"rocky",mood:"angry",text:"¿Usted es el abogado del cabro?"},
                                      {who:"rocky",mood:"angry",meet:"rocky",text:"¡Yo no maté a nadie, ¿ya?! ¡A nadie!"}],
                               back:[{who:"rocky",mood:"down",text:"¿Otra vez? Ya le dije todo."}]}],
@@ -651,7 +651,7 @@ const DIRECT = {
 /* ---------- Guion ---------- */
 const SCRIPT = [
   // ===== CINEMÁTICA (imágenes pendientes: por ahora pantalla negra con texto) =====
-  {cmd:"music", track:null},
+  {cmd:"music", track:"suspenso"},
   {cmd:"cine", img:null, text:"14 de marzo. Cerro Concepción. 23:40."},
   {cmd:"cine", img:null, text:"Una discusión. Un arma."},
   {cmd:"cine", img:null, sfx:"hit", flash:true, text:"El primer disparo."},
