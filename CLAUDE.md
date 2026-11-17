@@ -95,13 +95,12 @@ animación de ponerse los lentes y tomar el papel; papel y papelThink en pares).
 (tamaño/posición igualados al `base.png` actual: cabeza arriba en y=13, ancho ~58). Emociones: ver `AMAP.ines` (think = brazos
 cruzados, confused, serious, sad, relieved, hit = golpeado por la objeción); poses `point`, `papel`, `papelThink`, `slam`.
 Los cuadros vienen corridos a la izquierda para que el brazo al apuntar salga entero; el CSS (`#sprite[data-who=ines]`) compensa.
-Penna: de perfil. Hoja principal `arte-original/penna-v5.jpg` (4×4, el formato del prompt unificado): normal, smug, cruzado,
-point, angry, shock, sweat y `cafe` (con taza): `SHEET=arte-original/penna-v5.jpg GX=4 GY=4 TABLA=v5 HH=110 HEADY=20
-python3 herramientas/penna4.py CARPETA 41 0 18`. Las caras que no trae (think, down, facepalm, proud, laugh, gesto, alto, puno)
-vienen de `penna-v3.jpg`/`penna-v4.jpg` al mismo tamaño (ver TABLAS en penna4.py). Al hablar solo se pega la boca.
-De frente (`frente_*`, de `arte-original/penna-nuevo.jpg` con `herramientas/penna.py`) se usa **fuera de la fiscalía**.
-Poses: `point`, `cafe` (taza de café), `gesto`, `cruzado`, `alto` (mano en alto), `puno` (puño al pecho);
-emociones extra: `think`, `proud` (mentón arriba), `laugh` (se ríe), `down`, `facepalm`.
+Penna (mira a la izquierda): cinco hojas 4×2 en pares exactos, `arte-original/penna-v6-a…e.jpg`:
+A base/proud/cafe/point · B shock/sweat/angry/facepalm · C cross/think/stop/respect · E smug/twirl/pull/hair (se arregla el bigote,
+se tira y se saca un pelo) · D de frente (frente_base/smile/cafe/shock, para fuera del juicio). Se calibran al mismo tamaño
+con `ANCHOR=cell REFK=1 SHEET=… GX=4 GY=2 TABLA=pennaA…E HH=110 HEADY=19 python3 herramientas/penna4.py CARPETA <tam> 0 <dx>`
+(tamaños y dx en el historial de git; cabeza arriba en y=20, nuca en x=167, ancho ~40). Emociones: ver `AMAP.fiscal`
+(proud = mentón arriba, respect = reconoce con respeto); poses `point`, `cafe`, `cruzado`, `alto`, `bigote`, `tirar`, `pelo`.
 
 Chayo (Rosario Velado, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): dos hojas 4×2 en pares
 exactos, `arte-original/chayo-v2-a.png` (normal, happy, surprise, think) y `chayo-v2-b.png` (worried, smug, annoyed, point):

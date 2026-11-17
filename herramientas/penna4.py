@@ -142,6 +142,11 @@ TABLAS={'v3':{'base':(1,2),'smug':(3,2),'proud':(5,None),'smug2':(6,2),'cross':(
  'justoB':{'cruzado':(1,2,'f'),'serious':(3,4,'f'),'sad':(5,6,'f'),'confused':(7,8,'f')},
  'justoC':{'slam':(1,2,'f'),'hit':(3,4,'f'),'relieved':(5,6,'f'),'angry2':(7,8,'f')},
  'justoD':{'ld1':(1,None),'ld2':(2,None),'ld3':(3,None),'ld4':(4,None),'papel':(5,6,'f'),'papelThink':(7,8,'f')},
+ 'pennaA':{'base':(1,2,'f'),'proud':(3,4,'f'),'cafe':(5,6,'f'),'point':(7,8,'f')},
+ 'pennaB':{'shock':(1,2,'f'),'sweat':(3,4,'f'),'angry':(5,6,'f'),'facepalm':(7,8,'f')},
+ 'pennaC':{'cross':(1,2,'f'),'think':(3,4,'f'),'stop':(5,6,'f'),'respect':(7,8,'f')},
+ 'pennaD':{'frente_base':(1,2,'f'),'frente_smile':(3,4,'f'),'frente_cafe':(5,6,'f'),'frente_shock':(7,8,'f')},
+ 'pennaE':{'smug':(1,2,'f'),'twirl':(3,4,'f'),'pull':(5,6,'f'),'hair':(7,8,'f')},
  'v5':{'base':(1,2),'smug':(3,4),'cross':(5,6),'point':(7,8),'angry':(9,10),'shock':(11,12),'sweat':(13,14),'cafe':(15,16)}}
 P=TABLAS[os.environ.get('TABLA','v3')]
 FR={}
