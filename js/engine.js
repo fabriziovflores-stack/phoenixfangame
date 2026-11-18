@@ -827,7 +827,7 @@ function selectCase(id){
   resetGame();
 }
 /* Portada: elegir calidad de imagen (se guarda y la página se recarga para dibujar en esa resolución) */
-(()=>{ const d=document.createElement("div"); d.id="calidad";
+if(HD_DISPONIBLE) (()=>{ const d=document.createElement("div"); d.id="calidad";
   d.innerHTML=`<button data-hd="1" class="${HD?"on":""}">✨ Versión HD</button><button data-hd="0" class="${HD?"":"on"}">🎮 Versión NDS</button>`;
   $("casoSel").after(d);
   d.querySelectorAll("button").forEach(b=>b.onclick=()=>{ const v=b.dataset.hd==="1"; if(v===HD) return;

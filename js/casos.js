@@ -1,6 +1,7 @@
 /* Calidad de imagen: «NDS» (256×192, píxeles marcados, como la DS) o «HD» (el doble de resolución, con los dibujos
    originales). Se elige en la portada y queda guardada en el navegador. En HD las imágenes salen de assets/hd/. */
-const HD = (()=>{ try{ return localStorage.getItem("actacero_hd")==="1"; }catch(e){ return false; } })();
+const HD_DISPONIBLE = false;   // POST-PROYECTO: la versión HD está lista pero guardada; true = vuelven los botones de la portada
+const HD = HD_DISPONIBLE && (()=>{ try{ return localStorage.getItem("actacero_hd")==="1"; }catch(e){ return false; } })();
 document.documentElement.classList.toggle("hd", HD);
 function hdSrc(p){
   if(!HD || typeof p!=="string") return p;

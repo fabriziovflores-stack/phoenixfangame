@@ -15,7 +15,8 @@ para elegir caso; cada caso guarda su partida aparte (`actacero_casoN_v1`). Pers
 dibujo provisorio por código (`look` en CHARS). Lugares sin fondo muestran un cartel (`BGLABELS` del caso).
 
 ## Pantalla
-**Dos versiones** (botones en la portada, se guarda en `actacero_hd`): **NDS** = 256×192 con píxeles marcados (como la DS) y **HD** =
+**Versión HD = POST-PROYECTO** (pedido del dueño): está hecha pero guardada; `HD_DISPONIBLE=false` en js/casos.js esconde los botones
+y el juego queda solo en NDS. Para retomarla, poner `true`. **Dos versiones** (botones en la portada, se guarda en `actacero_hd`): **NDS** = 256×192 con píxeles marcados (como la DS) y **HD** =
 el doble (512×384) con los dibujos originales. En HD los lienzos miden el doble y el dibujo sigue en coordenadas 256×192 (`HD`, `hdSrc` en
 js/casos.js). Imágenes HD en `assets/hd/`: fondos, cine, muebles y `pruebas/foto2324-grande.png` sueltos; los personajes van en **una hoja por
 personaje** (`assets/hd/atlas/<quien>.png` + índice `assets/hd/atlas.js`, para no pasar el límite de archivos al publicar).
