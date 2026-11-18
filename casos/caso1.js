@@ -452,8 +452,9 @@ const SCRIPT = [
   {cmd:"cross", ref:"g3"},
   {cmd:"choice", who:"jueza", mood:"serious", text:"Abogado Valdivia, ¿qué demuestra en realidad el expediente?",
    options:[
-    {t:"Que Llavín cometió todos los delitos", w:[
-      {who:"fiscal",bubble:"objecion",pose:"point",text:"¡Protesto! Mentir en una ronda no demuestra que alguien rompiera una ventana."}]},
+    {t:"Que Llavín escondió el cuadro en la bodega", w:[
+      {who:"fiscal",bubble:"objecion",pose:"point",text:"¡Protesto! Mentir sobre una ronda no prueba que él escondiera el cuadro. Nadie lo vio entrar a esa bodega."},
+      {who:"jueza",mood:"serious",text:"La fiscalía tiene razón, abogado. Hoy no se juzga al guardia. ¿Qué demuestra el expediente sobre su cliente?"}]},
     {t:"Que no hay prueba fiable contra Tomás", ok:true},
     {t:"Que Zoila fue la autora del robo", w:[
       {who:"zoila",mood:"shock",anim:"hit",text:"¡Ni siquiera puedo levantar ese cuadro, mijito!"}]},
