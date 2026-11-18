@@ -108,7 +108,7 @@ Proceso (scripts en `herramientas/`, escritos para un entorno puntual: adaptar r
 3. Igualar el tamaño y la posición de la cabeza entre emociones. 4. Reducir a 256×192 con color de 15 bits.
 Los PNG de `assets/` ya están procesados: se dibujan tal cual.
 Justo (**siempre mira a la derecha**): base/smug/sweat/shock/think/point de `arte-original/justo-perfil-b.png` (+ `justo-apunta.png`,
-cuadros `ap1`…`ap16` para levantar el brazo; `herramientas/justo.py`). Hojas nuevas 4×2 en pares exactos:
+cuadros `ap1`…`ap16` para levantar el brazo; hoy salen de la hoja nueva `arte-original/justo-apunta-v2.jpg` con `herramientas/justo_apunta2.py`, que también arma `point`/`pointTalk`). Hojas nuevas 4×2 en pares exactos:
 `justo-v2-b.png` (cruzado, serious, sad, confused), `justo-v2-c.png` (slam, hit, relieved, angry2), `justo-v2-d.png` (ld1–ld4 =
 animación de ponerse los lentes y tomar el papel; papel y papelThink en pares). Se procesan con
 `ANCHOR=cell REFK=<1|5> FACER=1 SHEET=… GX=4 GY=2 TABLA=justoB|C|D HH=110 HEADY=… python3 herramientas/penna4.py CARPETA <tam> 0 -45`
@@ -157,7 +157,7 @@ nunca se sube ni se publica) activando `MUSICA_LOCAL` y `MUSIC_FILES` en `js/ass
 ## Sonidos
 Efectos en archivo en `assets/sonidos/` (`SFX_FILES` en js/assets.js; código abierto según el dueño, ver `docs/creditos.md`):
 daño, golpe, prueba nueva, recuerdo (cinemática), revelación (nueva lectura), golpe en la mesa, error, grito (quiebre)
-y `badum` (golpe dramático: se pone a mano en una línea con `sfx:"badum"`).
+y `badum` (golpe dramático: se pone a mano en una línea con `sfx:"badum"`), `drama` (Dramapound, más fuerte: `sfx:"drama"`), `knock` (mazo de la jueza), `foto` (cámara de Chayo, `sfx:"foto"`); `hit` (anim:"hit") usa `shock.mp3`.
 Voz de los diálogos: `assets/sonidos/blip.mp3` (creado por el dueño; `BLIP_FILE`), con el tono de `voice` de cada personaje.
 Voces femeninas (`VOCES_FEM` en audio.js: Chayo, Zoila, jueza, Malva, Bárbara) usan `assets/sonidos/blip_f.wav` (`BLIP_F_FILE`).
 Objeción y testimonio: `objecion.wav` y `testimonio.wav`. Estos tres son recreaciones del dueño, que declara tener permiso

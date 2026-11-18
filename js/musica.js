@@ -4,9 +4,9 @@
    ===================================================================== */
 const MUS_SLOTS=[["corte","Juicio"],["interrogatorio","Testimonios e interrogatorios"],["allegro","Contrainterrogatorios tensos"],["logica","Deducciones"],["objecion","Después de una objeción acertada"],["persecucion","Cuando el caso se da vuelta"],["verdad","Cuando sale la verdad (Telling the Truth)"],["variacion","El golpe final (Cornered Variation)"],["espera","Sala de espera"],["investigacion","Investigación"],["suspenso","Suspenso"],["detencion","Centro de detención"],["tristeza","Quiebre triste (Maya's sorrow)"],["victoria","Victoria"]];
 /* Efectos de sonido que el jugador puede reemplazar: [clave guardada, efecto del juego, nombre visible] */
-const SFX_SLOTS=[["sfx_dano1","damage","Daño (pierdes vida)"],["sfx_dano2","hit","Golpe (alguien queda contra las cuerdas)"],
+const SFX_SLOTS=[["sfx_dano1","damage","Daño (pierdes vida)"],["sfx_dano2","hit","Sorpresa (alguien recibe un golpe)"],
   ["sfx_prueba","ding","Prueba nueva"],["sfx_recuerdo","flashback","Recuerdo (cinemáticas)"],["sfx_revelacion","realize","Revelación (nueva lectura de una prueba)"],
-  ["sfx_golpe","slam","Golpe en la mesa"],["sfx_badum","badum","Golpe dramático"],["sfx_error","whoops","Error"],["sfx_grito","breakdown","Grito del culpable"],
+  ["sfx_golpe","slam","Golpe en la mesa"],["sfx_badum","badum","Golpe dramático"],["sfx_drama","drama","Golpe dramático fuerte"],["sfx_mazo","knock","Mazo de la jueza"],["sfx_foto","foto","Foto (cámara de Chayo)"],["sfx_error","whoops","Error"],["sfx_grito","breakdown","Grito del culpable"],
   ["sfx_lugar","","Llegada a un lugar (tecleo de fecha y lugar)"],
   ["sfx_blipm","","Voz de los diálogos: blip masculino"],["sfx_blipf","","Voz de los diálogos: blip femenino"],
   ["sfx_objecion","objection","«¡Objeción!» (con el globo)"],["sfx_testimonio","testimony","Letrero de «Testimonio»"]];

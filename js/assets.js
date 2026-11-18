@@ -39,12 +39,15 @@ const BLIP_F_FILE = "assets/sonidos/blip_f.wav";   // voz femenina (recreación 
 /* Efectos de sonido en archivo (código abierto, aportados por el dueño). Si falta uno, suena el sintetizado. */
 const SFX_FILES = {
   damage:   "assets/sonidos/dano1.mp3",       // pierdes vida
-  hit:      "assets/sonidos/dano2.mp3",       // alguien queda contra las cuerdas
+  hit:      "assets/sonidos/shock.mp3",       // alguien recibe un golpe / sorpresa (anim:"hit")
   ding:     "assets/sonidos/prueba.mp3",      // prueba nueva / presentar prueba
   flashback:"assets/sonidos/recuerdo.mp3",    // al entrar a una cinemática
   realize:  "assets/sonidos/revelacion.mp3",  // nueva lectura de una prueba
   slam:     "assets/sonidos/golpe.mp3",       // golpe en la mesa (anim:"slam")
   badum:    "assets/sonidos/badum.mp3",       // golpe dramático (sfx:"badum" en una línea)
+  drama:    "assets/sonidos/dramapound.mp3",  // golpe dramático fuerte (sfx:"drama" en una línea)
+  knock:    "assets/sonidos/mazo.mp3",        // mazo de la jueza
+  foto:     "assets/sonidos/foto.mp3",        // cámara de Chayo (sfx:"foto")
   whoops:   "assets/sonidos/error.mp3",       // el jugador se equivoca
   breakdown:"assets/sonidos/grito.mp3",       // quiebre del culpable
   objection:"assets/sonidos/objecion.wav",    // «¡Objeción!» con el globo

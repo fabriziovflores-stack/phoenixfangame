@@ -19,6 +19,10 @@ Pendiente: anotar aquí la fuente exacta y la licencia (por ejemplo, el enlace d
 | objecion.wav | «¡Objeción!» con el globo | Recreación del dueño del proyecto |
 | testimonio.wav | Letrero de «Testimonio» | Recreación del dueño del proyecto |
 | grito.mp3 | Quiebre del culpable | 48_Yell_Grito.mp3 |
+| shock.mp3 | Alguien recibe un golpe / sorpresa (reemplaza a dano2) | 37_Shock_Sorpresa_Impacto.mp3 |
+| dramapound.mp3 | Golpe dramático fuerte (`sfx:"drama"`) | 12_Dramapound_Golpe_Dramatico.mp3 |
+| mazo.mp3 | Mazo de la jueza | 22_Gavel_Mazo_Juez.mp3 |
+| foto.mp3 | Cámara de Chayo | 31_Photosnap_Foto_Camara.mp3 |
 
 ## Música
 Sintetizada por el propio juego (`js/audio.js`). El jugador puede usar música propia desde «🎵 Mi música»;
