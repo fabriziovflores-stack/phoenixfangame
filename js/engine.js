@@ -535,7 +535,7 @@ function presentItem(id){
     return play(conMusica(s.contraLines,"objecion"), ()=>{ X=cx;
       const nuevas=(s.revela||[]).map(n=>cx.def.statements.find(z=>z.id===n)).filter(z=>z && !cx.list.includes(z));
       nuevas.forEach(z=>cx.list.push(z));
-      if(nuevas.length){ cx.idx=cx.list.indexOf(nuevas[0]); SFX.ding(); play([{who:null,text:"El testimonio continúa."}], showStatement); }
+      if(nuevas.length){ cx.idx=cx.list.indexOf(nuevas[0]); SFX.ding(); play([{who:null,text:"El testimonio continúa.",music:cx.def.music||"interrogatorio"}], showStatement); }   // vuelve la canción del testimonio
       else showStatement(); });
   }
   if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; play(conMusica(s.contraLines,"objecion"), done); }   // contradicción acertada: suena «Objeción»

@@ -73,13 +73,19 @@
 
 *[Música: silencio]*
 
-**PENNA:** Tiene la corbata torcida, Valdivia. Corríjala.  
-**PENNA:** En diez minutos estará en un tribunal y no pienso darle tiempo para buscarla en el suelo.  
-**JUSTO:** (Máximo Penna. Diecisiete victorias seguidas. ¡Justo el fiscal que me faltaba!)  
+**PENNA:** Tiene la corbata torcida, novato. Corríjala.  
+**JUSTO:** (¿Novato?)  
+**JUSTO:** (Y este vejestorio...)  
+**PENNA:** En diez minutos estará en un tribunal y no pienso darle tiempo para que innove.  
+**CHAYO:** ¿Quién es este hombre?  
+**JUSTO:** (...Lo conozco. Es él. Máximo Penna.)  
+**JUSTO:** (Diecisiete victorias seguidas desde que se hizo fiscal. ¡Justo el fiscal que me faltaba!)  
 **PENNA:** Diecisiete juicios. Diecisiete abogados convencidos de que una objeción bastaba para vencerme.  
 **PENNA:** No me importa que sea nuevo. Lo que diga ante la jueza tendrá el mismo peso que mis palabras. Procure merecerlo.  
 **CHAYO:** ¿Y el bigote también se sostiene con pruebas?  
-**PENNA:** Señorita Catalán, el bigote está fuera del expediente. Su amigo, me temo, no.  
+**PENNA:** Usted debe ser la curiosa, Catalán. Debería hacerle honor a su nombre.  
+**CHAYO:** Quién... es... ese hombre.  
+**JUSTO:** Una piedra en un zapato nuevo. Vamos, que podemos.  
 
 *[Fundido a negro]*
 
@@ -89,7 +95,6 @@
 
 *[Música: corte]*
 
-**NARRACIÓN:** Preside Prudencia Fallo. Los otros dos integrantes del tribunal observan fuera de cámara.  
 **JUEZA:** Se abre el juicio contra Tomás Pincheira.  
 **JUEZA:** Hoy se decidirá si se acreditó su participación en la sustracción de una obra de arte.  
 **PENNA:** El acusado ingresó a la galería a las 18:10. La sala estaba cerrada antes de las once. *[entra al expediente: Libro de visitas]*  
@@ -102,11 +107,10 @@
 
 **ZOILA:** Vecina de apellido y de profesión. Treinta años observando esta calle. Con balcón propio.  
 **JUSTO:** (Su currículum tiene una sola línea. Muy larga.)  
+**CHAYO:** (Puedes **presionar** para saber más y **presentar** una prueba cuando algo no cuadre.)  
 
 ### TESTIMONIO Y CONTRAINTERROGATORIO: Lo que vi desde mi balcón  _(música: interrogatorio)_
 
-_Antes de empezar:_  
-**CHAYO:** (Puedes **presionar** para saber más y **presentar** una prueba cuando algo no cuadre.)  
 
 **Declaración 1:** Llevo treinta años mirando la galería. Se me escapa poco.
 
@@ -131,12 +135,15 @@ _Antes de empezar:_
 **PENNA:** Bien. Que conste exactamente esa distinción.  
 
 ✅ **Contradicción: presentar Aviso de corte**  
-**JUSTO:** ¡Ese farol no estaba encendido! *[¡OBJECIÓN!; golpe en la mesa]*  
+**JUSTO:** ¡Ese farol no estaba encendido! *[¡OBJECIÓN!; golpe en la mesa; música: silencio]*  
 **JUSTO:** El corte afectó incluso al alumbrado público desde las **23:10**. *[muestra: Aviso de corte]*  
-**ZOILA:** ¡Con razón la tele no prendía! ¡Le cambié las pilas al control!  
+**ZOILA:** ¡Con razón la tele no prendía! ¡Le cambié las pilas al control! *[música: objecion]*  
 **JUEZA:** Entonces no reconoció su cara. ¿Qué vio realmente?  
-**ZOILA:** Una figura, algo amarillo... detrás de la ventana de la galería. Adentro brillaba la lucecita verde de emergencia.  
-**ZOILA:** No sé quién era. Pensé en Tomás porque siempre está afuera.  
+**ZOILA:** Una figura, algo amarillo... detrás de la ventana de la galería.  
+**JUSTO:** ¿Y cómo estaba tan segura? Ninguna persona se vería a esa distancia.  
+**ZOILA:** No sé quién era, pero había alguien con una luz.  
+**CHAYO:** ¿Luz?  
+**ZOILA:** ¡Sí, esa luz que queda prendida cuando todo se funde en negro! Estaba en la ventana.  
 **JUSTO:** (¿Detrás de la ventana? Entonces lo amarillo estaba dentro de la galería.)  
 **PENNA:** Felicidades, Valdivia: ha demostrado que la testigo no vio un rostro. Esa parte de su declaración queda descartada.  
 **PENNA:** Ahora conteste: ¿esa falta de identificación hace desaparecer el cuadro? ¿Anula la presencia del acusado esa tarde?  
@@ -151,33 +158,47 @@ _Antes de empezar:_
 **JUEZA:** La testigo no pudo identificar al acusado. Queda el relato de quien estaba dentro.  
 **PENNA:** Una identificación anulada. Muy bien. ¿Sabe cuántos testigos me quedan, Valdivia?  
 **JUSTO:** Uno...  
-**PENNA:** El que estaba dentro. No lo confunda con una vecina mirando desde lejos. Que comparezca Llavín.  
+**PENNA:** El que estaba dentro. No lo confunda con una vecina mirando desde lejos.  
 
 _(Presionar esta declaración cierra el testimonio.)_
 
 *Pista si das la vuelta completa:*  
-**CHAYO:** (Su tele no prendía, ¿te acuerdas? Mira el aviso de corte.)  
+**CHAYO:** (Su tele no prendía. Eso debe tener una razón.)  
 
 *Primer error (no cuesta):*  
 **JUSTO:** ¡Esa afirmación no encaja con... esto! *[¡OBJECIÓN!; golpe en la mesa]*  
 **JUEZA:** ¿Con qué parte del documento, abogado?  
 **JUSTO:** (Ahora mismo me gustaría preguntar lo mismo.)  
 **PENNA:** Primera falta, Valdivia. La jueza es generosa. Yo no lo seré.  
-**CHAYO:** (Busca una palabra que el documento haga imposible. No algo que solo te parezca raro.)  
+
+
+*[Música: silencio]*
+
+**JUEZA:** Ya hemos escuchado suficiente a esta testigo. No es alguien tan de fiar.  
+**PENNA:** Iba a decir lo mismo. No hemos llegado a ninguna conclusión.  
+**JUSTO:** No es así, fiscal. La señora Zoila no vio a nadie, ni siquiera a mi cliente.  
+**PENNA:** Pero el cuadro sigue perdido y hay pruebas incriminatorias hacia su cliente, además de un testigo ocular. *[¡PROTESTO!; golpe en la mesa; música: suspenso]*  
+**JUSTO:** (El guardia...)  
+**PENNA:** Su Señoría, llamemos al guardia de la galería que SÍ presenció el delito.  
+
+*[Música: silencio]*
 
 
 *[Fundido a negro]*
 
+
+*[Música: corte]*
+
 **LLAVÍN:** Custodio Llavín Reyes. Doce años cuidando esa galería. No se pierde una obra sin que yo lo note.  
 **TOMÁS:** (Yo le llevaba mate a don Custodio. Él me conoce.)  
 **JUEZA:** Fiscal, interrogue al testigo sobre su primera observación.  
-
-### INTERROGATORIO DE PENNA: La fiscalía interroga a Llavín
-
 **PENNA:** Con su venia. Haré las preguntas que la defensa todavía no se ha atrevido a formular.  
 **JUSTO:** (¡Ahora Penna interroga a su propio testigo! Tengo que estar atento a cómo formula cada pregunta.)  
 **CHAYO:** (Las preguntas válidas se dejan pasar. Si **sugiere una respuesta** o **supone un hecho no probado**, ¡objeta y elige el motivo!)  
 **PENNA:** Y si va a protestar, Valdivia, procure hacerlo antes de descubrir que se equivocó.  
+
+### INTERROGATORIO DE PENNA: La fiscalía interroga a Llavín
+
 
 **Pregunta 1:** Señor Llavín, ¿desde qué lugar escuchó el vidrio romperse?
 
@@ -242,32 +263,34 @@ _(Presionar esta declaración cierra el testimonio.)_
 **LLAVÍN:** No, pero el vidrio no se quiebra por aburrimiento.  
 
 ✅ **Contradicción: presentar Ventana rota**  
-**JUSTO:** ¡El vidrio cayó hacia AFUERA de la galería! *[¡OBJECIÓN!; golpe en la mesa]*  
+**JUSTO:** ¡El vidrio cayó hacia AFUERA de la galería! *[¡OBJECIÓN!; golpe en la mesa; música: silencio]*  
 **JUSTO:** Los fragmentos terminaron sobre la **vereda**. El golpe vino desde dentro. *[muestra: Ventana rota]*  
-**LLAVÍN:** ¡Entonces el ladrón rompió la ventana para huir! ¡Da lo mismo!  
-**PENNA:** Le concedo la dirección del golpe. Esa deducción es correcta. *[lectura nueva de Ventana rota]*  
-**NARRACIÓN:** Lectura actualizada: Ventana rota.  
+**LLAVÍN:** ... *[música: objecion]*  
+**LLAVÍN:** Pero el ladrón rompió la ventana para escapar.  
+**JUSTO:** (Penna está en silencio. ¿Le habré dado un golpe?)  
+**PENNA:** Le concedo la dirección del golpe. Esa deducción es correcta. *[¡PROTESTO!; golpe en la mesa; lectura nueva de Ventana rota; música: suspenso]*  
 **PENNA:** Pero ahora el guardia sostiene que fue una salida. Si pretende refutarlo, presente hechos.  
 **PENNA:** No me enseñe a leer su propia prueba.  
 **JUSTO:** (No me ha quitado la prueba. Está esperando a que yo me exceda...)  
+**PENNA:** Agregue eso a su declaración y continúe, Llavín.  
 
-**Declaración 4:** Después vi a Tomás escapar por la ventana con el cuadro.
+**Declaración 4 (aparece después de la contradicción):** Después vi a Tomás escapar por la ventana con el cuadro.
 
 *Si se presiona:*  
 **JUSTO:** ¿Vio el cuadro salir?  
 **LLAVÍN:** ¡La ventana rota y el cuadro ausente! ¿Qué más quiere?  
-**PENNA:** No convierta una inferencia del testigo en un hecho observado, Llavín.  
+**LLAVÍN:** ¡Todos sabemos que el cuadro pasó por la ventana, así mismo!  
+**PENNA:** No convierta una inferencia del testigo en un hecho observado, Llavín. *[¡PROTESTO!]*  
 **PENNA:** Defensa: si lo contradice, muestre la medida. No adjetivos.  
 
-✅ **Contradicción: presentar Ficha del cuadro** _(solo después de la declaración anterior)_  
-**JUSTO:** ¡La obra mide **180 × 120 cm** y tiene un marco rígido! *[¡OBJECIÓN!; golpe en la mesa]*  
+✅ **Contradicción: presentar Ficha del cuadro**  
+**JUSTO:** ¡La obra mide **180 × 120 cm** y tiene un marco rígido! *[¡OBJECIÓN!; golpe en la mesa; música: silencio]*  
 **JUSTO:** ¡Y la ventana, solo **60 × 80**! *[muestra: Ficha del cuadro]*  
 **JUSTO:** ¡Ni inclinándolo ni girándolo cabe por esa abertura! *[golpe en la mesa; lectura nueva de Ficha del cuadro]*  
-**NARRACIÓN:** Lectura actualizada: Ficha del cuadro.  
-**LLAVÍN:** ¡Entonces... alguien debió usar una puerta!  
-**NARRACIÓN:** Penna cierra su reloj de bolsillo. No parece preocupado.  
+**NARRACIÓN:** Lectura actualizada: Ficha del cuadro. *[música: objecion]*  
 **PENNA:** Una observación excelente, Valdivia. Ahora permítame corregir su conclusión.  
-**PENNA:** ¡Protesto! El cuadro no pasó por esa ventana. Por tanto, **quien rompió el vidrio quiso que pareciera la vía del robo**. *[¡PROTESTO!; golpe en la mesa; música: suspenso]*  
+**JUSTO:** Lo que quiero decir es que el cuadro no salió por la ventana.  
+**PENNA:** El cuadro no pasó por esa ventana. Por tanto, **quien rompió el vidrio quiso que pareciera la vía del robo**. *[¡PROTESTO!; golpe en la mesa; música: suspenso]*  
 **PENNA:** Yo tengo otra salida: la sala comunica con un pasillo y una puerta de servicio. Y Tomás conocía el edificio. *[entra al expediente: Plano de la galería]*  
 **JUSTO:** (¡Usó mi descubrimiento para construir un robo fingido contra Tomás!)  
 **PENNA:** Lo que usted acaba de demostrar no destruye mi teoría. La vuelve más precisa.  
@@ -296,9 +319,9 @@ _(Presionar esta declaración cierra el testimonio.)_
 *Respuesta correcta:*  
 **JUSTO:** Con lo que tengo... no puedo excluir esa ruta ni demostrar quién la usó.  
 **PENNA:** Correcto. Primera lección del día: una buena objeción puede fortalecer la teoría contraria.  
-**PENNA:** Ahora deje de celebrar la ventana y vaya a por el testigo. Si miente, debe demostrar dónde.  
+**PENNA:** Ahora deje de celebrar la ventana.  
+**PENNA:** Vaya a por el testigo. Si miente, debe demostrar dónde.  
 **CHAYO:** (Nos ganó el punto. Si queremos dar vuelta esto, no basta con repetir que la ventana es pequeña.)  
-**LLAVÍN:** ¡Yo estaba en mi caseta! ¡Después del golpe entré y vi al muchacho!  
 **JUEZA:** Guardia Llavín, precise su identificación y su revisión del lugar.  
 
 
@@ -318,13 +341,12 @@ _(Presionar esta declaración cierra el testimonio.)_
 **LLAVÍN:** La de servicio. La llevo conmigo desde las diez.  
 
 ✅ **Contradicción: presentar Bitácora del guardia**  
-**JUSTO:** ¡Su propia bitácora dice que la linterna no tenía pilas! *[¡OBJECIÓN!; golpe en la mesa]*  
+**JUSTO:** ¡Su propia bitácora dice que la linterna no tenía pilas! *[¡OBJECIÓN!; golpe en la mesa; música: silencio]*  
 **JUSTO:** A las **23:05** anotó que estaban agotadas. Las nuevas llegaron a las **00:12**. *[muestra: Bitácora del guardia]*  
-**LLAVÍN:** La memoria falla... quizá distinguí la silueta.  
-**PENNA:** Señor Llavín: ¿habló con esa silueta? ¿Le oyó la voz?  
+**LLAVÍN:** La memoria falla... quizá distinguí la silueta. *[música: objecion]*  
+**PENNA:** Valdivia, no puede comprobar lo que dice la silueta.  
 **LLAVÍN:** No. No hablamos.  
 **PENNA:** Entonces deje de llamar identificación a una suposición. **Eso no significa que la acusación termine aquí**. *[lectura nueva de Bitácora del guardia]*  
-**NARRACIÓN:** Lectura actualizada: Bitácora del guardia.  
 **PENNA:** ¡Protesto, Valdivia! Una identificación desacreditada no demuestra dónde estuvo Tomás ni dónde está el cuadro. *[¡PROTESTO!; golpe en la mesa; música: suspenso]*  
 **PENNA:** ¿Tiene una ruta alternativa?  
 **JUEZA:** La identificación de Tomás no es fiable. Veamos qué queda de los hechos.  
@@ -351,7 +373,7 @@ _(Presionar esta declaración cierra el testimonio.)_
 _(Presionar esta declaración cierra el testimonio.)_
 
 *Pista si das la vuelta completa:*  
-**CHAYO:** (¿Con qué luz le vio la cara? Revisa la bitácora del guardia.)  
+**CHAYO:** (Este guardia anota todo.)  
 
 **JUEZA:** Defensa, si solicita una diligencia adicional, indique en el plano qué lugar debería examinarse.  
 
@@ -369,8 +391,10 @@ _(Presionar esta declaración cierra el testimonio.)_
 **JUEZA:** Indique un lugar concreto del plano, abogado. ¿Adónde pudo ir una obra de veintidós kilos?  
 ✅ **Correcto: la bodega.**
 
-**JUSTO:** ¡La bodega del pasillo! *[golpe en la mesa]*  
-**JUSTO:** El plano conecta el salón con una bodega. Llavín dice que la revisó y estaba vacía. Necesitamos verificarlo.  
+**JUSTO:** ¡La bodega del pasillo! *[golpe en la mesa; música: silencio]*  
+**JUSTO:** El plano conecta el salón con una bodega.  
+**JUSTO:** ¡El cuadro nunca salió de la galería! *[música: persecucion]*  
+**JUSTO:** Llavín dice que la revisó y estaba vacía. Necesitamos verificarlo.  
 **PENNA:** ¡Protesto! No haré que se abra un recinto precintado porque un novato tenga una corazonada. Fundamente esa diligencia. *[¡PROTESTO!; golpe en la mesa]*  
 **JUSTO:** El marco no pasó por la ventana. El plano comunica la sala con la bodega, y el guardia afirmó haberla inspeccionado.  
 **JUSTO:** Son hechos verificables, no una corazonada.  
