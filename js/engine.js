@@ -510,7 +510,7 @@ function conMusica(lines, track){
   const out=lines.slice(); out[1]=Object.assign({}, out[1], {autoMusic:track}); return out;
 }
 function presentItem(id){
-  closeRecord(); showEvBox(id,5);
+  closeRecord(); setTimeout(()=>showEvBox(id,5), 950);          // primero el «¡Objeción!», después la prueba en el recuadro
   if(typeof invPresent==="function" && invPresent(id)) return;     // investigación (js/investigacion.js)
   if(mode==="present"){
     const p=X.prompt;
@@ -554,29 +554,53 @@ function gameOver(){
 
 /* expediente */
 let recTab="pruebas";
+/* EXPEDIENTE (pantalla de abajo, al estilo DS): grilla de 4×2 con el nombre de la elegida arriba; al tocarla de nuevo
+   se abre su ficha (dibujo, nombre, tipo y origen, y abajo los datos), con flechas para pasar de una a otra.
+   La ficha da datos, no conclusiones: la «lectura» solo aparece cuando el juicio ya la cambió (G.notes). */
+let REC={};
+function recItems(){ return recTab==="pruebas" ? EVIDENCE : PROFILES.filter(p=>!p.hidden||G.met[p.id]); }
+function recPic(it){ return EVIMG[it.id]?`<img src="${EVIMG[it.id]}">`:(it.icon?`<span class="emo">${it.icon}</span>`:miniFace(it.who)); }
 function openRecord(tab, prompt){
   if(busy) return;
-  recTab=tab||recTab;
+  recTab=tab||recTab; REC={prompt, sel:0, view:"grid", anim:""};
+  renderRecord(); $("modal").style.display="flex";
+}
+function renderRecord(){
+  const items=recItems(), n=items.length, per=8;
   const canPresent = ["cross","present","invpresent","silpresent"].includes(mode);
-  const items = recTab==="pruebas" ? EVIDENCE : PROFILES.filter(p=>!p.hidden||G.met[p.id]);
-  let sel=null;
-  $("mbox").innerHTML=`<div id="mhead"><h2>Expediente</h2><div class="tabs"><button data-t="pruebas" class="${recTab==="pruebas"?"on":""}">Pruebas</button><button data-t="perfiles" class="${recTab==="perfiles"?"on":""}">Perfiles</button></div></div>
-    ${prompt?`<div id="mprompt">${prompt}</div>`:""}
-    <div class="grid">${items.map((it,i)=>`<div class="card" data-i="${i}"><div class="ic">${EVIMG[it.id]?`<img src="${EVIMG[it.id]}" style="height:100%;image-rendering:pixelated">`:(it.icon||miniFace(it.who))}</div><div class="nm">${it.name}</div></div>`).join("")}</div>
-    <div id="mdesc">Toca un elemento para examinarlo.</div>
-    <div class="row">${mode==="present"?"":mode==="silpresent"?`<button id="mquit">Retirarse</button>`:`<button id="mclose">Volver</button>`}${canPresent?`<button class="obj" id="mact" style="opacity:.5">¡Presentar!</button>`:""}</div>`;
-  $("modal").style.display="flex";
-  $("mbox").querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{ recTab=b.dataset.t; openRecord(recTab,prompt); });
-  $("mbox").querySelectorAll(".card").forEach(card=>card.onclick=()=>{
-    $("mbox").querySelectorAll(".card").forEach(c=>c.classList.remove("sel"));
-    card.classList.add("sel"); sel=items[+card.dataset.i]; $("mdesc").innerHTML=(sel.ver?`<button id="mver">🔍 Ver en grande</button>`:"")+(EVIMG[sel.id]?`<img src="${EVIMG[sel.id]}" style="float:left;width:19cqw;margin:0 2cqw .5cqw 0;image-rendering:pixelated">`:"")+esc(sel.desc)+((G.notes[sel.id]||sel.read)?"\n<span style=\"color:var(--blue)\">▸ Lectura actual: "+esc(G.notes[sel.id]||sel.read)+"</span>":"")
-;
-    const v=$("mver"); if(v) v.onclick=()=>verPrueba(sel.ver);
-    const a=$("mact"); if(a) a.style.opacity=1;
-  });
+  REC.sel=Math.max(0,Math.min(REC.sel,n-1)); const it=items[REC.sel]; const page=Math.floor(REC.sel/per), pages=Math.max(1,Math.ceil(n/per));
+  const head=`<div id="rhead"><div class="tabs"><button data-t="pruebas" class="${recTab==="pruebas"?"on":""}">Pruebas</button><button data-t="perfiles" class="${recTab==="perfiles"?"on":""}">Perfiles</button></div>${canPresent&&it?`<button class="obj" id="mact">¡Presentar!</button>`:""}</div>`
+    +(REC.prompt?`<div id="mprompt">${REC.prompt}</div>`:"");
+  let body="";
+  if(!it) body=`<div id="rname">(vacío)</div>`;
+  else if(REC.view==="grid"){
+    const cells=[]; for(let i=page*per;i<page*per+per;i++){ const x=items[i]; cells.push(x?`<div class="rcell${i===REC.sel?" sel":""}" data-i="${i}">${recPic(x)}</div>`:`<div class="rcell vacia"></div>`); }
+    body=`<div id="rname">${esc(it.name)}</div><div id="rgrid"><button class="rarrow" data-d="-1" ${pages>1?"":"disabled"}>◀</button><div class="rcells">${cells.join("")}</div><button class="rarrow" data-d="1" ${pages>1?"":"disabled"}>▶</button></div>
+      <div id="rhint">Toca otra vez para ver la ficha${pages>1?` · página ${page+1}/${pages}`:""}</div>`;
+  } else {
+    const tipo=it.tipo||(recTab==="perfiles"?"Perfil":""), origen=it.origen||"";
+    const nota=G.notes[it.id];
+    body=`<div id="rdet" class="${REC.anim}"><button class="rarrow" data-d="-1" ${n>1?"":"disabled"}>◀</button>
+        <div class="rcard"><div class="ric">${recPic(it)}</div><div class="rinfo"><div class="rnm">${esc(it.name)}</div>${tipo||origen?`<div class="rtipo">${tipo?"Tipo: "+esc(tipo):""}${tipo&&origen?"<br>":""}${origen?"Origen: "+esc(origen):""}</div>`:""}</div></div>
+        <button class="rarrow" data-d="1" ${n>1?"":"disabled"}>▶</button></div>
+      <div id="rdesc">${esc(it.desc||"")}${nota?`<div class="rnota">▸ ${esc(nota)}</div>`:""}${it.ver?`<button id="mver">🔍 Ver en grande</button>`:""}</div>`;
+  }
+  const volver = REC.view==="det" ? `<button id="mback">◂ Volver</button>`
+    : mode==="present" ? "" : mode==="silpresent" ? `<button id="mquit">Retirarse</button>` : `<button id="mclose">Volver</button>`;
+  $("mbox").innerHTML=head+body+`<div class="row">${volver}</div>`;
+  REC.anim="";
+  $("mbox").querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{ recTab=b.dataset.t; REC.sel=0; REC.view="grid"; renderRecord(); });
+  $("mbox").querySelectorAll(".rcell[data-i]").forEach(c=>c.onclick=()=>{ const i=+c.dataset.i; SFX.blip&&SFX.blip(900);
+    if(i===REC.sel) REC.view="det"; else REC.sel=i; renderRecord(); });
+  $("mbox").querySelectorAll(".rarrow").forEach(bt=>bt.onclick=()=>{ const d=+bt.dataset.d;
+    if(REC.view==="grid"){ REC.sel=((Math.floor(REC.sel/per)+d+pages)%pages)*per; }
+    else { REC.sel=(REC.sel+d+n)%n; REC.anim=d>0?"desdeDer":"desdeIzq"; }
+    renderRecord(); });
+  const v=$("mver"); if(v) v.onclick=()=>verPrueba(it.ver);
+  const bk=$("mback"); if(bk) bk.onclick=()=>{ REC.view="grid"; renderRecord(); };
   const c=$("mclose"); if(c) c.onclick=()=>{ closeRecord(); if(mode==="invpresent") invMenu(); };
   const q=$("mquit"); if(q) q.onclick=()=>{ closeRecord(); play([{who:"ines",mood:"sweat",text:"(Mejor vuelvo cuando tenga cómo hacerlo hablar.)"}], invMenu); };
-  const a=$("mact"); if(a) a.onclick=()=>{ if(sel) presentItem(sel.id); };
+  const a=$("mact"); if(a) a.onclick=()=>{ if(it) presentItem(it.id); };
 }
 /* ver una prueba en grande en la pantalla de arriba (tocar para cerrar) */
 function senalar(){}

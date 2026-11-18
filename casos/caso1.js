@@ -21,24 +21,34 @@ const CHARS = {
 /* El expediente parte casi vacío: las pruebas se van agregando durante el caso.
    read = lectura inicial de la prueba (cambia durante el juicio). */
 const EVIDENCE = [
-  {id:"credencial", icon:"🪪", name:"Credencial", desc:"Credencial de defensor penal público. Tiene once días de uso.", read:"Prueba de que esto me está pasando de verdad."},
+  {id:"credencial", icon:"🪪", name:"Credencial", tipo:"Credencial", origen:"Defensoría Penal Pública", desc:"Justo Valdivia. Defensor penal público.\nEmitida hace once días."},
 ];
 const EV0 = EVIDENCE.length;
 /* Ilustraciones de las pruebas */
 const EVIMG={boleta:"assets/pruebas/ferreteria.png",plano1:"assets/pruebas/plano-galeria.png",chatvecinal:"assets/pruebas/mensajes.png",fotozoila:"assets/pruebas/foto2324.png",parte:"assets/pruebas/parte.png",fibra:"assets/pruebas/f4.png",credencial:"assets/pruebas/credencial.png",ficha:"assets/pruebas/ficha.png",luz:"assets/pruebas/luz.png",bitacora:"assets/pruebas/bitacora.png",ventana:"assets/pruebas/ventana.png",visitas:"assets/pruebas/visitas.png",lona:"assets/pruebas/lona.png",llave:"assets/pruebas/llave.png"};
+/* Fichas del expediente: solo DATOS (tipo, origen y lo que dice el documento). Las conclusiones las saca el jugador. */
 const EVX = {
-  ficha:   {id:"ficha",   icon:"🖼️", name:"Ficha del cuadro", desc:"«La Sirena del Puerto». Óleo en marco de madera rígido, 180 × 120 cm, 22 kg. Se exhibía sin desmontar.", read:"Datos de catálogo del cuadro desaparecido."},
-  luz:     {id:"luz",     icon:"⚡", name:"Aviso de la empresa eléctrica", desc:"Corte general y de alumbrado público: 23:10 a 00:05. Incluye el farol frente a la Galería Mirador.", read:"Explica por qué la galería estaba a oscuras."},
-  ventana: {id:"ventana", icon:"🪟", name:"Foto del ventanal", desc:"Hueco de 60 × 80 cm. El vidrio quedó mayoritariamente sobre la vereda. El marco de la hoja no fue desmontado.", read:"Por aquí habría entrado y salido el ladrón."},
-  visitas: {id:"visitas", icon:"📖", name:"Libro de visitas", desc:"Tomás firmó su entrada a las 18:10. El libro no registra salidas.", read:"Tomás entró a la galería a las 18:10."},
-  boleta:  {id:"boleta",  icon:"🧾", name:"Boleta de ferretería", desc:"Compra presencial de aguarrás a las 18:42, pagada por Tomás. Acredita que salió después de las 18:10, no dónde estuvo a las 23:30.", read:"Tomás no se quedó en la galería toda la tarde."},
-  bitacora:{id:"bitacora",icon:"📒", name:"Bitácora del guardia", desc:"23:05 «Linterna sin pilas. Pedir repuesto». 23:35 «Revisé sala y bodega, vacías». 00:12 llega el repuesto. En la contratapa, un memorando: se suprime el turno nocturno a partir del 1 de diciembre.", read:"El registro del turno de Llavín aquella noche."},
-  plano1:  {id:"plano1",  icon:"🗺️", name:"Plano de servicio", desc:"Ventana a la calle; sala principal; corredor lateral hacia la puerta de la bodega; acceso desde el interior.", read:"Hay otra ruta, por dentro."},
-  lona:    {id:"lona",    icon:"🟨", name:"Denuncia de la lona", desc:"La lona amarilla de Tomás (2 × 3 m) desapareció de su andamio esa tarde. Él mismo denunció la pérdida.", read:"Propiedad no equivale a posesión durante el delito."},
-  parte:   {id:"parte",   icon:"📻", name:"Parte policial y comunicaciones", desc:"23:27, aviso de Zoila: «Bulto amarillo junto al corredor lateral». 23:31, segunda llamada: «Vidrio roto». 23:33, llega la patrulla y una funcionaria queda ante el corredor. 23:40, bodega precintada sin abrirla.", read:"Registro horario independiente de la intervención policial."},
-  informe: {id:"informe", icon:"📋", name:"Acta de inspección extraordinaria", desc:"Cuadro de 180 × 120 cm localizado intacto, envuelto en una lona amarilla, dentro de la bodega precintada. El precinto permanecía sin abrir desde la primera intervención.", read:"La obra nunca salió de la galería."},
+  ficha:   {id:"ficha",   icon:"🖼️", name:"Ficha del cuadro", tipo:"Documento", origen:"Catálogo de la galería",
+            desc:"«La Sirena del Puerto». Óleo en marco de madera rígido.\n180 × 120 cm · 22 kg."},
+  luz:     {id:"luz",     icon:"⚡", name:"Aviso de corte", tipo:"Aviso", origen:"Empresa eléctrica",
+            desc:"Corte de luz programado: 3 de noviembre, de 23:10 a 00:05.\nCerro Alegre. Incluye alumbrado público."},
+  ventana: {id:"ventana", icon:"🪟", name:"Foto del ventanal", tipo:"Fotografía", origen:"Carabineros",
+            desc:"Ventana de la sala principal: 60 × 80 cm.\nVidrio roto. La mayor parte, sobre la vereda."},
+  visitas: {id:"visitas", icon:"📖", name:"Libro de visitas", tipo:"Registro", origen:"Galería Mirador",
+            desc:"3 de noviembre.\n18:10 — T. Pincheira (lavar brochas).\nEl libro no tiene columna de salida."},
+  boleta:  {id:"boleta",  icon:"🧾", name:"Boleta de ferretería", tipo:"Boleta", origen:"Entregada por Tomás",
+            desc:"Aguarrás 1 L.\n3 de noviembre, 18:42. Pago presencial."},
+  bitacora:{id:"bitacora",icon:"📒", name:"Bitácora del guardia", tipo:"Cuaderno de turno", origen:"Custodio Llavín",
+            desc:"23:05 Linterna sin pilas. Pedir repuesto.\n23:35 Revisé sala y bodega, vacías.\n00:12 Llega repuesto.\nContratapa: memorando de la administración. Desde el 1 de diciembre se suprime el turno nocturno."},
+  plano1:  {id:"plano1",  icon:"🗺️", name:"Plano de servicio", tipo:"Plano", origen:"Galería Mirador",
+            desc:"Sala principal con ventana a la calle.\nCorredor lateral hacia la bodega, con acceso desde el interior."},
+  lona:    {id:"lona",    icon:"🟨", name:"Denuncia de la lona", tipo:"Denuncia", origen:"Tomás Pincheira",
+            desc:"Lona amarilla de 2 × 3 m, sacada del andamio frente a la galería.\n3 de noviembre, en la tarde."},
+  parte:   {id:"parte",   icon:"📻", name:"Parte policial", tipo:"Parte y comunicaciones", origen:"Carabineros",
+            desc:"23:27 Llamada: «bulto amarillo junto al corredor».\n23:31 Llamada: «vidrio roto».\n23:33 Llega la patrulla. Una funcionaria custodia el corredor.\n23:40 Bodega precintada, sin abrir."},
+  informe: {id:"informe", icon:"📋", name:"Acta de inspección", tipo:"Acta", origen:"Tribunal",
+            desc:"Bodega del corredor: precinto intacto.\nHallado: cuadro de 180 × 120 cm, intacto, envuelto en una lona amarilla."},
 };
-
 const PROFILES = [
   {id:"ines",    who:"ines",   name:"Justo Valdivia", desc:"Defensor penal público, 27 años. Once días en el cargo. Hijo de taxista."},
   {id:"chayo",   who:"chayo",  name:"Rosario «Chayo» Catalán", desc:"Fotoperiodista. Curiosidad peligrosa, cámara más peligrosa todavía. Hace las preguntas que nadie hace."},

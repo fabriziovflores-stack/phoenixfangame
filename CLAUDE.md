@@ -86,6 +86,10 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   y `back` (al volver al lugar). En la investigación, quien habla queda en el fondo del lugar actual, no en su puesto del juzgado.
   `{cmd:"card", t1:"— Día 1 —", t2:"Investigación"}` muestra la tarjeta de día. `breakdown` acepta `who` y `seq`
   (lista de emociones que se pasan como animación; Malva usa `c3`…`c8`, su hoja de colapso, sin boca animada).
+- **Expediente al estilo DS** (`openRecord`/`renderRecord`): grilla 4×2 con el nombre de la elegida arriba; tocarla otra vez abre su ficha
+  (dibujo, nombre, `tipo`, `origen` y abajo `desc`), con ◀ ▶ para pasar de una a otra. **Las fichas dan datos, no conclusiones** (pauta del dueño:
+  que el jugador infiera); la lectura solo aparece cuando el juicio la cambió (`read` en una línea → `G.notes`). Al presentar: primero ¡Objeción!,
+  la prueba aparece arriba después.
 - Una prueba con `ver:"ruta.png"` muestra el botón «🔍 Ver en grande» en el expediente: la imagen ocupa la pantalla de
   arriba (`verPrueba`). El plano de la casona (`assets/pruebas/plano.png`) se dibujó a partir de los hechos del caso.
 - Emociones disponibles por personaje: ver `AMAP` en `js/engine.js`. Si usas una que no existe, cae a `normal`.
