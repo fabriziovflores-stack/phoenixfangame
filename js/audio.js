@@ -112,10 +112,10 @@ function fadeOut(e){
   e._fade=setInterval(()=>{ const k=(Date.now()-t0)/FADE_MS;
     if(k>=1){ clearInterval(e._fade); e._fade=null; e.pause(); e.volume=MUSIC_VOL; } else e.volume=Math.max(0,v0*(1-k)); }, 40);
 }
-function music(name){
+function music(name, corte){                       // corte=true: se detiene en seco (protestas, revelaciones); si no, fundido
   if(curTrack===name) return;
   if(musTimer){ clearInterval(musTimer); musTimer=null; }
-  if(musicFile && !musicEl.paused) fadeOut(musicEl); else musicEl.pause();     // la canción que termina se apaga con un fundido
+  if(musicFile && !musicEl.paused && !corte) fadeOut(musicEl); else { clearInterval(musicEl._fade); musicEl.pause(); }     // la canción que termina se apaga con un fundido
   musicFile=null;
   curTrack=name; if(!name||!AC) return;
   const file=(typeof LOCALMUS!=="undefined" && LOCALMUS[name]) || (typeof MUSIC_GAME!=="undefined" && MUSIC_GAME[name]) || (MUSICA_LOCAL && MUSIC_FILES[name]);   // música elegida por el jugador, o en archivo
@@ -127,7 +127,7 @@ function music(name){
   }
   synth(name);
 }
-const TRACK_ALIAS={allegro:"interrogatorio", logica:"interrogatorio", objecion:"persecucion", suspenso:"espera", detencion:"espera", verdad:"espera", variacion:"persecucion"};   // sin archivo: melodía parecida
+const TRACK_ALIAS={allegro:"interrogatorio", logica:"interrogatorio", objecion:"persecucion", suspenso:"espera", detencion:"espera", verdad:"espera", variacion:"persecucion", investigacion:"espera"};   // sin archivo: melodía parecida
 function synth(name){
   const t=TRACKS[name]||TRACKS[TRACK_ALIAS[name]]; seq={bpm:t.bpm, lead:parseSeq(t.lead), bass:parseSeq(t.bass), drums:t.drums.replace(/\s/g,"").split("")};
   stepI=0; nextT=AC.currentTime+.08; musTimer=setInterval(schedule,25);

@@ -73,7 +73,7 @@ const PROFILES = [
 const INV = {
   /* ===================== DÍA 1 ===================== */
   dia1: {
-    start:"locutorio", music:"espera", fecha:"15 de marzo", hora:9*60+40, paso:25,   // hora de llegada al primer lugar; +25 min por lugar nuevo
+    start:"locutorio", music:"investigacion", fecha:"15 de marzo", hora:9*60+40, paso:25,   // hora de llegada al primer lugar; +25 min por lugar nuevo
     done:{ev:["pistola","autopsia","bala38","plano","video","taza","pastillas","fotomadre","libro"],
           flags:["vio_aurelio","habla_malva","habla_barbara","habla_penna"]},
     hints:{
@@ -318,7 +318,7 @@ const INV = {
 
   /* ===================== DÍA 3 ===================== */
   dia3: {
-    start:"locutorio", music:"espera", fecha:"17 de marzo", hora:9*60+15, paso:25,
+    start:"locutorio", music:"investigacion", fecha:"17 de marzo", hora:9*60+15, paso:25,
     done:{ev:["carta","polvora","sangre","inscripcion","corredera","tarjeta","receta","contrato","boleta"]},
     hints:{
       carta:"(Tadeo esconde algo sobre la foto. Ahora sé lo suficiente para que hable.)",

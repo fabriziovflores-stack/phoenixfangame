@@ -148,7 +148,7 @@ function say(l, done){
     { const sg=$("stage");                                  // zoom:true = primer plano que se acerca de golpe (sigue si la línea anterior también era zoom)
       if(l.zoom){ if(!sg.classList.contains("zoomIn")){ void sg.offsetWidth; sg.classList.add("zoomIn"); flash(); shake(); } }
       else sg.classList.remove("zoomIn"); }
-    if(l.music!==undefined) music(l.music);
+    if(l.music!==undefined) music(l.music, !!(l.bubble || l.cut));   // con burbuja (protesta) el cambio es en seco
     else if(l.autoMusic) musicaAuto(l.autoMusic);              // la música de la objeción entra en la segunda frase
     if(l.anim) anim(l.anim);
     tickEv(l);
@@ -496,6 +496,8 @@ function musicaAuto(t){ if(!MUSICA_TENSA.includes(curTrack)) music(t); }
 function conMusica(lines, track){
   if(!lines || !lines.length) return lines;
   if(lines[0].music!==undefined || lines[0].cmd) return lines;
+  if(curTrack===track) return lines;                            // ya suena: no se reinicia
+  if(!MUSICA_TENSA.includes(curTrack)) music(null, true);      // ¡Objeción!: la música se corta en seco; la primera frase va en silencio
   if(lines.length<2){ musicaAuto(track); return lines; }
   const out=lines.slice(); out[1]=Object.assign({}, out[1], {autoMusic:track}); return out;
 }
@@ -504,7 +506,7 @@ function presentItem(id){
   if(typeof invPresent==="function" && invPresent(id)) return;     // investigación (js/investigacion.js)
   if(mode==="present"){
     const p=X.prompt;
-    if([].concat(p.answer).includes(id)){ const d=X.done; if(p.music!==undefined){ music(p.music); play(p.ok, d); } else play(p.soft ? p.ok : conMusica(p.ok,"objecion"), d); }
+    if([].concat(p.answer).includes(id)){ const d=X.done; if(p.music!==undefined){ music(p.music, true); play(p.ok, d); } else play(p.soft ? p.ok : conMusica(p.ok,"objecion"), d); }
     else if(p.soft) play(p.wrong||[], ()=>{ pc=checkpoint; run(); });     // sin castigo (fuera del juicio)
     else SFX.whoops(), play([{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"¡Mire esto, Su Señoría!"},
                {who:"jueza",mood:"serious",text:"...¿Y eso qué tiene que ver, abogado?"},
