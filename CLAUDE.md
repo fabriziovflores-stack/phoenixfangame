@@ -55,7 +55,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `breakdown`, `verdict`, `end`, `negro` (fundido a negro y vuelta, `ms`, `pos` = escena vacía al volver; sirve para llamar
   a un testigo: jueza «Llamaremos a…» → negro → el testigo aparece con `wait:ms` y saluda), `cine` (`img`, `text`, opcional `sfx`/`flash`/`shake`: imagen 256×192 a pantalla completa,
   en `assets/cine/`; originales en `arte-original/cine/`), `senalar` (`img`, `area:[x,y,ancho,alto]`, `ayuda`, `wrong`: la imagen ocupa la pantalla de arriba
-  y hay que tocar el punto exacto; fallar quita vida; se usa dentro de `contraLines`, hoy en la foto de las 23:24 del Caso 1). `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite.
+  y hay que tocar el punto exacto; fallar quita vida; `zonas:[{area,wrong}]` da una respuesta propia según dónde tocó; hoy: tocar la bodega en el plano grande de la galería, `assets/pruebas/plano-galeria-grande.png`, dibujado con `herramientas/plano_galeria.py`). `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite.
 - **Ritmo como en la DS** (ver el video de referencia del dueño): dentro del texto, `[p]` = pausa, `[m=emoción]` = cambia la cara
   a mitad de frase, `[a=slam|hit|tremble]` = animación, `[s]` = temblor, `[f]` = destello. Los «...» se escriben lento.
   Cuando alguien interrumpe (burbuja o golpe en la mesa) y cambia la cámara entre defensa/estrado/fiscalía, hay un **barrido**
@@ -122,7 +122,7 @@ con `ANCHOR=cell REFK=1 SHEET=… GX=4 GY=2 TABLA=pennaA…E HH=110 HEADY=19 pyt
 (tamaños y dx en el historial de git; cabeza arriba en y=20, nuca en x=167, ancho ~40). Emociones: ver `AMAP.fiscal`
 (proud = mentón arriba, respect = reconoce con respeto); poses `point`, `cafe`, `cruzado`, `alto`, `bigote`, `tirar`, `pelo`.
 
-Chayo (Rosario Velado, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): dos hojas 4×2 en pares
+Chayo (Rosario «Chayo» Catalán, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): dos hojas 4×2 en pares
 exactos, `arte-original/chayo-v2-a.png` (normal, happy, surprise, think) y `chayo-v2-b.png` (worried, smug, annoyed, point):
 `FRONT=1 MOUTHDX=4 SHEET=… GX=4 GY=2 TABLA=chayoA|chayoB HH=110 HEADY=22 python3 herramientas/penna4.py CARPETA 30 0 0`.
 Hablar = el cuadro de boca abierta completo, alineado. Todas sus emociones del guion se reparten entre esas 8 (ver `AMAP.chayo`);
@@ -167,7 +167,7 @@ Orden: archivo elegido por el jugador en «Mi música» → archivo del juego �
 Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.
 
 ## Guardado
-`localStorage`, clave `actacero_caso1_v1`. Guarda el paso del guion, pruebas, lecturas y penalizaciones.
+`localStorage`, clave `actacero_casoN_vX` (X = `guardado` del caso; el Caso 1 va en `v2`: subirlo cuando el guion cambie de forma, para que una partida vieja no caiga en otro punto). Guarda el paso del guion, pruebas, lecturas y penalizaciones.
 
 ## Cómo probar
 **Siempre antes de publicar**, aunque el cambio sea mínimo: `for f in js/*.js casos/*.js; do node --check $f; done` y abrir el
@@ -182,8 +182,10 @@ una respuesta equivocada y la derrota) con un navegador automatizado y confirmar
    dueño escriba los diálogos y la cinemática (7 imágenes). Personajes y fondos del Caso 2: completos
    (prompts en `docs/caso2-prompts.md`).
 2. Fondo de detrás de la jueza (Caso 1).
-3. Caso 1 = guion de producción del dueño v1.0 (prólogo donde se ve a Llavín; 4 testimonios: Zoila «farol», Llavín «robo imposible»,
-   Zoila «dos llamadas», Llavín «ronda perfecta»; motivo con el memorando; absolución por falta de prueba). Mecánicas: `sigue:true`+`revela`
-   (el testimonio continúa tras una contradicción), `requiere:"id"`+`antes` (contradicción que exige otra primero, sin castigo),
-   `firstWrong` en un testimonio (el primer error del tutorial no cuesta), `early` (prueba correcta antes de tiempo). Pendiente: imágenes
-   de la cinemática del prólogo (hoy texto sobre negro).
+3. Caso 1 = guion del dueño «Penna mata novatos» (juicio al día siguiente del robo, 4 de noviembre). Zoila «Lo que vi desde mi balcón»
+   (farol → aviso de corte; vio algo amarillo DETRÁS de la ventana, con la luz verde de emergencia) → Penna interroga a Llavín (`d1`) →
+   «El ladrón y la ventana» (vidrios en la vereda → ventana; luego ficha: no cabe) → Penna pregunta por la puerta de servicio (choice) →
+   «Lo que vi dentro de la sala» (linterna → bitácora) → tocar la bodega en el plano → reanudación: acta y parte → «La ronda de las 23:35»
+   (`pressOnce`; parte) → conclusión (no hay prueba contra Tomás) con zoom + Cornered Variation → Llavín confiesa → absolución.
+   La lona quedó colgada en el patio de la galería (no en el andamio). Penna nueva: severo, diecisiete victorias, reloj de bolsillo; interviene
+   solo donde el guion lo dice (`fiscal:false`, `FISCAL_PRESS=[]`). Pendiente: imágenes de la cinemática del prólogo (hoy texto sobre negro).

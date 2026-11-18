@@ -349,7 +349,7 @@ const CMD = {
     setTimeout(()=>{ sg.classList.remove("zoomIn"); $("topS").classList.remove("carta"); busy=false; done(); }, st.ms||1500);
   },
   /* Señalar en una imagen: la foto ocupa la pantalla de arriba y hay que tocar el punto exacto (area:[x,y,ancho,alto] en 256×192).
-     Fallar quita vida (wrong) y se repite. Sirve dentro de las líneas de una contradicción: {cmd:"senalar", img, area, ayuda, wrong} */
+     Fallar quita vida (wrong) y se repite. `zonas:[{area,wrong}]` = respuesta propia según dónde tocó (sin `damage`, no castiga). Sirve dentro de las líneas de una contradicción: {cmd:"senalar", img, area, ayuda, wrong} */
   senalar(st,done){
     const prevX=X, o=$("verPrueba");
     const abrir=()=>{ o.innerHTML=`<img src="${hdSrc(st.img)}">`; o.style.display="flex"; o.onclick=null;
@@ -359,7 +359,8 @@ const CMD = {
       const m=$("mira"); m.style.left=(x/256*100)+"%"; m.style.top=(y/192*100)+"%"; m.style.display="block"; busy=true;
       setTimeout(()=>{ m.style.display="none"; busy=false; o.style.display="none"; $("topS").classList.remove("carta"); X=prevX;
         if(ok){ SFX.realize&&SFX.realize(); senalar.tap=null; done(); }
-        else { SFX.whoops(); play(st.wrong||[{who:"jueza",mood:"disappoint",damage:true,text:"¿Ahí? No veo nada que contradiga al testigo, abogado."}],
+        else { const z=(st.zonas||[]).find(z=>{ const [zx,zy,zw,zh]=z.area; return x>=zx&&x<zx+zw&&y>=zy&&y<zy+zh; });   // zona con respuesta propia
+          SFX.whoops(); play((z&&z.wrong)||st.wrong||[{who:"jueza",mood:"disappoint",damage:true,text:"¿Ahí? No veo nada que contradiga al testigo, abogado."}],
                  ()=>{ if(G.health<=0) return gameOver(); abrir(); }); }
       }, 420);
     };
@@ -863,7 +864,7 @@ $("contBtn").onclick=()=>{ initAudio(); unlockMusic(); if(AC&&AC.state==="suspen
 $("startBtn").onclick=()=>{ initAudio(); unlockMusic(); if(AC&&AC.state==="suspended") AC.resume(); $("title").style.display="none"; resetGame(); run(); };
 /* portada: elegir caso */
 function selectCase(id){
-  const c=useCase(id); SAVEKEY="actacero_"+CASO_ID+"_v1";
+  const c=useCase(id); SAVEKEY="actacero_"+CASO_ID+"_v"+(c.guardado||1);   // guardado: sube cuando el guion cambia de forma
   $("casoSub").textContent="CASO "+(c.numero||"")+" · "+(c.titulo||"").toUpperCase(); $("casoIntro").textContent=c.intro||"";
   $("contBtn").style.display=loadSave()?"":"none";
   document.querySelectorAll("#casoSel button").forEach(b=>b.classList.toggle("on",b.dataset.c===CASO_ID));
