@@ -127,7 +127,7 @@ function music(name, corte){                       // corte=true: se detiene en 
   }
   synth(name);
 }
-const TRACK_ALIAS={allegro:"interrogatorio", logica:"interrogatorio", objecion:"persecucion", suspenso:"espera", detencion:"espera", verdad:"espera", variacion:"persecucion", investigacion:"espera"};   // sin archivo: melodía parecida
+const TRACK_ALIAS={allegro:"interrogatorio", logica:"interrogatorio", objecion:"persecucion", suspenso:"espera", detencion:"espera", verdad:"espera", variacion:"persecucion", investigacion:"espera", tristeza:"espera"};   // sin archivo: melodía parecida
 function synth(name){
   const t=TRACKS[name]||TRACKS[TRACK_ALIAS[name]]; seq={bpm:t.bpm, lead:parseSeq(t.lead), bass:parseSeq(t.bass), drums:t.drums.replace(/\s/g,"").split("")};
   stepI=0; nextT=AC.currentTime+.08; musTimer=setInterval(schedule,25);

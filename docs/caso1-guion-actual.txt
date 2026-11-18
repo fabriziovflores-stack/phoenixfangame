@@ -424,12 +424,11 @@ PENNA: Lo ha oído, Valdivia. Yo no voy a proteger una hora falsa. Pero tampoco 
 TESTIMONIO Y CONTRAINTERROGATORIO: LA RONDA DE LAS 23:35  (MÚSICA: ALLEGRO)
 ------------------------------------------------------------
 
-Presionar dos veces la misma declaración quita credibilidad.
-
 Antes de empezar:
-PENNA: ¡Una presión más fuera de lugar y solicitaré que lo amonesten, Valdivia! [¡PROTESTO!; golpe en la mesa]
-JUEZA: Puede preguntar sobre hechos nuevos. Repetir una pregunta ya respondida sí tendrá consecuencias.
-CHAYO: (Puedes presionar cada declaración una vez sin riesgo. Si la repites, pierdes credibilidad. Presentar pruebas no tiene ese límite.)
+PENNA: ¡Justo Valdivia! Nos ha traído a un callejón sin fondo, y este caso se debería haber resuelto en un dos por tres. [¡PROTESTO!; golpe en la mesa]
+PENNA: Así que una presión más fuera de lugar y solicitaré que lo amonesten.
+JUEZA: Puede solo presentar una contradicción. Si no tiene sentido, tendrá consecuencias.
+JUSTO: (¿Y la jueza? Pareciera que está pintada.)
 
 Declaración 1: Después de oír el vidrio, fui directo a la sala y comprobé el daño.
 
@@ -441,21 +440,27 @@ Declaración 2: A las 23:35 revisé personalmente la bodega. No había ningún c
 
 Si se presiona:
 JUSTO: ¿Está seguro de la hora?
-LLAVÍN: ¡La anoté en mi libro, no me la inventé!
+PENNA: ¡Protesto! Le avisé que si replicaba una vez sin razón, la jueza lo amonestaría. [¡PROTESTO!; golpe en la mesa]
+JUEZA: Tiene razón. Señor Valdivia, no presione más. [pierde credibilidad]
 
 ✅ Contradicción: presentar Parte de primera patrulla
-JUSTO: ¡No pudo entrar a esa bodega a las 23:35! [¡OBJECIÓN!; golpe en la mesa]
+JUSTO: ¡No pudo entrar a esa bodega a las 23:35! [¡OBJECIÓN!; golpe en la mesa; música: silencio]
 JUSTO: Carabineros lo vio en la entrada principal a las 23:33. Desde entonces custodió el único acceso a la bodega sin interrupciones. [muestra: Parte de primera patrulla]
-LLAVÍN: ¡Entonces me equivoqué de minuto! ¡Pude revisar antes!
-PENNA: ¡Protesto! El registro descarta una ronda a las 23:35, no una visita a las 23:30. [¡PROTESTO!; golpe en la mesa]
+LLAVÍN: ¡Entonces me equivoqué de minuto! ¡Pude revisar antes! [música: objecion]
+PENNA: El registro descarta una ronda a las 23:35, no una visita a las 23:30. [¡PROTESTO!; golpe en la mesa]
 PENNA: ¿Puede distinguir ambas proposiciones, abogado?
 JUSTO: Sí. El horario que dio el guardia es falso. No estoy afirmando todavía cuándo entró alguien a la bodega.
 PENNA: Aprende deprisa. Le faltará aprender a no celebrar una mentira como si fuera una confesión.
-LLAVÍN: ¡Yo sé lo que vi! ¡Doce años sin perder una obra!
-PENNA: Doce años no cambian un reloj, Llavín. No repetiré la pregunta. ¿Puede respaldar otra hora?
+LLAVÍN: ¡Yo sé lo que vi!
+JUSTO: Doce años no cambian un reloj, Llavín. No repetiré la pregunta. ¿Puede respaldar otra hora?
 LLAVÍN: No... no con otro registro.
-PENNA: Que conste. Ahora la defensa deberá explicar qué demuestra sobre Tomás, no sobre el orgullo del testigo. [lectura nueva de Bitácora del guardia]
-NARRACIÓN: Lectura actualizada: Bitácora del guardia.
+PENNA: Interesante hacia dónde nos ha llevado un novato. Valdivia, le daré otra oportunidad. Solo para hundir su carrera.
+JUSTO: (...Máximo Penna. ¿Es así como arruinas la vida de los abogados?)
+JUEZA: Fiscal, se ha tomado atribuciones, como acostumbra.
+JUEZA: Aunque puedo asegurar que siempre nos ha llevado hacia la verdad.
+JUEZA: ...
+JUEZA: Esta vez no lo amonestaré, Valdivia. Continúe, Llavín.
+CHAYO: (Ahora que podemos, ¡presiona!)
 
 Declaración 3 (aparece después de la contradicción): Cuando llegó la patrulla, me quedé en la entrada principal.
 
@@ -475,76 +480,100 @@ JUEZA: Se ha demostrado que la revisión declarada a las 23:35 no pudo ocurrir. 
 
 (Presionar esta declaración cierra el testimonio.)
 
-Pista si das la vuelta completa:
-CHAYO: (¿Quién vigilaba la bodega a esa hora? Lo dice el parte de la patrulla.)
+PENNA: ¡Ya es suficiente, Valdivia! [golpe en la mesa; música: suspenso]
+PENNA: Es momento de terminar esto. No nos ha llevado a ninguna parte y no ha comprobado la inocencia de su cliente.
+JUEZA: Tiene razón, Penna. Valdivia, su último alegato. Y será el último: no podrá repetirlo.
 
 ------------------------------------------------------------
-DECISIÓN: ABOGADO VALDIVIA, ¿QUÉ DEMUESTRA EN REALIDAD EL EXPEDIENTE?
+DECISIÓN: DESPUÉS DE TODO LO EXPUESTO, ¿QUÉ CONCLUSIÓN PUEDE SOSTENER LA DEFENSA?
 ------------------------------------------------------------
 
-- Que Llavín cometió todos los delitos
+- Que Llavín revisó la bodega vacía y alguien escondió el cuadro después (si se elige, se pierde el juicio)
   Si se elige:
-PENNA: ¡Protesto! Mentir en una ronda no demuestra que alguien rompiera una ventana. [¡PROTESTO!]
-- ✅ Que no hay prueba fiable contra Tomás
-- Que Zoila fue la autora del robo
+PENNA: ¡Acaba de aceptar una revisión que usted mismo demostró imposible! [¡PROTESTO!; golpe en la mesa]
+PENNA: Desde las 23:33, Carabineros custodiaba el acceso. ¡Su cronología no se sostiene, Valdivia!
+- ✅ Que las pruebas no permiten acreditar la participación de Tomás
+- Que Llavín escapó por la ventana con la obra antes de que llegara Carabineros (si se elige, se pierde el juicio)
   Si se elige:
-ZOILA: ¡Ni siquiera puedo levantar ese cuadro, mijito!
+PENNA: ¡Un cuadro de 180 por 120 por una ventana de 60 por 80! Usted mismo demostró que eso es imposible. [¡PROTESTO!; golpe en la mesa]
 
 Respuesta correcta:
-JUSTO: Ni Zoila ni Llavín identificaron de manera fiable a Tomás. La ventana no sirvió para el traslado.
+JUSTO: (Este caso nunca fue de un robo... Hay algo detrás de esto que ninguno de los testigos, ni siquiera Penna, puede explicar.) [golpe en la mesa; música: silencio]
+JUSTO: (Pero hay algo que yo sí puedo demostrar: Tomás no participó en este enredo.)
+JUSTO: Ni Zoila ni Llavín identificaron de manera fiable a Tomás. La ventana no sirvió para el traslado. [golpe en la mesa]
 JUSTO: Y no existe prueba que lo sitúe en la bodega.
 JUSTO: La Fiscalía tiene una sospecha y un testigo que inventó una revisión. No tiene acreditada la participación de mi cliente.
 PENNA: ¡Protesto! El acusado entró al recinto esa tarde, conocía la puerta lateral y su lona envolvía el cuadro. [¡PROTESTO!; golpe en la mesa; música: suspenso]
 PENNA: No son hechos imaginarios, Valdivia. Esos indicios merecen valoración, aun si Llavín mintió.
 PENNA: Su defensa solo ha probado que ninguno lo vio en el instante preciso.
-JUSTO: (Esta vez no es una posibilidad vacía... Son tres hechos reales. Tengo que responder sin negarlos.)
+JUSTO: (Lo tengo contra las cuerdas.)
+
+------------------------------------------------------------
+DECISIÓN: (¿QUÉ PASÓ REALMENTE ESA NOCHE?)
+------------------------------------------------------------
+
+- El guardia robó el cuadro (si se elige, se pierde el juicio)
+  Si se elige:
+PENNA: Este juicio no es para inculpar al guardia. Se juzga a Tomás por el robo.
+JUEZA: Tenía esperanzas en usted, Valdivia. Tendré que declararlo culpable.
+- Tomás ayudó al guardia a robarlo (si se elige, se pierde el juicio)
+  Si se elige:
+PENNA: ¿Acusando a su propio cliente de robarlo?
+JUEZA: Tenía esperanzas en usted, Valdivia. Tendré que declararlo culpable.
+- ✅ El guardia fingió robar el cuadro
+
+Respuesta correcta:
 JUSTO: ¡Esos hechos existen! [¡OBJECIÓN!; golpe en la mesa; música: silencio]
 JUSTO: Pero el libro de visitas no registra ninguna entrada nocturna de Tomás. [música: variacion; zoom]
 JUSTO: Su lona quedó colgada en el patio de la galería, no en sus manos. Y el guardia inventó la única identificación directa. [zoom]
 JUSTO: ¡Ninguno de sus indicios demuestra que Tomás conociera ni participara en el montaje! ¡No pueden suplir la prueba que falta! [zoom]
-PENNA: ...Que conste que la Fiscalía no retira esos indicios. El tribunal decidirá qué peso les atribuye.
-JUEZA: Así se discutirá: por el valor de los indicios, no por lo que cada parte imagina.
+PENNA: ...Es... posible...
 
+[Música: silencio]
+
+[Se ve a cada uno, sorprendido: JUEZA, PENNA, LLAVÍN, TOMÁS, CHAYO]
+
+JUSTO: (Lo logré.)
+CHAYO: (Le has devuelto todo el caso... a Máximo Penna.)
 LLAVÍN: ...
-PENNA: Llavín. La acusación necesita saber qué vio usted, no cuánto tiempo lleva trabajando. ¿Reconoció a Tomás o supuso que era él?
+PENNA: Llavín. Puede guardar silencio.
 LLAVÍN: ¡Doce años cuidando esa galería! ¡Conozco a todo el mundo!
-PENNA: No le pregunté por el mundo, Llavín. Le pregunté por esa noche. [¡PROTESTO!]
-LLAVÍN: ...Lo supuse. No le vi la cara.
+LLAVÍN: ...Lo... Lo siento.
 PENNA: ...
-JUSTO: (No voy a adivinar lo que pasó detrás de esa puerta. Pero ya no pueden condenar a Tomás por lo que otro supone.)
-JUEZA: Señor Llavín, puede guardar silencio. ¿Desea aclarar por qué su bitácora registró una revisión imposible?
+JUSTO: (Ya no pueden condenar a Tomás por lo que otro supone.)
+JUEZA: ¿Desea aclarar aquello de lo que le inculpa la defensa?
 LLAVÍN: ¡No pienso dar explicaciones por cumplir mi trabajo!
-LLAVÍN: ...Aunque ni siquiera iba a tener trabajo en diciembre.
-JUSTO: (El aviso pegado en la bitácora: iban a reemplazar su turno por una alarma.)
 LLAVÍN: ¡Doce años encontrando lo que otros perdían! Quería que la administración recordara quién les cuidaba todo.
 LLAVÍN: Pensé esconderlo solo un rato. Romper el vidrio. Después iba a aparecer yo con el cuadro y salvar el día.
-PENNA: ¡Basta de insinuaciones! ¿Retiró usted la obra, sí o no? Está declarando ante un tribunal. [¡PROTESTO!; golpe en la mesa]
-LLAVÍN: Sí. Usé la lona que Tomás dejó colgada en el patio. Iba a devolverlo antes de que alguien llamara a Carabineros.
+LLAVÍN: Usé la lona que Tomás dejó colgada en el patio. Iba a devolverlo antes de que alguien llamara a Carabineros.
 LLAVÍN: Oyeron el vidrio, llegó una patrulla que estaba cerca... y sellaron el pasillo. Lo dejé allí.
-JUSTO: ¿Y después permitió que culparan a Tomás?
 LLAVÍN: ¡No quería que lo detuvieran! Pensé que se aclararía... que alguien lo aclararía.
-TOMÁS: Yo le convidaba mate, don Custodio.
+LLAVÍN: No pensé que sería en este juicio.
+TOMÁS: Don Custodio...
 LLAVÍN: ...
 
 [Derrumbe de LLAVÍN]
 
+[Música: tristeza]
+
 LLAVÍN: Te vi pasar tantas tardes, cabro. Y dejé que creyeran lo peor de ti.
 LLAVÍN: Lo hice yo. Mentí. Tú no entraste a la sala esa noche.
-PENNA: La Fiscalía no puede sostener una identificación que el propio testigo ha desmentido.
-PENNA: Pero no me pida que olvide cada indicio de la causa porque uno de ellos fuera una mentira.
-PENNA: Corresponde al tribunal ponderarlos. Yo asumiré la responsabilidad de haber confiado en esa declaración. Sin excusas.
+PENNA: ...Bien. Ya tenemos la verdad frente a los ojos.
+PENNA: Corresponde al tribunal asumir la verdad. Yo asumiré la responsabilidad de haber confiado en este guardia. Sin excusas.
+PENNA: No crea que olvidaré esto, joven Valdivia.
 JUEZA: La responsabilidad eventual del guardia deberá investigarse por separado. Respecto de Tomás, no se ha probado su participación.
 
 [Mazo]
 
-JUEZA: Por decisión unánime, se dicta veredicto absolutorio.
+JUEZA: He escuchado suficiente. Abogado Valdivia, lo felicito.
+JUEZA: Nos ha demostrado que la escucha es lo más importante en esta habitación.
+JUEZA: Se dicta veredicto absolutorio.
 
 ============================================================
 VEREDICTO: NO CULPABLE
 ============================================================
 
 PENNA: ...
-NARRACIÓN: Penna aprieta su carpeta hasta dejar marcada la cubierta.
 
 [Música: victoria]
 

@@ -46,10 +46,11 @@ function cmd(s){
         else { P(`*Se deja pasar:*  `); lineas(q.a); } });
       P(`\n*Al terminar:*  `); lineas(d.end); P(""); break; }
     case "choice": P(`\n### DECISIÓN: ${limpia(s.text)}\n`);
-      s.options.forEach(o=>{ P(`- ${o.ok?"✅ ":""}${o.t}`); if(o.w){ P(`  *Si se elige:*  `); lineas(o.w); } });
+      s.options.forEach(o=>{ P(`- ${o.ok?"✅ ":""}${o.t}${o.pierde?" (si se elige, se pierde el juicio)":""}`); if(o.w){ P(`  *Si se elige:*  `); lineas(o.w); } });
       P(`\n*Respuesta correcta:*  `); lineas(s.ok); P(""); break;
     case "present": P(`\n### PRESENTAR: ${limpia(s.text)} → ✅ ${[].concat(s.answer).map(nombreEv).join(" o ")}\n`); lineas(s.ok); break;
     case "senalar": P(`\n### TOCAR EN EL PLANO: ${s.ayuda}\n`); (s.zonas||[]).forEach(z=>{ P(`*Si toca otro lugar:*  `); lineas(z.wrong); }); P(`*Fuera de las zonas:*  `); lineas(s.wrong); P(`✅ **Correcto: la bodega.**\n`); break;
+    case "reacciones": P(`\n*[Se ve a cada uno, sorprendido: ${s.list.map(x=>N(x[0])).join(", ")}]*\n`); break;
     default: P(`*[${s.cmd}]*`);
   }
 }

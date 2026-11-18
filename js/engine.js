@@ -280,7 +280,7 @@ const CMD = {
     checkpoint=pc-1; if(st.who==="jueza") musicaAuto("logica");          // la jueza pide deducir: suena «Lógica»
     const ask=()=>say({who:st.who,mood:st.mood,pose:st.pose,pos:st.pos,text:st.text}, ()=>{
       mode="choice"; $("next").classList.remove("on");
-      X={choice:st, pick:i=>{ const o=st.options[i]; if(o.then) play(o.then,done); else if(o.ok){ if(st.pickMusic!==undefined) music(st.pickMusic); play(st.ok||[],done); } else { SFX.whoops(); play(o.w||[],ask); } }};
+      X={choice:st, pick:i=>{ const o=st.options[i]; if(o.then) play(o.then,done); else if(o.ok){ if(st.pickMusic!==undefined) music(st.pickMusic); play(st.ok||[],done); } else if(o.pierde){ SFX.whoops(); play(o.w||[], perder); } else { SFX.whoops(); play(o.w||[],ask); } }};   // pierde:true = respuesta final equivocada: se pierde el juicio
       renderControls();
     });
     ask();
@@ -347,6 +347,13 @@ const CMD = {
     $("topS").classList.add("carta");
     SFX.slam&&SFX.slam(); flash(); shake();
     setTimeout(()=>{ sg.classList.remove("zoomIn"); $("topS").classList.remove("carta"); busy=false; done(); }, st.ms||1500);
+  },
+  /* Reacciones: se ve a cada personaje, uno tras otro, sin texto (no se salta). {cmd:"reacciones", list:[["jueza","shock"],...], ms:700} */
+  reacciones(st,done){
+    busy=true; mode="loc"; renderControls(); $("name").textContent=""; $("text").textContent="";
+    let i=0; const sig=()=>{ if(i>=st.list.length){ busy=false; return done(); }
+      const [w,m,pose]=st.list[i++]; vistos.add(w); setScene(CHARS[w].pos, w, m, pose, true); setTimeout(sig, st.ms||700); };
+    sig();
   },
   /* Señalar en una imagen: la foto ocupa la pantalla de arriba y hay que tocar el punto exacto (area:[x,y,ancho,alto] en 256×192).
      Fallar quita vida (wrong) y se repite. `zonas:[{area,wrong}]` = respuesta propia según dónde tocó (sin `damage`, no castiga). Sirve dentro de las líneas de una contradicción: {cmd:"senalar", img, area, ayuda, wrong} */
@@ -489,6 +496,7 @@ function press(){
   const extra = s.fiscal || (pool && pool.length ? pool[(G.fp=(G.fp||0)+1) % pool.length] : null);
   if(extra && X.def.fiscal!==false) lines=lines.concat(extra);
   play(lines, ()=>{
+    if(G.health<=0) return gameOver();                    // una presión castigada puede dejar sin credibilidad
     if(s.adds && !X.list.find(x=>x.id===s.adds)){
       const ns=X.def.statements.find(x=>x.id===s.adds);
       X.list.splice(X.idx+1,0,ns); X.idx++;
@@ -543,6 +551,8 @@ function presentItem(id){
   else if(X.def.firstWrong && !G.tutErr){ G.tutErr=1; SFX.whoops(); play(X.def.firstWrong, showStatement); }   // tutorial: el primer error no cuesta
   else SFX.whoops(), play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });
 }
+/* Perder de una vez (última oportunidad equivocada): veredicto de culpable sin las líneas genéricas. «Reintentar» vuelve a la pregunta. */
+function perder(){ music(null); verdict("CULPABLE", false, ()=>{ mode="gameover"; renderControls(); }); }
 function gameOver(){
   music(null);
   play([{who:"jueza",mood:"serious",text:"La defensa ha perdido toda credibilidad ante este tribunal."},

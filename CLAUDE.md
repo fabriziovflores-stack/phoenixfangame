@@ -51,7 +51,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   (pista si la deja pasar; la pregunta se repite sin castigo), `noObj` (comentario si objeta una pregunta limpia). `coach` = consejo que se muestra una sola vez después de la pregunta (tutorial).
   Motivo equivocado u objetar una pregunta limpia = penalización (`DIRECT_LINES`).
 - `SCRIPT`: lista de pasos. Una línea es `{who, mood, pose, anim, text}`. Comandos: `music`, `location`,
-  `gavel`, `cross`, `direct`, `choice` (elegir respuesta, sin penalización; una opción con `then:[líneas]` es un camino propio y no se repite), `present` (presentar prueba o perfil),
+  `gavel`, `cross`, `direct`, `choice` (elegir respuesta, sin penalización; una opción con `then:[líneas]` es un camino propio y no se repite; con `pierde:true` se pierde el juicio de una vez y «Reintentar» vuelve a esa pregunta), `reacciones` (`list:[[quién,emoción],…]`, `ms`: se ve a cada uno sin texto, uno tras otro), `present` (presentar prueba o perfil),
   `breakdown`, `verdict`, `end`, `negro` (fundido a negro y vuelta, `ms`, `pos` = escena vacía al volver; sirve para llamar
   a un testigo: jueza «Llamaremos a…» → negro → el testigo aparece con `wait:ms` y saluda), `cine` (`img`, `text`, opcional `sfx`/`flash`/`shake`: imagen 256×192 a pantalla completa,
   en `assets/cine/`; originales en `arte-original/cine/`), `senalar` (`img`, `area:[x,y,ancho,alto]`, `ayuda`, `wrong`: la imagen ocupa la pantalla de arriba
@@ -137,7 +137,7 @@ Diseño del dueño en `assets/hud/` (originales en `arte-original/hud/`): `panel
 Archivos del juego en `assets/musica/` (`MUSIC_GAME` en assets.js; recreaciones del dueño, ver docs/creditos.md): `interrogatorio` =
 Moderato, `allegro` (contrainterrogatorios tensos), `logica` (suena sola cuando la jueza pide deducir, `choice`), `objecion` (suena
 sola al acertar una contradicción o una prueba), `persecucion` = Cornered, `corte` = Trial (abre el juicio), `espera` = Courtroom Lobby, `suspenso` = Suspense (cinemáticas, entrada de Penna en el Caso 1),
-`detencion` = Jailer's Elegy (locutorio del Caso 2). `verdad` = Telling the Truth, `variacion` = Pursuit ~ Cornered (Variation) (golpe final: al presentar la lona, ¡Objeción! + golpe en la mesa en silencio, y en la frase siguiente entra con el zoom mientras Justo habla; suena sin cortes hasta el veredicto).
+`detencion` = Jailer's Elegy (locutorio del Caso 2). `tristeza` = quiebre triste (el dueño pide «Maya's sorrow»; sin ese archivo suena el de detención; se puede poner en «Mi música»). `verdad` = Telling the Truth, `variacion` = Pursuit ~ Cornered (Variation) (golpe final: al presentar la lona, ¡Objeción! + golpe en la mesa en silencio, y en la frase siguiente entra con el zoom mientras Justo habla; suena sin cortes hasta el veredicto).
 En una línea, `zoom:true` (con `pos:"rayos"`) = primer plano que se acerca de golpe mientras el personaje habla; si la línea siguiente también lleva zoom, se mantiene.
 `{cmd:"zoom", who, mood, pose, music, ms}` = primer plano de golpe sobre rayos con la música que entra en ese instante (sin texto, no se salta).
 **Pauta del dueño:** primer testimonio de cada testigo = Moderato; cuando sube la tensión = Allegro; el testimonio suena con su canción
