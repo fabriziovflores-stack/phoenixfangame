@@ -149,6 +149,7 @@ function say(l, done){
       if(l.zoom){ if(!sg.classList.contains("zoomIn")){ void sg.offsetWidth; sg.classList.add("zoomIn"); flash(); shake(); } }
       else sg.classList.remove("zoomIn"); }
     if(l.music!==undefined) music(l.music);
+    else if(l.autoMusic) musicaAuto(l.autoMusic);              // la música de la objeción entra en la segunda frase
     if(l.anim) anim(l.anim);
     tickEv(l);
     if(l.damage) takeDamage();
@@ -490,12 +491,20 @@ function press(){
 /* Mientras suena una de estas, Objection! y Logic and Trick no la interrumpen (pauta del dueño: «si suena Cornered, no hay que detenerla») */
 const MUSICA_TENSA=["persecucion","verdad","variacion"];
 function musicaAuto(t){ if(!MUSICA_TENSA.includes(curTrack)) music(t); }
+/* Objeción acertada (pauta del dueño): ¡Objeción! → Justo habla un poco → recién en la segunda frase entra la música.
+   Si la primera frase ya trae su propia música (o silencio), se respeta y no se agrega nada. */
+function conMusica(lines, track){
+  if(!lines || !lines.length) return lines;
+  if(lines[0].music!==undefined || lines[0].cmd) return lines;
+  if(lines.length<2){ musicaAuto(track); return lines; }
+  const out=lines.slice(); out[1]=Object.assign({}, out[1], {autoMusic:track}); return out;
+}
 function presentItem(id){
   closeRecord(); showEvBox(id,5);
   if(typeof invPresent==="function" && invPresent(id)) return;     // investigación (js/investigacion.js)
   if(mode==="present"){
     const p=X.prompt;
-    if([].concat(p.answer).includes(id)){ const d=X.done; if(p.music!==undefined) music(p.music); else if(!p.soft) musicaAuto("objecion"); play(p.ok, d); }
+    if([].concat(p.answer).includes(id)){ const d=X.done; if(p.music!==undefined){ music(p.music); play(p.ok, d); } else play(p.soft ? p.ok : conMusica(p.ok,"objecion"), d); }
     else if(p.soft) play(p.wrong||[], ()=>{ pc=checkpoint; run(); });     // sin castigo (fuera del juicio)
     else SFX.whoops(), play([{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"¡Mire esto, Su Señoría!"},
                {who:"jueza",mood:"serious",text:"...¿Y eso qué tiene que ver, abogado?"},
@@ -506,7 +515,7 @@ function presentItem(id){
     return;
   }
   const s=X.list[X.idx];
-  if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; musicaAuto("objecion"); play(s.contraLines, done); }   // contradicción acertada: suena «Objeción»
+  if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; play(conMusica(s.contraLines,"objecion"), done); }   // contradicción acertada: suena «Objeción»
   else if(s.early && [].concat(s.early.ids).includes(id)) play(s.early.lines, showStatement);   // correcta, pero antes de tiempo: sin castigo
   else SFX.whoops(), play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });
 }

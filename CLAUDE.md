@@ -128,7 +128,8 @@ sola al acertar una contradicción o una prueba), `persecucion` = Cornered, `cor
 En una línea, `zoom:true` (con `pos:"rayos"`) = primer plano que se acerca de golpe mientras el personaje habla; si la línea siguiente también lleva zoom, se mantiene.
 `{cmd:"zoom", who, mood, pose, music, ms}` = primer plano de golpe sobre rayos con la música que entra en ese instante (sin texto, no se salta).
 **Pauta del dueño:** primer testimonio de cada testigo = Moderato; cuando sube la tensión = Allegro; el testimonio suena con su canción
-desde la primera lectura. **Cornered y Telling the Truth no se interrumpen**: mientras suenan, Objection!/Logic and Trick no entran (`MUSICA_TENSA`).
+desde la primera lectura. **Objeción acertada:** ¡Objeción! → Justo dice su primera frase con la música que venía → recién en la segunda frase entra Objection! (`conMusica`;
+si la primera frase trae su propia `music`, se respeta). **Cornered, Cornered Variation y Telling the Truth no se interrumpen**: mientras suenan, Objection!/Logic and Trick no entran (`MUSICA_TENSA`).
 `present` acepta `music` (null = silencio) y `choice` acepta `pickMusic` (al elegir bien); `breakdown` con `keepMusic:true` no corta la música.
 Al cambiar de canción (o a silencio) la que termina se apaga con un **fundido** (`FADE_MS` en audio.js; dos reproductores `musicEls`).
 Para probar: si solo cambia `casos/casoN.js`, basta recorrer ese caso; si cambia `js/`, recorrer todos.
