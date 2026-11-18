@@ -824,7 +824,7 @@ function renderSprite(){
 /* Animaciones de entrada/salida de una pose (cuadros sueltos de ART que se pasan antes de quedar en la pose).
    Justo: levanta el brazo al apuntar y lo baja al terminar; se pone los lentes y toma el papel. */
 const TRANS={ ines:{
-  point:{in:["ap2","ap3","ap4","ap5"], out:["ap13","ap14","ap15","ap16"], ms:55},   // el brazo de «point» se acortó: la animación no pasa de ese largo
+  point:{in:["ap2","ap3","ap4","ap5","ap6","ap7","ap8"], out:["ap12","ap13","ap14","ap15","ap16"], ms:45},
   papel:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170},
   papelThink:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170} }};
 const RAW={}; function rawImg(who,k){ const key=who+"/"+k; if(!RAW[key] && String(ART[who][k]).startsWith("atlas:")) RAW[key]=atlasFrame(ART[who][k]);
