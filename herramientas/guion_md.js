@@ -14,7 +14,7 @@ const linea=l=>{
   if(l.show) extra.push("muestra: "+nombreEv(l.show));
   if(l.read) extra.push("lectura nueva de "+nombreEv(l.read[0]));
   if(l.music!==undefined) extra.push("música: "+(l.music||"silencio"));
-  if(l.zoom) extra.push("zoom");
+  if(l.zoom) extra.push("zoom"); if(l.auto) extra.push("pasa sola");
   if(l.damage) extra.push("pierde credibilidad");
   P(`**${N(l.who)}:** ${limpia(l.text)}${extra.length?" *["+extra.join("; ")+"]*":""}  `);
 };
@@ -48,7 +48,7 @@ function cmd(s){
     case "choice": P(`\n### DECISIÓN: ${limpia(s.text)}\n`);
       s.options.forEach(o=>{ P(`- ${o.ok?"✅ ":""}${o.t}${o.pierde?" (si se elige, se pierde el juicio)":""}`); if(o.w){ P(`  *Si se elige:*  `); lineas(o.w); } });
       P(`\n*Respuesta correcta:*  `); lineas(s.ok); P(""); break;
-    case "present": P(`\n### PRESENTAR: ${limpia(s.text)} → ✅ ${[].concat(s.answer).map(nombreEv).join(" o ")}\n`); lineas(s.ok); break;
+    case "present": P(`\n### PRESENTAR: ${limpia(s.text)} → ✅ ${[].concat(s.answer).map(nombreEv).join(" o ")}\n`); if(s.wrong){ P(`*Si presenta otra:*  `); lineas(s.wrong); } P(`*Si presenta la correcta:*  `); lineas(s.ok); break;
     case "senalar": P(`\n### TOCAR EN EL PLANO: ${s.ayuda}\n`); (s.zonas||[]).forEach(z=>{ P(`*Si toca otro lugar:*  `); lineas(z.wrong); }); P(`*Fuera de las zonas:*  `); lineas(s.wrong); P(`✅ **Correcto: la bodega.**\n`); break;
     case "reacciones": P(`\n*[Se ve a cada uno, sorprendido: ${s.list.map(x=>N(x[0])).join(", ")}]*\n`); break;
     default: P(`*[${s.cmd}]*`);

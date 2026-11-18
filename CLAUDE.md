@@ -68,7 +68,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   Contrainterrogatorio / Interrogatorio. Preferir cuadros cortos y reacciones breves («¡¿Q-qué?!», «Mmm...»).
 - En una línea: `evidence:"id"` hace entrar la prueba al expediente (el juego se detiene, baja el panel y
   espera al jugador); `read:["id","nueva lectura"]` reinterpreta una prueba; `damage:true` penaliza;
-  `music:null` corta la música; `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena; `show:"id"` muestra en grande una prueba que ya está en el expediente. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento (letra celeste). Solo en Justo la boca queda quieta; en los demás es un susurro y la boca se mueve.
+  `music:null` corta la música; `auto:ms` = la línea pasa sola después de escribirse (sin tocar); un `present` sin `soft` puede traer su propio `wrong` (con `damage`); `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena; `show:"id"` muestra en grande una prueba que ya está en el expediente. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento (letra celeste). Solo en Justo la boca queda quieta; en los demás es un susurro y la boca se mueve.
 - `INV` (investigación; formato completo al inicio de `js/investigacion.js`): `{cmd:"invest", ref:"dia1"}` abre la
   investigación: lugares con Examinar / Hablar / Presentar / Moverse; termina cuando se cumple `done` (pruebas/marcas).
   `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. **Silencio**: un tema con `silence` se rompe

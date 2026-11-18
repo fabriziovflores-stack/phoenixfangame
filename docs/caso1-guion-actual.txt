@@ -505,11 +505,12 @@ JUSTO: Y no existe prueba que lo sitúe en la bodega.
 JUSTO: La Fiscalía tiene una sospecha y un testigo que inventó una revisión. No tiene acreditada la participación de mi cliente.
 PENNA: ¡Protesto! El acusado entró al recinto esa tarde, conocía la puerta lateral y su lona envolvía el cuadro. [¡PROTESTO!; golpe en la mesa; música: suspenso]
 PENNA: No son hechos imaginarios, Valdivia. Esos indicios merecen valoración, aun si Llavín mintió.
-PENNA: Su defensa solo ha probado que ninguno lo vio en el instante preciso.
-JUSTO: (Lo tengo contra las cuerdas.)
+PENNA: Si fuese así... ¿quién robó el cuadro? Esa debería ser su verdadera pregunta.
+JUSTO: Y tengo la respuesta.
+PENNA: ¿Q-qué...?
 
 ------------------------------------------------------------
-DECISIÓN: (¿QUÉ PASÓ REALMENTE ESA NOCHE?)
+DECISIÓN: ¿QUIÉN ROBÓ EL CUADRO, VALDIVIA?
 ------------------------------------------------------------
 
 - El guardia robó el cuadro (si se elige, se pierde el juicio)
@@ -523,32 +524,66 @@ JUEZA: Tenía esperanzas en usted, Valdivia. Tendré que declararlo culpable.
 - ✅ El guardia fingió robar el cuadro
 
 Respuesta correcta:
-JUSTO: ¡Esos hechos existen! [¡OBJECIÓN!; golpe en la mesa; música: silencio]
-JUSTO: Pero el libro de visitas no registra ninguna entrada nocturna de Tomás. [música: variacion; zoom]
+JUSTO: ¡No existe un ladrón real en esta historia! [¡OBJECIÓN!; golpe en la mesa; música: silencio]
+JUSTO: Todo esto es un montaje: la ventana rota, el cuadro que no pasa por ella... [zoom]
+JUSTO: ...y la bodega que nunca se revisó. [zoom]
+JUSTO: El único capaz de armar todo esto es Custodio Llavín. [zoom]
+LLAVÍN: ...
+JUSTO: Él no robó el cuadro. ¡Lo escondió para inculpar a alguien! [zoom]
+JUSTO: ¡Y ese alguien es Tomás! [música: variacion; zoom]
 JUSTO: Su lona quedó colgada en el patio de la galería, no en sus manos. Y el guardia inventó la única identificación directa. [zoom]
-JUSTO: ¡Ninguno de sus indicios demuestra que Tomás conociera ni participara en el montaje! ¡No pueden suplir la prueba que falta! [zoom]
+JUSTO: Es lo único que dejó Tomás: la lona colgada mientras lavaba las brochas. Cuando volvió, ya no estaba. [zoom]
+JUSTO: ¡Ninguna prueba culpa realmente a Tomás! ¡Solo fue víctima de un montaje! [zoom]
+JUSTO: ¡No pueden suplir la prueba que falta! [zoom]
 PENNA: ...Es... posible...
+PENNA: Pero no tiene un motivo evidente para inculpar a alguien, siendo que no quiso robar el cuadro.
+JUSTO: Tengo la prueba perfecta para cerrar este caso. Una que recordará por siempre.
+JUEZA: Muestre, Valdivia. Muestre.
 
-[Música: silencio]
+------------------------------------------------------------
+PRESENTAR: ¿CUÁL ES LA PRUEBA QUE CERRARÁ EL CASO? → ✅ BITÁCORA DEL GUARDIA
+------------------------------------------------------------
+
+Si presenta otra:
+JUSTO: ¡Esta es la prueba, Su Señoría! [¡MIRE ESTO!; golpe en la mesa]
+JUEZA: ¿Eso? ¿Esa es su prueba perfecta?
+PENNA: Diecisiete abogados prometieron una prueba perfecta. Ninguno la tenía.
+JUEZA: No juegue con la paciencia de este tribunal, abogado. [pierde credibilidad]
+Si presenta la correcta:
+JUSTO: ... [¡MIRE ESTO!; muestra: Bitácora del guardia]
 
 [Se ve a cada uno, sorprendido: JUEZA, PENNA, LLAVÍN, TOMÁS, CHAYO]
 
+JUSTO: El memorándum. Desde el 1 de diciembre se eliminará el turno de noche. [lectura nueva de Bitácora del guardia]
+NARRACIÓN: Lectura actualizada: Bitácora del guardia.
+JUSTO: No quería resolver problemas de dinero. Quería demostrar que un guardia humano es esencial para proteger la galería.
+PENNA: ...! [golpe en la mesa]
+PENNA: ...
 JUSTO: (Lo logré.)
 CHAYO: (Le has devuelto todo el caso... a Máximo Penna.)
 LLAVÍN: ...
-PENNA: Llavín. Puede guardar silencio.
+PENNA: ...
+
+[Se ve a cada uno, sorprendido: JUEZA, PENNA, LLAVÍN, TOMÁS, CHAYO]
+
+JUSTO: (Así que esto se siente cerrar un caso...)
+JUEZA: Es... posible, y coincide bastante bien con todos los testigos... ¿Qué le parece, Penna?
+PENNA: ...
+JUSTO: (Profundo silencio. Un mata novatos ha sido vencido por un novato.)
+PENNA: ...Llavín. Puede guardar silencio. Este caso... no es en contra de usted. No diga nada... que pueda...
+CHAYO: ¡Está contra las cuerdas! Creo que nunca le había pasado.
 LLAVÍN: ¡Doce años cuidando esa galería! ¡Conozco a todo el mundo!
 LLAVÍN: ...Lo... Lo siento.
 PENNA: ...
 JUSTO: (Ya no pueden condenar a Tomás por lo que otro supone.)
 JUEZA: ¿Desea aclarar aquello de lo que le inculpa la defensa?
 LLAVÍN: ¡No pienso dar explicaciones por cumplir mi trabajo!
-LLAVÍN: ¡Doce años encontrando lo que otros perdían! Quería que la administración recordara quién les cuidaba todo.
-LLAVÍN: Pensé esconderlo solo un rato. Romper el vidrio. Después iba a aparecer yo con el cuadro y salvar el día.
-LLAVÍN: Usé la lona que Tomás dejó colgada en el patio. Iba a devolverlo antes de que alguien llamara a Carabineros.
-LLAVÍN: Oyeron el vidrio, llegó una patrulla que estaba cerca... y sellaron el pasillo. Lo dejé allí.
-LLAVÍN: ¡No quería que lo detuvieran! Pensé que se aclararía... que alguien lo aclararía.
-LLAVÍN: No pensé que sería en este juicio.
+LLAVÍN: ¡Doce años encontrando lo que otros perdían! Quería que la administración recordara quién les cuidaba todo. [pasa sola]
+LLAVÍN: Pensé esconderlo solo un rato. Romper el vidrio. Después iba a aparecer yo con el cuadro y salvar el día. [pasa sola]
+LLAVÍN: Sí. Usé la lona que Tomás dejó colgada en el patio. Iba a devolverlo antes de que alguien llamara a Carabineros. [pasa sola]
+LLAVÍN: Oyeron el vidrio, llegó una patrulla que estaba cerca... y sellaron el pasillo. Lo dejé allí. [pasa sola]
+LLAVÍN: ¡No quería que lo detuvieran! Pensé que se aclararía... que alguien lo aclararía. [pasa sola]
+LLAVÍN: No pensé que sería en este juicio... y mucho menos que llegaríamos a esto.
 TOMÁS: Don Custodio...
 LLAVÍN: ...
 
@@ -557,7 +592,7 @@ LLAVÍN: ...
 [Música: tristeza]
 
 LLAVÍN: Te vi pasar tantas tardes, cabro. Y dejé que creyeran lo peor de ti.
-LLAVÍN: Lo hice yo. Mentí. Tú no entraste a la sala esa noche.
+LLAVÍN: Lo hice yo. Mentí. Tú no entraste a la sala esa noche...
 PENNA: ...Bien. Ya tenemos la verdad frente a los ojos.
 PENNA: Corresponde al tribunal asumir la verdad. Yo asumiré la responsabilidad de haber confiado en este guardia. Sin excusas.
 PENNA: No crea que olvidaré esto, joven Valdivia.
@@ -566,7 +601,7 @@ JUEZA: La responsabilidad eventual del guardia deberá investigarse por separado
 [Mazo]
 
 JUEZA: He escuchado suficiente. Abogado Valdivia, lo felicito.
-JUEZA: Nos ha demostrado que la escucha es lo más importante en esta habitación.
+JUEZA: Nos ha demostrado que escuchar es fundamental en esta habitación.
 JUEZA: Se dicta veredicto absolutorio.
 
 ============================================================
@@ -593,18 +628,19 @@ CHAYO: Quería que lo necesitaran. Eso explica el engaño; no lo disculpa.
 TOMÁS: Hoy quiero dormir. Mañana veré qué hago con esa pregunta.
 TOMÁS: Y le voy a pintar un mural. Pero sin una ventana, por si acaso.
 JUSTO: (Con tal que no lo pinte de dos metros...)
+CHAYO: Allá se fue corriendo, feliz, saludado por su familia... Oh, pero mira quién viene para acá.
 PENNA: Valdivia.
 JUSTO: (¿Todavía sigue aquí?)
 PENNA: Diecisiete. Diecisiete juicios sin una derrota. Y hoy un abogado que todavía huele a credencial nueva...
-NARRACIÓN: Penna intenta cerrar su reloj de bolsillo. El broche no encaja a la primera.
 JUSTO: Fiscal, yo...
 PENNA: No me ofrezca consuelo, Valdivia. Sería una segunda falta de respeto.
-PENNA: Confundí la seguridad de un testigo con la solidez de una prueba. Y usted se atrevió a comprobarlo.
+PENNA: Confundí la seguridad de un testigo con la solidez de una prueba. Y usted se atrevió a dar vuelta el caso.
 PENNA: No lo considere una felicitación. Considérelo una anomalía que pienso corregir.
-PENNA: La próxima vez no me limitaré a responderle: seré yo quien le obligue a defender cada palabra.
+PENNA: Aborrezco a los abogados enclenques que solo buscan la venia.
+PENNA: La próxima vez no me limitaré a responderle: le obligaré a probar cada una de sus decisiones.
 CHAYO: ¿Eso fue una felicitación?
 PENNA: No, señorita Catalán. Y le aconsejo que no vuelva a poner esa palabra en mi boca.
-JUSTO: (Excelente. Acabo de ganarme un enemigo con bigote.)
+JUSTO: (Excelente. Acabo de ganarme un enemigo. Y el peor enemigo que puede tener un abogado.)
 CHAYO: ¿Empanadas? Invito yo.
 JUSTO: ¿En serio?
 CHAYO: Invito. Tú pagas. No confundas la palabra con el hecho, abogado.

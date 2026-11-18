@@ -168,7 +168,8 @@ function say(l, done){
     const reveal = l.sfx==="badum" || l.sfx==="drama" || pos==="rayos";
     typeText.vel = typeof l.speed==="number" ? l.speed : l.speed==="rapido" ? T.rapido : l.speed==="nervioso" ? T.nervioso : l.speed==="drama" ? T.drama
       : reveal ? T.drama : ["sweat","worried","panic","nervous"].includes(l.mood) ? T.nervioso : T.letra;
-    const start=()=>typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on"); });
+    const start=()=>typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on");
+      if(l.auto) setTimeout(()=>{ if(mode==="dialog" && waiting===done && !busy && !typing) advance(); }, l.auto); });   // auto:ms = pasa sola, sin tocar
     const anima=Math.max(0, seqUntil-Date.now());          // el texto espera a que termine la animación (apuntar, lentes...)
     const camara = pos!==prevPos && prevPos!=="negro" && ["defensa","fiscalia","estrado","juez"].includes(pos);
     const espera=Math.max(entra?ENTRADA_MS+T.trasAparecer:0, anima, l.anim?T.anim:0, camara?T.camara:0, reveal?T.revelacion:0)+(l.wait||0);
@@ -525,6 +526,7 @@ function presentItem(id){
     const p=X.prompt;
     if([].concat(p.answer).includes(id)){ const d=X.done; if(p.music!==undefined){ music(p.music, true); play(p.ok, d); } else play(p.soft ? p.ok : conMusica(p.ok,"objecion"), d); }
     else if(p.soft) play(p.wrong||[], ()=>{ pc=checkpoint; run(); });     // sin castigo (fuera del juicio)
+    else if(p.wrong) SFX.whoops(), play(p.wrong, ()=>{ if(G.health<=0) return gameOver(); pc=checkpoint; run(); });   // error propio (con damage)
     else SFX.whoops(), play([{who:"ines",bubble:"mire",pose:"point",anim:"slam",text:"¡Mire esto, Su Señoría!"},
                {who:"jueza",mood:"serious",text:"...¿Y eso qué tiene que ver, abogado?"},
                {who:"fiscal",mood:"smug",pose:"cafe",text:"Hmph. Novato. *sorbo*"},

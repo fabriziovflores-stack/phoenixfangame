@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ACTA CERO — Prueba del final</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=93">
+<link rel="stylesheet" href="css/style.css?v=94">
 </head>
 <body>
 <div id="ds">
@@ -50,16 +50,16 @@
     <div class="hint">Activa el sonido · toca la pantalla de abajo para avanzar</div>
   </div>
 </div>
-<script src="js/casos.js?v=93"></script>
-<script src="casos/caso1.js?v=93"></script>
-<script src="casos/caso2.js?v=93"></script>
-<script src="js/audio.js?v=93"></script>
-<script src="js/sprites.js?v=93"></script>
-<script src="assets/hd/atlas.js?v=93"></script>
-<script src="js/assets.js?v=93"></script>
-<script src="js/engine.js?v=93"></script>
-<script src="js/investigacion.js?v=93"></script>
-<script src="js/musica.js?v=93"></script>
+<script src="js/casos.js?v=94"></script>
+<script src="casos/caso1.js?v=94"></script>
+<script src="casos/caso2.js?v=94"></script>
+<script src="js/audio.js?v=94"></script>
+<script src="js/sprites.js?v=94"></script>
+<script src="assets/hd/atlas.js?v=94"></script>
+<script src="js/assets.js?v=94"></script>
+<script src="js/engine.js?v=94"></script>
+<script src="js/investigacion.js?v=94"></script>
+<script src="js/musica.js?v=94"></script>
 <script>
 /* Versión de prueba: salta directo al veredicto y la escena final del Caso 1. No toca la partida guardada. */
 saveGame=function(){ return true; }; clearSave=function(){};
@@ -80,6 +80,7 @@ const SALTOS=[
   {t:"🔦 Llavín: dentro de la sala", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g2")},
   {t:"🗺️ Tocar la bodega en el plano", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="senalar")-1},
   {t:"📻 Llavín: la ronda de las 23:35", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g3")},
+  {t:"📒 La prueba que cierra el caso", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], musica:"variacion", paso:()=>SCRIPT.findIndex(s=>s.cmd==="present"&&s.answer==="bitacora")},
   {t:"🔥 Conclusión y confesión", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], musica:"suspenso", paso:()=>SCRIPT.findIndex(s=>s.cmd==="choice"&&s.who==="jueza")},
 ];
 SALTOS.forEach(sa=>{ const bt=document.createElement("button"); bt.textContent=sa.t; bt.style.fontSize="3.4cqw";
