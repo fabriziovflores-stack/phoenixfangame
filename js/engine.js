@@ -165,7 +165,7 @@ function say(l, done){
     mode="dialog"; renderControls();
     waiting=done;
     blipWho=l.who;
-    const reveal = l.sfx==="badum" || l.sfx==="drama" || pos==="rayos";
+    const reveal = l.sfx==="badum" || l.sfx==="drama" || (pos==="rayos" && !l.zoom);   // con zoom (Cornered Variation) habla a velocidad normal
     typeText.vel = typeof l.speed==="number" ? l.speed : l.speed==="rapido" ? T.rapido : l.speed==="nervioso" ? T.nervioso : l.speed==="drama" ? T.drama
       : reveal ? T.drama : ["sweat","worried","panic","nervous"].includes(l.mood) ? T.nervioso : T.letra;
     const start=()=>typeText(l.text, style, ch?ch.voice:(l.who===null?700:700), ()=>{ if(mode==="dialog") $("next").classList.add("on");
