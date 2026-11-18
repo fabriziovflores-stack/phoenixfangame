@@ -43,6 +43,7 @@
     <p id="casoIntro">Valparaíso. Un defensor en su primer juicio. Y un cuadro de casi dos metros que habría salido por una ventana de sesenta centímetros.</p>
     <button class="gold" id="contBtn" style="display:none">▶ Continuar partida</button>
     <button class="gold" id="finBtn">🎬 Ver escena final (Caso 1)</button>
+    <div id="saltos" style="display:flex;flex-wrap:wrap;gap:1.2cqw;justify-content:center;margin:1cqw 0"></div>
     <button class="gold" id="startBtn">▶ Nueva partida</button>
     <button id="musBtn">🎵 Mi música</button>
     <div id="musPanel"></div>
@@ -70,6 +71,24 @@ $("finBtn").onclick=()=>{
   G.nocap=true; music("corte");
   pc=SCRIPT.findIndex(s=>s.cmd==="verdict")-1; checkpoint=pc; run();
 };
+/* Atajos: saltar a un momento del Caso 1 para mirarlo (con el expediente que corresponde a ese punto) */
+const SALTOS=[
+  {t:"⚖️ Objeción a Zoila", ev:["ficha","luz","bitacora","ventana","visitas"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="z1")-1},
+  {t:"🎩 Penna interroga a Llavín", ev:["ficha","luz","bitacora","ventana","visitas","lona"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="direct")-1},
+  {t:"📷 La foto de las 23:24", ev:["ficha","luz","bitacora","ventana","visitas","lona","plano1","boleta","chatvecinal","fotozoila","informe","parte"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g4")-5},
+  {t:"🔥 La lona: zoom y Cornered Variation", ev:["ficha","luz","bitacora","ventana","visitas","lona","plano1","boleta","chatvecinal","fotozoila","informe","parte","fibra"], musica:"persecucion", paso:()=>SCRIPT.findIndex(s=>s.cmd==="present"&&s.answer==="lona")},
+  {t:"💥 La bitácora y el quiebre de Llavín", ev:["ficha","luz","bitacora","ventana","visitas","lona","plano1","boleta","chatvecinal","fotozoila","informe","parte","fibra"], musica:"variacion", paso:()=>SCRIPT.findIndex(s=>s.cmd==="present"&&s.answer==="bitacora")},
+];
+SALTOS.forEach(sa=>{ const bt=document.createElement("button"); bt.textContent=sa.t; bt.style.fontSize="3.4cqw";
+  bt.onclick=()=>{
+    selectCase("caso1"); saveGame=function(){ return true; };
+    initAudio(); unlockMusic(); if(AC&&AC.state==="suspended") AC.resume();
+    $("title").style.display="none"; resetGame();
+    sa.ev.forEach(id=>{ if(!EVIDENCE.find(e=>e.id===id)) EVIDENCE.push(EVX[id]); });
+    G.nocap=true; music(sa.musica||"corte");
+    pc=sa.paso(); checkpoint=pc; run();
+  };
+  $("saltos").appendChild(bt); });
 </script>
 </body>
 </html>
