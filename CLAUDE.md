@@ -178,6 +178,8 @@ una respuesta equivocada y la derrota) con un navegador automatizado y confirmar
    dueño escriba los diálogos y la cinemática (7 imágenes). Personajes y fondos del Caso 2: completos
    (prompts en `docs/caso2-prompts.md`).
 2. Fondo de detrás de la jueza (Caso 1).
-3. Caso 1 = guion del dueño (versión sin pruebas «milagrosas»: sin foto, mensajes ni F-4). 4 testimonios (Zoila, Llavín ×3).
-   Contradicciones que NO cierran el testimonio: `sigue:true` + `revela:[ids]` en la declaración. `pressOnce:true` en un testimonio = presionar
-   dos veces la misma declaración cuesta credibilidad. Justo no adivina la autoría: demuestra que nada sitúa a Tomás.
+3. Caso 1 = guion de producción del dueño v1.0 (prólogo donde se ve a Llavín; 4 testimonios: Zoila «farol», Llavín «robo imposible»,
+   Zoila «dos llamadas», Llavín «ronda perfecta»; motivo con el memorando; absolución por falta de prueba). Mecánicas: `sigue:true`+`revela`
+   (el testimonio continúa tras una contradicción), `requiere:"id"`+`antes` (contradicción que exige otra primero, sin castigo),
+   `firstWrong` en un testimonio (el primer error del tutorial no cuesta), `early` (prueba correcta antes de tiempo). Pendiente: imágenes
+   de la cinemática del prólogo (hoy texto sobre negro).

@@ -525,6 +525,8 @@ function presentItem(id){
     return;
   }
   const s=X.list[X.idx];
+  if(s.contra && [].concat(s.contra).includes(id) && s.requiere && !(X.resueltas&&X.resueltas.has(s.requiere)))
+    return play(s.antes||[{who:"ines",mood:"think",text:"(Todavía no. Primero tengo que desmontar otra parte de su declaración.)"}], showStatement);   // correcta, pero falta otra antes: sin castigo
   if(s.contra && [].concat(s.contra).includes(id) && s.sigue){   // contradicción que NO cierra el testimonio: sigue con declaraciones nuevas
     X.resueltas=X.resueltas||new Set();
     if(X.resueltas.has(s.id)) return play([{who:"ines",mood:"think",text:"(Eso ya quedó demostrado. Hay que seguir.)"}], showStatement);
@@ -537,6 +539,7 @@ function presentItem(id){
   }
   if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; play(conMusica(s.contraLines,"objecion"), done); }   // contradicción acertada: suena «Objeción»
   else if(s.early && [].concat(s.early.ids).includes(id)) play(s.early.lines, showStatement);   // correcta, pero antes de tiempo: sin castigo
+  else if(X.def.firstWrong && !G.tutErr){ G.tutErr=1; SFX.whoops(); play(X.def.firstWrong, showStatement); }   // tutorial: el primer error no cuesta
   else SFX.whoops(), play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });
 }
 function gameOver(){
