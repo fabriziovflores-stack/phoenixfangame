@@ -169,7 +169,7 @@ Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.
 **Siempre antes de publicar**, aunque el cambio sea mínimo: `for f in js/*.js casos/*.js; do node --check $f; done` y abrir el
 juego tocando «Nueva partida» (un error de sintaxis en un archivo deja el juego sin arrancar).
 `prueba-final.html` = el juego con un botón que salta al veredicto y la escena final del Caso 1, y atajos (`SALTOS`) a momentos clave
-(objeción a Zoila, Penna interroga, foto 23:24, la lona, la bitácora); no toca la partida guardada.
+(objeción a Zoila, la ventana, la linterna, la ronda de las 23:35, la conclusión y el quiebre); no toca la partida guardada.
 No hay tests en el repo. Antes de entregar: recorrer el caso completo (ruta ganadora, una prueba equivocada,
 una respuesta equivocada y la derrota) con un navegador automatizado y confirmar que no hay errores de consola.
 
@@ -178,5 +178,6 @@ una respuesta equivocada y la derrota) con un navegador automatizado y confirmar
    dueño escriba los diálogos y la cinemática (7 imágenes). Personajes y fondos del Caso 2: completos
    (prompts en `docs/caso2-prompts.md`).
 2. Fondo de detrás de la jueza (Caso 1).
-3. Caso 1 = guion del dueño «La X que faltaba» (8 testimonios + interrogatorio de Penna). Pruebas nuevas: boleta, plano1,
-   chatvecinal, fotozoila (foto grande `assets/pruebas/foto2324-grande.png`, X en (156,85)), parte, fibra. Íconos con `herramientas/pruebas.py`.
+3. Caso 1 = guion del dueño (versión sin pruebas «milagrosas»: sin foto, mensajes ni F-4). 4 testimonios (Zoila, Llavín ×3).
+   Contradicciones que NO cierran el testimonio: `sigue:true` + `revela:[ids]` en la declaración. `pressOnce:true` en un testimonio = presionar
+   dos veces la misma declaración cuesta credibilidad. Justo no adivina la autoría: demuestra que nada sitúa a Tomás.

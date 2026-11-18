@@ -474,6 +474,14 @@ function move(d){
 function press(){
   if(busy) return;
   const s=X.list[X.idx];
+  if(X.def.pressOnce){                                   // testimonio donde repetir una pregunta cuesta credibilidad
+    X.presionadas=X.presionadas||new Set();
+    if(X.presionadas.has(s.id)){ SFX.whoops(); return play(X.def.pressOnceLines||[
+      {who:"fiscal",bubble:"objecion",pose:"point",text:"¡Protesto! La defensa repite una pregunta que ya fue respondida."},
+      {who:"jueza",mood:"disappoint",damage:true,text:"Ha lugar. Abogado, se lo advertí: lo anoto en su contra."}],
+      ()=>{ if(G.health<=0) return gameOver(); showStatement(); }); }
+    X.presionadas.add(s.id);
+  }
   let lines=s.press.map((l,i)=>i===0?Object.assign({bubble:"momento"},l):l);
   if(s.ends){ const done=X.done; X=null; play(lines, done); return; }
   const pool=(typeof FISCAL_PRESS!=="undefined" && FISCAL_PRESS) || null;
@@ -517,6 +525,16 @@ function presentItem(id){
     return;
   }
   const s=X.list[X.idx];
+  if(s.contra && [].concat(s.contra).includes(id) && s.sigue){   // contradicción que NO cierra el testimonio: sigue con declaraciones nuevas
+    X.resueltas=X.resueltas||new Set();
+    if(X.resueltas.has(s.id)) return play([{who:"ines",mood:"think",text:"(Eso ya quedó demostrado. Hay que seguir.)"}], showStatement);
+    X.resueltas.add(s.id); const cx=X;
+    return play(conMusica(s.contraLines,"objecion"), ()=>{ X=cx;
+      const nuevas=(s.revela||[]).map(n=>cx.def.statements.find(z=>z.id===n)).filter(z=>z && !cx.list.includes(z));
+      nuevas.forEach(z=>cx.list.push(z));
+      if(nuevas.length){ cx.idx=cx.list.indexOf(nuevas[0]); SFX.ding(); play([{who:null,text:"El testimonio continúa."}], showStatement); }
+      else showStatement(); });
+  }
   if(s.contra && [].concat(s.contra).includes(id)){ const done=X.done; X=null; play(conMusica(s.contraLines,"objecion"), done); }   // contradicción acertada: suena «Objeción»
   else if(s.early && [].concat(s.early.ids).includes(id)) play(s.early.lines, showStatement);   // correcta, pero antes de tiempo: sin castigo
   else SFX.whoops(), play(WRONG[Math.floor(Math.random()*WRONG.length)], ()=>{ if(G.health<=0) return gameOver(); showStatement(); });

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ACTA CERO — Prueba del final</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=82">
+<link rel="stylesheet" href="css/style.css?v=83">
 </head>
 <body>
 <div id="ds">
@@ -50,16 +50,16 @@
     <div class="hint">Activa el sonido · toca la pantalla de abajo para avanzar</div>
   </div>
 </div>
-<script src="js/casos.js?v=82"></script>
-<script src="casos/caso1.js?v=82"></script>
-<script src="casos/caso2.js?v=82"></script>
-<script src="js/audio.js?v=82"></script>
-<script src="js/sprites.js?v=82"></script>
-<script src="assets/hd/atlas.js?v=82"></script>
-<script src="js/assets.js?v=82"></script>
-<script src="js/engine.js?v=82"></script>
-<script src="js/investigacion.js?v=82"></script>
-<script src="js/musica.js?v=82"></script>
+<script src="js/casos.js?v=83"></script>
+<script src="casos/caso1.js?v=83"></script>
+<script src="casos/caso2.js?v=83"></script>
+<script src="js/audio.js?v=83"></script>
+<script src="js/sprites.js?v=83"></script>
+<script src="assets/hd/atlas.js?v=83"></script>
+<script src="js/assets.js?v=83"></script>
+<script src="js/engine.js?v=83"></script>
+<script src="js/investigacion.js?v=83"></script>
+<script src="js/musica.js?v=83"></script>
 <script>
 /* Versión de prueba: salta directo al veredicto y la escena final del Caso 1. No toca la partida guardada. */
 saveGame=function(){ return true; }; clearSave=function(){};
@@ -74,11 +74,11 @@ $("finBtn").onclick=()=>{
 };
 /* Atajos: saltar a un momento del Caso 1 para mirarlo (con el expediente que corresponde a ese punto) */
 const SALTOS=[
-  {t:"⚖️ Objeción a Zoila", ev:["ficha","luz","bitacora","ventana","visitas"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="z1")-1},
-  {t:"🎩 Penna interroga a Llavín", ev:["ficha","luz","bitacora","ventana","visitas","lona"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="direct")-1},
-  {t:"📷 La foto de las 23:24", ev:["ficha","luz","bitacora","ventana","visitas","lona","plano1","boleta","chatvecinal","fotozoila","informe","parte"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g4")-5},
-  {t:"🔥 La lona: zoom y Cornered Variation", ev:["ficha","luz","bitacora","ventana","visitas","lona","plano1","boleta","chatvecinal","fotozoila","informe","parte","fibra"], musica:"persecucion", paso:()=>SCRIPT.findIndex(s=>s.cmd==="present"&&s.answer==="lona")},
-  {t:"💥 La bitácora y el quiebre de Llavín", ev:["ficha","luz","bitacora","ventana","visitas","lona","plano1","boleta","chatvecinal","fotozoila","informe","parte","fibra"], musica:"variacion", paso:()=>SCRIPT.findIndex(s=>s.cmd==="present"&&s.answer==="bitacora")},
+  {t:"⚖️ Objeción a Zoila", ev:["ficha","luz","lona","visitas","ventana","bitacora"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="z1")-1},
+  {t:"🪟 Llavín y la ventana", ev:["ficha","luz","lona","visitas","ventana","bitacora"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g1")-1},
+  {t:"🔦 La linterna sin pilas", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g2")-2},
+  {t:"🕥 La ronda de las 23:35", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g3")-1},
+  {t:"🔥 La conclusión y el quiebre", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], musica:"suspenso", paso:()=>SCRIPT.findIndex(s=>s.cmd==="choice"&&s.pickMusic===null)-1},
 ];
 SALTOS.forEach(sa=>{ const bt=document.createElement("button"); bt.textContent=sa.t; bt.style.fontSize="3.4cqw";
   bt.onclick=()=>{
