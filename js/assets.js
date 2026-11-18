@@ -78,3 +78,10 @@ const MUSIC_FILES = {
   // espera:   "musica-local/espera.mp3",              // sala de espera
   // victoria: "musica-local/victoria.mp3",            // después del veredicto
 };
+
+/* Modo HD: las mismas imágenes, al doble de resolución (assets/hd/) */
+if(HD){
+  // personajes: cada cuadro HD está dentro de la hoja de su personaje (assets/hd/atlas/, índice en assets/hd/atlas.js)
+  if(typeof HD_ATLAS!=="undefined") Object.keys(ART).forEach(w=>{ if(HD_ATLAS[w]) Object.keys(ART[w]).forEach(k=>{ if(HD_ATLAS[w][k]) ART[w][k]="atlas:"+w+"/"+k; }); });
+  [BGIMG, DESKIMG].forEach(m=>Object.keys(m).forEach(k=>{ m[k]=hdSrc(m[k]); }));
+}

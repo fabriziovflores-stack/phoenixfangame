@@ -1,0 +1,52 @@
+{
+ "muebles/defensa": {
+  "ampliado": true,
+  "fig": 0,
+  "flip": false,
+  "s": 0.9700000000000008,
+  "x": -13,
+  "y": 109,
+  "err": 32.44,
+  "iou": 1.0
+ },
+ "muebles/estrado": {
+  "ampliado": true,
+  "fig": 1,
+  "flip": false,
+  "s": 0.5040000000000003,
+  "x": 59,
+  "y": 106,
+  "err": 50.02,
+  "iou": 0.771
+ },
+ "muebles/fiscalia": {
+  "ampliado": true,
+  "fig": 0,
+  "flip": false,
+  "s": 0.9600000000000007,
+  "x": -11,
+  "y": 109,
+  "err": 42.61,
+  "iou": 1.0
+ },
+ "muebles/juez": {
+  "ampliado": true,
+  "fig": 0,
+  "flip": false,
+  "s": 0.9360000000000007,
+  "x": -9,
+  "y": 97,
+  "err": 61.61,
+  "iou": 0.881
+ },
+ "muebles/locutorio": {
+  "ampliado": true,
+  "fig": 0,
+  "flip": false,
+  "s": 0.9460000000000007,
+  "x": -10,
+  "y": 94,
+  "err": 78.01,
+  "iou": 1.0
+ }
+}

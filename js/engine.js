@@ -313,7 +313,7 @@ const CMD = {
       say({who:null,text:st.text||""}, done);
     };
     if(!st.img) return show(null);
-    const im=new Image(); im.onload=()=>show(im); im.onerror=()=>show(null); im.src=st.img;
+    const im=new Image(); im.onload=()=>show(im); im.onerror=()=>{ if(im.src.includes("/assets/hd/")) im.src=st.img; else show(null); }; im.src=hdSrc(st.img);
   },
   negro(st,done){                                       // fundido a negro y vuelta (ej.: llamar a un testigo)
     const d=$("dim"), ms=st.ms||700; busy=true; d.style.transition="opacity "+(ms/2)+"ms"; d.classList.add("negro");
@@ -352,7 +352,7 @@ const CMD = {
      Fallar quita vida (wrong) y se repite. Sirve dentro de las líneas de una contradicción: {cmd:"senalar", img, area, ayuda, wrong} */
   senalar(st,done){
     const prevX=X, o=$("verPrueba");
-    const abrir=()=>{ o.innerHTML=`<img src="${st.img}">`; o.style.display="flex"; o.onclick=null;
+    const abrir=()=>{ o.innerHTML=`<img src="${hdSrc(st.img)}">`; o.style.display="flex"; o.onclick=null;
       $("topS").classList.add("carta"); X=Object.assign({}, prevX||{}, {senal:st}); mode="senalar"; renderControls(); };
     X={senal:st, prevX}; abrir();
     senalar.tap=(x,y)=>{ const [ax,ay,aw,ah]=st.area, ok=x>=ax&&x<ax+aw&&y>=ay&&y<ay+ah;
@@ -563,7 +563,7 @@ $("stage").addEventListener("click", ev=>{
   if(mode!=="senalar" || busy || !senalar.tap) return;
   const r=$("stage").getBoundingClientRect(); senalar.tap((ev.clientX-r.left)/r.width*256, (ev.clientY-r.top)/r.height*192);
 });
-function verPrueba(src){
+function verPrueba(src){ src=hdSrc(src);
   const o=$("verPrueba"); o.innerHTML=`<img src="${src}"><div>Toca para cerrar</div>`; o.style.display="flex"; SFX.ding();
   o.onclick=()=>{ o.style.display="none"; };
 }
@@ -622,7 +622,7 @@ function emblem(c,x,y){ disc(c,x,y,17,"#f8d048"); disc(c,x,y,14,"#b88818");
 
 const SCN={};
 function scnImg(kind,pos){ const src=(kind==="bg"?BGIMG:DESKIMG)[pos]; if(!src) return null; const k=kind+pos;
-  if(!SCN[k]){ const im=new Image(); SCN[k]=im; im.onload=()=>{ if(G.pos===pos) drawBG(pos); }; im.src=src; } return SCN[k]; }
+  if(!SCN[k]){ const im=respaldoHD(new Image()); SCN[k]=im; im.onload=()=>{ if(G.pos===pos) drawBG(pos); }; im.src=src; } return SCN[k]; }
 /* Fondo de rayos azules: primer plano dramático (pos:"rayos" en una línea). Se mueve mientras está en pantalla. */
 function rayos(c,t){
   const g=c.createRadialGradient(128,96,8,128,96,170); g.addColorStop(0,"#f8f8ff"); g.addColorStop(.25,"#88c8f8"); g.addColorStop(1,"#183878");
@@ -678,8 +678,8 @@ function drawBG(pos){
     }
   }
   const bi=scnImg("bg",pos), di=scnImg("desk",pos);
-  if(bi&&bi.complete&&bi.naturalWidth) c.drawImage(bi,0,0);
-  if(di&&di.complete&&di.naturalWidth){ d.clearRect(0,0,256,192); d.drawImage(di,0,0); }
+  if(bi&&bi.complete&&bi.naturalWidth) c.drawImage(bi,0,0,256,192);
+  if(di&&di.complete&&di.naturalWidth){ d.clearRect(0,0,256,192); d.drawImage(di,0,0,256,192); }
 }
 [...new Set([...Object.keys(BGIMG),...Object.keys(DESKIMG)])].forEach(p=>{ scnImg("bg",p); scnImg("desk",p); });
 /* Ilustraciones de personajes (prueba): si existe ART[personaje], reemplaza al dibujo por código */
@@ -711,15 +711,39 @@ function artFor(who,mood,pose,m,b){ const A=ART[who]; if(!A) return null; const 
   if(A["frente_"+a] && G.pos!=="fiscalia") a="frente_"+a;     // de frente fuera de su puesto (Penna: de perfil en la fiscalía, de frente en la sala de espera)
   return a; }
 const SPR={}; let cur=null, talk=0, blink=0, canTalk=false;
+
+/* Si una imagen HD no existe, se usa la normal (nunca queda un personaje o fondo en blanco) */
+/* Cuadros HD: se recortan de la hoja de cada personaje (una imagen por personaje) a un lienzo de 512×384 */
+const ATL={}, ATF={};
+function atlasFrame(ref){
+  if(ATF[ref]) return ATF[ref];
+  const [w,k]=ref.slice(6).split("/"), r=HD_ATLAS[w][k], c=document.createElement("canvas");
+  c.width=512; c.height=384; c.complete=false; c.listos=[]; ATF[ref]=c;
+  if(!ATL[w]){ ATL[w]=new Image(); ATL[w].src="assets/hd/atlas/"+w+".png"; }
+  const im=ATL[w], pinta=()=>{ c.getContext("2d").drawImage(im,r[0],r[1],r[2],r[3],r[4],r[5],r[2],r[3]); c.complete=true; c.listos.forEach(f=>f()); c.listos=[]; };
+  if(im.complete&&im.naturalWidth) pinta(); else im.addEventListener("load",pinta);
+  return c;
+}
+function respaldoHD(im){ im.addEventListener("error",()=>{ if(im.src.includes("/assets/hd/")) im.src=im.src.replace("/assets/hd/","/assets/"); }); return im; }
 const off=document.createElement("canvas"); off.width=1024; off.height=768;
+/* Pantalla de arriba: en HD los lienzos tienen el doble de píxeles; el dibujo sigue en coordenadas 256×192 */
+["bg","spr","desk"].forEach(id=>{ const cv=$(id); if(HD){ cv.width=512; cv.height=384; const c=cv.getContext("2d"); c.setTransform(2,0,0,2,0,0); c.imageSmoothingEnabled=true; c.imageSmoothingQuality="high"; } });
+const imTmp=document.createElement("canvas"); imTmp.width=256; imTmp.height=192;
+function putIm(c,data){ if(!HD) return c.putImageData(data,0,0); imTmp.getContext("2d").putImageData(data,0,0);
+  c.clearRect(0,0,256,192); c.imageSmoothingEnabled=false; c.drawImage(imTmp,0,0,256,192); c.imageSmoothingEnabled=true; }
 function fkey(who,mood,pose,m,b){ const a=artFor(who,mood,pose,m,b); return a ? who+"|art|"+a : [who,mood,pose,G.nocap,m,b].join("|"); }
 function getFrame(who,mood,pose,m,b,cb){
   const key=fkey(who,mood,pose,m,b);
   let ent=SPR[key];
   if(ent){ if(ent.data){ cb&&cb(ent.data,key); } else if(cb) ent.cbs.push(cb); return; }
   ent=SPR[key]={data:null,cbs:cb?[cb]:[]};
-  const art=artFor(who,mood,pose,m,b); const svg=art?null:sprite(who,mood,pose,m,b).replace("<svg ",'<svg width="1024" height="768" shape-rendering="crispEdges" ');
-  const img=new Image();
+  const art=artFor(who,mood,pose,m,b);
+  if(art && String(ART[who][art]).startsWith("atlas:")){
+    const c=atlasFrame(ART[who][art]), fin=()=>{ ent.data=c; ent.cbs.forEach(f=>f(c,key)); ent.cbs=[]; };
+    if(c.complete) fin(); else c.listos.push(fin); return;
+  }
+  const svg=art?null:sprite(who,mood,pose,m,b).replace("<svg ",'<svg width="1024" height="768" shape-rendering="crispEdges" ');
+  const img=respaldoHD(new Image());
   img.onload=()=>{
     if(art){ ent.data=img; ent.cbs.forEach(f=>f(img,key)); ent.cbs=[]; return; }
     const o=off.getContext("2d",{willReadFrequently:true}); o.clearRect(0,0,1024,768); o.imageSmoothingEnabled=false; o.drawImage(img,0,0,1024,768);
@@ -738,7 +762,7 @@ function renderSprite(){
   if(!cur || seqOn) return;
   getFrame(cur.who,cur.mood,cur.pose,talk,blink,(data,key)=>{
     if(cur && key===fkey(cur.who,cur.mood,cur.pose,talk,blink)) { const c=$("spr").getContext("2d");
-      if(data instanceof ImageData) c.putImageData(data,0,0); else { c.clearRect(0,0,256,192); c.drawImage(data,0,0); } }
+      if(data instanceof ImageData) putIm(c,data); else { c.clearRect(0,0,256,192); c.drawImage(data,0,0,256,192); } }
   });
 }
 /* Animaciones de entrada/salida de una pose (cuadros sueltos de ART que se pasan antes de quedar en la pose).
@@ -747,13 +771,14 @@ const TRANS={ ines:{
   point:{in:["ap2","ap3","ap4","ap5","ap6","ap7","ap8"], out:["ap12","ap13","ap14","ap15","ap16"], ms:45},
   papel:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170},
   papelThink:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170} }};
-const RAW={}; function rawImg(who,k){ const key=who+"/"+k; if(!RAW[key]){ RAW[key]=new Image(); RAW[key].src=ART[who][k]; } return RAW[key]; }
+const RAW={}; function rawImg(who,k){ const key=who+"/"+k; if(!RAW[key] && String(ART[who][k]).startsWith("atlas:")) RAW[key]=atlasFrame(ART[who][k]);
+  if(!RAW[key]){ RAW[key]=respaldoHD(new Image()); RAW[key].src=ART[who][k]; } return RAW[key]; }
 Object.keys(TRANS).forEach(w=>Object.values(TRANS[w]).forEach(t=>t.in.concat(t.out).forEach(k=>rawImg(w,k))));
 let seqTimer=null, seqOn=false, seqUntil=0;
 function playSeq(who,frames,ms){
   clearInterval(seqTimer); seqOn=true; seqUntil=Date.now()+frames.length*ms; let i=0; const c=$("spr").getContext("2d");
   const draw=()=>{ if(i>=frames.length){ clearInterval(seqTimer); seqOn=false; renderSprite(); return; }
-    const im=rawImg(who,frames[i++]); if(im.complete){ c.clearRect(0,0,256,192); c.drawImage(im,0,0); } };
+    const im=rawImg(who,frames[i++]); if(im.complete){ c.clearRect(0,0,256,192); c.drawImage(im,0,0,256,192); } };
   draw(); seqTimer=setInterval(draw,ms);
 }
 function drawSprite(who,mood,pose){
@@ -797,10 +822,16 @@ function selectCase(id){
   $("casoSub").textContent="CASO "+(c.numero||"")+" · "+(c.titulo||"").toUpperCase(); $("casoIntro").textContent=c.intro||"";
   $("contBtn").style.display=loadSave()?"":"none";
   document.querySelectorAll("#casoSel button").forEach(b=>b.classList.toggle("on",b.dataset.c===CASO_ID));
-  SCRIPT.forEach(s=>{ if(s.cmd==="cine"&&s.img) new Image().src=s.img; });   // precarga de la cinemática
+  SCRIPT.forEach(s=>{ if(s.cmd==="cine"&&s.img) new Image().src=hdSrc(s.img); });   // precarga de la cinemática
   try{ localStorage.setItem("actacero_caso",CASO_ID); }catch(e){}
   resetGame();
 }
+/* Portada: elegir calidad de imagen (se guarda y la página se recarga para dibujar en esa resolución) */
+(()=>{ const d=document.createElement("div"); d.id="calidad";
+  d.innerHTML=`<button data-hd="1" class="${HD?"on":""}">✨ Versión HD</button><button data-hd="0" class="${HD?"":"on"}">🎮 Versión NDS</button>`;
+  $("casoSel").after(d);
+  d.querySelectorAll("button").forEach(b=>b.onclick=()=>{ const v=b.dataset.hd==="1"; if(v===HD) return;
+    try{ localStorage.setItem("actacero_hd", v?"1":"0"); }catch(e){} location.reload(); }); })();
 $("casoSel").innerHTML=Object.entries(CASOS).map(([id,c])=>`<button data-c="${id}">Caso ${c.numero}</button>`).join("");
 document.querySelectorAll("#casoSel button").forEach(b=>b.onclick=()=>selectCase(b.dataset.c));
 { let last="caso1"; try{ last=localStorage.getItem("actacero_caso")||"caso1"; }catch(e){} selectCase(last); }

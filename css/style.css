@@ -315,3 +315,9 @@ button.back{background:#283458!important}
 #stage.zoomIn #bg{animation:zoomBg .28s ease-out forwards}
 @keyframes zoomIn{from{transform:translateX(-50%) scale(1)}to{transform:translateX(-50%) scale(1.75)}}
 @keyframes zoomBg{from{transform:scale(1)}to{transform:scale(1.25)}}
+
+/* Modo HD: sin píxeles marcados */
+html.hd canvas, html.hd #verPrueba img{image-rendering:auto}
+#calidad{display:flex;gap:2cqw;justify-content:center;margin:1.5cqw 0}
+#calidad button{font-size:3.6cqw;padding:1cqw 3cqw;opacity:.6}
+#calidad button.on{opacity:1;outline:.5cqw solid #ffe040}

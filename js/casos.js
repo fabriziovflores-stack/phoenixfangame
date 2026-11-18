@@ -1,3 +1,12 @@
+/* Calidad de imagen: «NDS» (256×192, píxeles marcados, como la DS) o «HD» (el doble de resolución, con los dibujos
+   originales). Se elige en la portada y queda guardada en el navegador. En HD las imágenes salen de assets/hd/. */
+const HD = (()=>{ try{ return localStorage.getItem("actacero_hd")==="1"; }catch(e){ return false; } })();
+document.documentElement.classList.toggle("hd", HD);
+function hdSrc(p){
+  if(!HD || typeof p!=="string") return p;
+  if(/^assets\/(fondos|muebles|cine)\//.test(p) || p==="assets/pruebas/foto2324-grande.png") return "assets/hd/"+p.slice(7);
+  return p;
+}
 /* =====================================================================
    REGISTRO DE CASOS
    Cada archivo de casos/ se registra en CASOS. Al elegir un caso, useCase() copia
