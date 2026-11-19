@@ -72,6 +72,7 @@ const MUSIC_GAME = {
   detencion:      "assets/musica/detencion.mp3",    // locutorio de la comisaría (Caso 2)
   verdad:         "assets/musica/verdad.mp3",       // Telling the Truth: cuando la verdad sale a la luz
   variacion:      "assets/musica/variacion.mp3",
+  investigacion:  "assets/musica/investigacion.mp3", // Investigation ~ Opening (Caso 2)
   tristeza:       "assets/musica/tristeza.mp3",     // quiebre triste («Brokenhearted Maya»)    // Pursuit ~ Cornered (Variation): el golpe final contra el culpable
 };
 const MUSICA_LOCAL = false;

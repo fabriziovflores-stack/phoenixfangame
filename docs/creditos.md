@@ -29,9 +29,9 @@ Sintetizada por el propio juego (`js/audio.js`). El jugador puede usar música p
 esa música queda solo en su navegador y nunca se sube al proyecto.
 
 ## Música en archivo (`assets/musica/`)
-Recreaciones en MIDI hechas por el dueño de doce temas de la serie Ace Attorney (Capcom): «Examination ~ Moderato»
+Recreaciones en MIDI hechas por el dueño de trece temas de la serie Ace Attorney (Capcom): «Examination ~ Moderato»
 (`moderato.mp3`), «Examination ~ Allegro» (`allegro.mp3`), «Logic and Trick» (`logica.mp3`), «Objection!» (`objecion.mp3`)
 «Pursuit ~ Cornered» (`persecucion.mp3`), «Trial» (`juicio.mp3`), «Courtroom Lobby» (`lobby.mp3`),
 «Suspense» (`suspenso.mp3`) «Detention Center ~ Jailer's Elegy» (`detencion.mp3`), «Telling the Truth» (`verdad.mp3`)
-y «Pursuit ~ Cornered (Variation)» (`variacion.mp3`), y «Brokenhearted Maya» (`tristeza.mp3`, versión NDS con instrumentos originales). Moderato, Allegro, Logic and Trick, Objection!, Pursuit ~ Cornered, Detention Center, Trial, Telling the Truth, Suspense y Courtroom Lobby se reemplazaron por versiones con los instrumentos originales de DS (SSEQ) que aportó el dueño. Composiciones originales © Capcom. El dueño declara contar con autorización de
+y «Pursuit ~ Cornered (Variation)» (`variacion.mp3`), «Investigation ~ Opening» (`investigacion.mp3`) y «Brokenhearted Maya» (`tristeza.mp3`, versión NDS con instrumentos originales). Moderato, Allegro, Logic and Trick, Objection!, Pursuit ~ Cornered, Detention Center, Trial, Telling the Truth, Suspense, Courtroom Lobby, Cornered (Variation) y Brokenhearted Maya se reemplazaron por versiones con los instrumentos originales de DS (SSEQ) que aportó el dueño. Composiciones originales © Capcom. El dueño declara contar con autorización de
 Capcom por correo para usarlas en este proyecto personal y sin fines de lucro; conviene guardar ese correo junto al proyecto.
