@@ -159,7 +159,7 @@ function say(l, done){
     if(l.show) showEvBox(l.show,3);                          // muestra una prueba que ya está en el expediente
     if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
     if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
-    $("name").textContent = ch ? (l.phone?"📞 ":"")+ch.name : "";
+    $("name").textContent = ch ? (l.phone?"📞 ":"")+(l.name||ch.name) : "";   // name:"???" = todavía no sabemos quién es
     const think = plainText(l.text).startsWith("("); canTalk = !!l.who && !yo && !(think && l.who==="ines");   // solo Justo piensa en silencio; los demás entre paréntesis susurran y mueven la boca
     const style = l.cross ? "cross" : think ? "think" : !l.who ? "narr" : "";
     mode="dialog"; renderControls();

@@ -4,17 +4,17 @@
 ## Expediente (fichas)
 
 - **Credencial**: Credencial de defensor penal público. Ya tiene un caso ganado.
-- **Pistola 9 mm**: Encontrada en la mochila de Tadeo. Disparada una vez. Sin huellas: alguien la limpió.
-- **Informe de autopsia**: Leonel Ferrada, 61. Roce de bala en la mejilla izquierda, de frente. Bala 9 mm en la nuca, disparada por la espalda. Muerte instantánea.
-- **Bala .38**: Incrustada en el marco de la puerta de entrada. Calibre .38, de revólver. No es la bala que mató.
+- **Pistola 9 mm**: Encontrada en la mochila de Tadeo. Disparada una vez. Sin huellas.
+- **Informe de autopsia**: Leonel Ferrada, 61. Roce de bala en la mejilla izquierda, de frente. Bala 9 mm en la nuca. Muerte instantánea. 23:15.
+- **Bala .38**: Incrustada en el marco de la puerta de entrada. Calibre .38, de revólver.
 - **Plano de la casona**: Plano de evacuación. La entrada da a un pasillo oscuro. La cocina está a la derecha, sin vista al pasillo. La pieza de Tadeo, al fondo, no tiene ventana a la calle.
 - **Video cámara municipal**: Calle Templeman. 23:15: sale un taxi desde la casona. 23:42: una camioneta roja baja a toda velocidad. La patente no se lee.
-- **Foto de la camioneta**: Camioneta roja de Rodrigo Saavedra, identificada gracias al video e incautada. En el parabrisas hay un soporte vacío.
+- **Foto de la camioneta**: Camioneta roja.
 - **Libro de huéspedes**: Casona Ferrada, 14 de marzo. Huéspedes: T. Fuegos (pieza del fondo) y B. Plusvalía (pieza del segundo piso).
-- **Taza de té**: En el velador de Tadeo. Restos de té. «El té de bienvenida», según Malva.
-- **Pastillas para el mareo**: Mareamina suave. Falta una. Producen algo de sueño, no un sueño profundo.
+- **Taza de té**: En el velador de Tadeo. Preparado por Malva.
+- **Pastillas para el mareo**: Falta una. Producen algo de sueño.
 - **Foto de una mujer**: Foto antigua de una mujer joven en Puerto Williams. Al reverso: «Leo y yo, 2002».
-- **Agenda del notario**: Notaría Valdés. 15 de marzo, 9:00: «L. Ferrada — modificar testamento — reconocimiento de hijo».
+- **Agenda del notario**: Notaría Valdés. 15 de marzo, 9:00: «L. Ferrada — modificar testamento».
 - **Carta de la madre**: «Tadeo: busca a Leonel Ferrada, en Valparaíso. Es tu padre. Perdóname por no decírtelo antes.»
 - **Examen de pólvora**: Residuos de disparo en las manos de Tadeo: negativo.
 - **Examen de sangre**: Sangre de Tadeo al momento de la detención: clonazepam en dosis alta. No es el remedio para el mareo.
@@ -23,19 +23,23 @@
 - **Receta de clonazepam**: Receta médica a nombre de Malva Ferrada. El frasco, en el baño de la casona, está casi vacío.
 - **Contrato de adelanto**: Malva Ferrada recibió 40 millones de la cadena hotelera como adelanto por la venta de la casona. Firmado solo por ella.
 - **Nota de Estuardo: la corredera**: La pistola 9 mm tiene la corredera dura. Al disparar salta hacia atrás y muerde la mano de quien la toma mal, entre el pulgar y el índice. Deja una herida en media luna.
+- **Cajón vacío**: Cajón del escritorio de la oficina del hospedaje. Cerradura forzada. Vacío.
+- **Llave de la pieza**: Llave de la pieza del fondo. Encontrada sobre la mesa de la pieza de Tadeo, frente a su mochila.
+- **Bala 9 mm**: Extraída de la nuca de Leonel Ferrada. Pericia balística: disparada por la pistola 9 mm encontrada en la mochila.
+- **Registro Civil de Puerto Williams**: Inscripción de nacimiento: Tadeo Ferrada. Apellido cambiado después a Fuegos.
 - **Boleta del taxi**: Taxi de la casona al plan: 23:14 a 23:31. Vuelta a las 00:28.
 
 ## Perfiles
 
 - **Justo Valdivia:** Defensor penal público. Su segundo caso. Sin Chayo.
-- **Rosario «Chayo» Velado:** Practicante de Derecho. En el hospital con la pierna fracturada: la atropellaron la noche del crimen.
-- **Tadeo Fuegos:** El acusado. 23 años, de Puerto Williams. Mochilero. Rapado, gorro de lana.
+- **Rosario «Chayo» Catalán:** Practicante de Derecho. En el hospital con la pierna luxada: la atropellaron la noche del crimen.
+- **Tadeo Fuegos:** El acusado. 18 años, de Puerto Williams. Mochilero. Rapado, gorro de lana.
 - **Leonel Ferrada:** La víctima. 61 años. Dueño de la Casona Ferrada. Prestaba plata a interés.
 - **Eduardo Estuardo:** Investigador policial a cargo del caso. Ahora anda con huincha de medir.
 - **Máximo Penna:** Fiscal. Dieciocho juicios, diecisiete condenas.
 - **Prudencia Fallo:** Jueza. Exige prueba para cada afirmación.
-- **Malva Ferrada:** Hija de la víctima. Administra el hospedaje. Amable, siempre con delantal.
-- **Bárbara Plusvalía:** Representante de una cadena hotelera. Quería comprar la casona.
+- **Malva Ferrada:** Hija de la víctima. Administra el hospedaje. Siempre con delantal.
+- **Bárbara Plusvalía:** Representante de una cadena hotelera. Quiere comprar la casona.
 - **Aurelio Mirón:** Vecino de enfrente. 70 años. Binoculares.
 - **Rodrigo «Rocky» Saavedra:** Mecánico. Dueño de la camioneta roja del video. Le debía plata a Leonel.
 
@@ -48,57 +52,80 @@
 *Cinemática: 14 de marzo. Cerro Concepción. 23:40.*
 
 
-*Cinemática: Una discusión. Un arma.*
+*Cinemática: Una puerta se abre. «No... no podré pagarle.»*
 
 
-*Cinemática: El primer disparo.*
+*Cinemática: ¡PAM!*
 
 
-*Cinemática: ...y un segundo disparo. Desde atrás.*
+*Cinemática: «¡Maldito...!»*
 
 
-*Cinemática: 23:42. Una camioneta huye cerro abajo.*
+*Cinemática: Pasos rápidos. Una puerta. El motor de una camioneta.*
 
 
-*Cinemática: Y en la esquina de Templeman...*
+*Cinemática: ¡PAM!*
 
 
-*Cinemática: A la mañana siguiente, ya había un culpable. Venía del fin del mundo.*
+*Cinemática: La camioneta baja el cerro a toda velocidad.*
 
+
+*Cinemática: Y choca con algo.*
+
+
+*[Música: silencio]*
+
+
+*Cinemática: (...)*
+
+
+*Cinemática: *Ring, ring.**
+
+**ENFERMERA:** Buenas noches, disculpe. ¿Don Justo Valdivia?  
+**JUSTO:** Sí, con él.  
+**ENFERMERA:** Mire, lo llamo desde el hospital. Una amiga suya está aquí.  
+**JUSTO:** ¡¿Quéeeee?!  
 
 # — Día 1 — — Investigación
 
 
 ## 15 de marzo · 8:10 — Hospital Van Buren
 
-**CHAYO:** Ya, deja de mirarme así. Pierna quebrada, nada más. Ya me puse la anestesia de chiste.  
+**CHAYO:** Ya, deja de mirarme así. Es un corte profundo, nada más. Ya me pusieron los puntos... menos mal no en la boca.  
 **JUSTO:** ¿Te acuerdas de algo? ¿Cualquier cosa?  
-**CHAYO:** Unas luces que me encandilaron. Ni el color de la camioneta vi. Y no paró.  
-**CHAYO:** Tres carreras y no me fijé en la patente. La periodista que hay en mí está furiosa.  
+**CHAYO:** Unas luces que me encandilaron. Gracias a mis reflejos alcancé a echarme hacia atrás...  
+**CHAYO:** Pero... se me salió la rodilla.  
+**CHAYO:** No alcancé a ver la patente del auto. Estoy furiosa.  
+**JUSTO:** Cualquiera lo estaría, Chayo.  
+**CHAYO:** Pero no por el accidente. Es que no vi la patente... y eso, con mi ojo fotográfico, me enfurece.  
 **JUSTO:** Carabineros no tiene nada. Ni patente, ni testigos. Nada.  
-**JUSTO:** Lo voy a encontrar, Chayo. Te lo prometo.  
+**JUSTO:** Bueno, iré a hacer la denuncia.  
 **CHAYO:** Mi abogado favorito. El único que tengo, pero igual.  
 **JUSTO:** (El teléfono. Número desconocido.)  
-**ESTUARDO:** ¿Valdivia? Habla Estuardo. Eduardo Estuardo, de la PDI.  
-**ESTUARDO:** Tengo un caso. Asesinato en Cerro Concepción. Un solo sospechoso: un mochilero.  
-**ESTUARDO:** Y pensé... ¿a quién se lo doy? Al hijo del taxista.  
-**JUSTO:** ¿Por qué yo?  
-**ESTUARDO:** Porque esta vez es más complicado. No es un cuadro: es un muerto.  
-**ESTUARDO:** Y porque el cabro dice que no fue. Igual que su viejo.  
+**TADEO:** Hola, sí... ¿con Justo Valdivia?  
+**JUSTO:** Sí, abogado defensor.  
+**TADEO:** ... Disculpe... Vi su nombre en el periódico, y la oficina donde trabaja...  
+**JUSTO:** ¿...?  
+**TADEO:** No... no tengo a nadie. Puedo pagarle.  
+**JUSTO:** Sí, entiendo por dónde va la cosa. Dígame, ¿qué le sucede?  
+**TADEO:** Estoy en el centro de detención. Pregunte por Tadeo Fuegos.  
+**NARRACIÓN:** (Cortó.)  
+**CHAYO:** ¿Quién era, Justo? ¿Mi asesino de rodillas?  
+**JUSTO:** Una persona que necesita mi defensa, parece. Solo que me apena dejarte aquí.  
+**CHAYO:** Me recuperaré pronto.  
 **JUSTO:** (...)  
 **CHAYO:** ¡Justo! ¡La tele! ¡Mira!  
-**NARRACIÓN:** «...el fiscal a cargo será Máximo Penna: dieciocho juicios, diecisiete condenas.»  
+**NARRACIÓN:** «Asesinato en la famosa Casona Ferrada: un cliente que llegó hace muy poco...»  
+**NARRACIÓN:** «...le disparó a sangre fría al dueño de la casona más memorable del barrio.»  
 **NARRACIÓN:** «Según fuentes, varios defensores ya rechazaron el caso.»  
-**NARRACIÓN:** «El único que le ha ganado es un defensor novato: Justo Valdivia.»  
-**CHAYO:** ¡Saliste en la tele! ¡Con nombre y todo!  
-**JUSTO:** (Y con Penna al frente otra vez.)  
-**CHAYO:** Anda. Ese cabro no tiene a nadie. Y yo aquí enyesada, sin poder meterme en nada. Es una tortura.  
-**CHAYO:** Y si de paso encuentras al de la camioneta, me cuentas. Con detalles. Todos.  
+**JUSTO:** ¿Varios... defensores rechazaron el caso?  
+**CHAYO:** Anda. Ese cabro no tiene a nadie. Y yo aquí con el corte, sin poder meterme en nada. Es una tortura.  
+**CHAYO:** Y si de paso encuentras al del auto, me cuentas. Con detalles. Todos.  
 **JUSTO:** (Esta vez, solo.)  
 
 ## INVESTIGACIÓN (dia1) — 15 de marzo
 
-_Termina cuando tienes: Pistola 9 mm, Informe de autopsia, Bala .38, Plano de la casona, Video cámara municipal, Taza de té, Pastillas para el mareo, Foto de una mujer, Libro de huéspedes; y las marcas vio_aurelio, habla_malva, habla_barbara, habla_penna._
+_Termina cuando tienes: Pistola 9 mm, Informe de autopsia, Taza de té, Pastillas para el mareo, Foto de una mujer; y las marcas vio_aurelio, habla_malva, habla_barbara, habla_penna._
 
 
 ### LUGAR: Locutorio de la comisaría
@@ -107,33 +134,39 @@ _Desde aquí se puede ir a: Casona Ferrada — entrada, Comisaría_
 
 *Al llegar la primera vez:*  
 **TADEO:** ...¿Usted es el abogado? Me dijeron que venía uno. *[perfil nuevo: tadeo]*  
-**JUSTO:** Justo Valdivia, defensor público. Vengo a escucharte. Desde el principio.  
+**JUSTO:** Justo Valdivia, defensor. ¿Usted es Tadeo Fuegos?  
+**TADEO:** Sí... buenos días, abogado.  
 
 *Persona: TADEO*  
 *Al volver:*  
 **TADEO:** ¿Volvió, abogado? Aquí sigo. No me dejan ir a ninguna parte.  
 
 **💬 Hablar con TADEO: ¿Quién eres?**  
-**TADEO:** Tadeo Fuegos. De Puerto Williams. Más al sur ya no hay nada, puros pingüinos.  
-**TADEO:** Tres días de ferry y bus para llegar. Llegué antier.  
+**TADEO:** Tadeo Fuegos. De Puerto Williams.  
+**TADEO:** Tres días de ferry y bus para llegar. Llegué anteayer.  
 **JUSTO:** (Puerto Williams. El fin del mundo, literal.) *[marca: t_quien]*  
 
 **💬 Hablar con TADEO: Esa noche**  
-**TADEO:** Me tomé la pastilla del mareo y me acosté temprano. No escuché nada.  
+**TADEO:** Llegué a la casona recién en la noche, después de muchos días de viaje.  
+**TADEO:** Me tomé un té y me acosté temprano. No escuché absolutamente nada.  
 **TADEO:** Desperté con un carabinero encima. Dicen que en mi mochila había una pistola. *[entra al expediente: Pistola 9 mm]*  
-**JUSTO:** (Una 9 mm. Disparada y limpia. ¿Quién guarda un arma así en su propia mochila?)  
+**JUSTO:** (¿Una pistola...? No creo que haya podido viajar por tantos lugares con esa pistola.)  
 **TADEO:** Fue en la Casona Ferrada, en Cerro Concepción. Ahí arrendaba una pieza. *[marca: sabe_casona]*  
 **JUSTO:** (La Casona Ferrada. Tengo que ver ese lugar con mis propios ojos.)  
 
 **💬 Hablar con TADEO: La casona** _(se abre con marcas: sabe_casona)_  
 **TADEO:** Linda casa. La señora Malva me recibió con un té de bienvenida.  
-**TADEO:** Don Leonel, el dueño, casi no habló. Pero me miraba raro.  
-**TADEO:** Como si... como si me conociera.  
-**JUSTO:** (¿Como si lo conociera?)  
+**TADEO:** Don Leonel, el dueño, casi no habló.  
+**JUSTO:** (¿No le habló?)  
 
 **💬 Hablar con TADEO: ¿Por qué viniste a Valparaíso?** _(se abre con marcas: t_quien)_  
 **TADEO:** Por... conocer. Turismo. Eso.  
-**JUSTO:** (Mintió. Se le notó en toda la cara.)  
+**JUSTO:** (Creo que no me está diciendo toda la verdad. Y eso será un problema.)  
+**JUSTO:** Le preguntaré algo, Tadeo. ¿Usted lo hizo? Dígame la verdad.  
+**TADEO:** ...No, señor Justo. No lo hice. Estoy seguro.  
+**JUSTO:** (Menos mal. Qué complicado es defender a alguien culpable.)  
+**JUSTO:** (Chayo... qué dirías tú en este momento.)  
+**JUSTO:** Bueno, iré a investigar qué es lo que sucede.  
 
 **💬 Hablar con TADEO: La foto de la mochila** _(se abre con pruebas: Foto de una mujer)_  
 *🔒 Silencio (hay que romperlo presentando pruebas):*  
@@ -142,14 +175,16 @@ _Desde aquí se puede ir a: Casona Ferrada — entrada, Comisaría_
 **TADEO:** (Este tema ya se habló.)  
 
 **📁 Presentar a TADEO: Pistola 9 mm**  
-**TADEO:** Nunca la había visto. Se lo juro por mi mamá.  
+**TADEO:** Nunca la había visto. Se lo juro.  
 
 **📁 Presentar a TADEO: Taza de té**  
-**TADEO:** El té de la señora Malva. Muy rico. Después dormí como nunca en mi vida.  
-**JUSTO:** («Como nunca en su vida».)  
+**TADEO:** El té de la señora Malva. Muy rico. ¿Lo ha probado?  
+**JUSTO:** No he tenido la dicha.  
 
 **📁 Presentar a TADEO: Pastillas para el mareo**  
 **TADEO:** Esas son mías. Para el mareo. Son suavecitas, me dan un poco de sueño no más.  
+**JUSTO:** ¿Tomaste alguna esa noche?  
+**TADEO:** Sí, solo una cuando llegué.  
 
 **📁 Presentar a TADEO: Foto de una mujer**  
 **TADEO:** ¡¿Por qué anda con eso?! Es mía. Devuélvamela.  
@@ -163,9 +198,14 @@ _Desde aquí se puede ir a: Pieza de Tadeo, Oficina del hospedaje, Casa de Aurel
 
 *Al llegar la primera vez:*  
 **ESTUARDO:** Alto ahí. Escena del crimen. No pasa nadie.  
-**JUSTO:** (Eduardo Estuardo. El investigador que llevó el caso de mi papá.)  
-**ESTUARDO:** ...¿Valdivia? ¿El hijo del taxista?  
-**ESTUARDO:** Mire qué cosas. Igual no pasa.  
+**JUSTO:** Soy el abogado defensor del acusado.  
+**ESTUARDO:** Usted... lo conozco.  
+**JUSTO:** (¿...? ¿Este hombre es un carabinero?)  
+**ESTUARDO:** Un momento... usted... ¡Es el joven que le ganó al fiscal!  
+**ESTUARDO:** Qué gusto conocerlo, señor Justo Valdivia. El fiscal me habló de usted todas estas semanas.  
+**JUSTO:** ¿Y usted quién es?  
+**ESTUARDO:** Soy Edu Estuardo, equipo forense de la Brigada de Investigación.  
+**JUSTO:** Estuardo... (¿Y qué son esos ropajes?)  
 
 *Persona: ESTUARDO* _(se abre con sin: edu_fue)_  
 *Al volver:*  
@@ -173,7 +213,7 @@ _Desde aquí se puede ir a: Pieza de Tadeo, Oficina del hospedaje, Casa de Aurel
 
 *Persona: BÁRBARA* _(se abre con marcas: edu_fue; pruebas: Libro de huéspedes)_  
 *Al verla por primera vez:*  
-**BÁRBARA:** ¿Y usted quién es? ¿Otro policía? El de la huincha se acaba de ir.  
+**BÁRBARA:** ¿Y usted quién es? ¿Otro policía?  
 **JUSTO:** Justo Valdivia. Defensor de Tadeo Fuegos.  
 **BÁRBARA:** Bárbara Plusvalía. Hoteles Mirador del Pacífico. Venía saliendo. *[perfil nuevo: barbara]*  
 
@@ -207,36 +247,35 @@ _Desde aquí se puede ir a: Pieza de Tadeo, Oficina del hospedaje, Casa de Aurel
 **JUSTO:** (Hortensias frescas. Alguien las cambió hoy. En una casa donde anoche mataron a un hombre.)  
 
 **💬 Hablar con ESTUARDO: ¿Qué pasó aquí?**  
-**ESTUARDO:** Víctima en la entrada, boca abajo. Dos disparos. Y una camioneta que huyó, sin identificar.  
-**ESTUARDO:** Y en la mochila del cabro, la pistola. Caso cerrado, dice el fiscal. *[marca: e_escena]*  
+**ESTUARDO:** No le puedo dar mucha información, si no el fiscal me ahorca. Pero tiene derecho a investigar.  
+**JUSTO:** ¿Me podría decir quién es el fiscal a cargo de la investigación?  
+**ESTUARDO:** Hombre, apenas usted le avisó a la policía que sería el abogado, él abrió la puerta de su oficina y gritó...  
+**ESTUARDO:** ¡Protesto! Y ahora está a cargo.  
+**JUSTO:** Esa forma de decir «protesto»... ya me imagino quién es.  
+**JUSTO:** (Tendré que enfrentarme de nuevo a ese bigote peinado.)  
+**ESTUARDO:** Bueno, de todas formas él también presentará estas pruebas. *[marca: e_escena]*  
 
-**💬 Hablar con ESTUARDO: Dejarme pasar** _(se abre con marcas: e_escena)_  
-**JUSTO:** La defensa tiene derecho a ver la escena. Y la carpeta de investigación.  
-**ESTUARDO:** ...Ya, ya. Pero no toque nada. Esta vez medí todo. *[marca: pasar]*  
-**ESTUARDO:** La pieza del cabro es la del fondo. Ahí encontramos la pistola.  
+**💬 Hablar con ESTUARDO: Informe de autopsia** _(se abre con marcas: e_escena)_  
+**ESTUARDO:** Víctima en la entrada, boca abajo. Dos disparos.  
+**ESTUARDO:** Y en la mochila del joven, la pistola. *[marca: pasar]*  
 
 **💬 Hablar con ESTUARDO: La carpeta de investigación** _(se abre con marcas: pasar)_  
 **ESTUARDO:** La autopsia. Dos heridas. *[entra al expediente: Informe de autopsia]*  
-**ESTUARDO:** El video de la cámara municipal. Una camioneta roja, huyendo. *[entra al expediente: Video cámara municipal]*  
-**ESTUARDO:** La camioneta todavía no la ubicamos. La patente no se lee. Estamos en eso.  
-**ESTUARDO:** Ya. Me voy a la comisaría a dejar esto. Si quiere pelear, el fiscal está allá. *[marca: edu_fue]*  
+**ESTUARDO:** El video de la cámara municipal. *[entra al expediente: Video cámara municipal]*  
+**ESTUARDO:** Ya. Me voy a la comisaría a dejar esto. Si se aparece por allá, tenga cuidado: estará él. *[marca: edu_fue]*  
 **JUSTO:** (Se fue. Puedo revisar la casa con calma... y después, ir a ver a Penna.)  
-
-**💬 Hablar con ESTUARDO: El caso de mi papá** _(se abre con marcas: e_escena)_  
-**ESTUARDO:** Me acuerdo de su viejo. No es un caso que se me olvide.  
-**JUSTO:** (Algún día le voy a preguntar más. Hoy no.)  
 
 **💬 Hablar con BÁRBARA: ¿Qué hace aquí?**  
 **BÁRBARA:** Negocios. Mi cadena quiere esta casona. Vista al mar, cerro patrimonial. *[marca: habla_barbara]*  
 **BÁRBARA:** El señor Ferrada era... difícil. Ahora habrá que conversar con la heredera.  
 
-**💬 Hablar con BÁRBARA: La discusión de la cena** _(se abre con marcas: habla_barbara)_  
+**💬 Hablar con BÁRBARA: Compra de la casona** _(se abre con marcas: habla_barbara)_  
 **BÁRBARA:** Le ofrecí el triple de lo que vale. Me dijo que antes muerto.  
 **BÁRBARA:** Mala elección de palabras, ¿no?  
 
 **💬 Hablar con BÁRBARA: ¿Dónde estaba esa noche?** _(se abre con marcas: habla_barbara)_  
 **BÁRBARA:** Eso no es asunto suyo, abogado.  
-**JUSTO:** (No quiso contestar.)  
+**JUSTO:** (No quiso contestar. Esta mujer es sospechosa.)  
 
 **📁 Presentar a BÁRBARA: Pistola 9 mm**  
 **BÁRBARA:** Qué vulgar. Yo resuelvo las cosas con contratos.  
@@ -261,9 +300,8 @@ _Desde aquí se puede ir a: Casona Ferrada — entrada, Pieza de Tadeo_
 **MALVA:** Abogado. ¿Otro tecito?  
 
 **🔍 Examinar: El cajón abierto**  
-**JUSTO:** (Un cajón con la cerradura forzada. Vacío.)  
-**MALVA:** Ahí mi papá guardaba la plata de la caja. Esa noche alguien lo forzó.  
-**MALVA:** Ladrones, abogado. Seguro el mismo que...  
+**JUSTO:** (Un cajón con la cerradura forzada. Vacío.) *[entra al expediente: Cajón vacío]*  
+**MALVA:** Ahí mi papá guardaba la plata de la caja.  
 
 **🔍 Examinar: El libro abierto**  
 **JUSTO:** (El libro de reservas. Letra ordenada, todo anotado al centavo.)  
@@ -278,24 +316,28 @@ _Desde aquí se puede ir a: Casona Ferrada — entrada, Pieza de Tadeo_
 
 **💬 Hablar con MALVA: La casona**  
 **MALVA:** Era de mi abuelo. Mi papá la convirtió en hospedaje. Yo la administro.  
-**MALVA:** Desayunos, sábanas, cuentas... y el té. Siempre el té. *[marca: habla_malva]*  
+**MALVA:** Desayunos, sábanas, cuentas... y el té. Siempre el té. *[marca: habla_malva, m_esanoche]*  
 
-**💬 Hablar con MALVA: Esa noche**  
+**💬 Hablar con MALVA: Esa noche** _(se abre con marcas: m_esanoche)_  
 **MALVA:** Yo estaba en la cocina, lavando las tazas. Sentí los disparos...  
-**JUSTO:** (Tiene una curita en la mano.)  
-**MALVA:** ¿Esto? Me corté con el cuchillo del pan. Qué torpe.  
+**MALVA:** Y me escondí. Pensé que habían entrado a robar. *[marca: m_padre]*  
 
-**💬 Hablar con MALVA: Su padre**  
-**MALVA:** Era duro, pero bueno. Prestaba plata, sí. Medio cerro le debía.  
-**MALVA:** Y odiaba las armas, abogado. Nunca tuvo una.  
+**💬 Hablar con MALVA: Su padre** _(se abre con marcas: m_padre)_  
+**MALVA:** Era duro, pero bueno.  
+**MALVA:** Tenía otros negocios... aparte de la casona.  
+**JUSTO:** ¿Era un hombre con dinero?  
+**MALVA:** Esta casona es conocida por ser muy humilde, pero archiconocida. Hemos tenido temporadas buenas y malas.  
+**MALVA:** Ahora... pasamos casi por una quiebra. Muchas veces han intentado asaltarnos, pero Carabineros ha actuado.  
+**MALVA:** Mi padre... odiaba las armas. Nunca tuvo una. *[marca: m_tadeo]*  
 
-**💬 Hablar con MALVA: Tadeo**  
-**MALVA:** Un muchacho tranquilo. Llegó antier. Le di su té, como a todos.  
-**MALVA:** Nunca pensé que... ay. No sé qué pensar.  
+**💬 Hablar con MALVA: Tadeo** _(se abre con marcas: m_tadeo)_  
+**MALVA:** Un muchacho tranquilo. Llegó anteayer. Le di su té, como a todos.  
+**MALVA:** Nunca pensé que... él... sería... el...  
+**JUSTO:** No continúe si no puede.  
 
 **💬 Hablar con MALVA: La señora Plusvalía** _(se abre con pruebas: Libro de huéspedes)_  
 **MALVA:** Quiere comprar la casa para un hotel. Mi papá no quería vender.  
-**MALVA:** Esa noche discutieron en la cena. Fuerte. Ella salió dando un portazo.  
+**MALVA:** Esa noche discutieron. Fuerte. Ella salió dando un portazo.  
 
 **💬 Hablar con MALVA: Los vecinos**  
 **MALVA:** Don Aurelio, el de enfrente. Ve todo con sus binoculares. Todo. *[marca: vio_cortina]*  
@@ -321,14 +363,14 @@ _Desde aquí se puede ir a: Casona Ferrada — entrada_
 **JUSTO:** (Plano de evacuación. Esta pieza no tiene ventana a la calle. Y la cocina no da al pasillo.) *[entra al expediente: Plano de la casona]*  
 
 **🔍 Examinar: La taza del velador**  
-**JUSTO:** (Una taza con restos de té. Huele a hierbas... y a algo más.) *[entra al expediente: Taza de té]*  
+**JUSTO:** (Una taza con restos de té. Huele a hierbas...) *[entra al expediente: Taza de té]*  
 
 **🔍 Examinar: La caja de pastillas**  
 **JUSTO:** (Pastillas para el mareo. Suaves. Falta solo una.) *[entra al expediente: Pastillas para el mareo]*  
 
 **🔍 Examinar: La mochila**  
 **JUSTO:** (Enorme. Ropa, un saco de dormir, un mapa de la Patagonia lleno de anotaciones.)  
-**JUSTO:** (Y una foto vieja en el bolsillo. Al reverso: «Leo y yo, 2002».) *[entra al expediente: Foto de una mujer]*  
+**JUSTO:** (Y una foto vieja en el bolsillo. Al reverso: «Yo, 2002».) *[entra al expediente: Foto de una mujer]*  
 
 **🔍 Examinar: La cama**  
 **JUSTO:** (Deshecha, pero casi ni movida. Durmió como tronco. Demasiado como tronco.)  
@@ -394,7 +436,10 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 
 *Persona: PENNA*  
 *Al verla por primera vez:*  
-**PENNA:** Valdivia. Vino a ver a su cliente, supongo. Lo va a necesitar.  
+**PENNA:** ...¿Qué hace por aquí?  
+**JUSTO:** Penna... Vine a ver a mi cliente.  
+**PENNA:** Mañana el caso será muy corto. Y esta vez lo derrotaré con pruebas.  
+**PENNA:** Esta vez estoy investigando yo mismo, junto a mi supervisor.  
 *Al volver:*  
 **PENNA:** ¿Todavía por aquí? *sorbo*  
 
@@ -405,13 +450,13 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 **JUSTO:** (La bandera. Un poco desteñida, pero bien planchada.)  
 
 **💬 Hablar con PENNA: El caso**  
-**PENNA:** Arma en su mochila, víctima en la puerta. No me haga perder el tiempo. *[marca: habla_penna]*  
+**PENNA:** Un caso de asesinato es mucho más difícil, novato. Esta vez está en juego la vida de una persona. *[marca: habla_penna]*  
 
 **💬 Hablar con PENNA: Tadeo**  
-**PENNA:** Llegó antier. Esa misma noche hay un muerto en la puerta. No creo en coincidencias.  
+**PENNA:** Llegó anteayer. Esa misma noche hay un muerto en la puerta. No creo en coincidencias.  
 
 **💬 Hablar con PENNA: La camioneta del video** _(se abre con pruebas: Video cámara municipal)_  
-**PENNA:** ¿La camioneta? Un vecino asustado que escapó de los balazos, nada más.  
+**PENNA:** Ese auto no tiene ninguna relación con el caso.  
 **PENNA:** El asesino estaba adentro, colega. Y dormía en la pieza del fondo.  
 **JUSTO:** (¿Y la bala del marco? Alguien disparó desde la calle. Penna no quiere verlo.)  
 
@@ -437,6 +482,9 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 - habla_penna: (Penna está en la comisaría. Debería escuchar lo que tiene contra Tadeo.)
 
 *Al terminar la investigación:*  
+
+*[Fundido a negro]*
+
 **JUSTO:** (Un muerto, dos disparos, una pistola en la mochila equivocada.)  
 **JUSTO:** (Chayo le leería las manos a este cabro. Hoy tengo que leerlas yo.)  
 **JUSTO:** (Mañana es el juicio. No hay más tiempo.)  
@@ -445,7 +493,24 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 # — Día 2 — — Juicio
 
 
+*[Música: espera]*
+
+
+## 16 de marzo · 9:30 — Juzgado de Garantía de Valparaíso — Sala de espera
+
+**JUSTO:** (Esta vez no estoy para nada nervioso. Confío en mi cliente y en lo que he investigado...)  
+**JUSTO:** (Aunque lo que me preocupa va a estar frente a mí.)  
+**ESTUARDO:** Abogado, le deseo mucha suerte en su primer caso. *risa*  
+**JUSTO:** No es mi primer caso, investigador.  
+**ESTUARDO:** ¡Verdad! Se me había olvidado. Bueno, lo veo adentro.  
+**JUSTO:** ¿Va a declarar esta vez?  
+**ESTUARDO:** ¡Claro! ¡He llevado toda la investigación!  
+**JUSTO:** (Va a estar del lado de Penna... Serán cuatro contra uno...)  
+
 *[Música: silencio]*
+
+
+*[Fundido a negro]*
 
 
 *[Mazo]*
@@ -455,8 +520,13 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 
 **JUEZA:** Se abre la audiencia. Causa contra Tadeo Fuegos, por homicidio.  
 **PENNA:** La fiscalía será breve, Su Señoría. Y esta vez, cuidadosa.  
-**PENNA:** Aprendí la lección, Valdivia. Cada prueba de hoy la medí dos veces.  
+**PENNA:** La vez pasada me dejé llevar. Esta vez estaré más atento.  
 **JUSTO:** (No está confiado. Está preparado. Eso es peor.)  
+**PENNA:** Empezaré a relatar los hechos, Su Señoría.  
+**PENNA:** Durante la noche, a las 23:00 horas, se escuchó el primer disparo. Adentro estaban Tadeo, Malva y la víctima.  
+**PENNA:** Luego, un segundo disparo. Fue escuchado a las 23:13.  
+**PENNA:** Las únicas personas dentro de la casona eran la hija de Leonel Ferrada, Malva, y Tadeo Fuegos, en su habitación.  
+**JUSTO:** (¿Solo esas dos personas...?)  
 **PENNA:** La fiscalía llama al investigador Eduardo Estuardo.  
 
 ### TESTIMONIO Y CONTRAINTERROGATORIO: La escena del crimen  _(música: interrogatorio)_
@@ -483,8 +553,43 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 ✅ **Contradicción: presentar Informe de autopsia**  
 **JUSTO:** La autopsia dice otra cosa: la bala que lo mató entró por la nuca. *[¡OBJECIÓN!; golpe en la mesa]*  
 **JUSTO:** Uno de frente, desde la puerta. **El otro, por la espalda**: desde adentro de la casa.  
-**PENNA:** Exacto, colega. Desde adentro. Donde dormía su cliente.  
+**PENNA:** ...¿Y eso adónde nos lleva? Su objeción solo explica CÓMO murió la víctima. No QUIÉN.  
 **JUSTO:** (...Me la devolvió.)  
+**JUSTO:** Llegaremos a QUIÉN mató a la víctima si el investigador nos cuenta qué ocurrió después. *[golpe en la mesa]*  
+**PENNA:** ...  
+**PENNA:** ...  
+**JUSTO:** (...¿Está sonriendo?)  
+
+*Pista si das la vuelta completa:*  
+**JUSTO:** (¿Qué dice exactamente la autopsia sobre las heridas?)  
+
+
+### TESTIMONIO Y CONTRAINTERROGATORIO: Qué ocurrió después  _(música: interrogatorio)_
+
+
+**Declaración 1:** A las 23:55, la señorita Malva nos sirvió un té, en shock.
+
+*Si se presiona:*  
+**JUSTO:** ¿Un té?  
+**ESTUARDO:** Sí, es una costumbre de la Casona Ferrada.  
+**JUSTO:** (Eso lo puedo confirmar...)  
+
+**Declaración 2:** Luego... emmm... creo que abrimos con llave la puerta del señor Tadeo.
+
+*Si se presiona:*  
+**JUSTO:** ¿Estaba con llave?  
+**ESTUARDO:** Sí. La llave nos la entregó Malva.  
+**JUSTO:** Si la llave la tenía Malva, ¿cómo salió mi cliente a disparar? *[¡OBJECIÓN!; golpe en la mesa]*  
+**PENNA:** ...En el caso anterior usted demostró más raciocinio. Supongo que no está a la altura de este caso.  
+**JUEZA:** Abogado, a un huésped de un hostal siempre se le entrega una llave. Él cerró y se la quedó... *[entra al expediente: Llave de la pieza]*  
+**JUEZA:** Continúe con su declaración.  
+
+**Declaración 3:** La llave la encontramos sobre la mesa. Y frente a ella estaba la mochila del acusado.
+
+*Si se presiona:*  
+**JUSTO:** ¿Qué había en la mochila?  
+**ESTUARDO:** Una pistola 9 mm, ropa interior y... pasajes de buses y ferris.  
+**JUSTO:** (¿Y la fotografía?)  
 
 **Declaración 4:** La pistola estaba en la mochila del acusado. Disparada y limpia.
 
@@ -493,21 +598,103 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 **ESTUARDO:** Sin una huella. Ni siquiera las del acusado.  
 **JUSTO:** (¿Quién limpia un arma y la deja en su propia mochila?)  
 
-*Pista si das la vuelta completa:*  
-**JUSTO:** (¿Qué dice exactamente la autopsia sobre las heridas?)  
+**Declaración 5:** La pistola fue disparada una sola vez, según las pericias forenses.
 
-**JUEZA:** Dos tiradores, entonces. Uno afuera y otro adentro.  
-**PENNA:** Y el de adentro estaba a pasos de la pieza del acusado. La fiscalía no cambia su tesis.  
-**JUEZA:** Receso de diez minutos. Después, el siguiente testigo.  
+*Si se presiona:*  
+**JUSTO:** ¿Y las huellas?  
+**ESTUARDO:** El arma, completamente limpia. Se tomó todo el tiempo.  
+**JUSTO:** (...)  
+**JUSTO:** ¡Entonces mi cliente también tiene el beneficio de la duda!  
+**PENNA:** ¡Protesto! Es un mochilero, Valdivia. Y en el sur hace frío. Es normal que lleve... guantes. *[¡PROTESTO!; golpe en la mesa]*  
+**JUSTO:** (Tiene razón... los guantes que usa pueden jugar en mi contra.)  
+**JUSTO:** Retiro lo dicho.  
+
+✅ **Contradicción: presentar Informe de autopsia**  
+**JUSTO:** El arma del crimen... fue disparada una sola vez, ¿cierto? *[¡OBJECIÓN!; golpe en la mesa; música: silencio]*  
+**ESTUARDO:** Es lo que acabo de decir...  
+**JUSTO:** ¡Exacto!  
+**JUSTO:** Lo que quiero decir es que la pistola de la mochila de Tadeo tiene un solo disparo. *[muestra: Informe de autopsia]*  
+**JUSTO:** ¿Cómo sabe si realmente esa es la bala que asesinó a Leonel Ferrada?  
+**JUSTO:** ¡Sin huellas y sin la bala, no podemos atribuirle el asesinato a mi cliente! *[música: objecion]*  
+**PENNA:** ... Creo que no es necesario protestar.  
+**JUSTO:** (Este Penna está distinto... No contradice todo lo que digo. Solo me deja jugar...)  
+**PENNA:** Usted acaba de decir que su cliente sí portaba un arma. Eso también es un delito.  
+**JUSTO:** ¡AGH!  
+**PENNA:** Pero no estamos aquí para atribuirle un arma, sino **un asesinato**.  
+**JUSTO:** ¡Ugh...!  
+**PENNA:** Recuerde que ahora investigo personalmente. Y esta vez tengo YO la prueba que dará vuelta el caso. *[música: suspenso]*  
+**PENNA:** Según el informe de pericias, esta bala es la que asesinó a Leonel Ferrada. *[entra al expediente: Bala 9 mm]*  
+**PENNA:** Y según la medición y la pólvora, fue disparada **por el arma encontrada en la mochila**.  
+**JUSTO:** ¡Q-quéeee!  
+**ESTUARDO:** *risa*  
+**JUEZA:** Ahora queda más claro el arma homicida. Está clarito como el sol de afuera que Tadeo asesinó a Leonel Ferrada.  
+**JUEZA:** Defensa, ¿cuál será su alegato final?  
+**PENNA:** Gracias, Valdivia. Caíste tal cual lo había planeado.  
+**JUSTO:** (Una oportunidad, en un caso revisado y estudiado por Penna.)  
+
+*Pista si das la vuelta completa:*  
+**JUSTO:** (¿Cuántas veces se disparó esa pistola? ¿Y cuántos disparos recibió don Leonel?)  
+
+
+### DECISIÓN: (Debo decidir. ¿Cuál será mi alegato?)
+
+- Sí, Tadeo asesinó a Leonel Ferrada (si se elige, se pierde el juicio)
+  *Si se elige:*  
+**PENNA:** ...¿La defensa acaba de rendirse?  
+**JUEZA:** Que conste en acta. Con la confesión de su propia defensa, no hay más que decir.  
+- Otra persona asesinó a Leonel Ferrada
+  *Si se elige:*  
+**PENNA:** ¡Si es así, demuéstrelo con una prueba! *[¡PROTESTO!; golpe en la mesa]*  
+**JUSTO:** No tengo ninguna prueba que inculpe a alguien más...  
+**JUEZA:** Entonces no haga perder el tiempo al tribunal, abogado. *[pierde credibilidad]*  
+- ✅ Tadeo no tiene un motivo claro
+
+*Respuesta correcta:*  
+**JUSTO:** (Claro, aquí está la clave... al menos para ganar tiempo.)  
+**JUSTO:** Le confieso, Penna, que esta vez avanzó en la batalla. Pero no ha ganado la guerra. *[¡OBJECIÓN!; golpe en la mesa; música: silencio]*  
+**JUSTO:** ¡Mi cliente no tiene un motivo evidente para asesinar a Leonel Ferrada! ¡Él ni siquiera es de aquí!  
+**ESTUARDO:** (Claro... eso tiene mucho sentido.)  
+**PENNA:** Eso tendría mucho sentido en un caso con un abogado canijo y un fiscal prepotente, básico... y novato. *[música: suspenso]*  
+**PENNA:** Pero este caso es una contienda personal. Y esta vez pretendo derrumbar su carrera.  
+**PENNA:** Según los informes aportados por el Registro Civil de Puerto Williams... *[entra al expediente: Registro Civil de Puerto Williams]*  
+**PENNA:** Nuestro querido Tadeo Fuegos fue inscrito inicialmente como Tadeo...  
+**PENNA:** **Tadeo Ferrada**.  
+**JUSTO:** ¡¿Q-quéeeee?!  
+**PENNA:** Una historia de venganza personal contra el hombre que lo abandonó.  
+**JUSTO:** ¿Tadeo?  
+**TADEO:** ...  
+**JUSTO:** ¡Su Señoría, las pruebas lo son todo! Aunque fuese así, no se ha comprobado que Tadeo sea culpable. *[¡OBJECIÓN!; golpe en la mesa]*  
+**JUSTO:** (¡Exacto! ¡Así podré usar su argumento contra él!)  
+**JUSTO:** Aunque esa fuese la verdad, ninguna prueba ni ningún testigo vio a mi cliente disparar.  
+**PENNA:** Hablamos del motivo, y ahora quiere un testigo ocular. Bien: va leyendo bien mi expediente, Valdivia.  
+**PENNA:** Esta vez te destruiré, y ningún cliente querrá trabajar contigo.  
+
+
+*[Mazo]*
+
+**JUEZA:** He escuchado suficiente. Nos tomaremos un receso de 15 minutos para reflexionar hacia dónde nos ha llevado este caso.  
+**JUSTO:** (Lo difícil llega ahora... 15 minutos para derribar a un testigo, una prueba del motivo... y a Penna.)  
+
+*[Música: suspenso]*
+
+
+*Cinemática: Continuará...*
+
 
 ## Juzgado de Garantía de Valparaíso — Sala de espera
 
-**TADEO:** Abogado... ¿vamos perdiendo?  
-**JUSTO:** Vamos empatados. Y contra Penna, eso es bueno.  
-**TADEO:** Ese señor no me mira. Habla de mí como si yo no estuviera.  
-**JUSTO:** Tadeo, ¿hay algo que yo deba saber? Lo que sea. Antes de que lo diga él.  
-**TADEO:** ...No. Nada.  
-**JUSTO:** (Está mintiendo. Y no sé en qué.)  
+**TADEO:** ...Señor abogado.  
+**JUSTO:** Tadeo Fuegos... Al final, su silencio se ha vuelto en su contra.  
+**TADEO:** Es que nunca me confirmaron nada. Ni mi madre, ni mi «padre».  
+**JUSTO:** Pero confié en usted, Tadeo. Ahora nos tienen contra las cuerdas. Le vuelvo a preguntar:  
+**JUSTO:** ¿Quién es usted realmente?  
+
+*[Música: tristeza]*
+
+**TADEO:** ... Vine a buscar esa respuesta, señor abogado. No quise que las cosas fueran así.  
+**JUSTO:** Tadeo, ¿hay algo MÁS que yo deba saber? Lo que sea. Antes de que lo diga el fiscal.  
+**TADEO:** Nada que no se haya dicho... Lo siento, abogado.  
+**JUSTO:** (¿Por qué guarda tanto silencio? Es un juicio contra USTED, y de ASESINATO... y no colabora.)  
 
 ## Sala de audiencias
 
@@ -631,13 +818,8 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 **JUEZA:** Sin testigos y con una melena que no es suya, la fiscalía no ha probado nada.  
 **JUSTO:** (¿Ya está? ¿Así de fácil?)  
 **JUEZA:** Si la fiscalía no tiene nada más, este tribunal está listo para resolver.  
-**PENNA:** *sorbo*  
-**PENNA:** Tengo algo más, Su Señoría. Lo guardé para el final. A propósito.  
-**PENNA:** Algo que el acusado no le contó a su propio abogado.  
-**PENNA:** Agenda del notario: Leonel Ferrada iba a cambiar su testamento para reconocer a un hijo. *[entra al expediente: Agenda del notario]*  
-**PENNA:** Ese hijo es **el acusado**. Vino a cobrar su herencia antes de tiempo.  
-**TADEO:** ¡No! ¡No fue así!  
-**JUSTO:** (¿Su hijo...? ¡¿Por qué no me lo dijo?!)  
+**PENNA:** Tengo algo más, Su Señoría. Para el motivo que la defensa pidió.  
+**PENNA:** Agenda del notario: al día siguiente, Leonel Ferrada iba a modificar su testamento. *[entra al expediente: Agenda del notario]*  
 **PENNA:** No digo que esto pruebe que disparó. Digo que tenía un motivo. Y que lo escondió.  
 **JUSTO:** (Ni una palabra de más. No me deja nada que protestar.)  
 **JUEZA:** Me han dado dos tiradores, una melena y un hijo secreto. Y ninguna prueba de quién disparó.  
