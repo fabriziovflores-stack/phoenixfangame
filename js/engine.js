@@ -268,7 +268,7 @@ const CMD = {
     X={def, list:def.statements.filter(s=>!s.hidden), idx:0, hinted:false, done, tag:"Testimonio"};
     logoCard("assets/hud/titulo-testimonio.png", def.title, ()=>{
       music(def.music||"interrogatorio");                          // el testimonio ya suena con su propia canción
-      play(X.list.map(s=>({who:def.who||"testigo",mood:s.mood,text:s.text})), ()=>dim(()=>{
+      play(X.list.map(s=>({who:def.who||"testigo",mood:s.mood,pose:s.pose,text:s.text})), ()=>dim(()=>{
         X.tag="Contrainterrogatorio";
         logoCard("assets/hud/titulo-contra.png", def.title, ()=>{
           music(def.music||"interrogatorio");
@@ -325,7 +325,19 @@ const CMD = {
   card(st,done){ vistos.clear(); titleCard(st.t1||"", st.t2||"", done); },     // tarjeta «Día N — Investigación»
   breakdown(st,done){
     if(!st.keepMusic) music(null); busy=true; mode="loc"; renderControls();
-    const W=st.who||"testigo"; setScene("estrado",W,"break");
+    const W=st.who||"testigo";
+    if(st.frames){                                        // colapso dibujado cuadro a cuadro (frames, ms por cuadro, cae = cuadro donde se desploma)
+      const ms=st.ms||170, sp=$("sprite"); setScene("estrado",W,st.frames[0]); $("name").textContent=""; $("text").textContent="";
+      SFX.breakdown(); shake(); flash();
+      st.frames.forEach((m,i)=>setTimeout(()=>{ drawSprite(W,m);
+        if(i===2||i===6) { shake(); SFX.hit(); }
+        if(i===4) sp.classList.add("tremble");
+        if(i===(st.cae||10)){ sp.classList.remove("tremble"); SFX.thud(); shake(); flash(); }
+      }, i*ms));
+      setTimeout(()=>{ sp.classList.remove("tremble"); busy=false; done(); }, st.frames.length*ms+700);
+      return;
+    }
+    setScene("estrado",W,"break");
     $("name").textContent=""; $("text").textContent="";
     const sp=$("sprite"); sp.classList.add("tremble"); SFX.breakdown();
     if(st.seq) st.seq.forEach((m,i)=>setTimeout(()=>drawSprite(W,m), Math.round(i*1250/st.seq.length)));   // colapso animado
@@ -426,7 +438,7 @@ function showStatement(){
   mode="cross";
   const s=X.list[X.idx];
   const W=X.def.who||"testigo";
-  setScene("estrado",W, s.mood||"normal");
+  setScene("estrado",W, s.mood||"normal", s.pose);
   $("name").textContent=CHARS[W].name;
   renderControls();
   canTalk=true; blipWho=W; typeText(s.text,"cross",CHARS[W].voice);
@@ -746,7 +758,7 @@ function drawBG(pos){
 const AMAP={
   ines:{normal:["base","talk"],smug:["smug","smugTalk"],smile:["relieved","relievedTalk"],relieved:["relieved","relievedTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],hit:["hit","hitTalk"],think:["cruzado","cruzadoTalk"],think2:["think","thinkTalk"],confused:["confused","confusedTalk"],serious:["serious","seriousTalk"],angry:["angry2","angry2Talk"],down:["sad","sadTalk"],sad:["sad","sadTalk"],"pose:point":["point","pointTalk"],"pose:papel":["papel","papelTalk"],"pose:papelThink":["papelThink","papelThinkTalk"],"pose:slam":["slam","slamTalk"],"pose:cruzado":["cruzado","cruzadoTalk"]},
   fiscal:{normal:["base","talk"],serious:["base","talk"],smug:["smug","smugTalk"],smile:["smile","smileTalk"],proud:["proud","proudTalk"],laugh:["proud","proudTalk"],disdain:["cross","crossTalk"],think:["think","thinkTalk"],down:["respect","respectTalk"],respect:["respect","respectTalk"],shock:["shock","shockTalk"],sweat:["sweat","sweatTalk"],angry:["angry","angryTalk"],facepalm:["facepalm","facepalmTalk"],"pose:point":["point","pointTalk"],"pose:cafe":["cafe","cafeTalk"],"pose:gesto":["stop","stopTalk"],"pose:cruzado":["cross","crossTalk"],"pose:alto":["stop","stopTalk"],"pose:puno":["cross","crossTalk"],"pose:bigote":["twirl","twirlTalk"],"pose:tirar":["pull","pullTalk"],"pose:pelo":["hair","hairTalk"],"pose:cuff":["cross","crossTalk"]},
-  testigo:{normal:["base","talk"],smile:["proud","proudTalk"],smug:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],break:["break","breakTalk"],cry:["cry","cryTalk"],down:["sweat","sweatTalk"]},
+  testigo:{normal:["base","talk","blink"],"pose:llaves":["k6","k5"],smile:["proud","proudTalk"],smug:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],break:["break","breakTalk"],cry:["b14","b13"],down:["sweat","sweatTalk"]},
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},
   tomas:{normal:["base","talk"],sweat:["sweat","sweatTalk"],cry:["cry","cryTalk"],beg:["beg","begTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],angry:["indignant","indignantTalk"],smile:["happy","happyTalk"]},
   tadeo:{normal:["base","talk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],cry:["cry","cryTalk"],angry:["angry","angryTalk"],smile:["smile","smileTalk"],think:["think","thinkTalk"]},
@@ -825,7 +837,8 @@ function renderSprite(){
 }
 /* Animaciones de entrada/salida de una pose (cuadros sueltos de ART que se pasan antes de quedar en la pose).
    Justo: levanta el brazo al apuntar y lo baja al terminar; se pone los lentes y toma el papel. */
-const TRANS={ ines:{
+for(let i=1;i<=16;i++){ AMAP.testigo["b"+i]=["b"+i,"b"+i]; AMAP.testigo["k"+i]=["k"+i,"k"+i]; }   // cuadros sueltos de Llavín (colapso y gestos)
+const TRANS={ testigo:{ llaves:{in:["k2","k3","k4"], out:["k7","k8"], ms:90} }, ines:{
   point:{in:["ap2","ap3","ap4","ap5","ap6","ap7","ap8"], out:["ap12","ap13","ap14","ap15","ap16"], ms:45},
   papel:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170},
   papelThink:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170} }};

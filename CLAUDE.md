@@ -122,6 +122,11 @@ con `ANCHOR=cell REFK=1 SHEET=… GX=4 GY=2 TABLA=pennaA…E HH=110 HEADY=19 pyt
 (tamaños y dx en el historial de git; cabeza arriba en y=20, nuca en x=167, ancho ~40). Emociones: ver `AMAP.fiscal`
 (proud = mentón arriba, respect = reconoce con respeto); poses `point`, `cafe`, `cruzado`, `alto`, `bigote`, `tirar`, `pelo`.
 
+Llavín (`testigo`): hojas animadas 4×4 `arte-original/llavin-gestos.jpg` (k1–k16: llaves, cruzar brazos, parpadeo) y
+`llavin-colapso.jpg` (b1–b16: colapso), procesadas con `herramientas/llavin_anim.py` (calzadas a `base.png`; `blink.png` = solo los ojos
+cerrados pegados en la cara actual). Pose `llaves` (sube y hace sonar las llaves; al hablar alternan k5/k6), `cry` = b14/b13 (llora con la gorra),
+`breakdown` con `frames:[...]`, `ms`, `cae` (cuadro donde se desploma). Las declaraciones de un testimonio también aceptan `pose`.
+
 Chayo (Rosario «Chayo» Catalán, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): dos hojas 4×2 en pares
 exactos, `arte-original/chayo-v2-a.png` (normal, happy, surprise, think) y `chayo-v2-b.png` (worried, smug, annoyed, point):
 `FRONT=1 MOUTHDX=4 SHEET=… GX=4 GY=2 TABLA=chayoA|chayoB HH=110 HEADY=22 python3 herramientas/penna4.py CARPETA 30 0 0`.
