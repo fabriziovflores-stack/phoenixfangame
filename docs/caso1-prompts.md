@@ -18,3 +18,27 @@ Interior of the dark gallery at night: only a small green emergency exit light g
 
 ## 4 — «Un vidrio se rompe. Al día siguiente, "La Sirena del Puerto" ha desaparecido.»
 Dramatic close-up from the street side of the gallery's small window (about 60 by 80 centimeters) shattering at night: the glass fragments burst OUTWARD toward the viewer and rain down onto the sidewalk, as if hit from inside. Behind the broken window the room is pitch black, nobody visible. Moonlight sparkles on the flying shards, motion lines, impact flash, strong sense of a sudden sound breaking the silence.
+
+# Custodio Llavín — animaciones (adjuntar `arte-original/llavin.png` como referencia)
+
+## Estilo y personaje (va al inicio de las dos hojas)
+Character animation sprite sheet, high-detail anime illustration style matching the attached reference exactly: crisp dark outline, soft painterly shading, like a polished 2000s Japanese courtroom adventure game. Same character, same face, same proportions and same colors as the reference: Custodio Llavín, a heavyset Chilean night security guard around 60 years old, tan skin, thick gray mustache, gray hair, navy peaked cap with a gold badge, blue-gray uniform shirt with gold badge and shoulder epaulets, black tie, a black radio on a shoulder strap. He faces the viewer (front view, as a witness on the stand). Waist-up framing.
+Layout: a 4x4 grid of 16 equal frames on a flat pure chroma green background (#00FF00), no text, no borders between frames. The character stays the same size and in the same place in every frame, so the frames can play as an animation.
+
+## Hoja A — su gesto (las llaves) y cruzar los brazos
+Frames 1-8, his signature proud gesture: he lifts a big ring of old keys with his right hand and jingles it proudly next to his face with a satisfied closed-eye smile, then lowers it back (a smooth loop: frame 8 almost equal to frame 1).
+Frames 9-12: from the neutral pose he slowly crosses his arms over his chest, chin up, smug.
+Frames 13-14: neutral face with eyes open, then the same frame with eyes fully closed (blink).
+Frames 15-16: worried sweating face with eyes open, then the same frame with eyes closed (blink).
+
+## Hoja B — el colapso (breakdown)
+A 16-frame breakdown animation, read left to right, top to bottom:
+1-2: proud smile freezes, a single drop of sweat appears.
+3-4: eyes wide in shock, the ring of keys slips from his hand and falls.
+5-6: he grabs the brim of his cap with both hands, trembling.
+7-8: the cap flies off his head, his gray hair stands up messy.
+9-10: clutching his head with both hands, screaming, mouth wide open, tears starting.
+11-12: his knees give way, he sinks down, shoulders collapsing.
+13-14: slumped forward, sobbing, holding his cap against his chest.
+15-16: final defeated pose: head bowed, cap held in both hands, tears, drooping mustache (frame 16 can hold as a still).
+Keep the same scale and position in every frame; only the body moves.
