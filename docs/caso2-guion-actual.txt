@@ -7,27 +7,27 @@ Contiene todas las respuestas.
 Expediente (fichas)
 ============================================================
 
-- Credencial ( · ): Credencial de defensor penal público. Ya tiene un caso ganado.
-- Pistola 9 mm ( · ): Encontrada en la mochila de Tadeo. Disparada una vez. Sin huellas: alguien la limpió.
-- Informe de autopsia ( · ): Leonel Ferrada, 61. Roce de bala en la mejilla izquierda, de frente. Bala 9 mm en la nuca, disparada por la espalda. Muerte instantánea.
-- Bala .38 ( · ): Incrustada en el marco de la puerta de entrada. Calibre .38, de revólver. No es la bala que mató.
-- Plano de la casona ( · ): Plano de evacuación. La entrada da a un pasillo oscuro. La cocina está a la derecha, sin vista al pasillo. La pieza de Tadeo, al fondo, no tiene ventana a la calle.
-- Video cámara municipal ( · ): Calle Templeman. 23:15: sale un taxi desde la casona. 23:42: una camioneta roja baja a toda velocidad. La patente no se lee.
-- Foto de la camioneta ( · ): Camioneta roja de Rodrigo Saavedra, identificada gracias al video e incautada. En el parabrisas hay un soporte vacío.
-- Libro de huéspedes ( · ): Casona Ferrada, 14 de marzo. Huéspedes: T. Fuegos (pieza del fondo) y B. Plusvalía (pieza del segundo piso).
-- Taza de té ( · ): En el velador de Tadeo. Restos de té. «El té de bienvenida», según Malva.
-- Pastillas para el mareo ( · ): Mareamina suave. Falta una. Producen algo de sueño, no un sueño profundo.
-- Foto de una mujer ( · ): Foto antigua de una mujer joven en Puerto Williams. Al reverso: «Leo y yo, 2002».
-- Agenda del notario ( · ): Notaría Valdés. 15 de marzo, 9:00: «L. Ferrada — modificar testamento — reconocimiento de hijo».
-- Carta de la madre ( · ): «Tadeo: busca a Leonel Ferrada, en Valparaíso. Es tu padre. Perdóname por no decírtelo antes.»
-- Examen de pólvora ( · ): Residuos de disparo en las manos de Tadeo: negativo.
-- Examen de sangre ( · ): Sangre de Tadeo al momento de la detención: clonazepam en dosis alta. No es el remedio para el mareo.
-- Inscripción del arma ( · ): Registro de armas: pistola 9 mm, inscrita en 2015 a nombre de Leonel Ferrada.
-- Tarjeta de la cámara ( · ): Cámara del tablero de Rocky. 23:41: un fogonazo en la puerta y, dos segundos después, otro dentro del pasillo, a espaldas de Leonel. Silueta de pelo largo, con delantal.
-- Receta de clonazepam ( · ): Receta médica a nombre de Malva Ferrada. El frasco, en el baño de la casona, está casi vacío.
-- Contrato de adelanto ( · ): Malva Ferrada recibió 40 millones de la cadena hotelera como adelanto por la venta de la casona. Firmado solo por ella.
-- Nota de Estuardo: la corredera ( · ): La pistola 9 mm tiene la corredera dura. Al disparar salta hacia atrás y muerde la mano de quien la toma mal, entre el pulgar y el índice. Deja una herida en media luna.
-- Boleta del taxi ( · ): Taxi de la casona al plan: 23:14 a 23:31. Vuelta a las 00:28.
+- Credencial: Credencial de defensor penal público. Ya tiene un caso ganado.
+- Pistola 9 mm: Encontrada en la mochila de Tadeo. Disparada una vez. Sin huellas: alguien la limpió.
+- Informe de autopsia: Leonel Ferrada, 61. Roce de bala en la mejilla izquierda, de frente. Bala 9 mm en la nuca, disparada por la espalda. Muerte instantánea.
+- Bala .38: Incrustada en el marco de la puerta de entrada. Calibre .38, de revólver. No es la bala que mató.
+- Plano de la casona: Plano de evacuación. La entrada da a un pasillo oscuro. La cocina está a la derecha, sin vista al pasillo. La pieza de Tadeo, al fondo, no tiene ventana a la calle.
+- Video cámara municipal: Calle Templeman. 23:15: sale un taxi desde la casona. 23:42: una camioneta roja baja a toda velocidad. La patente no se lee.
+- Foto de la camioneta: Camioneta roja de Rodrigo Saavedra, identificada gracias al video e incautada. En el parabrisas hay un soporte vacío.
+- Libro de huéspedes: Casona Ferrada, 14 de marzo. Huéspedes: T. Fuegos (pieza del fondo) y B. Plusvalía (pieza del segundo piso).
+- Taza de té: En el velador de Tadeo. Restos de té. «El té de bienvenida», según Malva.
+- Pastillas para el mareo: Mareamina suave. Falta una. Producen algo de sueño, no un sueño profundo.
+- Foto de una mujer: Foto antigua de una mujer joven en Puerto Williams. Al reverso: «Leo y yo, 2002».
+- Agenda del notario: Notaría Valdés. 15 de marzo, 9:00: «L. Ferrada — modificar testamento — reconocimiento de hijo».
+- Carta de la madre: «Tadeo: busca a Leonel Ferrada, en Valparaíso. Es tu padre. Perdóname por no decírtelo antes.»
+- Examen de pólvora: Residuos de disparo en las manos de Tadeo: negativo.
+- Examen de sangre: Sangre de Tadeo al momento de la detención: clonazepam en dosis alta. No es el remedio para el mareo.
+- Inscripción del arma: Registro de armas: pistola 9 mm, inscrita en 2015 a nombre de Leonel Ferrada.
+- Tarjeta de la cámara: Cámara del tablero de Rocky. 23:41: un fogonazo en la puerta y, dos segundos después, otro dentro del pasillo, a espaldas de Leonel. Silueta de pelo largo, con delantal.
+- Receta de clonazepam: Receta médica a nombre de Malva Ferrada. El frasco, en el baño de la casona, está casi vacío.
+- Contrato de adelanto: Malva Ferrada recibió 40 millones de la cadena hotelera como adelanto por la venta de la casona. Firmado solo por ella.
+- Nota de Estuardo: la corredera: La pistola 9 mm tiene la corredera dura. Al disparar salta hacia atrás y muerde la mano de quien la toma mal, entre el pulgar y el índice. Deja una herida en media luna.
+- Boleta del taxi: Taxi de la casona al plan: 23:14 a 23:31. Vuelta a las 00:28.
 
 ============================================================
 Perfiles

@@ -74,7 +74,7 @@ function cmd(s){
 }
 P(`# ACTA CERO — ${c.titulo} (guion tal como está en el juego)\n**Contiene todas las respuestas.**\n`);
 P(`## Expediente (fichas)\n`);
-c.EVIDENCE.concat(Object.values(c.EVX)).forEach(e=>P(`- **${e.name}** (${e.tipo||""} · ${e.origen||""}): ${(e.desc||"").replace(/\n/g," / ")}`));
+c.EVIDENCE.concat(Object.values(c.EVX)).forEach(e=>P(`- **${e.name}**${e.tipo||e.origen?" ("+[e.tipo,e.origen].filter(Boolean).join(" · ")+")":""}: ${(e.desc||"").replace(/\n/g," / ")}`));
 P(`\n## Perfiles\n`); c.PROFILES.forEach(p=>P(`- **${p.name}:** ${p.desc}`));
 P(`\n---\n`); c.SCRIPT.forEach(linea);
 P(`\n---\n## Si presentas una prueba equivocada (sale una al azar)\n`); c.WRONG.forEach((w,i)=>{ P(`*Versión ${i+1}:*  `); lineas(w); });
