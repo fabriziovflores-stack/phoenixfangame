@@ -1,7 +1,7 @@
 // Convierte casos/casoN.js en un guion legible (Markdown). Uso: node herramientas/guion_md.js caso1 > docs/caso1-guion-actual.md
 const fs=require("fs"); global.CASOS={};
-const id=process.argv[2]||"caso1"; eval(fs.readFileSync("casos/"+id+".js","utf8"));
-const c=CASOS[id], out=[]; const P=s=>out.push(s);
+const id=process.argv[2]||"caso1"; eval(fs.readFileSync("casos/caso1.js","utf8")); if(id!=="caso1") eval(fs.readFileSync("casos/"+id+".js","utf8"));
+const c=CASOS[id], out=[]; c.OBJ_REASONS=c.OBJ_REASONS||CASOS.caso1.OBJ_REASONS; c.WRONG=c.WRONG||CASOS.caso1.WRONG; c.EVX=c.EVX||{}; c.PROFILES=c.PROFILES||[]; const P=s=>out.push(s);
 const N=w=>w===null||w===undefined?"NARRACIÓN":({ines:"JUSTO",testigo:"LLAVÍN",fiscal:"PENNA"}[w]||(c.CHARS[w]?c.CHARS[w].name.toUpperCase():w.toUpperCase()));
 const limpia=t=>(t||"").replace(/\[r\](.*?)\[\/r\]/g,"**$1**").replace(/\[(p|s|f)\]/g,"").replace(/\[(m|a)=[a-z0-9]+\]/g,"");
 const nombreEv=i=>(c.EVX[i]||c.EVIDENCE.find(e=>e.id===i)||{name:i}).name;
@@ -10,7 +10,7 @@ const linea=l=>{
   let extra=[];
   if(l.bubble) extra.push(l.bubble==="objecion"?(l.who==="ines"?"¡OBJECIÓN!":"¡PROTESTO!"):l.bubble==="momento"?"¡UN MOMENTO!":"¡MIRE ESTO!");
   if(l.anim==="slam") extra.push("golpe en la mesa");
-  if(l.evidence) extra.push("entra al expediente: "+nombreEv(l.evidence));
+  if(l.evidence) extra.push("entra al expediente: "+nombreEv(l.evidence)); if(l.flag) extra.push("marca: "+[].concat(l.flag).join(", ")); if(l.meet) extra.push("perfil nuevo: "+l.meet);
   if(l.show) extra.push("muestra: "+nombreEv(l.show));
   if(l.read) extra.push("lectura nueva de "+nombreEv(l.read[0]));
   if(l.music!==undefined) extra.push("música: "+(l.music||"silencio"));
@@ -50,6 +50,24 @@ function cmd(s){
       P(`\n*Respuesta correcta:*  `); lineas(s.ok); P(""); break;
     case "present": P(`\n### PRESENTAR: ${limpia(s.text)} → ✅ ${[].concat(s.answer).map(nombreEv).join(" o ")}\n`); if(s.wrong){ P(`*Si presenta otra:*  `); lineas(s.wrong); } P(`*Si presenta la correcta:*  `); lineas(s.ok); break;
     case "senalar": P(`\n### TOCAR EN EL PLANO: ${s.ayuda}\n`); (s.zonas||[]).forEach(z=>{ P(`*Si toca otro lugar:*  `); lineas(z.wrong); }); P(`*Fuera de las zonas:*  `); lineas(s.wrong); P(`✅ **Correcto: la bodega.**\n`); break;
+    case "invest": { const d=c.INV[s.ref], req=r=>{ if(!r) return ""; const a=[]; if(r.flags) a.push("marcas: "+[].concat(r.flags).join(", ")); if(r.ev) a.push("pruebas: "+[].concat(r.ev).map(nombreEv).join(", ")); if(r.not) a.push("sin: "+[].concat(r.not).join(", ")); return a.length?" _(se abre con "+a.join("; ")+")_":""; };
+      P(`\n## INVESTIGACIÓN (${s.ref})${d.fecha?" — "+d.fecha:""}\n`);
+      if(d.done) P(`_Termina cuando tienes: ${[].concat(d.done.ev||[]).map(nombreEv).join(", ")}${d.done.flags?"; y las marcas "+d.done.flags.join(", "):""}._\n`);
+      Object.entries(d.places).forEach(([id,pl])=>{
+        P(`\n### LUGAR: ${pl.name||id}${req(pl.req)}\n`); if(pl.moves) P(`_Desde aquí se puede ir a: ${pl.moves.map(m=>(d.places[m]&&d.places[m].name)||m).join(", ")}_\n`);
+        if(pl.enter){ P(`*Al llegar la primera vez:*  `); lineas(pl.enter); }
+        (pl.people||[]).forEach(pp=>{ P(`\n*Persona: ${N(pp.who)}*${req(pp.req)}  `); if(pp.hello){ P(`*Al verla por primera vez:*  `); lineas(pp.hello); } if(pp.back){ P(`*Al volver:*  `); lineas(pp.back); } });
+        (pl.examine||[]).forEach(e=>{ P(`\n**🔍 Examinar: ${e.t||e.id}**${req(e.req)}  `); lineas(e.lines); if(e.again){ P(`*Si lo vuelve a examinar:*  `); lineas(e.again); } });
+        (pl.talk||[]).forEach(t=>{ P(`\n**💬 Hablar con ${N(t.who)}: ${t.t}**${req(t.req)}  `);
+          if(t.silence){ const si=t.silence; P(`*🔒 Silencio (hay que romperlo presentando pruebas):*  `); lineas(si.closed); lineas(si.intro);
+            (si.steps||[]).forEach((st,k)=>{ P(`*Paso ${k+1}: ${limpia(st.prompt||"")} → ✅ ${[].concat(st.answer).map(nombreEv).join(" o ")}*  `); lineas(st.ok); });
+            if(si.wrong){ P(`*Si falla:*  `); lineas(si.wrong); } if(si.broken){ P(`*Al romperlo:*  `); lineas(si.broken); } }
+          lineas(t.lines); });
+        if(pl.present) Object.entries(pl.present).forEach(([who,m])=>Object.entries(m).forEach(([ev,ls])=>{ P(`\n**📁 Presentar a ${N(who)}: ${ev==="default"?"cualquier otra cosa":nombreEv(ev)}**  `); lineas(ls); }));
+      });
+      if(d.hints){ P(`\n*💭 Pistas de «Pensar»:*  `); Object.entries(d.hints).forEach(([k,v])=>P(`- ${nombreEv(k)}: ${limpia(v)}`)); }
+      if(d.end){ P(`\n*Al terminar la investigación:*  `); lineas(d.end); }
+      P(""); break; }
     case "reacciones": P(`\n*[Se ve a cada uno, sorprendido: ${s.list.map(x=>N(x[0])).join(", ")}]*\n`); break;
     default: P(`*[${s.cmd}]*`);
   }
