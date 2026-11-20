@@ -751,30 +751,63 @@ JUSTO: (Tadeo viajó desde muy lejos y fue a parar a la casona por algún motivo
 JUSTO: (Puede ser que SÍ haya asesinado a Leonel Ferrada...)
 JUSTO: (Estoy dudando de mi cliente...)
 JUSTO: (Espera...)
-JUSTO: Quiero... que mi cliente atestigüe. Que atestigüe sobre su relación con la víctima. [golpe en la mesa]
+JUSTO: Quiero... que mi cliente... atestigüe. Que atestigüe sobre... su llegada a la casona. [golpe en la mesa]
 TADEO: ¿Có-cómo?
 PENNA: ... Qué insolente. Sigue intentando rascar puntos como sea. Jueza, le dejo a usted la decisión.
 JUEZA: El motivo de la falta de dinero me es insuficiente para dictar un veredicto. Falta alguna prueba que incrimine a este joven.
 JUEZA: Pero es una posibilidad que usted ha planteado, Penna, y siempre nos lleva hacia la verdad.
 JUEZA: Atestigüe, joven.
-NARRACIÓN: (Testimonio de Tadeo «Yo y la víctima»: en escritura.)
-PENNA: Según los informes aportados por el Registro Civil de Puerto Williams... [entra al expediente: Registro Civil de Puerto Williams]
-PENNA: Nuestro querido Tadeo Fuegos fue inscrito inicialmente como Tadeo...
-PENNA: Tadeo Ferrada.
-JUSTO: ¡¿Q-quéeeee?!
-PENNA: Una historia de venganza personal contra el hombre que lo abandonó.
-JUSTO: ¿Tadeo?
-TADEO: ...
-JUSTO: ¡Su Señoría, las pruebas lo son todo! Aunque fuese así, no se ha comprobado que Tadeo sea culpable. [¡OBJECIÓN!; golpe en la mesa]
-JUSTO: (¡Exacto! ¡Así podré usar su argumento contra él!)
-JUSTO: Aunque esa fuese la verdad, ninguna prueba ni ningún testigo vio a mi cliente disparar.
-PENNA: Hablamos del motivo, y ahora quiere un testigo ocular. Bien: va leyendo bien mi expediente, Valdivia.
-PENNA: Esta vez te destruiré, y ningún cliente querrá trabajar contigo.
+
+------------------------------------------------------------
+TESTIMONIO Y CONTRAINTERROGATORIO: CÓMO LLEGUÉ A LA CASONA  (MÚSICA: ALLEGRO)
+------------------------------------------------------------
+
+Declaración 1: Llegué aproximadamente a las 21:00 a Valparaíso. Vi un anuncio de la Casona Ferrada en la estación de buses.
+
+Si se presiona:
+JUSTO: ¿Qué es lo que vio en el anuncio?
+TADEO: Creo... «Casona Ferrada, la mejor de la ciudad, al contado».
+JUSTO: ¿Y por eso decidió ir? ¿Tiene mucho dinero al contado?
+TADEO: Como mencioné antes, ya me queda poco. Solo para pagarle.
+JUSTO: (¡No digas eso! Qué rabia me está dando mi propio cliente.)
+JUSTO: Continúe.
+
+Declaración 2: Tomé un taxi y llegué aproximadamente a las 21:45.
+
+Si se presiona:
+JUSTO: ¿Recuerda haber visto a alguien, o algo?
+TADEO: Cuando me bajé había una camioneta... de color rojo.
+JUSTO: ¿Una camioneta de color rojo?
+TADEO: Sí, pero se fue de inmediato.
+JUSTO: (Una camioneta que se fue al instante. Lo anoto.)
+
+Declaración 3: Cuando abrí la puerta, me recibió Malva. Yo era el único cliente que había llegado a la casona.
+
+Si se presiona:
+JUSTO: ¿Qué fue lo primero que le dijo Malva?
+TADEO: Ehm... ¿Buenas noches? ¿Cuál es su nombre? Y eso.
+JUSTO: Ya veo.
+
+✅ Contradicción: presentar Libro de huéspedes
+JUSTO: ¡Es imposible que usted haya sido la única persona en la casona! [¡OBJECIÓN!; golpe en la mesa; música: silencio]
+JUSTO: Según el libro de huéspedes, esa noche había otra huésped: Bárbara Plusvalía, hotelera. [muestra: Libro de huéspedes]
+PENNA: ¿Q-qué...?
+JUSTO: Esto nos abre otra posibilidad. El libro no dice a qué hora se retiró esa mujer.
+JUSTO: No podemos confirmar que solo Tadeo quedó en la casona.
+PENNA: ...
+JUSTO: (Listo. Salvé el caso con lo poco que tenía. Al menos gané más tiempo.)
+PENNA: Ja... ja... ja. De nuevo, Justo Valdivia. Me impresiona cómo lleva un simple caso al extremo solo para demostrar algo.
+PENNA: Es igual a todos los abogados que he destrozado.
+JUSTO: (Creo que olvida que le gané el caso anterior. Y que ahora uso el mismo argumento que él me debatió.)
+PENNA: Tengo un testigo que puede confirmar que la señorita Bárbara Plusvalía abandonó la casona a las 23:14. [música: suspenso]
+JUSTO: (¡Q-qué...! Es cierto... Él... el vecino mirón.)
+
+Pista si das la vuelta completa:
+JUSTO: (Penna sabe que estoy contra las cuerdas, pero no me ha objetado nada. Continuaré.)
 
 [Mazo]
 
-JUEZA: He escuchado suficiente. Nos tomaremos un receso de 15 minutos para reflexionar hacia dónde nos ha llevado este caso.
-JUSTO: (Lo difícil llega ahora... 15 minutos para derribar a un testigo, una prueba del motivo... y a Penna.)
+JUEZA: Receso de 15 minutos. Después escucharemos a ese testigo.
 
 [Música: suspenso]
 
@@ -786,13 +819,13 @@ Juzgado de Garantía de Valparaíso — Sala de espera
 
 TADEO: ...Señor abogado.
 JUSTO: Tadeo Fuegos... Al final, su silencio se ha vuelto en su contra.
-TADEO: Es que nunca me confirmaron nada. Ni mi madre, ni mi «padre».
-JUSTO: Pero confié en usted, Tadeo. Ahora nos tienen contra las cuerdas. Le vuelvo a preguntar:
+TADEO: No he robado nada, se lo juro.
+JUSTO: Estoy empezando a desconfiar de usted, Tadeo. Ahora nos tienen contra las cuerdas. Le vuelvo a preguntar:
 JUSTO: ¿Quién es usted realmente?
 
 [Música: tristeza]
 
-TADEO: ... Vine a buscar esa respuesta, señor abogado. No quise que las cosas fueran así.
+TADEO: ... Vine a buscar una respuesta, señor abogado.
 JUSTO: Tadeo, ¿hay algo MÁS que yo deba saber? Lo que sea. Antes de que lo diga el fiscal.
 TADEO: Nada que no se haya dicho... Lo siento, abogado.
 JUSTO: (¿Por qué guarda tanto silencio? Es un juicio contra USTED, y de ASESINATO... y no colabora.)
@@ -802,6 +835,12 @@ Sala de audiencias
 ============================================================
 
 JUEZA: Se reanuda la audiencia. Siguiente testigo.
+PENNA: Se llama a declarar a Aurelio Mirón, vecino.
+JUEZA: ¡Estos vecinos que observan todo! Muy bien, que ingrese el señor.
+
+[Fundido a negro]
+
+PENNA: Nombre y profesión.
 AURELIO: Aurelio Mirón. Vecino. Testigo ocular, como dicen en la tele.
 
 ------------------------------------------------------------
@@ -815,31 +854,26 @@ Pregunta 1: Señor Mirón, ¿desde dónde observaba la calle esa noche?
 Se deja pasar:
 AURELIO: Desde mi ventana, en el segundo piso. Con mis binoculares alemanes.
 
-Pregunta 2: Y desde ahí vio claramente al acusado en la ventana, ¿no es así?
+Pregunta 2: Y desde ahí vio claramente al asesino llegar a la casona, ¿no es así?
 
 ✅ Objetar: Le sopla la respuesta al testigo
 JUEZA: Ha lugar. Fiscal, no le sople las respuestas a su testigo.
-PENNA: Veo que sigue estudiando, Valdivia. Reformulo: ¿qué vio después de los disparos?
-AURELIO: Vi... a alguien. Con algo en la mano. Eso lo cuento bien en mi testimonio.
+PENNA: Reformulo: ¿qué vio cuando llegó el acusado?
+AURELIO: Vi... al joven, con la mochila. Luego, un taxi.
 Si la deja pasar:
 AURELIO: ¡Claro que sí! Clarito.
 JUSTO: (Espera. Penna le dictó la respuesta. Aurelio solo tuvo que decir «sí».)
 JUSTO: (Eso se protesta. Otra vez, con atención.)
 
-Pregunta 3: ¿Cuántos disparos escuchó?
+Pregunta 3: La persona que se subía al taxi era Bárbara Plusvalía, ¿confirma?
 
-Se deja pasar:
-AURELIO: ¡Dos! Pum, pum. Casi juntos.
-
-Pregunta 4: ¿Cuánto tardó el acusado en esconder el arma en su mochila?
-
-✅ Objetar: Da por hecho algo que no está probado
-JUEZA: Ha lugar. Nadie ha probado todavía quién escondió el arma.
-PENNA: Retiro la pregunta. sorbo
+✅ Objetar: Le sopla la respuesta al testigo
+JUEZA: Ha lugar. Fiscal, no le sople las respuestas a su testigo.
+PENNA: Reformulo. ¿Quién se subió al taxi?
+AURELIO: La mujer elegante, de pelo negro.
 Si la deja pasar:
-AURELIO: Eh... ¿un ratito?
-JUSTO: (Un momento. ¿Quién probó que fue Tadeo el que escondió el arma? Nadie.)
-JUSTO: (Penna lo metió en la pregunta como si fuera un hecho. Eso se protesta.)
+AURELIO: ¡Esa misma!
+JUSTO: (Otra vez. Penna le puso el nombre en la boca. Eso se protesta.)
 
 Al terminar:
 PENNA: No más preguntas. Que el testigo cuente lo que vio, con sus palabras.
@@ -929,7 +963,7 @@ PENNA: Tengo algo más, Su Señoría. Para el motivo que la defensa pidió.
 PENNA: Agenda del notario: al día siguiente, Leonel Ferrada iba a modificar su testamento. [entra al expediente: Agenda del notario]
 PENNA: No digo que esto pruebe que disparó. Digo que tenía un motivo. Y que lo escondió.
 JUSTO: (Ni una palabra de más. No me deja nada que protestar.)
-JUEZA: Me han dado dos tiradores, una melena y un hijo secreto. Y ninguna prueba de quién disparó.
+JUEZA: Me han dado dos tiradores, una melena y un testamento. Y ninguna prueba de quién disparó.
 JUEZA: No estoy contenta. Se suspende la audiencia. Vuelvan con hechos. [marca: juicio1]
 
 ############################################################
