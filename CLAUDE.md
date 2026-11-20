@@ -55,7 +55,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `breakdown`, `verdict`, `end`, `negro` (fundido a negro y vuelta, `ms`, `pos` = escena vacía al volver; sirve para llamar
   a un testigo: jueza «Llamaremos a…» → negro → el testigo aparece con `wait:ms` y saluda), `cine` (`img`, `text`, opcional `sfx`/`flash`/`shake`: imagen 256×192 a pantalla completa,
   en `assets/cine/`; originales en `arte-original/cine/`), `senalar` (`img`, `area:[x,y,ancho,alto]`, `ayuda`, `wrong`: la imagen ocupa la pantalla de arriba
-  y hay que tocar el punto exacto; fallar quita vida; `zonas:[{area,wrong}]` da una respuesta propia según dónde tocó; hoy: tocar la bodega en el plano grande de la galería, `assets/pruebas/plano-galeria-grande.png`, dibujado con `herramientas/plano_galeria.py`). `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite.
+  y hay que tocar el punto exacto; fallar quita vida; `zonas:[{area,wrong}]` da una respuesta propia según dónde tocó; hoy: tocar la bodega en el plano grande de la galería, `assets/pruebas/plano-galeria-grande.png`, dibujado con `herramientas/plano_galeria.py`). `present` con `soft:true` no castiga: al fallar muestra `wrong` y repite. `ordenar` (`palabra`, `letras` desordenadas, `molde` con `{}`, `titulo`, `ayuda`, `wrong`): arriba el reverso de una foto a contraluz y abajo letras para tocar en orden; fallar no castiga (hoy: «LEONEL y yo, 2002» con Chayo, Caso 2, tarde del día 2).
 - **Ritmo como en la DS** (ver el video de referencia del dueño): dentro del texto, `[p]` = pausa, `[m=emoción]` = cambia la cara
   a mitad de frase, `[a=slam|hit|tremble]` = animación, `[s]` = temblor, `[f]` = destello. Los «...» se escriben lento.
   Cuando alguien interrumpe (burbuja o golpe en la mesa) y cambia la cámara entre defensa/estrado/fiscalía, hay un **barrido**
@@ -68,10 +68,10 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   Contrainterrogatorio / Interrogatorio. Preferir cuadros cortos y reacciones breves («¡¿Q-qué?!», «Mmm...»).
 - En una línea: `evidence:"id"` hace entrar la prueba al expediente (el juego se detiene, baja el panel y
   espera al jugador); `read:["id","nueva lectura"]` reinterpreta una prueba; `damage:true` penaliza;
-  `music:null` corta la música; `auto:ms` = la línea pasa sola después de escribirse (sin tocar); un `present` sin `soft` puede traer su propio `wrong` (con `damage`); `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena; `show:"id"` muestra en grande una prueba que ya está en el expediente. `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento (letra celeste). Solo en Justo la boca queda quieta; en los demás es un susurro y la boca se mueve.
+  `music:null` corta la música; `auto:ms` = la línea pasa sola después de escribirse (sin tocar); un `present` sin `soft` puede traer su propio `wrong` (con `damage`); `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena; `show:"id"` muestra en grande una prueba que ya está en el expediente. `desc:["id","texto"]` cambia el texto de la ficha (se guarda en `G.notes["desc:id"]`). `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento (letra celeste). Solo en Justo la boca queda quieta; en los demás es un susurro y la boca se mueve.
 - `INV` (investigación; formato completo al inicio de `js/investigacion.js`): `{cmd:"invest", ref:"dia1"}` abre la
   investigación: lugares con Examinar / Hablar / Presentar / Moverse; termina cuando se cumple `done` (pruebas/marcas).
-  `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. **Silencio**: un tema con `silence` se rompe
+  `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. En `present`, la clave `"id:again"` es lo que dice la persona si se le muestra la misma prueba otra vez. **Silencio**: un tema con `silence` se rompe
   presentando pruebas en orden (`steps`); fallar quita vida (en la investigación nunca baja de 1).
   En líneas: `flag:"x"` marca algo, `meet:"id"` agrega un perfil marcado `hidden:true`.
   **Examinar = tocar el lugar** (como en la DS): cada objeto lleva `area:[x,y,ancho,alto]` en coordenadas 256×192; se toca

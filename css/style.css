@@ -351,3 +351,11 @@ html.hd canvas, html.hd #verPrueba img{image-rendering:auto}
 #rdesc{flex:1;min-height:14cqw;overflow:auto;background:#081322;border:.5cqw solid #3d5577;padding:1.4cqw 1.8cqw;font-size:3.6cqw;line-height:1.35;white-space:pre-line}
 .rnota{margin-top:1cqw;color:#8fd0ff}
 #mver{margin-top:1cqw;font-size:3.2cqw}
+/* Minijuego de ordenar letras (reverso de una foto a contraluz) */
+#verPrueba .reverso{position:static;inset:auto;background:#efe4c6;color:#3a2a18;padding:4cqw 5cqw;border:.6cqw solid #c9b48a;box-shadow:0 0 6cqw rgba(255,240,190,.55);text-align:center;font-size:inherit}
+#verPrueba .reverso div{position:static;background:none;color:inherit;padding:0}
+#verPrueba .reverso .rv1{font-size:3.4cqw;opacity:.7;margin-bottom:2cqw}
+#verPrueba .reverso .rv2{font-size:6cqw;letter-spacing:.3cqw;font-style:italic}
+#controls .rowL{display:flex;justify-content:center;gap:1.6cqw;width:100%}
+#controls .rowL button.letra{flex:0 0 auto;width:11cqw;height:11cqw;padding:0;font-size:6cqw;font-weight:bold;color:#3a2a18;background:#efe4c6;border:.5cqw solid #c9b48a;border-radius:1cqw}
+#controls .rowL button.letra:disabled{opacity:.25}

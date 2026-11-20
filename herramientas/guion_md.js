@@ -26,6 +26,7 @@ function cmd(s){
     case "card": P(`\n# ${s.t1} — ${s.t2}\n`); break;
     case "location": P(`\n## ${s.text.replace(/\n/g," — ")}\n`); break;
     case "gavel": P(`\n*[Mazo]*\n`); break;
+    case "ordenar": P(`\n*[MINIJUEGO: ordenar las letras a contraluz. Se ve: ${limpia(s.titulo||"")}. Respuesta: ${s.palabra}]*\n`); break;
     case "negro": P(`\n*[Fundido a negro]*\n`); break;
     case "verdict": P(`\n## VEREDICTO: ${s.text}\n`); break;
     case "breakdown": P(`\n*[Derrumbe de ${N(s.who)}]*\n`); break;
@@ -63,7 +64,7 @@ function cmd(s){
             (si.steps||[]).forEach((st,k)=>{ P(`*Paso ${k+1}: ${limpia(st.prompt||"")} → ✅ ${[].concat(st.answer).map(nombreEv).join(" o ")}*  `); lineas(st.ok); });
             if(si.wrong){ P(`*Si falla:*  `); lineas(si.wrong); } if(si.broken){ P(`*Al romperlo:*  `); lineas(si.broken); } }
           lineas(t.lines); });
-        if(pl.present) Object.entries(pl.present).forEach(([who,m])=>Object.entries(m).forEach(([ev,ls])=>{ P(`\n**📁 Presentar a ${N(who)}: ${ev==="default"?"cualquier otra cosa":nombreEv(ev)}**  `); lineas(ls); }));
+        if(pl.present) Object.entries(pl.present).forEach(([who,m])=>Object.entries(m).forEach(([ev,ls])=>{ P(`\n**📁 Presentar a ${N(who)}: ${ev==="default"?"cualquier otra cosa":ev.endsWith(":again")?nombreEv(ev.slice(0,-6))+" (otra vez)":nombreEv(ev)}**  `); lineas(ls); }));
       });
       if(d.hints){ P(`\n*💭 Pistas de «Pensar»:*  `); Object.entries(d.hints).forEach(([k,v])=>P(`- ${nombreEv(k)}: ${limpia(v)}`)); }
       if(d.end){ P(`\n*Al terminar la investigación:*  `); lineas(d.end); }

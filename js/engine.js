@@ -156,6 +156,7 @@ function say(l, done){
     if(l.confetti) confetti();
     if(l.sfx && SFX[l.sfx]) SFX[l.sfx]();                   // sonido puntual: sfx:"badum", etc.
     if(l.read){ G.notes[l.read[0]]=l.read[1]; SFX.realize(); showEvBox(l.read[0],3); }
+    if(l.desc) G.notes["desc:"+l.desc[0]]=l.desc[1];          // cambia el texto de la ficha (ej. la foto ya leída)
     if(l.show) showEvBox(l.show,3);                          // muestra una prueba que ya está en el expediente
     if(l.flag) [].concat(l.flag).forEach(f=>G.flags[f]=1);                       // marca: algo ya pasó
     if(l.meet && !G.met[l.meet]){ G.met[l.meet]=1; const pr=PROFILES.find(p=>p.id===l.meet); if(pr) toast("Perfil agregado: "+pr.name); }
@@ -367,6 +368,24 @@ const CMD = {
     let i=0; const sig=()=>{ if(i>=st.list.length){ busy=false; return done(); }
       const [w,m,pose]=st.list[i++]; vistos.add(w); setScene(CHARS[w].pos, w, m, pose, true); setTimeout(sig, st.ms||700); };
     sig();
+  },
+  /* Ordenar letras (foto a contraluz): {cmd:"ordenar", palabra:"LEONEL", letras:"LENOEL", molde:"{} y yo, 2002", ayuda, wrong:[líneas]}.
+     Arriba se ve el reverso con lo que se va armando; abajo, las letras desordenadas. Fallar no castiga: se borra y se repite. */
+  ordenar(st,done){
+    const prevX=X, o=$("verPrueba"), letras=st.letras.split(""); let usadas=[];
+    const cerrar=()=>{ o.style.display="none"; $("topS").classList.remove("carta"); X=prevX; };
+    const pinta=()=>{ const pal=letras.map((_,i)=>usadas[i]!=null?letras[usadas[i]]:"_").join(" ");
+      o.innerHTML=`<div class="reverso"><div class="rv1">${esc(st.titulo||"Al reverso, a contraluz:")}</div><div class="rv2">«${esc(st.molde.replace("{}",pal))}»</div></div>`;
+      o.style.display="flex"; o.onclick=null; $("topS").classList.add("carta");
+      X=Object.assign({}, prevX||{}, {orden:{letras, usadas, tap, borrar, ayuda:st.ayuda}}); mode="ordenar"; renderControls(); };
+    const borrar=()=>{ if(busy) return; usadas=[]; pinta(); };
+    const tap=i=>{ if(busy||usadas.includes(i)) return; usadas.push(i); SFX.blip&&SFX.blip(900); pinta();
+      if(usadas.length<letras.length) return;
+      busy=true; setTimeout(()=>{ busy=false; const w=usadas.map(k=>letras[k]).join("");
+        if(w===st.palabra){ cerrar(); SFX.realize&&SFX.realize(); done(); }
+        else { SFX.whoops(); usadas=[]; cerrar(); play(st.wrong||[{who:"ines",mood:"think",text:"(No... así no dice nada. Otra vez.)"}], pinta); }
+      }, 500); };
+    pinta();
   },
   /* Señalar en una imagen: la foto ocupa la pantalla de arriba y hay que tocar el punto exacto (area:[x,y,ancho,alto] en 256×192).
      Fallar quita vida (wrong) y se repite. `zonas:[{area,wrong}]` = respuesta propia según dónde tocó (sin `damage`, no castiga). Sirve dentro de las líneas de una contradicción: {cmd:"senalar", img, area, ayuda, wrong} */
@@ -608,7 +627,7 @@ function renderRecord(){
     body=`<div id="rdet" class="${REC.anim}"><button class="rarrow" data-d="-1" ${n>1?"":"disabled"}>◀</button>
         <div class="rcard"><div class="ric">${recPic(it)}</div><div class="rinfo"><div class="rnm">${esc(it.name)}</div>${tipo||origen?`<div class="rtipo">${tipo?"Tipo: "+esc(tipo):""}${tipo&&origen?"<br>":""}${origen?"Origen: "+esc(origen):""}</div>`:""}</div></div>
         <button class="rarrow" data-d="1" ${n>1?"":"disabled"}>▶</button></div>
-      <div id="rdesc">${esc(it.desc||"")}${nota?`<div class="rnota">▸ ${esc(nota)}</div>`:""}${it.ver?`<button id="mver">🔍 Ver en grande</button>`:""}</div>`;
+      <div id="rdesc">${esc(G.notes["desc:"+it.id]||it.desc||"")}${nota?`<div class="rnota">▸ ${esc(nota)}</div>`:""}${it.ver?`<button id="mver">🔍 Ver en grande</button>`:""}</div>`;
   }
   const volver = REC.view==="det" ? `<button id="mback">◂ Volver</button>`
     : mode==="present" ? "" : mode==="silpresent" ? `<button id="mquit">Retirarse</button>` : `<button id="mclose">Volver</button>`;
@@ -668,6 +687,10 @@ function renderControls(){
   } else if(typeof invControls==="function" && invControls(mode,add,row)){
   } else if(mode==="gameover"){
     add("↺ Reintentar desde el último testimonio","gold",()=>{ verdict.clear&&verdict.clear(); G.health=MAXH; G.nocap=false; drawHealth(); pc=checkpoint; run(); });
+  } else if(mode==="ordenar"){
+    const O=X.orden, d=document.createElement("div"); d.className="senalaAyuda"; d.textContent=O.ayuda||"Toca las letras en orden para leer el nombre."; c.appendChild(d);
+    const a=row("rowL"); O.letras.forEach((ch,i)=>{ const b=add(ch,"letra",()=>O.tap(i),a); if(O.usadas.includes(i)) b.disabled=true; });
+    add("↺ Borrar","hold",O.borrar);
   } else if(mode==="senalar"){
     const d=document.createElement("div"); d.className="senalaAyuda"; d.textContent=(X&&X.senal&&X.senal.ayuda)||"Toca en la foto (pantalla de arriba) el punto que contradice al testigo."; c.appendChild(d);
   } else if(mode==="end"){
