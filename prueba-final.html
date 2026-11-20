@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ACTA CERO — Prueba del final</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=102">
+<link rel="stylesheet" href="css/style.css?v=103">
 </head>
 <body>
 <div id="ds">
@@ -50,16 +50,16 @@
     <div class="hint">Activa el sonido · toca la pantalla de abajo para avanzar</div>
   </div>
 </div>
-<script src="js/casos.js?v=102"></script>
-<script src="casos/caso1.js?v=102"></script>
-<script src="casos/caso2.js?v=102"></script>
-<script src="js/audio.js?v=102"></script>
-<script src="js/sprites.js?v=102"></script>
-<script src="assets/hd/atlas.js?v=102"></script>
-<script src="js/assets.js?v=102"></script>
-<script src="js/engine.js?v=102"></script>
-<script src="js/investigacion.js?v=102"></script>
-<script src="js/musica.js?v=102"></script>
+<script src="js/casos.js?v=103"></script>
+<script src="casos/caso1.js?v=103"></script>
+<script src="casos/caso2.js?v=103"></script>
+<script src="js/audio.js?v=103"></script>
+<script src="js/sprites.js?v=103"></script>
+<script src="assets/hd/atlas.js?v=103"></script>
+<script src="js/assets.js?v=103"></script>
+<script src="js/engine.js?v=103"></script>
+<script src="js/investigacion.js?v=103"></script>
+<script src="js/musica.js?v=103"></script>
 <script>
 /* Versión de prueba: salta directo al veredicto y la escena final del Caso 1. No toca la partida guardada. */
 saveGame=function(){ return true; }; clearSave=function(){};
@@ -82,10 +82,13 @@ const SALTOS=[
   {t:"📻 Llavín: la ronda de las 23:35", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g3")},
   {t:"📒 La prueba que cierra el caso", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], musica:"variacion", paso:()=>SCRIPT.findIndex(s=>s.cmd==="present"&&s.answer==="bitacora")},
   {t:"🔥 Conclusión y confesión", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], musica:"suspenso", paso:()=>SCRIPT.findIndex(s=>s.cmd==="choice"&&s.who==="jueza")},
+  {caso:"caso2", t:"🔎 Caso 2: Estuardo declara", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon"], paso:()=>SCRIPT.findIndex(s=>s.who==="fiscal"&&/llama al investigador/.test(s.text||""))},
+  {caso:"caso2", t:"🔑 Caso 2: Qué ocurrió después", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="e2")},
+  {caso:"caso2", t:"❓ Caso 2: Penna interroga a Tadeo", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon"].concat(["llave","bala9"]), musica:"suspenso", paso:()=>SCRIPT.findIndex(s=>s.cmd==="direct"&&s.ref==="p_tadeo")-4},
 ];
 SALTOS.forEach(sa=>{ const bt=document.createElement("button"); bt.textContent=sa.t; bt.style.fontSize="3.4cqw";
   bt.onclick=()=>{
-    selectCase("caso1"); saveGame=function(){ return true; };
+    selectCase(sa.caso||"caso1"); saveGame=function(){ return true; };
     initAudio(); unlockMusic(); if(AC&&AC.state==="suspended") AC.resume();
     $("title").style.display="none"; resetGame();
     sa.ev.forEach(id=>{ if(!EVIDENCE.find(e=>e.id===id)) EVIDENCE.push(EVX[id]); });
