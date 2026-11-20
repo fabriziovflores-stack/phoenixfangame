@@ -356,6 +356,6 @@ html.hd canvas, html.hd #verPrueba img{image-rendering:auto}
 #verPrueba .reverso div{position:static;background:none;color:inherit;padding:0}
 #verPrueba .reverso .rv1{font-size:3.4cqw;opacity:.7;margin-bottom:2cqw}
 #verPrueba .reverso .rv2{font-size:6cqw;letter-spacing:.3cqw;font-style:italic}
-#controls .rowL{display:flex;justify-content:center;gap:1.6cqw;width:100%}
-#controls .rowL button.letra{flex:0 0 auto;width:11cqw;height:11cqw;padding:0;font-size:6cqw;font-weight:bold;color:#3a2a18;background:#efe4c6;border:.5cqw solid #c9b48a;border-radius:1cqw}
+#controls .rowL{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2cqw;width:100%;max-width:70cqw;margin:0 auto}
+#controls .rowL button.letra{flex:0 0 auto;width:10cqw;height:10cqw;padding:0;font-size:5.4cqw;font-weight:bold;color:#3a2a18;background:#efe4c6;border:.5cqw solid #c9b48a;border-radius:1cqw}
 #controls .rowL button.letra:disabled{opacity:.25}

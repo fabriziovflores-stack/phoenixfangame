@@ -369,18 +369,20 @@ const CMD = {
       const [w,m,pose]=st.list[i++]; vistos.add(w); setScene(CHARS[w].pos, w, m, pose, true); setTimeout(sig, st.ms||700); };
     sig();
   },
-  /* Ordenar letras (foto a contraluz): {cmd:"ordenar", palabra:"LEONEL", letras:"LENOEL", molde:"{} y yo, 2002", ayuda, wrong:[líneas]}.
+  /* Ordenar letras (foto a contraluz): {cmd:"ordenar", palabra:"LEONEL", extra:"RAM", molde:"{} y yo, 2002", ayuda, wrong:[líneas]}.
      Arriba se ve el reverso con lo que se va armando; abajo, las letras desordenadas. Fallar no castiga: se borra y se repite. */
   ordenar(st,done){
-    const prevX=X, o=$("verPrueba"), letras=st.letras.split(""); let usadas=[];
+    const prevX=X, o=$("verPrueba"); let usadas=[];
+    const bolsa=(st.palabra+(st.extra||"")).split("");                 // letras de la palabra + letras de relleno, mezcladas al azar
+    let letras; do{ letras=bolsa.slice().sort(()=>Math.random()-.5); }while(letras.join("").includes(st.palabra.slice(0,3)));
     const cerrar=()=>{ o.style.display="none"; $("topS").classList.remove("carta"); X=prevX; };
-    const pinta=()=>{ const pal=letras.map((_,i)=>usadas[i]!=null?letras[usadas[i]]:"_").join(" ");
+    const pinta=()=>{ const pal=st.palabra.split("").map((_,i)=>usadas[i]!=null?letras[usadas[i]]:"_").join(" ");
       o.innerHTML=`<div class="reverso"><div class="rv1">${esc(st.titulo||"Al reverso, a contraluz:")}</div><div class="rv2">«${esc(st.molde.replace("{}",pal))}»</div></div>`;
       o.style.display="flex"; o.onclick=null; $("topS").classList.add("carta");
       X=Object.assign({}, prevX||{}, {orden:{letras, usadas, tap, borrar, ayuda:st.ayuda}}); mode="ordenar"; renderControls(); };
     const borrar=()=>{ if(busy) return; usadas=[]; pinta(); };
     const tap=i=>{ if(busy||usadas.includes(i)) return; usadas.push(i); SFX.blip&&SFX.blip(900); pinta();
-      if(usadas.length<letras.length) return;
+      if(usadas.length<st.palabra.length) return;
       busy=true; setTimeout(()=>{ busy=false; const w=usadas.map(k=>letras[k]).join("");
         if(w===st.palabra){ cerrar(); SFX.realize&&SFX.realize(); done(); }
         else { SFX.whoops(); usadas=[]; cerrar(); play(st.wrong||[{who:"ines",mood:"think",text:"(No... así no dice nada. Otra vez.)"}], pinta); }

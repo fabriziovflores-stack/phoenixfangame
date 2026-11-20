@@ -1004,7 +1004,7 @@ _Desde aquí se puede ir a: Comisaría_
 **JUSTO:** De la mochila de Tadeo.  
 **CHAYO:** No puedo acompañarte, pero podemos analizar esta foto. Mira: pongámosla hacia la luz.  
 
-*[MINIJUEGO: ordenar las letras a contraluz. Se ve: A contraluz se alcanza a leer, al revés: «2002 ,oy y LENOEL». Respuesta: LEONEL]*
+*[MINIJUEGO: ordenar las letras a contraluz. Se ve: A contraluz se ven letras sueltas bajo la tinta. No todas son del nombre.. Respuesta: LEONEL]*
 
 **NARRACIÓN:** Ficha actualizada: «Foto de una mujer». *[muestra: Foto de una mujer]*  
 **CHAYO:** ¿«Leonel y yo»?  
