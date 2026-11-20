@@ -1002,11 +1002,8 @@ CHAYO: ¡Ve a preguntarle a tu cliente qué sucedió realmente esa noche, y mué
 📁 Presentar a CHAYO: Video cámara municipal
 CHAYO: ¡Mira! ¡En esa misma calle me atropellaron a mí!
 JUSTO: ¿En serio?
-CHAYO: ...
-JUSTO: No estarás creyendo que...
-JUSTO: Esta camioneta... que está ligada al crimen... ¿también te atropelló a ti?
-CHAYO: ¿Quéeeeee?
-JUSTO: Se lo entregaré a la fiscalía para agilizar tu caso... y el mío. [marca: foto_camioneta]
+JUSTO: Tienes que tener cuidado cuando camines por Templeman.
+JUSTO: Entregaré tu denuncia en la fiscalía, para agilizar tu caso... y el mío. [marca: foto_camioneta]
 
 📁 Presentar a CHAYO: Video cámara municipal (otra vez)
 CHAYO: ¡Esa camioneta! Anda a la comisaría, Justo. Hoy.
@@ -1075,15 +1072,87 @@ ESTUARDO: No me muestre cosas, Valdivia. Yo trabajo para la fiscalía.
 Desde aquí se puede ir a: Comisaría
 
 Al llegar la primera vez:
-TADEO: ...Abogado. [marca: dia2_fin]
+TADEO: ... Sé que está molesto conmigo, señor abogado.
+JUSTO: No, no estoy molesto. Pero quiero que sepas algo.
+JUSTO: Para mí, lo más importante es la confianza y el diálogo.
+JUSTO: Si no me dices la verdad y no conversamos, no podré salvarte.
+TADEO: Salvarme... Yo... quiero que me salve.
 
 Persona: TADEO
+Al volver:
+TADEO: Abogado... sigo aquí.
+
+💬 Hablar con TADEO: Bárbara Plusvalía
+JUSTO: ¿No recuerdas haber visto a esta mujer? [muestra: barbara]
+TADEO: No, abogado. Le juro que cuando entré a la casona y me inscribí en el libro...
+TADEO: ...ella no estaba por ninguna parte.
+JUSTO: ¿Y el señor Ferrada?
+TADEO: ... Él... estaba molesto.
+JUSTO: ¿Molesto?
+TADEO: Sí... Trató mal a la señora Malva. [marca: molestia]
+
+💬 Hablar con TADEO: La molestia (se abre con marcas: molestia)
+JUSTO: Cuéntame más de esa molestia.
+TADEO: Después de tomarme el té de la señora Malva, me adormecí un poco.
+TADEO: Y entró el señor Leonel... Escuché: «¿Por qué... esta mujer... está aquí?»
+JUSTO: (Esta mujer... ¿Plusvalía?)
+JUSTO: ¿Qué sucedió después?
+TADEO: Escuché un portazo y... ahora que lo pienso, como estaba tan dormido...
+TADEO: ...no sé si vi pasar a la mujer o a la señora Malva.
+JUSTO: Perfecto. Esta vez tenemos más oportunidades.
+JUSTO: ¿Le puedo preguntar por sus medicinas?
+TADEO: Las tomo siempre. Me dan un poco de sopor, pero jamás me tiran a la cama. [muestra: Pastillas para el mareo]
+TADEO: Supongo que esta vez estaba tan cansado que me fui directo a acostar.
+JUSTO: ¿Y cómo llegó a su habitación?
+TADEO: La señora Malva me acompañó. De hecho... ella cerró la puerta.
+JUSTO: (El té, la llave, y ahora Malva acompañándolo al cuarto...)
+JUSTO: (No quiero sospechar de la propia hija, pero... tendré que hablar con ella.)
+JUSTO: Quiero hablarte de otra cosa. Te mostraré una fotografía. [marca: l_foto]
+
+📁 Presentar a TADEO: Foto de una mujer (se abre con marcas: l_foto)
+TADEO: ¿De dónde sacó eso?
+JUSTO: Estaba en tu mochila.
+TADEO: ... Ella es mi madre. Soledad Fuegos. Tenía un hostal allá en Puerto Williams.
+JUSTO: Ella falleció, según lo que contaste.
+TADEO: Sí. Murió de un paro al corazón... Me dejó una herencia.
+JUSTO: ¿Y has malgastado ese dinero?
+TADEO: No... No malgasté el dinero. Creo que el señor Penna me malinterpretó.
+JUSTO: ¿A qué te refieres?
+TADEO: ... A que todavía no tengo la herencia.
+JUSTO: Detrás de la foto dice «Leonel y yo». [muestra: Foto de una mujer]
+JUSTO: ¿Tu madre conocía a la víctima?
+NARRACIÓN: Un carabinero se asoma: «Señor abogado, el fiscal Penna quiere hablar con Tadeo.»
+TADEO: Ay, no. Otra vez.
+TADEO: Señor abogado...
+JUSTO: (Está sacando algo de su gorro...)
+TADEO: Aquí tengo una carta. Léala a solas. Pero, por favor, no se la pase a nadie más. [entra al expediente: Carta de la madre]
+TADEO: Perdone por haber callado tanto.
+TADEO: Usted es un muy buen abogado. Sé que llegará a la verdad. Pero hay algo que quiero confesarle.
+TADEO: Estoy solo en este mundo.
+TADEO: Y mi silencio me permitirá... tener a alguien en mi vida.
+
+[Fundido a negro]
+
+JUSTO: (...Está protegiendo a alguien. Pero ¿a quién, realmente?)
+JUSTO: (Bueno, ya tengo una conexión... pero traerá problemas.)
+JUSTO: (Iré a la casona. Tendré que interrogar a quien nadie creería capaz de matarlo: su propia hija.) [marca: dia2_fin]
+Si todavía no se cumple:
+TADEO: Esa foto... Antes de eso, abogado, ¿no quería preguntarme algo?
+
+📁 Presentar a TADEO: Foto de una mujer (otra vez)
+TADEO: Ya le di la carta, abogado. Léala a solas.
+
+📁 Presentar a TADEO: Pastillas para el mareo
+TADEO: Mis pastillas del mareo. Me dan sopor, pero nunca tanto.
+
+📁 Presentar a TADEO: cualquier otra cosa
+TADEO: No sé qué decirle de eso, abogado.
 
 💭 Pistas de «Pensar»:
 - foto_leonel: (La foto de la mochila de Tadeo... Chayo sabe de fotos. Podría mostrársela.)
 - foto_camioneta: (Chayo me pidió una fotografía. El video de la cámara municipal muestra la camioneta roja.)
 - edu_denuncia: (Estuardo está en la comisaría. Tengo que hablar con él... y dejar la denuncia de Chayo.)
-- dia2_fin: (Tadeo me debe la verdad. Al locutorio.)
+- dia2_fin: (Tadeo me debe la verdad. Al locutorio... y quizás mostrarle la foto de su mochila.)
 
 Al terminar la investigación:
 

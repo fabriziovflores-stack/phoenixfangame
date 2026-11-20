@@ -7,7 +7,7 @@
        people:[{who, req, hello:[al verlo por primera vez], back:[al volver al lugar]}],
        examine:[{id, t, req, lines, again}],
        talk:[{id, who, t, req, lines, silence:{req, closed, intro, steps:[{prompt, answer, tab, ok}], wrong, broken}}],
-       present:{ who:{ idPrueba:[líneas], "idPrueba:again":[al mostrarla otra vez], default:[líneas] } } } }
+       present:{ who:{ idPrueba:[líneas], "idPrueba:again":[al mostrarla otra vez], o idPrueba:{req, lines, no}, default:[líneas] } } } }
    }
    req = {flags:[...], ev:[...], not:[...]}. Una línea puede tener flag:"x" (marca) y meet:"id" (agrega perfil).
    ===================================================================== */
@@ -181,9 +181,11 @@ function invPresent(id){
   }
   if(mode==="invpresent"){
     const m=((invPlace().present||{})[X.who])||{};
-    const k="pr:"+G.inv.place+":"+X.who+":"+id, otra=G.inv.seen[k] && m[id+":again"];   // «id:again» = lo que dice si se la muestras de nuevo
-    if(m[id]) G.inv.seen[k]=1;
-    play(otra||m[id]||m.default||[{who:X.who,text:"Eh... ¿y eso qué tiene que ver conmigo?"}], invMenu);
+    let e=m[id];                                           // {req, lines, no}: solo sirve cuando se cumple req (si no, dice «no»)
+    if(e && !Array.isArray(e)) e = reqOk(e.req) ? e.lines : (e.no||null);
+    const k="pr:"+G.inv.place+":"+X.who+":"+id, ok=Array.isArray(m[id])||(m[id]&&reqOk(m[id].req)), otra=ok && G.inv.seen[k] && m[id+":again"];   // «id:again» = lo que dice si se la muestras de nuevo
+    if(ok) G.inv.seen[k]=1;
+    play(otra||e||m.default||[{who:X.who,text:"Eh... ¿y eso qué tiene que ver conmigo?"}], invMenu);
     return true;
   }
   return false;

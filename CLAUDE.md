@@ -71,7 +71,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `music:null` corta la música; `auto:ms` = la línea pasa sola después de escribirse (sin tocar); un `present` sin `soft` puede traer su propio `wrong` (con `damage`); `phone:true` = la persona habla por teléfono (no se la ve, nombre con 📞); `confetti:true` lanza confeti sobre la escena; `show:"id"` muestra en grande una prueba que ya está en el expediente. `desc:["id","texto"]` cambia el texto de la ficha (se guarda en `G.notes["desc:id"]`). `[r]texto[/r]` = rojo. Un texto que empieza con `(` es pensamiento (letra celeste). Solo en Justo la boca queda quieta; en los demás es un susurro y la boca se mueve.
 - `INV` (investigación; formato completo al inicio de `js/investigacion.js`): `{cmd:"invest", ref:"dia1"}` abre la
   investigación: lugares con Examinar / Hablar / Presentar / Moverse; termina cuando se cumple `done` (pruebas/marcas).
-  `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. En `present`, la clave `"id:again"` es lo que dice la persona si se le muestra la misma prueba otra vez. **Silencio**: un tema con `silence` se rompe
+  `req:{flags,ev,not}` condiciona lugares, personas, temas y objetos. En `present`, la clave `"id:again"` es lo que dice la persona si se le muestra la misma prueba otra vez, y `id:{req, lines, no}` hace que la prueba solo sirva cuando se cumple `req` (si no, dice `no`). **Silencio**: un tema con `silence` se rompe
   presentando pruebas en orden (`steps`); fallar quita vida (en la investigación nunca baja de 1).
   En líneas: `flag:"x"` marca algo, `meet:"id"` agrega un perfil marcado `hidden:true`.
   **Examinar = tocar el lugar** (como en la DS): cada objeto lleva `area:[x,y,ancho,alto]` en coordenadas 256×192; se toca

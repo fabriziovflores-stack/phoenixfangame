@@ -64,7 +64,7 @@ function cmd(s){
             (si.steps||[]).forEach((st,k)=>{ P(`*Paso ${k+1}: ${limpia(st.prompt||"")} → ✅ ${[].concat(st.answer).map(nombreEv).join(" o ")}*  `); lineas(st.ok); });
             if(si.wrong){ P(`*Si falla:*  `); lineas(si.wrong); } if(si.broken){ P(`*Al romperlo:*  `); lineas(si.broken); } }
           lineas(t.lines); });
-        if(pl.present) Object.entries(pl.present).forEach(([who,m])=>Object.entries(m).forEach(([ev,ls])=>{ P(`\n**📁 Presentar a ${N(who)}: ${ev==="default"?"cualquier otra cosa":ev.endsWith(":again")?nombreEv(ev.slice(0,-6))+" (otra vez)":nombreEv(ev)}**  `); lineas(ls); }));
+        if(pl.present) Object.entries(pl.present).forEach(([who,m])=>Object.entries(m).forEach(([ev,ls])=>{ P(`\n**📁 Presentar a ${N(who)}: ${ev==="default"?"cualquier otra cosa":ev.endsWith(":again")?nombreEv(ev.slice(0,-6))+" (otra vez)":nombreEv(ev)}${Array.isArray(ls)?"":req(ls.req)}**  `); if(Array.isArray(ls)) lineas(ls); else { lineas(ls.lines); if(ls.no){ P(`*Si todavía no se cumple:*  `); lineas(ls.no); } } }));
       });
       if(d.hints){ P(`\n*💭 Pistas de «Pensar»:*  `); Object.entries(d.hints).forEach(([k,v])=>P(`- ${nombreEv(k)}: ${limpia(v)}`)); }
       if(d.end){ P(`\n*Al terminar la investigación:*  `); lineas(d.end); }
