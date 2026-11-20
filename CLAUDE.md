@@ -177,7 +177,7 @@ Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.
 ## Cómo probar
 **Siempre antes de publicar**, aunque el cambio sea mínimo: `for f in js/*.js casos/*.js; do node --check $f; done` y abrir el
 juego tocando «Nueva partida» (un error de sintaxis en un archivo deja el juego sin arrancar).
-`prueba-final.html` = el juego con un botón que salta al veredicto y la escena final del Caso 1, y atajos (`SALTOS`) a momentos clave
+`prueba-final.html` = el juego con atajos (`SALTOS`) a momentos clave; hoy solo del Caso 2 (el dueño pidió sacar los del Caso 1; están en el historial de git:
 (objeción a Zoila, la ventana, la linterna, la ronda de las 23:35, la conclusión y el quiebre); no toca la partida guardada.
 No hay tests en el repo. Antes de entregar: recorrer el caso completo (ruta ganadora, una prueba equivocada,
 una respuesta equivocada y la derrota) con un navegador automatizado y confirmar que no hay errores de consola.

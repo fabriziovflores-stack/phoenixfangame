@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ACTA CERO — Prueba del final</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=107">
+<link rel="stylesheet" href="css/style.css?v=108">
 </head>
 <body>
 <div id="ds">
@@ -42,7 +42,6 @@
     <div id="casoSel"></div>
     <p id="casoIntro">Valparaíso. Un defensor en su primer juicio. Y un cuadro de casi dos metros que habría salido por una ventana de sesenta centímetros.</p>
     <button class="gold" id="contBtn" style="display:none">▶ Continuar partida</button>
-    <button class="gold" id="finBtn">🎬 Ver escena final (Caso 1)</button>
     <div id="saltos" style="display:flex;flex-wrap:wrap;gap:1.2cqw;justify-content:center;margin:1cqw 0"></div>
     <button class="gold" id="startBtn">▶ Nueva partida</button>
     <button id="musBtn">🎵 Mi música</button>
@@ -50,21 +49,21 @@
     <div class="hint">Activa el sonido · toca la pantalla de abajo para avanzar</div>
   </div>
 </div>
-<script src="js/casos.js?v=107"></script>
-<script src="casos/caso1.js?v=107"></script>
-<script src="casos/caso2.js?v=107"></script>
-<script src="js/audio.js?v=107"></script>
-<script src="js/sprites.js?v=107"></script>
-<script src="assets/hd/atlas.js?v=107"></script>
-<script src="js/assets.js?v=107"></script>
-<script src="js/engine.js?v=107"></script>
-<script src="js/investigacion.js?v=107"></script>
-<script src="js/musica.js?v=107"></script>
+<script src="js/casos.js?v=108"></script>
+<script src="casos/caso1.js?v=108"></script>
+<script src="casos/caso2.js?v=108"></script>
+<script src="js/audio.js?v=108"></script>
+<script src="js/sprites.js?v=108"></script>
+<script src="assets/hd/atlas.js?v=108"></script>
+<script src="js/assets.js?v=108"></script>
+<script src="js/engine.js?v=108"></script>
+<script src="js/investigacion.js?v=108"></script>
+<script src="js/musica.js?v=108"></script>
 <script>
 /* Versión de prueba: salta directo al veredicto y la escena final del Caso 1. No toca la partida guardada. */
 saveGame=function(){ return true; }; clearSave=function(){};
 $("contBtn").style.display="none";
-$("finBtn").onclick=()=>{
+if($("finBtn")) $("finBtn").onclick=()=>{
   selectCase("caso1"); saveGame=function(){ return true; };
   initAudio(); unlockMusic(); if(AC&&AC.state==="suspended") AC.resume();
   $("title").style.display="none"; resetGame();
@@ -74,20 +73,12 @@ $("finBtn").onclick=()=>{
 };
 /* Atajos: saltar a un momento del Caso 1 para mirarlo (con el expediente que corresponde a ese punto) */
 const SALTOS=[
-  {t:"⚖️ Zoila: el farol", ev:["ficha","luz","lona","visitas","ventana","bitacora"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="z1")},
-  {t:"❓ Penna interroga a Llavín", ev:["ficha","luz","lona","visitas","ventana","bitacora"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="direct"&&s.ref==="d1")},
-  {t:"🪟 Llavín: el ladrón y la ventana", ev:["ficha","luz","lona","visitas","ventana","bitacora"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g1")},
-  {t:"🔦 Llavín: dentro de la sala", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g2")},
-  {t:"🗺️ Tocar la bodega en el plano", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="senalar")-1},
-  {t:"📻 Llavín: la ronda de las 23:35", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="g3")},
-  {t:"📒 La prueba que cierra el caso", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], musica:"variacion", paso:()=>SCRIPT.findIndex(s=>s.cmd==="present"&&s.answer==="bitacora")},
-  {t:"🔥 Conclusión y confesión", ev:["ficha","luz","lona","visitas","ventana","bitacora","plano1","informe","parte"], musica:"suspenso", paso:()=>SCRIPT.findIndex(s=>s.cmd==="choice"&&s.who==="jueza")},
   {caso:"caso2", t:"🔎 Caso 2: Estuardo declara", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon"], paso:()=>SCRIPT.findIndex(s=>s.who==="fiscal"&&/llama al investigador/.test(s.text||""))},
   {caso:"caso2", t:"🔑 Caso 2: Qué ocurrió después", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="e2")},
   {caso:"caso2", t:"❓ Caso 2: Penna interroga a Tadeo", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon"].concat(["llave","bala9"]), musica:"suspenso", paso:()=>SCRIPT.findIndex(s=>s.cmd==="direct"&&s.ref==="p_tadeo")-4},
   {caso:"caso2", t:"🧳 Caso 2: Cómo llegué a la casona", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon","llave","bala9"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="cross"&&s.ref==="t1")},
   {caso:"caso2", t:"🔭 Caso 2: Aurelio declara", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon","llave","bala9"], paso:()=>SCRIPT.findIndex(s=>s.who==="fiscal"&&/Aurelio Mirón, vecino/.test(s.text||""))},
-  {caso:"caso2", t:"🏥 Caso 2: Tarde con Chayo y Estuardo", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon","llave","bala9"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="invest"&&s.ref==="dia2")},
+  {caso:"caso2", t:"🏥 Caso 2: Chayo y las letras de la foto", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon","llave","bala9"], paso:()=>SCRIPT.findIndex(s=>s.cmd==="invest"&&s.ref==="dia2")},
 ];
 SALTOS.forEach(sa=>{ const bt=document.createElement("button"); bt.textContent=sa.t; bt.style.fontSize="3.4cqw";
   bt.onclick=()=>{
