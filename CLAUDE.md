@@ -127,6 +127,8 @@ Llavín (`testigo`): hojas animadas 4×4 `arte-original/llavin-gestos.jpg` (k1�
 cerrados pegados en la cara actual). Pose `llaves` (sube y hace sonar las llaves; al hablar alternan k5/k6; **al dueño no le gustó: no se usa**), `cry` = b14/b13 (llora con la gorra),
 `breakdown` con `frames:[...]`, `ms`, `cae` (cuadro donde se desploma). Las declaraciones de un testimonio también aceptan `pose`.
 
+Tadeo: `arte-original/tadeo-carta.jpg` (4×4) → `c1`…`c16` con `herramientas/tadeo_carta.py` (calzado a `down.png`; sube de a poco para que el mesón del locutorio no tape la carta). Pose `carta` (entra con c1–c12: se saca el gorro y saca la carta; habla con c13/c14) y pose `gorro` (c15/c16: sin gorro, triste). Pasar de `gorro` a `carta` repite la animación: no hacerlo.
+
 Chayo (Rosario «Chayo» Catalán, practicante y acompañante de Justo; **reemplazó a Coté**, que ya no existe): dos hojas 4×2 en pares
 exactos, `arte-original/chayo-v2-a.png` (normal, happy, surprise, think) y `chayo-v2-b.png` (worried, smug, annoyed, point):
 `FRONT=1 MOUTHDX=4 SHEET=… GX=4 GY=2 TABLA=chayoA|chayoB HH=110 HEADY=22 python3 herramientas/penna4.py CARPETA 30 0 0`.

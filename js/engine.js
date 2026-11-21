@@ -786,7 +786,7 @@ const AMAP={
   testigo:{normal:["base","talk","blink"],"pose:llaves":["k6","k5"],smile:["proud","proudTalk"],smug:["smug","smugTalk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],break:["break","breakTalk"],cry:["b14","b13"],down:["sweat","sweatTalk"]},
   jueza:{normal:["base","talk"],serious:["serious","seriousTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],smile:["smile","smileTalk"],confused:["confused","confusedTalk"],disappoint:["disappoint","disappointTalk"],gavel:["gavel","gavelTalk"]},
   tomas:{normal:["base","talk"],sweat:["sweat","sweatTalk"],cry:["cry","cryTalk"],beg:["beg","begTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],angry:["indignant","indignantTalk"],smile:["happy","happyTalk"]},
-  tadeo:{normal:["base","talk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],cry:["cry","cryTalk"],angry:["angry","angryTalk"],smile:["smile","smileTalk"],think:["think","thinkTalk"]},
+  tadeo:{"pose:carta":["c13","c14"],"pose:gorro":["c15","c16"],normal:["base","talk"],sweat:["sweat","sweatTalk"],shock:["shock","shockTalk"],down:["down","downTalk"],cry:["cry","cryTalk"],angry:["angry","angryTalk"],smile:["smile","smileTalk"],think:["think","thinkTalk"]},
   malva:{normal:["base","talk"],smile:["tea","teaTalk"],sweat:["sweat","sweatTalk"],down:["down","downTalk"],shock:["shock","shockTalk"],angry:["angry","angryTalk"],smug:["smug","smugTalk"],break:["break","breakTalk"],
          worried:["q_c1","q_c1"],panic:["q_c2","q_c2"],c1:["q_c1","q_c1"],c2:["q_c2","q_c2"],c3:["q_c3","q_c3"],c4:["q_c4","q_c4"],c5:["q_c5","q_c5"],c6:["q_c6","q_c6"],c7:["q_c7","q_c7"],c8:["q_c8","q_c8"]},
   rocky:{normal:["base","talk"],angry:["angry","angryTalk"],sweat:["sweat","sweatTalk"],down:["down","downTalk"],shock:["shock","shockTalk"],think:["think","thinkTalk"],beg:["beg","begTalk"],smile:["smile","smileTalk"]},
@@ -863,7 +863,9 @@ function renderSprite(){
 /* Animaciones de entrada/salida de una pose (cuadros sueltos de ART que se pasan antes de quedar en la pose).
    Justo: levanta el brazo al apuntar y lo baja al terminar; se pone los lentes y toma el papel. */
 for(let i=1;i<=16;i++){ AMAP.testigo["b"+i]=["b"+i,"b"+i]; AMAP.testigo["k"+i]=["k"+i,"k"+i]; }   // cuadros sueltos de Llavín (colapso y gestos)
-const TRANS={ testigo:{ llaves:{in:["k2","k3","k4"], out:["k7","k8"], ms:90} }, ines:{
+const TRANS={ testigo:{ llaves:{in:["k2","k3","k4"], out:["k7","k8"], ms:90} },
+  tadeo:{ carta:{in:["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11","c12"], out:[], ms:160} },   // saca la carta del gorro
+  ines:{
   point:{in:["ap2","ap3","ap4","ap5","ap6","ap7","ap8"], out:["ap12","ap13","ap14","ap15","ap16"], ms:45},
   papel:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170},
   papelThink:{in:["ld1","ld2","ld3","ld4"], out:["ld4","ld3","ld2","ld1"], ms:170} }};
