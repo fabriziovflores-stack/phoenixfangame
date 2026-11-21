@@ -547,7 +547,7 @@ const INV = {
         enter:[{who:"ines",mood:"think",text:"(No hay nadie. La secretaria me dijo que pasara.)"},
                {who:"ines",mood:"smug",text:"(Es el momento justo para investigar.)"}],
         examine:[
-          {id:"m_escritorio", t:"El escritorio", lines:[
+          {id:"m_escritorio", t:"El escritorio", area:[0,92,118,100], lines:[
             {who:"ines",mood:"think",text:"(Un escritorio común y corriente, con muchos ficheros y archivos.)"},
             {who:"ines",mood:"think",text:"(A ver si me acerco un poquito...)"},
             {who:"ines",mood:"shock",anim:"hit",text:"(¿Q-qué es esto? ¡Una carpeta con mi cara! Y mis antecedentes...)"},
