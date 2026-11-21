@@ -10,7 +10,7 @@ Expediente (fichas)
 - Credencial: Credencial de defensor penal público. Ya tiene un caso ganado.
 - Pistola 9 mm: Encontrada en la mochila de Tadeo. Disparada una vez. Sin huellas.
 - Informe de autopsia: Leonel Ferrada, 61. Roce de bala en la mejilla izquierda, de frente. Bala 9 mm en la nuca. Muerte instantánea. 23:43.
-- Bala .38: Incrustada en el marco de la puerta de entrada. Calibre .38, de revólver.
+- Bala .38: Bala de revólver calibre .38. Incrustada en el marco de la puerta de entrada.
 - Plano de la casona: Plano de evacuación. La entrada da a un pasillo oscuro. La cocina está a la derecha, sin vista al pasillo. La pieza de Tadeo, al fondo, no tiene ventana a la calle.
 - Video cámara municipal: Calle Templeman. 23:16: sale un taxi desde la casona. 23:42: una camioneta roja baja a toda velocidad. La patente no se lee.
 - Foto de la camioneta: Camioneta roja.
@@ -23,7 +23,7 @@ Expediente (fichas)
 - Examen de pólvora: Residuos de disparo en las manos de Tadeo: negativo.
 - Examen de sangre: Sangre de Tadeo al momento de la detención: clonazepam en dosis alta. No es el remedio para el mareo.
 - Inscripción del arma: Registro de armas: pistola 9 mm, inscrita en 2015 a nombre de Leonel Ferrada.
-- Tarjeta de la cámara: Cámara del tablero de Rocky. 23:41: un fogonazo en la puerta y, dos segundos después, otro dentro del pasillo, a espaldas de Leonel. Silueta de pelo largo, con delantal.
+- Tarjeta de la cámara: Cámara del tablero de Ricky. 23:41: un fogonazo en la puerta y, dos segundos después, otro dentro del pasillo, a espaldas de Leonel. Silueta de pelo largo, con delantal.
 - Receta de clonazepam: Receta médica a nombre de Malva Ferrada. El frasco, en el baño de la casona, está casi vacío.
 - Contrato de adelanto: Malva Ferrada recibió 40 millones de la cadena hotelera como adelanto por la venta de la casona. Firmado solo por ella.
 - Nota de Estuardo: la corredera: La pistola 9 mm tiene la corredera dura. Al disparar salta hacia atrás y muerde la mano de quien la toma mal, entre el pulgar y el índice. Deja una herida en media luna.
@@ -47,7 +47,7 @@ Perfiles
 - Malva Ferrada: Hija de la víctima. Administra el hospedaje. Siempre con delantal.
 - Bárbara Plusvalía: Representante de una cadena hotelera. Quiere comprar la casona.
 - Aurelio Mirón: Vecino de enfrente. 70 años. Binoculares.
-- Rodrigo «Rocky» Saavedra: Mecánico. Dueño de la camioneta roja del video. Le debía plata a Leonel.
+- Ricardo «Ricky» González: Mecánico. Dueño de la camioneta roja del video. Le debía plata a Leonel.
 
 ---
 
@@ -963,7 +963,7 @@ JUSTO: (Esta mujer... Bárbara Plusvalía... Tendré que ir a hablar con ella.)
 INVESTIGACIÓN (dia2) — 17 de marzo
 ============================================================
 
-Termina cuando tienes: ; y las marcas foto_leonel, foto_camioneta, edu_denuncia, dia2_fin.
+Termina cuando tienes: ; y las marcas foto_leonel, foto_camioneta, edu_denuncia, carta_tadeo, ricky_fue, malva_foto, ir_plusvalia.
 
 --- LUGAR: Hospital Van Buren ---
 
@@ -1017,7 +1017,11 @@ CHAYO: Mmm... eso no me dice nada. ¿No tienes una fotografía?
 
 --- LUGAR: Comisaría _(se abre con marcas: foto_camioneta)_ ---
 
-Desde aquí se puede ir a: Hospital Van Buren, Locutorio de la comisaría
+Desde aquí se puede ir a: Hospital Van Buren, Locutorio de la comisaría, Casona Ferrada
+
+Persona: ESTUARDO (se abre con marcas: malva_foto)
+Al volver:
+ESTUARDO: ¡Justo! Le estaba llamando.
 
 Persona: ESTUARDO (se abre con sin: edu_denuncia)
 Al verla por primera vez:
@@ -1068,12 +1072,30 @@ ESTUARDO: ¡A la orden! Apenas sepa algo, yo le llamo por teléfono.
 PENNA: Vámonos. [marca: edu_denuncia]
 JUSTO: (Se fueron. Ahora sí: al locutorio.)
 
+💬 Hablar con ESTUARDO: La camioneta roja (se abre con marcas: malva_foto)
+JUSTO: Lo siento, estaba ocupado. ¿Cómo le fue con la camioneta?
+ESTUARDO: ¡Ya la reconocimos! La patente era «YNFUI-99».
+JUSTO: Eso es bueno. ¿Quién es el dueño?
+ESTUARDO: Un tal Ricky González, dueño de una mecánica.
+ESTUARDO: La denuncia ya se hizo. ¿Usted abogará por su compañera?
+JUSTO: Lo más probable, gracias. Pero la verdad es que ese tema no me es necesario ahora.
+JUSTO: Necesito hablar con Plusvalía. ¿Tiene alguna dirección?
+ESTUARDO: Sí, sí. Las oficinas de Hoteles Mirador. Vaya, creo que aún está ahí.
+JUSTO: Gracias. Eduardo, ¿podría hacerme un favor?
+ESTUARDO: Claro. A menos que sea ponerme de su lado. Ja... ja... ja.
+JUSTO: Convenza a Penna de llamar a declarar a Ricky González, por favor.
+ESTUARDO: ¿Al mecánico?
+JUSTO: Sí. Estuvo en la escena del crimen.
+ESTUARDO: ¿Quéeeee?
+ESTUARDO: ¡VOY DE INMEDIATO! ¡FISCAL PENNA, ABRA LA PUERTA!
+JUSTO: (Bien. Vamos a enfrentarnos al elefante de la habitación: la señora Plusvalía.) [marca: ir_plusvalia]
+
 📁 Presentar a ESTUARDO: cualquier otra cosa
 ESTUARDO: No me muestre cosas, Valdivia. Yo trabajo para la fiscalía.
 
 --- LUGAR: Locutorio de la comisaría _(se abre con marcas: edu_denuncia)_ ---
 
-Desde aquí se puede ir a: Comisaría
+Desde aquí se puede ir a: Comisaría, Casona Ferrada
 
 Al llegar la primera vez:
 TADEO: ... Sé que está molesto conmigo, señor abogado.
@@ -1131,7 +1153,8 @@ TADEO: Señor abogado...
 JUSTO: (Está sacando algo de su gorro...)
 TADEO: Aquí tengo una carta. Léala a solas. Pero, por favor, no se la pase a nadie más. [entra al expediente: Carta de la madre]
 TADEO: Perdone por haber callado tanto.
-TADEO: Usted es un muy buen abogado. Sé que llegará a la verdad. Pero hay algo que quiero confesarle.
+TADEO: Usted es un muy buen abogado. Sé que llegará a la verdad.
+TADEO: Pero hay algo que quiero confesarle. [música: silencio]
 TADEO: Estoy solo en este mundo.
 TADEO: Y mi silencio me permitirá... tener a alguien en mi vida.
 
@@ -1139,7 +1162,7 @@ TADEO: Y mi silencio me permitirá... tener a alguien en mi vida.
 
 JUSTO: (...Está protegiendo a alguien. Pero ¿a quién, realmente?)
 JUSTO: (Bueno, ya tengo una conexión... pero traerá problemas.)
-JUSTO: (Iré a la casona. Tendré que interrogar a quien nadie creería capaz de matarlo: su propia hija.) [marca: dia2_fin]
+JUSTO: (Iré a la casona. Tendré que interrogar a quien nadie creería capaz de matarlo: su propia hija.) [marca: carta_tadeo]
 Si todavía no se cumple:
 TADEO: Esa foto... Antes de eso, abogado, ¿no quería preguntarme algo?
 
@@ -1152,11 +1175,194 @@ TADEO: Mis pastillas del mareo. Me dan sopor, pero nunca tanto.
 📁 Presentar a TADEO: cualquier otra cosa
 TADEO: No sé qué decirle de eso, abogado.
 
+--- LUGAR: Casona Ferrada _(se abre con marcas: carta_tadeo)_ ---
+
+Desde aquí se puede ir a: Pieza de Tadeo, Oficina del hospedaje, Comisaría, Locutorio de la comisaría
+
+Al llegar la primera vez:
+MALVA: ...
+JUSTO: (La señora Malva se fue a la oficina. Ni un saludo me dio.)
+JUSTO: (Ahora que no está, debería revisar algo por aquí.)
+JUSTO: (Ahora que lo pienso...) [muestra: Informe de autopsia]
+JUSTO: (Le dispararon de frente... pero ¿desde dónde?) [música: logica]
+
+--- TOCAR EN EL PLANO: Toca en el plano desde dónde vino el disparo que le llegó de frente. ---
+
+Fuera de las zonas:
+JUSTO: (No... si le dispararon de frente, el disparo tuvo que venir de otro lado. Miro de nuevo.)
+✅ Correcto: la bodega.
+
+JUSTO: (La puerta... Aquí estaba la persona que le disparó y falló.)
+JUSTO: (A ver, por aquí... ¿Algo brilla?)
+JUSTO: (¡Una bala!) [entra al expediente: Bala .38]
+JUSTO: (Hay algo que no calza. Si le dispararon de frente desde la puerta...)
+JUSTO: (...¿por qué la bala quedó incrustada en la puerta, y no en el mesón de atrás?)
+JUSTO: (Una camioneta se estaciona afuera.) [música: investigacion]
+RICKY: Permiso. ¿Se encuentra doña Malva?
+JUSTO: Acaba de pasar a la oficina. ¿Quién es usted?
+RICKY: Soy... Ricardo González. Me llaman Ricky.
+RICKY: Mucho gusto. [marca: ricky_llega; perfil nuevo: rocky]
+
+Persona: RICKY (se abre con marcas: ricky_llega; sin: ricky_fue)
+
+💬 Hablar con RICKY: Ricardo González
+RICKY: Soy un humilde mecánico. Conozco a don Ferrada desde que era niño.
+RICKY: Lamento mucho lo que sucedió. De verdad, no me mire con esa cara.
+RICKY: ¿Y usted quién es?
+JUSTO: Abogado defensor. Justo Valdivia.
+JUSTO: (¿Y con qué cara lo estoy mirando?)
+JUSTO: Usted... maneja una camioneta roja.
+RICKY: Sí, así es. Todavía no la termino de pagar. [marca: k1]
+
+💬 Hablar con RICKY: ¿Qué hace aquí? (se abre con marcas: k1)
+JUSTO: ¿Usted sabe qué sucedió aquí?
+RICKY: ... Sí. Lo lamento mucho. Pero yo no tengo nada que ver...
+JUSTO: (No le he dicho absolutamente nada.)
+JUSTO: Señor González, usted acaba de decir «no tengo nada que ver».
+JUSTO: Eso es lo que diría alguien que SÍ tiene que ver.
+RICKY: ... Amigo, usted es abogado.
+RICKY: Estoy contra las cuerdas.
+JUSTO: ¿Por qué? [marca: k2]
+
+💬 Hablar con RICKY: Contra las cuerdas (se abre con marcas: k2)
+JUSTO: Usted dijo que estaba contra las cuerdas.
+RICKY: Tiene razón. Estoy entre la llanta... y el neumático.
+RICKY: A mi negocio no le ha ido nada bien. Mi mecánico renunció.
+RICKY: Y estoy endeudado hasta el cuello. He tenido que recurrir a lo peor.
+RICKY: Por eso necesito su ayuda.
+JUSTO: (¿Por qué me pasa esto a mí?)
+RICKY: Prometo ayudarle en lo que pueda. Pero usted tendrá que ayudarme a mí.
+JUSTO: (No se ve mala persona, y por lo visto está en apuros.)
+JUSTO: Dígame la verdad: usted está aquí... por esto. [marca: k3]
+
+💬 Hablar con RICKY: Leonel Ferrada (se abre con marcas: k4)
+JUSTO: Usted estuvo aquí. Y él le disparó.
+JUSTO: ¿Podría contarme qué fue lo que realmente sucedió?
+RICKY: Le debía mucho dinero a don Leonel. Pero MUCHO.
+RICKY: Ese día era la fecha límite. Llegué y abrí la puerta.
+RICKY: Él estaba ahí, mirándome de frente. Y de pronto, un disparo.
+RICKY: Fue todo muy rápido.
+RICKY: Después él se tapó el oído... y yo corrí a toda velocidad.
+JUSTO: Leonel Ferrada quería matarlo.
+JUSTO: ¿Y quién más estaba?
+RICKY: No había nadie más.
+RICKY: Bueno... supongo que ahora que falleció...
+JUSTO: Señor, yo tengo el deber de denunciarlo.
+RICKY: ¡¿Cómo?! ¿Por qué?
+JUSTO: Porque usted acaba de decirme que estaba en la escena del crimen.
+RICKY: Pero... yo no... no lo maté, cabro. Te lo juro.
+JUSTO: ¿Me lo jura?
+RICKY: Más claro que mi limpiaparabrisas. Mi camioneta roja no tiene ni una pizca de asesina.
+RICKY: Si me pide ayuda, podré ayudarlo.
+JUSTO: Está bien. Anote mi número. Mañana lo llevaré a testificar.
+RICKY: ¡Gracias! Ahora iré a hablar con Malva...
+RICKY: Fallecido su padre... deuda saldada.
+JUSTO: (...Se fue.) [marca: ricky_fue]
+
+📁 Presentar a RICKY: Video cámara municipal (se abre con marcas: k3)
+RICKY: ¡Diablos!
+JUSTO: Usted maneja la camioneta que aparece saliendo de aquí.
+RICKY: ...
+JUSTO: Usted estuvo aquí. En la escena del crimen.
+RICKY: ¡Sí, señor! Estuve aquí.
+RICKY: Pero yo no lo hice. Ni tampoco sé quién lo hizo.
+RICKY: Tengo miedo, abogado. Él... me disparó.
+JUSTO: ¿Él?
+RICKY: Leonel Ferrada. [marca: k4]
+Si todavía no se cumple:
+RICKY: ¡Por qué me inculpa con eso, abogado!
+
+📁 Presentar a RICKY: Video cámara municipal (otra vez)
+RICKY: Ya le dije que sí, que era mi camioneta.
+
+📁 Presentar a RICKY: cualquier otra cosa
+RICKY: ¡Por qué me inculpa con eso, abogado!
+
+--- LUGAR: Pieza de Tadeo _(se abre con marcas: ricky_fue)_ ---
+
+Desde aquí se puede ir a: Casona Ferrada
+
+Al llegar la primera vez:
+JUSTO: (No hay nada aquí. Pero debería revisar bien... algo pasé por alto.)
+RICKY: Malvita, lo siento mucho. Su pérdida...
+MALVA: Váyase. No lo quiero ver más.
+RICKY: Yo... intenté pagarle. Pero deuda tras deuda...
+MALVA: Mi padre confió en usted. Y ahora está muerto.
+RICKY: Lo siento mucho.
+JUSTO: (Esos eran Ricky y Malva... Ricky se acaba de ir.)
+JUSTO: (Iré a hablar con Malva.) [marca: oye_malva]
+
+--- LUGAR: Oficina del hospedaje _(se abre con marcas: oye_malva)_ ---
+
+Desde aquí se puede ir a: Casona Ferrada
+
+Al llegar la primera vez:
+MALVA: Lo siento tanto... padre.
+MALVA: ¡Ah! Abogado. Vino.
+JUSTO: (Está más fría de lo normal.)
+
+Persona: MALVA
+Al volver:
+MALVA: ... Abogado.
+
+💬 Hablar con MALVA: La noche del crimen
+JUSTO: Mañana declarará.
+MALVA: Así veo.
+JUSTO: ...
+MALVA: No puedo hablar con usted. El fiscal...
+JUSTO: Ya veo. Vino a conversar con usted. Entiendo.
+MALVA: ¿Usted quiere inculparme a mí, señor abogado?
+JUSTO: No he venido a eso. Vengo a preguntarle algunas cosas.
+MALVA: No responderé. [marca: o1]
+
+💬 Hablar con MALVA: Su negativa (se abre con marcas: o1)
+JUSTO: ¿El fiscal la obliga a guardar silencio?
+MALVA: No. Mi dignidad, sí.
+JUSTO: No vengo a faltarle el respeto, señora. Solo a descubrir la verdad.
+MALVA: ... La verdad duele. Y yo supe una verdad.
+JUSTO: ¿Una verdad?
+MALVA: A veces uno no conoce bien a las personas. Muestran una faceta...
+MALVA: ...como usted. Ayer vino muy elegante, confiable, y yo lo dejé pasar.
+MALVA: Y en el juicio habló solo fechorías. De mí, de mis invitados.
+MALVA: Lo aborrezco, señor.
+JUSTO: (Ahora sí está enojada.)
+JUSTO: Puedo entender su rechazo hacia mí. Pero creo que ya sé qué la tiene así.
+MALVA: ¿Sí? ¿Qué es? [marca: o2]
+
+📁 Presentar a MALVA: Foto de una mujer (se abre con marcas: o2)
+JUSTO: Usted se enteró de esto.
+MALVA: ¡¿...?!
+JUSTO: Esta mujer, Soledad Fuegos, es la madre del acusado.
+MALVA: ... No la conozco.
+JUSTO: Vea el reverso. Está tachado, pero si lo ponemos contra la luz: «Leonel y yo, 2002».
+JUSTO: Esa mujer... estuvo con su padre.
+JUSTO: Usted se enteró. Y ahora aparece un muchacho en su puerta, igual a su padre de joven.
+JUSTO: Y usted lo reconoce de inmediato.
+JUSTO: Sé lo doloroso que tiene que ser que su padre haya engañado a su madre.
+JUSTO: Le juro que llegaré hasta el final de esto. Pero necesito su ayuda.
+MALVA: ... No, señor. Le recomiendo que no siga indagando más...
+MALVA: Esa... mujer.
+JUSTO: ¿Plusvalía?
+MALVA: Lo siento, abogado. Le pido que se retire, y que no vuelva más.
+MALVA: Por favor. Nos vemos mañana.
+JUSTO: (Será mejor que vaya a ver cómo va la denuncia de Chayo.) [marca: malva_foto]
+Si todavía no se cumple:
+MALVA: No tengo nada que decirle sobre eso.
+
+📁 Presentar a MALVA: Foto de una mujer (otra vez)
+MALVA: Le pedí que se retirara, abogado.
+
+📁 Presentar a MALVA: cualquier otra cosa
+MALVA: No responderé, abogado.
+
 💭 Pistas de «Pensar»:
 - foto_leonel: (La foto de la mochila de Tadeo... Chayo sabe de fotos. Podría mostrársela.)
 - foto_camioneta: (Chayo me pidió una fotografía. El video de la cámara municipal muestra la camioneta roja.)
 - edu_denuncia: (Estuardo está en la comisaría. Tengo que hablar con él... y dejar la denuncia de Chayo.)
-- dia2_fin: (Tadeo me debe la verdad. Al locutorio... y quizás mostrarle la foto de su mochila.)
+- carta_tadeo: (Tadeo me debe la verdad. Al locutorio... y quizás mostrarle la foto de su mochila.)
+- ricky_fue: (Ese mecánico de la camioneta roja sabe algo. Tengo que hacerlo hablar... quizás con el video.)
+- malva_foto: (Malva está en la oficina. Está enojada conmigo... ¿qué es lo que la tiene así?)
+- ir_plusvalia: (Debería volver a la comisaría a ver cómo va la denuncia de Chayo.)
 
 Al terminar la investigación:
 
@@ -1168,7 +1374,7 @@ Termina cuando tienes: Carta de la madre, Examen de pólvora, Examen de sangre, 
 
 --- LUGAR: Locutorio — Tadeo ---
 
-Desde aquí se puede ir a: Locutorio — Rocky Saavedra, Comisaría, Casona Ferrada
+Desde aquí se puede ir a: Locutorio — Ricky González, Comisaría, Casona Ferrada
 
 Al llegar la primera vez:
 TADEO: ...Ahora todos saben. Ya no importa.
@@ -1198,45 +1404,45 @@ TADEO: Ya le conté todo, abogado.
 TADEO: La señora Malva me lo llevó a la pieza. Insistió en que me lo tomara caliente.
 TADEO: Era más amargo que el del primer día. Pensé que era otra hierba.
 
---- LUGAR: Locutorio — Rocky Saavedra _(se abre con marcas: rocky_pide)_ ---
+--- LUGAR: Locutorio — Ricky González _(se abre con marcas: rocky_pide)_ ---
 
 Desde aquí se puede ir a: Locutorio — Tadeo, Comisaría
 
-Persona: ROCKY
+Persona: RICKY
 Al verla por primera vez:
-ROCKY: ¿Usted es el abogado del cabro?
-ROCKY: ¡Yo no maté a nadie, ¿ya?! ¡A nadie! [perfil nuevo: rocky]
+RICKY: ¿Usted es el abogado del cabro?
+RICKY: ¡Yo no maté a nadie, ¿ya?! ¡A nadie! [perfil nuevo: rocky]
 Al volver:
-ROCKY: ¿Otra vez? Ya le dije todo.
+RICKY: ¿Otra vez? Ya le dije todo.
 
-💬 Hablar con ROCKY: Esa noche
-ROCKY: Le disparé pa' asustarlo. ¡Y el viejo me disparó de vuelta!
-ROCKY: Vi el fogonazo detrás de él. Arranqué. ¿Qué iba a hacer?
+💬 Hablar con RICKY: Esa noche
+RICKY: Le disparé pa' asustarlo. ¡Y el viejo me disparó de vuelta!
+RICKY: Vi el fogonazo detrás de él. Arranqué. ¿Qué iba a hacer?
 
-💬 Hablar con ROCKY: Su deuda con Leonel
-ROCKY: Le debía cinco palos. Me iba a quitar el taller. Es lo único que tengo.
+💬 Hablar con RICKY: Su deuda con Leonel
+RICKY: Le debía cinco palos. Me iba a quitar el taller. Es lo único que tengo.
 
-💬 Hablar con ROCKY: La huida
-ROCKY: Bajé a toda velocidad. No sé ni por dónde. Iba temblando.
-ROCKY: En Templeman choqué con algo... un tarro de basura, creo. No paré.
+💬 Hablar con RICKY: La huida
+RICKY: Bajé a toda velocidad. No sé ni por dónde. Iba temblando.
+RICKY: En Templeman choqué con algo... un tarro de basura, creo. No paré.
 JUSTO: (Templeman. ¿Por qué me suena esa esquina?)
 
-📁 Presentar a ROCKY: Foto de la camioneta
+📁 Presentar a RICKY: Foto de la camioneta
 JUSTO: Su camioneta tiene un soporte vacío en el parabrisas. ¿Dónde está la cámara?
-ROCKY: ...En el taller. La escondí. Me graba disparando.
-ROCKY: Pero si sirve pa' algo... la llave está en mi chaqueta. [marca: taller]
+RICKY: ...En el taller. La escondí. Me graba disparando.
+RICKY: Pero si sirve pa' algo... la llave está en mi chaqueta. [marca: taller]
 
-📁 Presentar a ROCKY: cualquier otra cosa
-ROCKY: ¿Y eso qué, abogado?
+📁 Presentar a RICKY: cualquier otra cosa
+RICKY: ¿Y eso qué, abogado?
 
 --- LUGAR: Comisaría _(se abre con marcas: sil:madre3)_ ---
 
-Desde aquí se puede ir a: Locutorio — Tadeo, Locutorio — Rocky Saavedra, Casona Ferrada, Taller de Rocky
+Desde aquí se puede ir a: Locutorio — Tadeo, Locutorio — Ricky González, Casona Ferrada, Taller de Ricky
 
 Persona: ESTUARDO
 Al verla por primera vez:
 ESTUARDO: Valdivia. Llegaron informes nuevos. No le van a gustar al fiscal.
-ESTUARDO: Y ubicamos la camioneta del video. Rodrigo Saavedra, mecánico. Lo detuvimos anoche. [entra al expediente: Foto de la camioneta]
+ESTUARDO: Y ubicamos la camioneta del video. Ricardo González, mecánico. Lo detuvimos anoche. [entra al expediente: Foto de la camioneta]
 ESTUARDO: Tenía un revólver calibre .38. Igual que la bala del marco.
 ESTUARDO: Está en el locutorio. Y pidió hablar con usted, fíjese. [marca: rocky_pide]
 Al volver:
@@ -1270,7 +1476,7 @@ JUSTO: (Por lo menos lo admite. No todos lo hacen.)
 📁 Presentar a ESTUARDO: cualquier otra cosa
 ESTUARDO: Ya le di todo lo que podía, Valdivia.
 
---- LUGAR: Taller de Rocky _(se abre con marcas: taller)_ ---
+--- LUGAR: Taller de Ricky _(se abre con marcas: taller)_ ---
 
 Desde aquí se puede ir a: Comisaría
 
@@ -1282,7 +1488,7 @@ JUSTO: (La grabación sigue... pero esto es lo que necesito. El resto, que lo ve
 JUSTO: (Tengo que volver a la casona. Ahora.)
 
 🔍 Examinar: El banco de trabajo
-JUSTO: (Grasa, herramientas... y una foto de Rocky con una niña chica. ¿Su hija?)
+JUSTO: (Grasa, herramientas... y una foto de Ricky con una niña chica. ¿Su hija?)
 
 🔍 Examinar: El calendario
 JUSTO: (De 2019. Nadie le ha dado vuelta la hoja en años.)
@@ -1353,7 +1559,7 @@ JUSTO: (¿Malva vendió la casa a escondidas?)
 - Examen de sangre: (Tadeo durmió demasiado profundo. ¿Le habrán tomado muestras de sangre?)
 - Inscripción del arma: (¿De quién era esa pistola, en realidad? Eduardo podría averiguarlo.)
 - Nota de Estuardo: la corredera: (Eduardo sabe de armas. Algo más tenía que decirme sobre esa pistola.)
-- Tarjeta de la cámara: (El soporte vacío en el parabrisas de Rocky... ¿dónde está esa cámara?)
+- Tarjeta de la cámara: (El soporte vacío en el parabrisas de Ricky... ¿dónde está esa cámara?)
 - Receta de clonazepam: (Si a Tadeo lo durmieron, el remedio tiene que estar en algún lugar de la casona.)
 - Contrato de adelanto: (Bárbara habló de un negocio. Los papeles deben estar en la oficina.)
 - Boleta del taxi: (Bárbara nunca dijo dónde estaba esa noche. Tengo que insistir.)
@@ -1369,7 +1575,7 @@ JUSTO: (Ahora tengo que demostrarlo. Prueba por prueba.)
 [Música: corte]
 
 JUEZA: Se reanuda la audiencia. Espero que esta vez tengan hechos.
-JUSTO: La defensa llama a Rodrigo Saavedra.
+JUSTO: La defensa llama a Ricardo González.
 
 --- TESTIMONIO Y CONTRAINTERROGATORIO: El viejo me disparó  _(música: interrogatorio)_ ---
 
@@ -1377,32 +1583,32 @@ Declaración 1: Fui a hablar con el viejo. Nada más.
 
 Si se presiona:
 JUSTO: ¿Con un revólver?
-ROCKY: ...Pa' que me tomara en serio.
+RICKY: ...Pa' que me tomara en serio.
 
 Declaración 2: Saqué el fierro pa' asustarlo. Se me escapó un tiro.
 
 Si se presiona:
 JUSTO: ¿Se le escapó?
-ROCKY: Le rocé la cara. No quería.
+RICKY: Le rocé la cara. No quería.
 
 Declaración 3: ¡Y el viejo me disparó de vuelta! Por eso arranqué.
 
 Si se presiona:
 JUSTO: ¿Lo vio disparar?
-ROCKY: Vi el fogonazo detrás de él. ¿Quién más iba a ser?
+RICKY: Vi el fogonazo detrás de él. ¿Quién más iba a ser?
 
 ✅ Contradicción: presentar Tarjeta de la cámara
 JUSTO: Su propia cámara lo grabó. El segundo fogonazo salió del pasillo. [¡OBJECIÓN!; golpe en la mesa]
 JUSTO: A espaldas del señor Ferrada. Nadie le disparó a usted: le dispararon a él.
-ROCKY: ...Entonces yo no lo maté.
+RICKY: ...Entonces yo no lo maté.
 PENNA: Una silueta de pelo largo. Con... delantal.
 JUEZA: Que se reproduzca la grabación completa. Hasta el final.
 JUSTO: (La camioneta arranca. Baja el cerro. Dobla en Templeman...)
 JUSTO: (En las luces aparece una mujer cruzando. Con una boina roja.)
 JUSTO: (...Chayo.) [música: silencio]
 JUSTO: (El «tarro de basura». Era ella.)
-ROCKY: ...¿Esa es su amiga, abogado? Yo... no sabía. Le juro que no sabía. [lectura nueva de rocky]
-NARRACIÓN: Perfil actualizado: Rodrigo Saavedra.
+RICKY: ...¿Esa es su amiga, abogado? Yo... no sabía. Le juro que no sabía. [lectura nueva de rocky]
+NARRACIÓN: Perfil actualizado: Ricardo González.
 PENNA: La fiscalía lo sabía, Su Señoría. Ese hecho se juzgará aparte. Hoy juzgamos un homicidio.
 JUSTO: (Respira, Justo. Chayo está bien. Y Tadeo te necesita entero.)
 JUEZA: Continuemos. Que vuelva a declarar la señora Malva Ferrada. [música: persecucion]
@@ -1511,7 +1717,7 @@ Declaración 1: Esa pistola estaba en un cajón forzado. ¡Cualquiera pudo sacar
 
 Si se presiona:
 JUSTO: ¿Cualquiera?
-MALVA: ¡Un ladrón! ¡Rocky! ¡O el mismo Tadeo!
+MALVA: ¡Un ladrón! ¡Ricky! ¡O el mismo Tadeo!
 
 Declaración 2: Y nadie encontró pólvora en mis manos. Nadie.
 
@@ -1570,7 +1776,7 @@ MALVA: ¡Él me iba a dejar sin nada por un cabro que conoció ayer!
 [Derrumbe de MALVA]
 
 PENNA: La fiscalía retira los cargos contra el señor Fuegos. Y formalizará a Malva Ferrada.
-PENNA: Rodrigo Saavedra también responderá: por el disparo y por el atropello con fuga.
+PENNA: Ricardo González también responderá: por el disparo y por el atropello con fuga.
 JUEZA: Ahora sí estoy contenta. Este tribunal declara al acusado, Tadeo Fuegos...
 
 ============================================================
@@ -1593,7 +1799,7 @@ PENNA: Esta vez fui cuidadoso. Medí todo. No dije una palabra de más.
 PENNA: Y aun así, la culpable estaba sentada en mi lado de la sala. Como mi testigo.
 JUSTO: Usted también se dio cuenta. Pidió fotografiar la herida.
 PENNA: Un fiscal acusa al culpable, colega. No al que tiene más a mano.
-PENNA: Lo de Saavedra lo llevo yo, personalmente. Su amiga va a tener su juicio.
+PENNA: Lo de González lo llevo yo, personalmente. Su amiga va a tener su juicio.
 PENNA: Diecinueve juicios. Diecisiete condenas. No se acostumbre.
 
 ============================================================
@@ -1601,10 +1807,10 @@ Hospital Van Buren
 ============================================================
 
 CHAYO: ¡Ganaste! ¡Y sin mí! Ahora cuéntamelo todo. Desde el principio. No te saltes nada.
-ROCKY: Señorita... yo fui el de la camioneta. Me trajo el Estuardo, antes de llevarme detenido.
-ROCKY: Quería pedirle perdón en persona. No paré. Eso no tiene vuelta.
+RICKY: Señorita... yo fui el de la camioneta. Me trajo el Estuardo, antes de llevarme detenido.
+RICKY: Quería pedirle perdón en persona. No paré. Eso no tiene vuelta.
 CHAYO: ...Gracias por venir. Igual vas a responder por esto, ¿ya?
-ROCKY: Lo sé. Me lo merezco.
+RICKY: Lo sé. Me lo merezco.
 TADEO: Abogado. ¿Le puedo contar algo de él? No tengo a nadie más a quien contárselo.
 JUSTO: Para eso estoy.
 TADEO: En la cena me sirvió pan dos veces. Y me dijo: «comes igual que tu mamá».

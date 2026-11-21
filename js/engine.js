@@ -140,9 +140,9 @@ function say(l, done){
     const enInv = G.inv && X && X.inv;                   // en la investigación todos hablan en el lugar donde está Justo
     const pos=l.pos || (enInv ? invBg() : (ch?ch.pos:G.pos));
     const prevWho=cur&&cur.who, prevPos=G.pos;
-    const yo = (enInv && l.who==="ines" && !l.pos) || l.phone;   // a Justo no se le ve en la investigación; por teléfono, tampoco a quien llama
+    const yo = (enInv && l.who==="ines" && !l.pos) || l.phone || l.voz;   // voz:true = se oye a alguien que no está en escena (sin 📞)   // a Justo no se le ve en la investigación; por teléfono, tampoco a quien llama
     const yaVisto = l.who && vistos.has(l.who);
-    setScene(pos, yo ? undefined : (l.who?l.who:(l.pos?null:undefined)), l.mood, l.pose, yaVisto);
+    setScene(pos, l.sale ? null : yo ? undefined : (l.who?l.who:(l.pos?null:undefined)), l.mood, l.pose, yaVisto);   // sale:true = la escena queda vacía (alguien se fue)
     if(l.who && !yo) vistos.add(l.who);
     const entra = l.who && !yo && l.who!==prevWho && pos===prevPos && !yaVisto;   // aparece alguien por primera vez en este lugar
     { const sg=$("stage");                                  // zoom:true = primer plano que se acerca de golpe (sigue si la línea anterior también era zoom)
