@@ -509,7 +509,9 @@ function move(d){
     X.idx=0; X.loops=(X.loops||0)+1;
     if(!X.hinted && X.def.loopHint && X.loops>=(X.def.hintLoops||1)){ X.hinted=true;
       const h=X.def.loopHint.filter(l=>!(l.ifHidden && X.list.find(x=>x.id===l.ifHidden)));   // ifHidden: solo si esa declaración sigue oculta
-      if(h.length){ play(h, showStatement); return; } }
+      const fin=()=>{ const done=X.done; X=null; done(); };   // endsAfterLoop: testimonio sin contradicción, termina al completar la vuelta
+      if(h.length){ play(h, X.def.endsAfterLoop ? fin : showStatement); return; } }
+    if(X.def.endsAfterLoop){ const done=X.done; X=null; return done(); }
   } else X.idx=(X.idx+d+X.list.length)%X.list.length;
   showStatement();
 }

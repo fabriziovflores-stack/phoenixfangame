@@ -45,7 +45,7 @@ Capas de la pantalla superior: fondo (`#bg`) → personaje (`#spr`) → mueble (
   `ends:true` (presionar esa declaración cierra el contrainterrogatorio), `mood`, `fiscal:[líneas]` (lo que dice Penna tras presionar
   esa declaración; si no hay, sale una del repertorio `FISCAL_PRESS` del caso, por turno: Penna interrumpe en cada presión).
   `early:{ids,lines}`: prueba correcta pero antes de tiempo; se muestran esas líneas sin castigo (hoy no se usa).
-  `loopHint`: pista de Chayo al completar la primera vuelta (o la vuelta N con `hintLoops:N` en el testimonio); una línea con `ifHidden:"id"` solo sale si esa declaración sigue oculta.
+  `endsAfterLoop:true` en un testimonio sin contradicción = termina al completar la vuelta (hoy: Ricky, Día 4). `loopHint`: pista de Chayo al completar la primera vuelta (o la vuelta N con `hintLoops:N` en el testimonio); una línea con `ifHidden:"id"` solo sale si esa declaración sigue oculta.
 - `DIRECT`: interrogatorios directos (la fiscalía pregunta, el jugador puede objetar). Cada pregunta: `text`,
   `a` (respuesta), `bad` (id del motivo en `OBJ_REASONS` si es tramposa), `ok` (objeción acertada), `miss`
   (pista si la deja pasar; la pregunta se repite sin castigo), `noObj` (comentario si objeta una pregunta limpia). `coach` = consejo que se muestra una sola vez después de la pregunta (tutorial).
@@ -185,7 +185,7 @@ No hay tests en el repo. Antes de entregar: recorrer el caso completo (ruta gana
 una respuesta equivocada y la derrota) con un navegador automatizado y confirmar que no hay errores de consola.
 
 ## Siguientes pasos sugeridos
-1. Caso 2: es un **esqueleto jugable con textos de borrador** (diseño en `docs/caso2-diseno.md`). Falta: que el
+1. Caso 2: días 1 a 4 con el guion del dueño (Día 4 = su reescritura v9; carta solo a Tadeo, Bárbara queda bajo investigación). Antes era un **esqueleto jugable con textos de borrador** (diseño en `docs/caso2-diseno.md`). Falta: que el
    dueño escriba los diálogos y la cinemática (7 imágenes). Personajes y fondos del Caso 2: completos
    (prompts en `docs/caso2-prompts.md`).
 2. Fondo de detrás de la jueza (Caso 1).
