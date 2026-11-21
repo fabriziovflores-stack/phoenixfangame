@@ -1,4 +1,4 @@
-﻿ACTA CERO — Caso 2, Día 4: PROPUESTA v7 (sigue desde «MALVA:», cuando Malva pide hablar)
+﻿ACTA CERO — Caso 2, Día 4: PROPUESTA v8 (sigue desde «MALVA:», cuando Malva pide hablar)
 Borrador de Claude en el formato del dueño.
 - Sin pruebas nuevas: solo lo que el jugador ya tiene.
 - Una sola contradicción por testimonio.
@@ -85,10 +85,11 @@ JUSTO: Una pistola. Ropa. Pasajes de bus y de ferry. Nada más.
 JUSTO: Golpe en la mesa. ¡OBJECIÓN! ¡Ni un solo peso! ¡Y a Tadeo lo encontraron en su pieza, sin haber salido de la casa!
 JUSTO: Si él vació ese cajón... ¿dónde está la plata?
 PENNA: golpe en la mesa, levantando el brazo; ¡PROTESTO! Pudo esconderla en cualquier rincón de la casona.
-JUSTO: La policía revisó la casa entera, fiscal. Usted mismo dijo que investigó la escena.
+JUSTO: La policía revisó la casa entera, fiscal. Usted mismo dijo que investigó la escena. Y no apareció ni un peso.
 PENNA: ... (se arregla el bigote)
-JUSTO: Quien vació ese cajón sabía dónde estaba la plata. Y tuvo tiempo de esconderla.
-JUSTO: No fue un forastero que llevaba dos horas en esa casa.
+JUSTO: Si la plata no estaba en la mochila, ni en la pieza, ni en ningún rincón de la casa...
+JUSTO: ...entonces esa plata salió de la casona antes de que llegara la policía.
+JUSTO: Y mi cliente no pudo sacarla. Estaba en su pieza cuando llegaron. No salió nunca.
 MALVA: ¡No sé de qué habla!
 JUSTO: (Y al día siguiente tenía un corte en la mano. «Cortando el pan», dijo.)
 JUEZA: La defensa ha respondido mi primera pregunta. No hay ninguna prueba de que el acusado robara.
@@ -282,6 +283,7 @@ PENNA: Pruebe que no fue él.
 
 PRESENTAR: ¿QUIÉN ESTABA EN EL PASILLO A LAS 23:41? → PERFIL DE MALVA FERRADA (Silencio)
 JUSTO: En el primer juicio, el señor Mirón vio en el pasillo, justo en los disparos, una luz... y una melena larga.
+JUSTO: Ese día creí que era la señora Plusvalía. Me equivoqué de mujer.
 JUSTO: Mi cliente está rapado. La señora Plusvalía ya se había ido.
 JUSTO: Golpe en la mesa. ¡OBJECIÓN! ¡La única persona con el pelo largo en esa casa a las 23:41 era usted!
 PENNA: Una melena en la penumbra, vista desde enfrente. ¿Y la pistola en la mochila del acusado?
@@ -316,9 +318,13 @@ JUSTO: Nadie aquí va a saber lo que dice esta carta. Te lo prometo. Solo di lo 
 TADEO: ... La señora Malva se llevó mi llave con la taza. Dijo que la dejaba en la recepción.
 TADEO: Escuché los disparos. Quise salir. La puerta estaba cerrada por fuera.
 TADEO: Golpeé y golpeé. Nadie vino.
-TADEO: A la mañana siguiente, mi llave estaba sobre mi mesa. Y yo nunca la había tenido.
+TADEO: Después... la puerta se abrió. Me hice el dormido. Tenía miedo.
+TADEO: Era ella. Con el delantal. Metió algo en mi mochila y dejó mi llave sobre la mesa.
+TADEO: No dije nada. Ni a la policía, ni al abogado. No quería... perderla a ella también.
+JUSTO: (Ahí está todo. Lo vio, y calló por ella. Lo demás no lo diré aquí.)
 MALVA: ...
 MALVA: Sí. Fui yo. Le disparé a mi padre.
+MALVA: Cuando él le disparó al de la puerta, pensé: ahora nadie va a saber cuál disparo fue el mío.
 MALVA: Pero lo hice sola. ¡Sola! ¡Ella no sabía nada!
 BÁRBARA: (Sonríe) Ahí lo tiene, Su Señoría. Una confesión. Caso cerrado.
 
@@ -343,6 +349,7 @@ JUSTO: Después de que don Leonel la descubriera y la echara de su casa.
 
 PRESENTAR: ¿CÓMO SE ASEGURÓ DE QUEDAR LIMPIA? → VIDEO CÁMARA MUNICIPAL
 JUSTO: 23:16. Un taxi. Una pieza pagada que nunca usó. Un bar con testigos.
+JUSTO: Y la única persona que salió de esa casa esa noche, antes que la policía. La plata del cajón no se esfumó sola.
 JUSTO: Veinticinco minutos antes de los disparos. Lo justo para que nadie pudiera decir que estaba ahí.
 
 DECISIÓN: ¿POR QUÉ EL CULPABLE TENÍA QUE SER TADEO?
