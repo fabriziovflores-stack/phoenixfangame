@@ -1,0 +1,89 @@
+﻿ACTA CERO — Caso 2, Día 4: PROPUESTA para seguir desde «MALVA:» (Malva vuelve al estrado)
+Borrador de Claude para que el dueño lo corrija. Respeta todo lo que ya escribió.
+Lo que va entre [corchetes] son notas: música, pruebas, efectos.
+
+PRUEBAS QUE HAY QUE AGREGAR ANTES (para que el misterio sea justo):
+- Contrato Hoteles Mirador: agregarle la fecha «13 de marzo» (un día ANTES del crimen).
+- NUEVA: Registro de llamadas de Malva — «23:42: llamada a B. Plusvalía (1 min). 23:44: llamada a Carabineros.»
+  Se la da Estuardo en la comisaría del Día 3 (después de la patente).
+
+----------------------------------------------------------------
+
+MALVA: ... Está bien. No estaba en la cocina.
+MALVA: Estaba en el pasillo. Y la vi a ella. A la señora Plusvalía. Volvió a la casona.
+JUSTO: (¿Qué...?)
+PENNA: ¡Protesto! La señora Plusvalía tiene coartada. Salió en taxi esa noche.
+JUSTO: Su Señoría, la señora Plusvalía está en este edificio. Penna dijo que aceptó declarar.
+JUSTO: Y la defensa tiene una prueba que solo ella puede explicar.
+
+[PRESENTAR: CONTRATO HOTELES MIRADOR]
+JUSTO: ¡Este contrato estaba en el escritorio de la señora Plusvalía! [golpe en la mesa]
+JUSTO: La venta de la Casona Ferrada. 3.000 millones de pesos. Fechado el 13 de marzo.
+JUSTO: Un día ANTES del crimen. Y no lo firma Leonel Ferrada... lo firma «el dueño o la dueña».
+JUSTO: ¡Alguien preparó la venta de la casona para una dueña que todavía no existía!
+JUEZA: Fiscal. Que pase la señora Plusvalía.
+PENNA: ... [silencio; se arregla el bigote]
+JUSTO: (Penna está pálido. Está a punto de enfrentarse a su pasado.)
+
+[Fundido a negro. Entra BÁRBARA. Música: silencio]
+PENNA: Nombre y... profesión.
+BÁRBARA: Bárbara Plusvalía. Dueña de Hoteles Mirador. Usted ya me conoce, Máximo.
+PENNA: ... Fiscal Penna, para usted.
+BÁRBARA: Como quiera. Hace quince años me tuteaba.
+
+TESTIMONIO Y CONTRAINTERROGATORIO: LO QUE SÉ DE ESA NOCHE (MÚSICA: MODERATO)
+Declaración 1: Cené con los Ferrada a las 21:00. Le ofrecí comprar la casona.
+  Si se presiona: JUSTO: ¿Y qué le respondió don Leonel?
+  BÁRBARA: Que antes muerto. Mala elección de palabras, ya lo dije una vez.
+Declaración 2: El señor Ferrada me echó. Me fui en taxi antes de que llegara ese muchacho.
+  ✅ PRESENTAR: VIDEO CÁMARA MUNICIPAL
+  JUSTO: ¡El taxi sale de la casona a las 23:16! [¡OBJECIÓN!]
+  JUSTO: Y Tadeo llegó a las 21:45. Usted estuvo casi dos horas más en esa casa.
+  BÁRBARA: ... Me quedé conversando con la hija. En su oficina. Hablar no es delito, abogado.
+  JUSTO: (Ahí está. Hablaron. Esa es la grieta.)
+Declaración 3: Con la hija hablamos de cosas de mujeres. Nunca de la venta.
+  Si se presiona: JUSTO: ¿Nunca? BÁRBARA: Yo negocio con dueños, no con herederas.
+  ✅ PRESENTAR: CONTRATO HOTELES MIRADOR
+  JUSTO: «El dueño o la dueña». Usted ya sabía quién iba a ser la dueña. [¡OBJECIÓN!]
+  BÁRBARA: Es un formato estándar de mi empresa. Cualquier abogado lo sabría.
+  JUSTO: (Se escurre. Necesito algo de esa misma noche.)
+Declaración 4 (se agrega): Después de irme, no volví a hablar con nadie de esa casa.
+  ✅ PRESENTAR: REGISTRO DE LLAMADAS DE MALVA
+  JUSTO: ¡23:42! Un minuto después del disparo, Malva la llamó a usted. [¡OBJECIÓN!] [Música: Cornered]
+  JUSTO: Y recién a las 23:44 llamó a Carabineros.
+  JUSTO: Cuando matan a tu padre, ¿a quién llamas primero? ¡A quien te dijo que lo hicieras!
+  BÁRBARA: ...
+  BÁRBARA: Una llamada no prueba nada. No le dije a nadie que matara a nadie.
+  JUEZA: Tiene razón. Abogado, una llamada no es una orden.
+  JUSTO: (Me falta una pieza. Una sola.)
+
+PENNA: ... Su Señoría. La fiscalía tiene esa pieza. [golpe en la mesa]
+JUSTO: (¿Penna?)
+PENNA: Ayer interrogué a la señora Plusvalía en sus oficinas. Ella no lo sabe, pero me llevé esto.
+[ENTRA AL EXPEDIENTE: CONTRATO DE ADELANTO]
+PENNA: Hoteles Mirador le pagó 40 millones a Malva Ferrada. A escondidas de su padre.
+PENNA: Si don Leonel cambiaba su testamento al día siguiente, Malva quedaba sin herencia... y debiendo 40 millones.
+JUSTO: Usted la endeudó. La dejó sin salida. Y le dijo cuándo actuar.
+PENNA: Hace quince años, alguien muy cercano a mí terminó preso por algo que tú armaste, Bárbara.
+PENNA: Esta vez no.
+BÁRBARA: ... [primera vez que pierde la sonrisa]
+
+JUSTO: Falta lo más importante, Su Señoría. Quién disparó. Y eso solo lo puede decir una persona.
+JUSTO: Tadeo. La sangre que te tomó el fiscal estaba limpia. No tomaste la pastilla.
+JUSTO: Esa noche no estabas dormido.
+TADEO: ...
+JUSTO: Estás protegiendo a alguien. A la única familia que te queda.
+[Música: verdad]
+TADEO: ... Ella es mi hermana, abogado.
+TADEO: Escuché los disparos. Me asomé. La vi en el pasillo. Con el delantal... y la pistola de nuestro padre.
+TADEO: No quería quedarme solo otra vez. Por eso me callé.
+MALVA: ¡Él me iba a dejar sin nada por un cabro que conoció ayer!
+MALVA: Ella... ella me dijo que no había otra salida. ¡Que nadie sospecharía de la hija!
+[Derrumbe de MALVA]
+
+PENNA: La fiscalía retira los cargos contra Tadeo Fuegos.
+PENNA: Formalizará a Malva Ferrada por homicidio. Y a Bárbara Plusvalía, por inducción al homicidio.
+BÁRBARA: Formalíceme, Máximo. Mis abogados me tendrán afuera antes de la cena.
+BÁRBARA: Nos veremos, Valdivia. Esta ciudad es mía.
+JUEZA: Este tribunal declara al acusado, Tadeo Fuegos...
+VEREDICTO: NO CULPABLE
