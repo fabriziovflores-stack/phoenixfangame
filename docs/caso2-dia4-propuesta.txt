@@ -1,157 +1,229 @@
-﻿﻿ACTA CERO — Caso 2, Día 4: PROPUESTA v2 (desde «MALVA:», cuando Malva vuelve al estrado)
-Borrador de Claude para que el dueño lo corrija. Respeta todo lo que ya escribió.
-Estructura: 1 testimonio más de Malva  →  3 testimonios de Plusvalía  →  revelación.
-Lo que va entre [corchetes] son notas: música, pruebas, efectos.
+﻿﻿ACTA CERO — Caso 2, Día 4: PROPUESTA v3 (sigue desde «MALVA:», cuando Malva pide hablar)
+Borrador de Claude en el formato del dueño, para que lo corrija.
+Cambios de la v3:
+- Malva PROTEGE a Plusvalía todo el tiempo. Solo la suelta cuando Plusvalía la traiciona.
+- Nunca se dice en público que Tadeo es hijo de Ferrada. Eso queda entre Justo y Tadeo.
+- Quién disparó se prueba con la LLAVE: Tadeo estaba encerrado por fuera y la única llave la tenía Malva.
 
-PRUEBAS QUE HAY QUE AGREGAR EN EL DÍA 3 (misterio justo: el jugador las tiene antes del juicio):
+PRUEBAS QUE HAY QUE AGREGAR EN EL DÍA 3 (para que el jugador las tenga antes del juicio):
 1. Contrato Hoteles Mirador: agregarle la fecha «13 de marzo» (un día ANTES del crimen).
-2. Agenda del notario: Justo la encuentra en el escritorio de Plusvalía, junto al contrato
-   (una fotocopia: «15 de marzo, 9:00: L. Ferrada — modificar testamento»).
-3. NUEVA — Registro de llamadas de Malva: «23:42: llamada a B. Plusvalía (1 min).
-   23:44: llamada a Carabineros». Se la da Estuardo en la comisaría, después de la patente.
+2. En el escritorio de Plusvalía, además del contrato:
+   - Copia de la agenda del notario: «15 de marzo, 9:00: L. Ferrada — modificar testamento».
+   - Comprobante de transferencia: «Hoteles Mirador → Malva Ferrada: $40.000.000. 2 de marzo».
+3. Registro de llamadas de Malva: «23:42: llamada a B. Plusvalía (1 min). 23:44: llamada a Carabineros».
+   Se lo da Estuardo en la comisaría, después de la patente.
 
 ================================================================
-PARTE 1 — MALVA, SEGUNDA VEZ
+MALVA (sigue)
 ================================================================
 
-MALVA: ... Está bien. No estaba en la cocina. Estaba en el pasillo.
-MALVA: Y vi a alguien. Lo voy a contar todo, Su Señoría.
-JUEZA: Testigo, declare. Y esta vez, la verdad.
+MALVA: ... Usted gana, abogado. No me asomé. Pero no por lo que usted cree.
+MALVA: Contaré lo que hice después del disparo. Y que quede claro: lo hice sola.
 
-TESTIMONIO Y CONTRAINTERROGATORIO: LO QUE VI EN EL PASILLO (MÚSICA: ALLEGRO)
+TESTIMONIO Y CONTRAINTERROGATORIO: LO QUE HICE ESA NOCHE (MÚSICA: ALLEGRO)
 
-Declaración 1: Escuché el primer disparo, en la puerta. Salí de la oficina al pasillo.
-  Si se presiona: JUSTO: ¿Desde la oficina? ¿No era la cocina?
-  MALVA: Estaba sacando las cuentas. Me confundí por los nervios, ya le dije.
-Declaración 2: En la penumbra vi a una mujer de pelo largo, con un abrigo elegante.
-  Si se presiona: JUSTO: Si estaba oscuro... ¿cómo supo que el abrigo era elegante?
-  MALVA: Se notaba. Por cómo caminaba. Como camina alguien con plata.
-  JUSTO: (Una mujer de pelo largo... Malva también tiene el pelo largo.)
-Declaración 3: Tenía la pistola de mi padre. Disparó y salió corriendo por la puerta.
-  ✅ PRESENTAR: PERFIL DE RICKY GONZÁLEZ
-  JUSTO: El señor González estaba en esa puerta. Y declaró que nadie salió. [¡OBJECIÓN!]
-  JUSTO: Si esa mujer hubiera salido corriendo, ¡se habría topado con él!
-  MALVA: ... Entonces se escondió. ¡Se escondió en la casa!
-Declaración 4: Volví a la cocina, temblando. A las 23:44 llamé a Carabineros.
-  Si se presiona: JUSTO: ¿No llamó a nadie antes? MALVA: A nadie. Estaba sola.
-  Si se presenta el REGISTRO DE LLAMADAS aquí (antes de tiempo, sin castigo):
-  JUSTO: (Todavía no. Si lo muestro ahora, la persona del otro lado de esa llamada se va a preparar.)
-Pista si das la vuelta completa:
-  CHAYO: Si alguien sale por la puerta... ¿quién estaba parado justo ahí?
+DECLARACIÓN 1: Con el primer disparo me encerré en la oficina. Tenía mucho miedo.
+Si se presiona:
+JUSTO: ¿Se encerró? ¿Y su padre?
+MALVA: Mi padre sabía defenderse solo. Siempre lo hizo.
+JUSTO: (Lo dijo sin pena. Como si ya supiera que él tenía un arma.)
 
-MALVA: ¡Pero era ella! ¡Esa mujer volvió a mi casa!
-JUSTO: Su Señoría, la señora Plusvalía está en este edificio. Penna dijo que aceptó declarar.
-JUSTO: Y la defensa tiene una prueba que solo ella puede explicar.
-PRESENTAR: ¿QUÉ RELACIÓN TIENE ESA MUJER CON ESTE CASO? → ✅ CONTRATO HOTELES MIRADOR
-JUSTO: Este contrato estaba en el escritorio de la señora Plusvalía. [golpe en la mesa]
-JUSTO: La venta de la Casona Ferrada. 3.000 millones. Y no la firma Leonel... la firma «el dueño o la dueña».
-JUEZA: Fiscal. Que pase la señora Plusvalía.
-PENNA: ... [silencio; se arregla el bigote]
+DECLARACIÓN 2: Esperé a que todo quedara en silencio. Dos, tres minutos.
+Si se presiona:
+JUSTO: ¿Y no escuchó el segundo disparo?
+MALVA: Lo escuché. Por eso esperé más.
+JUSTO: ¿Dónde sonó ese segundo disparo?
+MALVA: ... No sé. Lejos. Afuera, creo.
+JUSTO: (Afuera... La autopsia dice que la bala entró por la nuca. Desde adentro.)
+
+DECLARACIÓN 3: Salí, vi a mi padre en el suelo y llamé de inmediato a Carabineros.
+Si se presiona:
+JUSTO: ¿De inmediato? ¿No llamó a nadie más?
+MALVA: A nadie. Estaba sola. Sola en esa casa, como siempre.
+PENNA: La defensa ya tiene la hora de la llamada: 23:44. No haga perder el tiempo.
+
+Si se da la vuelta completa:
+CHAYO: Justo... ¿Estás seguro de que fue la primera llamada que hizo?
+
+PRESENTAR DECLARACIÓN 3: REGISTRO DE LLAMADAS DE MALVA (Silencio)
+JUSTO: Señora Malva. Usted dice que salió, vio a su padre y llamó de inmediato.
+JUSTO: Y es cierto que a las 23:44 llamó a Carabineros. Eso nadie lo discute.
+JUSTO: Pero dos minutos antes, su teléfono hizo otra llamada.
+JUSTO: Golpe en la mesa. ¡OBJECIÓN! A las 23:42... ¡usted llamó a Bárbara Plusvalía!
+MALVA: ¡...!
+JUSTO: Su padre estaba en el suelo, y lo primero que hizo fue llamar a esa mujer.
+MALVA: ¡La señora Plusvalía no tiene nada que ver con esto!
+MALVA: La llamé porque... porque era la única que me escuchaba. ¡Nada más!
+JUSTO: (La está defendiendo. Con todo lo que tiene.)
+PENNA: golpe en la mesa, levantando el brazo; ¡PROTESTO! Una llamada entre conocidas no es una prueba de nada.
+PENNA: La defensa ya acusó a un mecánico, a una hija... ¿Ahora a una empresaria?
+JUSTO: No acuso a nadie, fiscal. Pido que declare la persona que contestó ese teléfono.
+JUSTO: Usted mismo dijo que la señora Plusvalía aceptó atestiguar.
+JUEZA: ... Tiene razón. Fiscal, que pase la señora Plusvalía.
+PENNA: ... (silencio; se arregla el bigote)
 JUSTO: (Penna está pálido. Va a enfrentarse a su pasado.)
+MALVA: Por favor... déjenla fuera de esto.
 
-[Fundido a negro. Entra BÁRBARA. Música: silencio]
+Fundido a negro. Entra BÁRBARA. (MÚSICA: SILENCIO)
 PENNA: Nombre y... profesión.
 BÁRBARA: Bárbara Plusvalía. Dueña de Hoteles Mirador. Usted ya me conoce, Máximo.
 PENNA: Fiscal Penna, para usted.
 BÁRBARA: Como quiera. Hace quince años me tuteaba.
+JUSTO: (Hace quince años... el caso P92.)
 
 ================================================================
-PARTE 2 — PLUSVALÍA, TESTIMONIO 1
+PLUSVALÍA — TESTIMONIO 1
 ================================================================
 
 TESTIMONIO Y CONTRAINTERROGATORIO: MI NEGOCIO CON LOS FERRADA (MÚSICA: MODERATO)
 
-Declaración 1: Llevaba meses ofreciendo comprar la casona. Un negocio limpio.
-  Si se presiona: JUSTO: ¿Cuánto ofreció? BÁRBARA: El triple de lo que vale. Generosa, ¿no?
-Declaración 2: Esa noche cené con los Ferrada, a las 21:00. Por última vez.
-  Si se presiona: JUSTO: ¿Por última vez? BÁRBARA: El señor Ferrada me echó. Fue muy grosero.
-Declaración 3: Me fui en taxi antes de que llegara ese muchacho. No lo vi nunca.
-  ✅ PRESENTAR: VIDEO CÁMARA MUNICIPAL
-  JUSTO: El taxi sale de la casona a las 23:16. [¡OBJECIÓN!]
-  JUSTO: Tadeo llegó a las 21:45. Usted estuvo casi dos horas más en esa casa.
-  BÁRBARA: ...
-  BÁRBARA: Me quedé conversando con la hija. En su oficina. Hablar no es delito, abogado.
-Pista si das la vuelta completa:
-  CHAYO: ¿A qué hora se fue de verdad? Hay una cámara en esa calle...
+DECLARACIÓN 1: Llevaba meses ofreciendo comprar la casona. Un negocio limpio.
+Si se presiona:
+JUSTO: ¿Cuánto ofreció?
+BÁRBARA: El triple de lo que vale. Generosa, ¿no cree?
+JUSTO: (Demasiado generosa para alguien que dice que solo quiere una casa.)
 
-JUSTO: (Ahí está. Hablaron a solas. Esa es la grieta.)
+DECLARACIÓN 2: Esa noche cené con los Ferrada a las 21:00. Por última vez.
+Si se presiona:
+JUSTO: ¿Por última vez?
+BÁRBARA: El señor Ferrada me echó. Fue muy grosero.
+JUSTO: (Igual a lo que dijo Malva. Demasiado igual.)
+
+DECLARACIÓN 3: Me fui en taxi apenas terminó la cena. Ese muchacho ni siquiera había llegado.
+Si se presiona:
+JUSTO: ¿Apenas terminó?
+BÁRBARA: No me quedo donde no me quieren, abogado.
+
+Si se da la vuelta completa:
+CHAYO: Esa calle tiene una cámara, ¿te acuerdas? Fíjate a qué hora sale el taxi.
+
+PRESENTAR DECLARACIÓN 3: VIDEO CÁMARA MUNICIPAL (Silencio)
+JUSTO: Señora Plusvalía, usted dice que se fue apenas terminó la cena.
+JUSTO: La cena fue a las 21:00. Mi cliente llegó a las 21:45, en taxi.
+JUSTO: Entonces usted tuvo que irse antes de las 21:45.
+JUSTO: Golpe en la mesa. ¡OBJECIÓN! ¡Pero la cámara de la calle muestra su taxi saliendo a las 23:16!
+JUSTO: ¡Usted estuvo casi dos horas más dentro de esa casa!
+BÁRBARA: ...
+BÁRBARA: (Sonríe) Me quedé conversando con la hija. En su oficina. Hablar no es un delito, abogado.
+MALVA: ¡Solo me acompañó! ¡Yo estaba mal por mi padre!
 JUEZA: Testigo, cuéntenos esa conversación.
 
 ================================================================
-PARTE 3 — PLUSVALÍA, TESTIMONIO 2
+PLUSVALÍA — TESTIMONIO 2
 ================================================================
 
 TESTIMONIO Y CONTRAINTERROGATORIO: LA CONVERSACIÓN CON MALVA (MÚSICA: ALLEGRO)
 
-Declaración 1: Hablamos de su padre. De lo difícil que era vivir con él.
-  Si se presiona: JUSTO: ¿Difícil? BÁRBARA: Un hombre que presta plata a interés no es un padre fácil.
-Declaración 2: Nunca hablamos de la venta. Yo negocio con dueños, no con herederas.
-  ✅ PRESENTAR: CONTRATO HOTELES MIRADOR
-  JUSTO: Fechado el 13 de marzo. Un día ANTES del crimen. [¡OBJECIÓN!]
-  JUSTO: ¡Y lo firma «el dueño o la dueña»! Usted ya sabía quién iba a ser la dueña.
-  BÁRBARA: Es un formato estándar de mi empresa. Cualquier abogado lo sabría.
-  JUSTO: (Se escurre. Pero dejó la puerta abierta.)
-Declaración 3 (se agrega): Además, yo no sabía nada del testamento del señor Ferrada.
-  ✅ PRESENTAR: AGENDA DEL NOTARIO
-  JUSTO: Esta copia estaba en su propio escritorio, señora. [¡OBJECIÓN!]
-  JUSTO: «15 de marzo, 9:00: L. Ferrada, modificar testamento».
-  JUSTO: Usted sabía que al día siguiente Malva podía perderlo todo.
-  BÁRBARA: ... [primera vez que deja de sonreír]
-  PENNA: [se arregla el bigote] (Penna no protesta. Está escuchando.)
-Pista si das la vuelta completa:
-  CHAYO: ¿Qué más había en ese escritorio, Justo?
+DECLARACIÓN 1: Hablamos de su padre. De lo difícil que era vivir con él.
+Si se presiona:
+JUSTO: ¿Difícil?
+BÁRBARA: Un hombre que presta plata a interés no es un padre fácil, abogado.
 
-BÁRBARA: Saber algo no es un delito. Yo me fui de esa casa a las 23:16.
-BÁRBARA: A las 23:41, cuando dispararon, yo estaba en un bar del plan. Pregúntele al barman.
+DECLARACIÓN 2: Nunca hablamos de la venta. Yo negocio con dueños, no con herederas.
+Si se presiona:
+JUSTO: ¿Nunca?
+BÁRBARA: Nunca. Malva no era la dueña. No tenía nada que venderme.
 
-================================================================
-PARTE 4 — PLUSVALÍA, TESTIMONIO 3
-================================================================
+DECLARACIÓN 3: Y del testamento del señor Ferrada no sabía absolutamente nada.
+Si se presiona:
+JUSTO: ¿Nada?
+BÁRBARA: ¿Por qué tendría que saber del testamento de un hombre que me echó de su casa?
 
-TESTIMONIO Y CONTRAINTERROGATORIO: ESA NOCHE YO NO ESTABA (MÚSICA: ALLEGRO → CORNERED al acertar)
+Si se da la vuelta completa:
+CHAYO: Justo, ¿qué encontraste en el escritorio de esa mujer?
 
-Declaración 1: A las 23:41 estaba en un bar del plan. Hay testigos.
-  Si se presiona: JUSTO: ¿Y el barman la vio toda la noche? BÁRBARA: Hasta la una. Era una mesa cara.
-Declaración 2: Esa noche apagué el teléfono. No hablé con nadie de esa casa.
-  ✅ PRESENTAR: REGISTRO DE LLAMADAS DE MALVA
-  JUSTO: ¡23:42! Un minuto después del disparo, Malva la llamó a usted. Y usted contestó. [¡OBJECIÓN!] [Cornered]
-  JUSTO: Recién a las 23:44 Malva llamó a Carabineros.
-  JUSTO: Cuando matan a tu padre, ¿a quién llamas primero? ¡A quien te dijo que lo hicieras!
-  BÁRBARA: ...
-Declaración 3 (se agrega): Malva me llamó asustada. Le dije que llamara a la policía. Nada más.
-  Si se presiona: JUSTO: ¿Y por qué Malva iba a llamarla a usted, y no a la policía?
-  BÁRBARA: Porque yo era la única persona en esta ciudad que la escuchaba.
-  JUSTO: (Esa frase... la escuchaba. O la manejaba.)
-  JUEZA: Abogado, una llamada no es una orden. Necesito una prueba de que esta mujer la empujó.
-  JUSTO: (Me falta una pieza. Una sola.)
+PRESENTAR DECLARACIÓN 2: CONTRATO HOTELES MIRADOR (Silencio)
+JUSTO: Usted dice que solo negocia con dueños. Que Malva no tenía nada que venderle.
+JUSTO: Entonces, explíqueme este contrato. Estaba en su escritorio.
+JUSTO: La venta de la Casona Ferrada, por 3.000 millones. Fechado el 13 de marzo.
+JUSTO: Golpe en la mesa. ¡OBJECIÓN! ¡Un día antes del crimen! Y no lo firma Leonel Ferrada...
+JUSTO: ¡Lo firma «el dueño o la dueña» de la casona!
+BÁRBARA: Es un formato estándar de mi empresa. Cualquier abogado lo sabría.
+PENNA: ... (no protesta)
+JUSTO: (Se escurre. Pero ya no sonríe igual.)
 
-PENNA: ... Su Señoría. La fiscalía tiene esa pieza. [golpe en la mesa]
-JUSTO: (¿Penna?)
-PENNA: Ayer la interrogué en sus oficinas. No se dio cuenta, pero me llevé esto.
-[ENTRA AL EXPEDIENTE: CONTRATO DE ADELANTO]
-PENNA: Hoteles Mirador le pagó 40 millones a Malva Ferrada. A escondidas de su padre.
-PENNA: Si don Leonel cambiaba el testamento, Malva quedaba sin herencia... y debiendo 40 millones.
-JUSTO: Usted la endeudó. La dejó sin salida. Y le dijo cuándo actuar: antes de las nueve de la mañana.
-PENNA: Hace quince años, alguien muy cercano a mí terminó preso por algo que tú armaste, Bárbara.
-PENNA: Esta vez no.
+PRESENTAR DECLARACIÓN 3: AGENDA DEL NOTARIO (Silencio)
+JUSTO: «No sabía absolutamente nada del testamento», dijo usted.
+JUSTO: Entonces, ¿qué hacía esta copia en su escritorio, junto al contrato?
+JUSTO: Golpe en la mesa. ¡OBJECIÓN! «15 de marzo, 9:00: L. Ferrada, modificar testamento».
+JUSTO: ¡Usted sabía que a la mañana siguiente Malva podía perderlo todo!
+BÁRBARA: ... (deja de sonreír)
+MALVA: ¡Eso... eso se lo conté yo! ¡Ella no lo sabía por su cuenta!
+JUSTO: (Otra vez la defiende. Aunque eso la hunda a ella.)
+BÁRBARA: Saber algo no es un delito, abogado. A las 23:41 yo estaba en un bar del plan.
 
 ================================================================
-PARTE 5 — LA REVELACIÓN
+PLUSVALÍA — TESTIMONIO 3
 ================================================================
 
-BÁRBARA: Muy conmovedor, Máximo. Pero sigue sin saber quién disparó.
-JUSTO: Sí lo sabemos, Su Señoría. Y solo una persona lo vio.
-JUSTO: Tadeo. La sangre que te tomó el fiscal estaba limpia. No tomaste la pastilla.
-JUSTO: Esa noche no estabas dormido.
-TADEO: ...
-JUSTO: Estás protegiendo a alguien. A la única familia que te queda.
-[Música: verdad]
-TADEO: ... Ella es mi hermana, abogado.
-TADEO: Escuché los disparos. Me asomé. La vi en el pasillo. Con el delantal... y la pistola de nuestro padre.
-TADEO: No quería quedarme solo otra vez. Por eso me callé.
-MALVA: ¡Él me iba a dejar sin nada por un cabro que conoció ayer!
-MALVA: Ella... ella me dijo que no había otra salida. ¡Que nadie sospecharía de la hija!
-[Derrumbe de MALVA]
+TESTIMONIO Y CONTRAINTERROGATORIO: YO SOLO COMPRO CASAS (MÚSICA: ALLEGRO)
+
+DECLARACIÓN 1: A las 23:41 estaba en un bar del plan. El barman lo puede confirmar.
+Si se presiona:
+JUSTO: ¿Toda la noche?
+BÁRBARA: Hasta la una. Era una mesa cara.
+
+DECLARACIÓN 2: Malva me llamó llorando. Le dije que llamara a la policía. Nada más.
+Si se presiona:
+JUSTO: ¿Y por qué la llamó a usted primero?
+BÁRBARA: Pregúntele a ella. Yo no elijo quién me llama.
+MALVA: (mirando el suelo) ...
+
+DECLARACIÓN 3: Jamás le he pasado un peso a esa familia. Mis negocios son transparentes.
+Si se presiona:
+JUSTO: ¿Ni un peso?
+BÁRBARA: Ni uno. Revise mis cuentas si quiere. Las de mi empresa están limpias.
+
+Si se da la vuelta completa:
+CHAYO: Las cuentas... ¿No había otro papel en ese escritorio, uno con números?
+
+PRESENTAR DECLARACIÓN 3: COMPROBANTE DE TRANSFERENCIA (Silencio)
+JUSTO: «Ni un peso a esa familia». «Mis negocios son transparentes».
+JUSTO: Señora Plusvalía... ¿y estos 40 millones, el 2 de marzo?
+JUSTO: Golpe en la mesa. ¡OBJECIÓN! ¡De Hoteles Mirador a la cuenta de Malva Ferrada! (MÚSICA: CORNERED)
+JUSTO: Usted le pagó un adelanto por una casa que no era suya. A escondidas de su padre.
+JUSTO: Y si don Leonel cambiaba el testamento, Malva perdía la herencia...
+JUSTO: ¡...y quedaba debiéndole 40 millones a usted!
+JUSTO: Usted la endeudó. Le contó lo del notario. Y la dejó sin salida, a una noche de las nueve de la mañana.
+BÁRBARA: ...
+JUEZA: Testigo. ¿Cómo responde?
+BÁRBARA: (Se acomoda el pelo) Un préstamo no es una orden, Su Señoría.
+BÁRBARA: Si esta mujer mató a su padre... lo hizo sola. Es una asesina. Yo solo compro casas.
+MALVA: ¡¿Qué?! ¡Bárbara!
+BÁRBARA: No la conozco tan bien como cree, abogado. Nadie la conoce.
+MALVA: (temblando) ... Usted me dijo... usted me dijo que me iba a cuidar.
+JUSTO: (Ahí está. La dejó caer. Y Malva recién se da cuenta.)
+PENNA: ... Su Señoría. (golpe en la mesa)
+PENNA: Hace quince años, esta mujer hizo exactamente lo mismo. Y alguien muy cercano a mí lo pagó con su vida.
+PENNA: La fiscalía pide que su declaración completa quede en el registro. Esta vez no.
+
+================================================================
+LA REVELACIÓN: QUIÉN DISPARÓ
+================================================================
+
+BÁRBARA: Muy conmovedor, Máximo. Pero todavía nadie ha probado quién disparó.
+JUEZA: Es cierto. Abogado, necesito saber quién apretó ese gatillo. Con pruebas.
+JUSTO: (Piensa, Justo. El que disparó estaba adentro, detrás de don Leonel.)
+JUSTO: (Ricky estaba en la puerta y nadie salió. Plusvalía se había ido a las 23:16.)
+JUSTO: (Adentro quedaban dos personas. Malva... y Tadeo.)
+
+PRESENTAR: ¿QUÉ PRUEBA QUE TADEO NO PUDO SER? → LLAVE DE LA PIEZA (Silencio)
+JUSTO: Su Señoría, el primer día el investigador Estuardo declaró algo muy importante.
+JUSTO: La puerta de la pieza de Tadeo estaba cerrada con llave. Y esa llave se la entregó Malva.
+JUSTO: Mi cliente me contó que esa noche Malva lo acompañó a su pieza... y que ella cerró la puerta.
+JUSTO: Golpe en la mesa. ¡OBJECIÓN! ¡Tadeo no podía salir! ¡Estaba encerrado por fuera!
+JUSTO: Y la única persona con la llave de esa pieza... ¡era usted, señora Malva!
+JUSTO: Usted le dejó la pistola en la mochila. Y cerró con llave para que él no pudiera explicarlo.
+PENNA: golpe en la mesa; ¡PROTESTO! ¡El acusado pudo tener otra llave!
+JUSTO: El fiscal mismo nos mostró que la sangre de Tadeo estaba limpia. Estaba despierto.
+JUSTO: Tadeo. ¿Intentaste salir esa noche?
+TADEO: ... Sí. Escuché los disparos. Quise abrir. La puerta no se abría.
+TADEO: Golpeé y golpeé. Nadie vino.
+JUSTO: (Y aun así se calló todo este tiempo. Sé por qué. Pero eso no lo diré aquí.)
+MALVA: ...
+MALVA: Yo... solo quería quedarme con mi casa.
+MALVA: Ella me dijo que no había otra salida. Que nadie sospecharía de la hija.
+(Derrumbe de MALVA)
 
 PENNA: La fiscalía retira los cargos contra Tadeo Fuegos.
 PENNA: Formalizará a Malva Ferrada por homicidio. Y a Bárbara Plusvalía, por inducción al homicidio.
