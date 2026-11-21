@@ -171,7 +171,7 @@ Objeción y testimonio: `objecion.wav` y `testimonio.wav`. Estos tres son recrea
 (ver docs/creditos.md). Todo se puede reemplazar desde «Mi música».
 El tecleo de los letreros sigue sintetizado (el archivo que se ofreció era el de Ace Attorney; se usa solo vía «Mi música»).
 Orden: archivo elegido por el jugador en «Mi música» → archivo del juego → sonido sintetizado.
-Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html.
+Al publicar cambios, subir el número `?v=` de index.html y prueba-final.html. Los dos artefactos publicados (juego y prueba) tienen sus propios archivos: una imagen nueva hay que subirla a **los dos** (a la prueba le faltaban los personajes del Caso 2 y por eso Tadeo no aparecía).
 
 ## Guardado
 `localStorage`, clave `actacero_casoN_vX` (X = `guardado` del caso; el Caso 1 va en `v2`: subirlo cuando el guion cambie de forma, para que una partida vieja no caiga en otro punto). Guarda el paso del guion, pruebas, lecturas y penalizaciones.
