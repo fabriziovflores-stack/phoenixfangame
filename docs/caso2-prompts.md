@@ -30,6 +30,7 @@ Todos llevan al final: *Background illustration for a courtroom visual novel, an
 - **comisaria** — An office inside a Chilean police station: metal desk with stacks of files and a computer, a cork board with photos and notes, a filing cabinet, a window with blinds.
 - **taller** — A small car mechanic's garage: tools hanging on a pegboard, oil stains on the concrete floor, tires stacked, a workbench with a locked metal toolbox, an empty parking space.
 - **oficinahostal** — A small administration office in a guesthouse: an old wooden desk with one drawer forced open and empty, binders and invoices, a reservation book, a window with lace curtains.
+- **mirador** — The top-floor executive office of a luxury hotel company in Valparaíso, Chile: a large polished dark wood desk with neat stacks of files, folders and a closed laptop, a tall black leather chair, a glass wall with a panoramic view of the bay and the colorful hills at late afternoon, a framed architectural model of a modern hotel tower, a cold elegant gray and gold palette, expensive and intimidating.
 - **juez (Caso 1)** — Behind the judge's bench in a Chilean courtroom: dark red wall panels, a golden scales-of-justice emblem centered high on the wall, a tall wooden judge's chair, warm lighting.
 
 ## Cinemática (7 imágenes)
