@@ -27,7 +27,7 @@ const CHARS = {
 /* Lugares sin fondo dibujado todavía: se ve un cartel provisorio con este nombre */
 const BGLABELS = {oficina:"OFICINA DE JUSTO", hospital:"HOSPITAL VAN BUREN", locutorio:"LOCUTORIO · COMISARÍA",
   casona:"CASONA FERRADA", pieza:"PIEZA DE TADEO", aurelio:"CASA DE AURELIO", comisaria:"COMISARÍA",
-  taller:"TALLER DE ROCKY", oficinahostal:"OFICINA DEL HOSPEDAJE"};
+  taller:"TALLER DE RICKY", oficinahostal:"OFICINA DEL HOSPEDAJE", mirador:"OFICINAS HOTELES MIRADOR"};
 
 const EVIDENCE = [
   {id:"credencial", icon:"🪪", name:"Credencial", desc:"Credencial de defensor penal público. Ya tiene un caso ganado.", read:"Mi segundo caso."},
@@ -58,6 +58,7 @@ const EVX = {
   llave:     {id:"llave",     icon:"🔑", name:"Llave de la pieza", desc:"Llave de la pieza del fondo. Encontrada sobre la mesa de la pieza de Tadeo, frente a su mochila.", read:"La llave de Tadeo."},
   bala9:     {id:"bala9",     icon:"🔩", name:"Bala 9 mm", desc:"Extraída de la nuca de Leonel Ferrada. Pericia balística: disparada por la pistola 9 mm encontrada en la mochila.", read:"La bala que mató."},
   registro:  {id:"registro",  icon:"📜", name:"Registro Civil de Puerto Williams", desc:"Inscripción de nacimiento: Tadeo Ferrada. Apellido cambiado después a Fuegos.", read:"Tadeo es hijo de Leonel."},
+  compraventa:{id:"compraventa", icon:"📃", name:"Contrato Hoteles Mirador", desc:"Compraventa de la Casona Ferrada por $3.000.000.000. Falta la firma de «el dueño o la dueña de la Casona Ferrada». No dice Leonel Ferrada.", read:"Alguien iba a vender la casona."},
   boleta:    {id:"boleta",    icon:"🧾", name:"Boleta del taxi", desc:"Taxi de la casona al plan: 23:14 a 23:31. Vuelta a las 00:28.", read:"Bárbara no estaba en la casona."},
 };
 const PROFILES = [
@@ -352,7 +353,7 @@ const INV = {
   /* ===================== DÍA 2 (tarde, después del juicio) ===================== */
   dia2: {
     start:"hospital", music:"investigacion", fecha:"17 de marzo", hora:15*60+15, paso:25,
-    done:{flags:["foto_leonel","foto_camioneta","edu_denuncia","carta_tadeo","ricky_fue","malva_foto","ir_plusvalia"]},
+    done:{flags:["foto_leonel","foto_camioneta","edu_denuncia","carta_tadeo","ricky_fue","malva_foto","ir_plusvalia","echado"]},
     hints:{
       foto_leonel:"(La foto de la mochila de Tadeo... Chayo sabe de fotos. Podría mostrársela.)",
       foto_camioneta:"(Chayo me pidió una fotografía. El video de la cámara municipal muestra la camioneta roja.)",
@@ -360,8 +361,13 @@ const INV = {
       carta_tadeo:"(Tadeo me debe la verdad. Al locutorio... y quizás mostrarle la foto de su mochila.)",
       ricky_fue:"(Ese mecánico de la camioneta roja sabe algo. Tengo que hacerlo hablar... quizás con el video.)",
       malva_foto:"(Malva está en la oficina. Está enojada conmigo... ¿qué es lo que la tiene así?)",
-      ir_plusvalia:"(Debería volver a la comisaría a ver cómo va la denuncia de Chayo.)"},
-    end:[],
+      ir_plusvalia:"(Debería volver a la comisaría a ver cómo va la denuncia de Chayo.)",
+      echado:"(Las oficinas de Hoteles Mirador. Tengo que enfrentar a la señora Plusvalía.)"},
+    end:[{cmd:"negro", ms:900, pos:"negro"},
+         {who:"ines",pos:"negro",mood:"serious",music:"suspenso",text:"(Mañana será el gran día. Tendré que demostrar la inocencia de Tadeo... y encontrar al verdadero asesino.)"},
+         {who:"ines",pos:"negro",mood:"think",text:"(Malva.)"},
+         {who:"ines",pos:"negro",mood:"think",text:"(Ricky.)"},
+         {who:"ines",pos:"negro",mood:"serious",sfx:"badum",text:"(O la señora Plusvalía.)"}],
     places:{
       hospital:{name:"Hospital Van Buren", moves:["comisaria"],
         people:[{who:"chayo",
@@ -404,7 +410,7 @@ const INV = {
           "video:again":[{who:"chayo",mood:"annoyed",text:"¡Esa camioneta! Anda a la comisaría, Justo. Hoy."}],
           default:[{who:"chayo",mood:"think",text:"Mmm... eso no me dice nada. ¿No tienes una fotografía?"}]}}},
 
-      comisaria:{name:"Comisaría", req:{flags:["foto_camioneta"]}, moves:["hospital","locutorio","casona"],
+      comisaria:{name:"Comisaría", req:{flags:["foto_camioneta"]}, moves:["hospital","locutorio","casona","mirador"],
         people:[{who:"eduardo", req:{flags:["malva_foto"]}, back:[{who:"eduardo",mood:"shock",text:"¡Justo! Le estaba llamando."}]},
                 {who:"eduardo", req:{not:["edu_denuncia"]},
           hello:[{who:"eduardo",mood:"shock",text:"¡Abogado! El fiscal Penna salió justo a interrogar a la señora Plusvalía, a las Oficinas Miramar."},
@@ -535,6 +541,47 @@ const INV = {
           "fotomadre:again":[{who:"tadeo",mood:"down",text:"Ya le di la carta, abogado. Léala a solas."}],
           pastillas:[{who:"tadeo",text:"Mis pastillas del mareo. Me dan sopor, pero nunca tanto."}],
           default:[{who:"tadeo",mood:"down",text:"No sé qué decirle de eso, abogado."}]}}},
+
+      mirador:{name:"Oficinas Hoteles Mirador", req:{flags:["ir_plusvalia"]}, moves:["comisaria"],
+        people:[{who:"barbara", req:{flags:["vio_compra"], not:["echado"]}}],
+        enter:[{who:"ines",mood:"think",text:"(No hay nadie. La secretaria me dijo que pasara.)"},
+               {who:"ines",mood:"smug",text:"(Es el momento justo para investigar.)"}],
+        examine:[
+          {id:"m_escritorio", t:"El escritorio", lines:[
+            {who:"ines",mood:"think",text:"(Un escritorio común y corriente, con muchos ficheros y archivos.)"},
+            {who:"ines",mood:"think",text:"(A ver si me acerco un poquito...)"},
+            {who:"ines",mood:"shock",anim:"hit",text:"(¿Q-qué es esto? ¡Una carpeta con mi cara! Y mis antecedentes...)"},
+            {who:"ines",mood:"think",text:"(Supongo que habrán preparado su testimonio. ¿Y... esto?)"},
+            {who:"ines",mood:"think",text:"(«Contrato Hoteles Mirador». «Por la suma de $3.000.000.000»... «la venta de la Casona Ferrada».)"},
+            {who:"ines",mood:"shock",evidence:"compraventa",text:"(¡...Esto es una compraventa!)"},
+            {who:"ines",mood:"think",text:"(Solo falta la firma de «el dueño o la dueña de la Casona Ferrada».)"},
+            {who:"ines",mood:"shock",text:"(¡No dice Leonel Ferrada! Esto...)"},
+            {who:"barbara",mood:"smug",flag:"vio_compra",text:"No sabía que usted era un mirón, como el vecino de esa casona."},
+            {who:"ines",mood:"shock",anim:"hit",text:"¡AGH! ¡Bárbara!"},
+            {who:"barbara",mood:"annoyed",text:"¿Qué hace usted aquí, joven básico?"},
+            {who:"barbara",mood:"smug",text:"Supongo que busca las últimas pistas para intentar salvar a ese cabrito."},
+            {who:"barbara",mood:"smile",text:"Ja... Qué tonto es, abogado."},
+            {who:"ines",mood:"angry",text:"¿...Por qué me falta el respeto, señora?"},
+            {who:"barbara",mood:"smug",text:"¿No se ha dado cuenta de que tiene todas las de perder?"},
+            {who:"barbara",pose:"point",text:"Frente a usted está Máximo Penna, quien nunca ha perdido un caso."},
+            {who:"ines",mood:"smug",text:"(Eh... sí lo hizo, hace poco. Y yo le gané.)"},
+            {who:"barbara",mood:"smug",text:"Y ahora estoy yo involucrada. ¿Sabe lo que significa?"},
+            {who:"ines",mood:"serious",text:"Profundice."},
+            {who:"barbara",mood:"smile",text:"Soy la dueña de Hoteles Mirador. Propietaria del 87% de la ciudad."},
+            {who:"barbara",mood:"smug",text:"Y no solo eso. Mi esposo me dejó muy bien parada, con influencia en cada rincón de la ciudad..."},
+            {who:"barbara",mood:"smug",sfx:"badum",text:"...incluyendo [r]el poder judicial[/r]."},
+            {who:"ines",mood:"shock",text:"(¿Qué?)"},
+            {who:"barbara",mood:"think",text:"Le confieso esto porque no tiene ninguna relación con el caso."},
+            {who:"barbara",mood:"annoyed",text:"Estuve ahí, pero me fui. Y el fiscal Penna hará lo posible por probarlo."},
+            {who:"barbara",mood:"smug",text:"Tengo coartada. Yo no soy la asesina, Valdivia."},
+            {who:"barbara",mood:"annoyed",text:"Pero esto es una amenaza contra mí y todo el grupo Mirador."},
+            {who:"barbara",pose:"point",music:"suspenso",cut:true,text:"Le destrozaré la carrera, jovencito."},
+            {who:"barbara",mood:"smile",text:"Siempre lo he hecho, y lo seguiré haciendo. Ja... ja... ja."},
+            {who:"barbara",pose:"point",anim:"slam",text:"¡SEGURIDAD!"},
+            {who:"ines",mood:"sweat",anim:"hit",flag:"echado",text:"¡Agh! ¡Suéltenme! Puedo irme solo."}],
+           again:[{who:"ines",mood:"think",text:"(La carpeta con mi cara... y el contrato de la casona.)"}]},
+        ],
+        present:{barbara:{default:[{who:"barbara",mood:"annoyed",text:"No me interesa nada de lo que me muestre, abogado."}]}}},
 
       casona:{name:"Casona Ferrada", req:{flags:["carta_tadeo"]}, moves:["pieza","oficinahostal","comisaria","locutorio"],
         people:[{who:"rocky", req:{flags:["ricky_llega"], not:["ricky_fue"]}}],
@@ -1348,10 +1395,24 @@ const SCRIPT = [
   {who:"ines",pos:"negro",mood:"serious",text:"(Esta mujer... Bárbara Plusvalía... Tendré que ir a hablar con ella.)"},
   {cmd:"card", t1:"— Día 3 —", t2:"Investigación"},
   {cmd:"invest", ref:"dia2"},
-  // ===== DÍA 3, segunda parte (BORRADOR viejo: se reemplaza cuando el dueño escriba lo que sigue del locutorio) =====
+  // ===== BORRADOR VIEJO (investigación antigua): sigue aquí solo para que el juicio final (borrador) tenga sus pruebas.
+  //       Se reemplaza cuando el dueño escriba el Día 4. =====
+  {cmd:"cine", img:null, text:"(Borrador antiguo: investigación pendiente de reescribir)"},
   {cmd:"invest", ref:"dia3"},
-  // ===== PARTE 4: JUICIO FINAL =====
+  // ===== DÍA 4: JUICIO FINAL =====
   {cmd:"card", t1:"— Día 4 —", t2:"Juicio final"},
+  {cmd:"music", track:"espera"},
+  {cmd:"location", text:"Juzgado de Garantía de Valparaíso\nAntesala del tribunal", pos:"lobby"},
+  {who:"ines",pos:"lobby",mood:"think",text:"(¿A qué hora llegará Chayo...?)"},
+  {who:"chayo",pos:"lobby",mood:"happy",sfx:"foto",text:"[f]¡CLICK! Otro juicio, otra foto. Ja, ja. De nuevo con los ojos cerrados."},
+  {who:"ines",pos:"lobby",mood:"serious",text:"No estoy para esos chistes, Chayo."},
+  {who:"ines",pos:"lobby",mood:"down",text:"Este caso... creo que tengo a todos en contra de mí."},
+  {who:"ines",pos:"lobby",mood:"serious",text:"El fiscal, los testigos... e incluso MI PROPIO CLIENTE."},
+  {who:"chayo",pos:"lobby",mood:"surprise",text:"¿Sí? ¿Y a qué se debe eso?"},
+  {who:"ines",pos:"lobby",mood:"down",text:"Está callado, silencioso. No quiere decirme toda la verdad."},
+  {who:"chayo",pos:"lobby",pose:"point",text:"Tendrás que descubrirlo en el juicio. ¡Vamos, que ya comienza!"},
+  {cmd:"negro", ms:900, pos:"juez"},
+  {cmd:"gavel"},
   {cmd:"music", track:"corte"},
   {who:"jueza",mood:"serious",text:"Se reanuda la audiencia. Espero que esta vez tengan hechos."},
   {who:"ines",mood:"serious",text:"La defensa llama a Ricardo González."},

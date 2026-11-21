@@ -31,6 +31,7 @@ Expediente (fichas)
 - Llave de la pieza: Llave de la pieza del fondo. Encontrada sobre la mesa de la pieza de Tadeo, frente a su mochila.
 - Bala 9 mm: Extraída de la nuca de Leonel Ferrada. Pericia balística: disparada por la pistola 9 mm encontrada en la mochila.
 - Registro Civil de Puerto Williams: Inscripción de nacimiento: Tadeo Ferrada. Apellido cambiado después a Fuegos.
+- Contrato Hoteles Mirador: Compraventa de la Casona Ferrada por $3.000.000.000. Falta la firma de «el dueño o la dueña de la Casona Ferrada». No dice Leonel Ferrada.
 - Boleta del taxi: Taxi de la casona al plan: 23:14 a 23:31. Vuelta a las 00:28.
 
 ============================================================
@@ -963,7 +964,7 @@ JUSTO: (Esta mujer... Bárbara Plusvalía... Tendré que ir a hablar con ella.)
 INVESTIGACIÓN (dia2) — 17 de marzo
 ============================================================
 
-Termina cuando tienes: ; y las marcas foto_leonel, foto_camioneta, edu_denuncia, carta_tadeo, ricky_fue, malva_foto, ir_plusvalia.
+Termina cuando tienes: ; y las marcas foto_leonel, foto_camioneta, edu_denuncia, carta_tadeo, ricky_fue, malva_foto, ir_plusvalia, echado.
 
 --- LUGAR: Hospital Van Buren ---
 
@@ -1017,7 +1018,7 @@ CHAYO: Mmm... eso no me dice nada. ¿No tienes una fotografía?
 
 --- LUGAR: Comisaría _(se abre con marcas: foto_camioneta)_ ---
 
-Desde aquí se puede ir a: Hospital Van Buren, Locutorio de la comisaría, Casona Ferrada
+Desde aquí se puede ir a: Hospital Van Buren, Locutorio de la comisaría, Casona Ferrada, Oficinas Hoteles Mirador
 
 Persona: ESTUARDO (se abre con marcas: malva_foto)
 Al volver:
@@ -1174,6 +1175,54 @@ TADEO: Mis pastillas del mareo. Me dan sopor, pero nunca tanto.
 
 📁 Presentar a TADEO: cualquier otra cosa
 TADEO: No sé qué decirle de eso, abogado.
+
+--- LUGAR: Oficinas Hoteles Mirador _(se abre con marcas: ir_plusvalia)_ ---
+
+Desde aquí se puede ir a: Comisaría
+
+Al llegar la primera vez:
+JUSTO: (No hay nadie. La secretaria me dijo que pasara.)
+JUSTO: (Es el momento justo para investigar.)
+
+Persona: BÁRBARA (se abre con marcas: vio_compra; sin: echado)
+
+🔍 Examinar: El escritorio
+JUSTO: (Un escritorio común y corriente, con muchos ficheros y archivos.)
+JUSTO: (A ver si me acerco un poquito...)
+JUSTO: (¿Q-qué es esto? ¡Una carpeta con mi cara! Y mis antecedentes...)
+JUSTO: (Supongo que habrán preparado su testimonio. ¿Y... esto?)
+JUSTO: («Contrato Hoteles Mirador». «Por la suma de $3.000.000.000»... «la venta de la Casona Ferrada».)
+JUSTO: (¡...Esto es una compraventa!) [entra al expediente: Contrato Hoteles Mirador]
+JUSTO: (Solo falta la firma de «el dueño o la dueña de la Casona Ferrada».)
+JUSTO: (¡No dice Leonel Ferrada! Esto...)
+BÁRBARA: No sabía que usted era un mirón, como el vecino de esa casona. [marca: vio_compra]
+JUSTO: ¡AGH! ¡Bárbara!
+BÁRBARA: ¿Qué hace usted aquí, joven básico?
+BÁRBARA: Supongo que busca las últimas pistas para intentar salvar a ese cabrito.
+BÁRBARA: Ja... Qué tonto es, abogado.
+JUSTO: ¿...Por qué me falta el respeto, señora?
+BÁRBARA: ¿No se ha dado cuenta de que tiene todas las de perder?
+BÁRBARA: Frente a usted está Máximo Penna, quien nunca ha perdido un caso.
+JUSTO: (Eh... sí lo hizo, hace poco. Y yo le gané.)
+BÁRBARA: Y ahora estoy yo involucrada. ¿Sabe lo que significa?
+JUSTO: Profundice.
+BÁRBARA: Soy la dueña de Hoteles Mirador. Propietaria del 87% de la ciudad.
+BÁRBARA: Y no solo eso. Mi esposo me dejó muy bien parada, con influencia en cada rincón de la ciudad...
+BÁRBARA: ...incluyendo el poder judicial.
+JUSTO: (¿Qué?)
+BÁRBARA: Le confieso esto porque no tiene ninguna relación con el caso.
+BÁRBARA: Estuve ahí, pero me fui. Y el fiscal Penna hará lo posible por probarlo.
+BÁRBARA: Tengo coartada. Yo no soy la asesina, Valdivia.
+BÁRBARA: Pero esto es una amenaza contra mí y todo el grupo Mirador.
+BÁRBARA: Le destrozaré la carrera, jovencito. [música: suspenso]
+BÁRBARA: Siempre lo he hecho, y lo seguiré haciendo. Ja... ja... ja.
+BÁRBARA: ¡SEGURIDAD! [golpe en la mesa]
+JUSTO: ¡Agh! ¡Suéltenme! Puedo irme solo. [marca: echado]
+Si lo vuelve a examinar:
+JUSTO: (La carpeta con mi cara... y el contrato de la casona.)
+
+📁 Presentar a BÁRBARA: cualquier otra cosa
+BÁRBARA: No me interesa nada de lo que me muestre, abogado.
 
 --- LUGAR: Casona Ferrada _(se abre con marcas: carta_tadeo)_ ---
 
@@ -1363,8 +1412,18 @@ MALVA: No responderé, abogado.
 - ricky_fue: (Ese mecánico de la camioneta roja sabe algo. Tengo que hacerlo hablar... quizás con el video.)
 - malva_foto: (Malva está en la oficina. Está enojada conmigo... ¿qué es lo que la tiene así?)
 - ir_plusvalia: (Debería volver a la comisaría a ver cómo va la denuncia de Chayo.)
+- echado: (Las oficinas de Hoteles Mirador. Tengo que enfrentar a la señora Plusvalía.)
 
 Al terminar la investigación:
+
+[Fundido a negro]
+
+JUSTO: (Mañana será el gran día. Tendré que demostrar la inocencia de Tadeo... y encontrar al verdadero asesino.) [música: suspenso]
+JUSTO: (Malva.)
+JUSTO: (Ricky.)
+JUSTO: (O la señora Plusvalía.)
+
+Cinemática: (Borrador antiguo: investigación pendiente de reescribir)
 
 ============================================================
 INVESTIGACIÓN (dia3) — 17 de marzo
@@ -1571,6 +1630,25 @@ JUSTO: (Ahora tengo que demostrarlo. Prueba por prueba.)
 ############################################################
 — Día 4 — — Juicio final
 ############################################################
+
+[Música: espera]
+
+============================================================
+Juzgado de Garantía de Valparaíso — Antesala del tribunal
+============================================================
+
+JUSTO: (¿A qué hora llegará Chayo...?)
+CHAYO: ¡CLICK! Otro juicio, otra foto. Ja, ja. De nuevo con los ojos cerrados.
+JUSTO: No estoy para esos chistes, Chayo.
+JUSTO: Este caso... creo que tengo a todos en contra de mí.
+JUSTO: El fiscal, los testigos... e incluso MI PROPIO CLIENTE.
+CHAYO: ¿Sí? ¿Y a qué se debe eso?
+JUSTO: Está callado, silencioso. No quiere decirme toda la verdad.
+CHAYO: Tendrás que descubrirlo en el juicio. ¡Vamos, que ya comienza!
+
+[Fundido a negro]
+
+[Mazo]
 
 [Música: corte]
 

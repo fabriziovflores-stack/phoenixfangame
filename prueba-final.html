@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ACTA CERO — Prueba del final</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=113">
+<link rel="stylesheet" href="css/style.css?v=114">
 </head>
 <body>
 <div id="ds">
@@ -49,16 +49,16 @@
     <div class="hint">Activa el sonido · toca la pantalla de abajo para avanzar</div>
   </div>
 </div>
-<script src="js/casos.js?v=113"></script>
-<script src="casos/caso1.js?v=113"></script>
-<script src="casos/caso2.js?v=113"></script>
-<script src="js/audio.js?v=113"></script>
-<script src="js/sprites.js?v=113"></script>
-<script src="assets/hd/atlas.js?v=113"></script>
-<script src="js/assets.js?v=113"></script>
-<script src="js/engine.js?v=113"></script>
-<script src="js/investigacion.js?v=113"></script>
-<script src="js/musica.js?v=113"></script>
+<script src="js/casos.js?v=114"></script>
+<script src="casos/caso1.js?v=114"></script>
+<script src="casos/caso2.js?v=114"></script>
+<script src="js/audio.js?v=114"></script>
+<script src="js/sprites.js?v=114"></script>
+<script src="assets/hd/atlas.js?v=114"></script>
+<script src="js/assets.js?v=114"></script>
+<script src="js/engine.js?v=114"></script>
+<script src="js/investigacion.js?v=114"></script>
+<script src="js/musica.js?v=114"></script>
 <script>
 /* Versión de prueba: salta directo al veredicto y la escena final del Caso 1. No toca la partida guardada. */
 saveGame=function(){ return true; }; clearSave=function(){};
@@ -88,6 +88,11 @@ const SALTOS=[
    pre:()=>{ Object.assign(G.flags,{juicio1:1,foto_leonel:1,foto_camioneta:1,p92:1,maletin:1,chayo1:1,edu_denuncia:1,molestia:1,l_foto:1,carta_tadeo:1});
      G.notes["desc:fotomadre"]="Foto antigua de una mujer joven en Puerto Williams. Al reverso, a contraluz: «Leonel y yo, 2002».";
      G.inv={ref:"dia2", place:"casona", seen:{"in:hospital":1,"in:comisaria":1,"in:locutorio":1}, reloj:75, knownInit:1, known:{hospital:1,comisaria:1,locutorio:1,casona:1}}; },
+   paso:()=>SCRIPT.findIndex(s=>s.cmd==="invest"&&s.ref==="dia2")},
+  {caso:"caso2", t:"🏢 Caso 2: Oficinas de Plusvalía", ev:["pistola","autopsia","video","libro","plano","taza","pastillas","fotomadre","cajon","llave","bala9","carta","bala38"],
+   pre:()=>{ Object.assign(G.flags,{juicio1:1,foto_leonel:1,foto_camioneta:1,p92:1,maletin:1,chayo1:1,edu_denuncia:1,molestia:1,l_foto:1,carta_tadeo:1,ricky_llega:1,k1:1,k2:1,k3:1,k4:1,ricky_fue:1,oye_malva:1,o1:1,o2:1,malva_foto:1,ir_plusvalia:1});
+     G.notes["desc:fotomadre"]="Foto antigua de una mujer joven en Puerto Williams. Al reverso, a contraluz: «Leonel y yo, 2002».";
+     G.inv={ref:"dia2", place:"mirador", seen:{"in:hospital":1,"in:comisaria":1,"in:locutorio":1,"in:casona":1,"in:pieza":1,"in:oficinahostal":1}, reloj:150, knownInit:1, known:{hospital:1,comisaria:1,locutorio:1,casona:1,pieza:1,oficinahostal:1,mirador:1}}; },
    paso:()=>SCRIPT.findIndex(s=>s.cmd==="invest"&&s.ref==="dia2")},
 ];
 SALTOS.forEach(sa=>{ const bt=document.createElement("button"); bt.textContent=sa.t; bt.style.fontSize="3.4cqw";
