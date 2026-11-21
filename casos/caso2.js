@@ -351,7 +351,7 @@ const INV = {
 
   /* ===================== DÍA 2 (tarde, después del juicio) ===================== */
   dia2: {
-    start:"hospital", music:"investigacion", fecha:"16 de marzo", hora:15*60+15, paso:25,
+    start:"hospital", music:"investigacion", fecha:"17 de marzo", hora:15*60+15, paso:25,
     done:{flags:["foto_leonel","foto_camioneta","edu_denuncia","dia2_fin"]},
     hints:{
       foto_leonel:"(La foto de la mochila de Tadeo... Chayo sabe de fotos. Podría mostrársela.)",
@@ -439,7 +439,7 @@ const INV = {
             {who:"eduardo",mood:"shock",text:"¿Qué? ¿Qué le pasó?"},
             {who:"eduardo",mood:"serious",music:"investigacion",flag:"chayo1",text:"Espere, Penna. Escucharé al joven."}]},
           {id:"c_chayo", who:"eduardo", t:"Chayo", req:{flags:["chayo1"]}, lines:[
-            {who:"ines",mood:"serious",text:"Anoche atropellaron a Chayo, cerca de las 23:45. El auto se dio a la fuga."},
+            {who:"ines",mood:"serious",text:"La noche del crimen atropellaron a Chayo, cerca de las 23:45. El auto se dio a la fuga."},
             {who:"eduardo",mood:"write",text:"¿Tiene alguna patente o algo?"},
             {who:"ines",mood:"down",text:"No. Solo el color de la camioneta: era roja."},
             {who:"eduardo",mood:"serious",text:"¡A la orden! Apenas sepa algo, yo le llamo por teléfono."},
@@ -517,7 +517,7 @@ const INV = {
 
   /* ===================== DÍA 3 ===================== */
   dia3: {
-    start:"locutorio", music:"investigacion", fecha:"17 de marzo", hora:9*60+15, paso:25,
+    start:"locutorio", music:"investigacion", fecha:"17 de marzo", hora:17*60+30, paso:25,
     done:{ev:["carta","polvora","sangre","inscripcion","corredera","tarjeta","receta","contrato","boleta"]},
     hints:{
       carta:"(Tadeo esconde algo sobre la foto. Ahora sé lo suficiente para que hable.)",
@@ -1171,10 +1171,9 @@ const SCRIPT = [
   {who:"eduardo",pos:"lobby",mood:"serious",sfx:"drama",text:"No.[p] [r]Bárbara Plusvalía[/r]."},
   {cmd:"negro", ms:900, pos:"negro"},
   {who:"ines",pos:"negro",mood:"serious",text:"(Esta mujer... Bárbara Plusvalía... Tendré que ir a hablar con ella.)"},
-  {cmd:"invest", ref:"dia2"},
-  {cmd:"cine", img:null, text:"Continuará..."},
-  // ===== PARTE 3 =====
   {cmd:"card", t1:"— Día 3 —", t2:"Investigación"},
+  {cmd:"invest", ref:"dia2"},
+  // ===== DÍA 3, segunda parte (BORRADOR viejo: se reemplaza cuando el dueño escriba lo que sigue del locutorio) =====
   {cmd:"invest", ref:"dia3"},
   // ===== PARTE 4: JUICIO FINAL =====
   {cmd:"card", t1:"— Día 4 —", t2:"Juicio final"},

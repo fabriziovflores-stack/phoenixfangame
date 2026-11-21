@@ -975,7 +975,10 @@ _Desde aquí se puede ir a: Locutorio de la comisaría, Casona Ferrada — entra
 
 **JUSTO:** (Esta mujer... Bárbara Plusvalía... Tendré que ir a hablar con ella.)  
 
-## INVESTIGACIÓN (dia2) — 16 de marzo
+# — Día 3 — — Investigación
+
+
+## INVESTIGACIÓN (dia2) — 17 de marzo
 
 _Termina cuando tienes: ; y las marcas foto_leonel, foto_camioneta, edu_denuncia, dia2_fin._
 
@@ -1078,7 +1081,7 @@ _Desde aquí se puede ir a: Hospital Van Buren, Locutorio de la comisaría_
 **ESTUARDO:** Espere, Penna. Escucharé al joven. *[marca: chayo1; música: investigacion]*  
 
 **💬 Hablar con ESTUARDO: Chayo** _(se abre con marcas: chayo1)_  
-**JUSTO:** Anoche atropellaron a Chayo, cerca de las 23:45. El auto se dio a la fuga.  
+**JUSTO:** La noche del crimen atropellaron a Chayo, cerca de las 23:45. El auto se dio a la fuga.  
 **ESTUARDO:** ¿Tiene alguna patente o algo?  
 **JUSTO:** No. Solo el color de la camioneta: era roja.  
 **ESTUARDO:** ¡A la orden! Apenas sepa algo, yo le llamo por teléfono.  
@@ -1176,12 +1179,6 @@ _Desde aquí se puede ir a: Comisaría_
 - dia2_fin: (Tadeo me debe la verdad. Al locutorio... y quizás mostrarle la foto de su mochila.)
 
 *Al terminar la investigación:*  
-
-
-*Cinemática: Continuará...*
-
-
-# — Día 3 — — Investigación
 
 
 ## INVESTIGACIÓN (dia3) — 17 de marzo
